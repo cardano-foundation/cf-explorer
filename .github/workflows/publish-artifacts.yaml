@@ -4,6 +4,7 @@ on:
   push:
     branches: 
       - develop
+      - main
   workflow_dispatch:
 
 env:
@@ -35,6 +36,8 @@ jobs:
         with:
           servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
 
+
+
       - name: Build and Push
         run: |
           for pkg in ${PACKAGES_TO_BUILD}
@@ -49,7 +52,7 @@ jobs:
               pom.xml \
               --xml-output > pom.xml.mod && mv pom.xml.mod pom.xml
             
-            mvn --batch-mode --update-snapshots clean package -DskipTests
+            mvn --batch-mode --update-snapshots clean package
 
             cd ${OLDPWD}
           done
