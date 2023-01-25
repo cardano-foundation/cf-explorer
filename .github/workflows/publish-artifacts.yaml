@@ -36,9 +36,29 @@ jobs:
         with:
           servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
 
+      - name: Build
+        run: |
+          for pkg in ${PACKAGES_TO_BUILD}
+          do
+            cd ${pkg}
 
+            mvn --batch-mode --update-snapshots clean package -DskipTests
 
-      - name: Build and Push
+            cd ${OLDPWD}
+          done
+
+      - name: Test
+        run: |
+          for pkg in ${PACKAGES_TO_BUILD}
+          do
+            cd ${pkg}
+
+            mvn --batch-mode --update-snapshots clean verify -DskipTests
+
+            cd ${OLDPWD}
+          done
+
+      - name: Publish
         run: |
           for pkg in ${PACKAGES_TO_BUILD}
           do
@@ -52,7 +72,7 @@ jobs:
               pom.xml \
               --xml-output > pom.xml.mod && mv pom.xml.mod pom.xml
             
-            mvn --batch-mode --update-snapshots clean package
+            mvn --batch-mode --update-snapshots deploy -DskipTests
 
             cd ${OLDPWD}
           done
