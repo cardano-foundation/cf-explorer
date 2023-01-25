@@ -1,0 +1,57 @@
+name: Publish artifacts to Github Packages
+
+on:
+  push:
+    branches: 
+      - develop
+  workflow_dispatch:
+
+env:
+  PACKAGES_TO_BUILD: cardano-common cardano-common-api cardano-common-explorer
+
+jobs:
+  publish:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 18
+        uses: actions/setup-java@v3
+        with:
+          java-version: '18'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Setup depends
+        run: |
+          pip install yq
+
+      - name: Setup mvn settings.yml
+        uses: s4u/maven-settings-action@v2.5.0
+        with:
+          servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
+
+      - name: Build and Push
+        run: |
+          for pkg in ${PACKAGES_TO_BUILD}
+          do
+            cd ${pkg}
+
+            xq \
+              --arg REPOSITORY_ID github \
+              --arg REPOSITORY_NAME "${GITHUB_REPOSITORY}" \
+              --arg REPOSITORY_URL "https://maven.pkg.github.com/${GITHUB_REPOSITORY}" \
+              '.project.distributionManagement = { "repository": { "id": $REPOSITORY_ID, "name": $REPOSITORY_NAME , "url": $REPOSITORY_URL } }' \
+              pom.xml \
+              --xml-output > pom.xml.mod && mv pom.xml.mod pom.xml
+            
+            mvn --batch-mode --update-snapshots clean package -DskipTests
+
+            cd ${OLDPWD}
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
