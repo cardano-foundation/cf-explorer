@@ -15,8 +15,8 @@
       Container(lsconsume, "LedgerSync Consumer", $link="https://github.com/cardano-foundation/cf-ledger-consumer")
     }
     System_Boundary(explorer, "Explorer") {
-      Container(api, "Explorer API", $link="https://github.com/cardano-foundation/cf-explorer-api")
       Container(web, "Explorer Frontend", $link="https://github.com/cardano-foundation/cf-explorer-frontend")
+      Container(api, "Explorer API", $link="https://github.com/cardano-foundation/cf-explorer-api")
     }
 
     Rel(lscrawl, cco, "Uses", "")
