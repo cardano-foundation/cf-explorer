@@ -90,7 +90,7 @@ in the previous steps.
 
 ```shell
 cd cf-ledger-consumer
-mvn clean package
+mvn clean package -DskipTests
 ```
 
 ### Build Ledger Crawler 
