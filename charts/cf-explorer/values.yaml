@@ -1,0 +1,68 @@
+crawler:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-crawler"
+    tag: "0.2.5-SNAPSHOT"
+
+  springProfiles: n2n,sentinel
+
+  port: 8080
+
+  kafka:
+    enabled: true
+    bootstrapServer: kafka-explorer:9092
+
+  redis:
+    master:
+      name: cf-explorer-redis
+      pass: redis_password
+    sentinel:
+      host: cf-explorer-redis
+      pass: redis_password
+
+  crawler:
+    name: dev-crawler
+    blocks:
+      topic: local.crawler.blocks
+      rollbackTopic: local.crawler.rollback-blocks
+
+  networkMagic: 764824073
+
+  node:
+    address: relays-new.cardano-mainnet.iohk.io
+    port: 3001
+
+kafka:
+  enabled: true
+  image:
+    repository: "confluentinc/cp-kafka"
+    tag: "7.0.0"
+  port: 29092
+
+zookeeper:
+  enabled: true
+  image:
+    repository: "confluentinc/cp-zookeeper"
+    tag: "5.1.2"
+  port: 2181
+
+kafdrop:
+  enabled: true
+  replicas: 1
+  image:
+    repository: "obsidiandynamics/kafdrop"
+    tag: "latest"
+  port: 9000
+
+redis:
+  password: redis_password
+  auth:
+    enabled: true
+    sentinel: true
+  master:
+    persistence:
+      enabled: true
+  sentinel:
+    enabled: true

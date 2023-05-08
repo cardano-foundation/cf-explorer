@@ -27,3 +27,8 @@
     Rel(api, cca, "Uses", "")
     Rel(web, api, "Uses", "https/REST")
 ```
+
+
+# Helm Repositories
+
+helm repo add bitnami https://charts.bitnami.com/bitnami

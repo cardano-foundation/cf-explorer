@@ -1,0 +1,43 @@
+{{ with .Values.zookeeper }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zookeeper-explorer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeeper-explorer
+  template:
+    metadata:
+      labels:
+        app: zookeeper-explorer
+    spec:
+      containers:
+        - name: zookeeper-explorer
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          env:
+            - name: ZOOKEEPER_SERVER_ID
+              value: "1"
+            - name: ZOOKEEPER_CLIENT_PORT
+              value: {{ .port | quote }}
+            - name: ZOOKEEPER_TICK_TIME
+              value: "2000"
+            - name: ZOOKEEPER_SERVERS
+              value: "zookeeper:22888:23888"
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+          livenessProbe:
+            exec:
+              command: [ '/bin/bash', '-c', 'echo "ruok" | nc -w 2 localhost 2181 | grep imok' ]
+          startupProbe:
+            exec:
+              command: [ '/bin/bash', '-c', 'echo "ruok" | nc -w 2 localhost 2181 | grep imok' ]
+            failureThreshold: 12
+            periodSeconds: 5
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}

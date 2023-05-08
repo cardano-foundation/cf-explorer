@@ -1,1 +1,4 @@
 .idea
+.keys
+.ansible
+**/values-secrets.yaml

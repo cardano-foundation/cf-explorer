@@ -1,0 +1,63 @@
+{{ with .Values.crawler }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-ledger-crawler
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-ledger-crawler
+  template:
+    metadata:
+      labels:
+        app: cf-ledger-crawler
+    spec:
+      containers:
+        - name: cf-ledger-crawler
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+
+            - name: PORT
+              value: {{ .port | quote }}
+            - name: BOOTSTRAP_SERVER
+              value: {{ .kafka.bootstrapServer }}
+
+            - name: REDIS_MASTER_NAME
+              value: {{ .redis.master.name }}
+            - name: REDIS_MASTER_PASSWORD
+              value: {{ .redis.master.pass }}
+            - name: REDIS_SENTINEL_HOST
+              value: {{ .redis.sentinel.host }}
+            - name: REDIS_SENTINEL_PASS
+              value: {{ .redis.sentinel.pass }}
+
+            - name: CRAWLER_NAME
+              value: {{ .crawler.name }}
+            - name: BLOCKS_TOPIC
+              value: {{ .crawler.blocks.topic }}
+            - name: BLOCKS_ROLLBACK_TOPIC
+              value: {{ .crawler.blocks.rollbackTopic }}
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: api
+          startupProbe:
+            httpGet:
+              path: /healthcheck
+              port: api
+            failureThreshold: 30
+            periodSeconds: 10
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}
