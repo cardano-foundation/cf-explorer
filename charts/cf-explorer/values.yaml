@@ -16,11 +16,10 @@ crawler:
 
   redis:
     master:
-      name: cf-explorer-redis
-      pass: redis_password
+      name: mymaster
     sentinel:
       host: cf-explorer-redis
-      pass: redis_password
+      pass: xEJ28kKHEK
 
   crawler:
     name: dev-crawler

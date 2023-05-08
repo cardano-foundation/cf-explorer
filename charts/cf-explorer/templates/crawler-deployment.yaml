@@ -29,8 +29,6 @@ spec:
 
             - name: REDIS_MASTER_NAME
               value: {{ .redis.master.name }}
-            - name: REDIS_MASTER_PASSWORD
-              value: {{ .redis.master.pass }}
             - name: REDIS_SENTINEL_HOST
               value: {{ .redis.sentinel.host }}
             - name: REDIS_SENTINEL_PASS
