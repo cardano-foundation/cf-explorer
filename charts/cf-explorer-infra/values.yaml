@@ -1,0 +1,61 @@
+## Helm Dependencies
+
+redis-cluster:
+  enabled: true
+
+postgresql:
+  enabled: true
+  auth:
+    username: cardano-master
+    postgresPassword: CHANGEME
+    database: explorer_api
+  shmVolume:
+    enabled: true
+    sizeLimit: "32Gi"
+  extendedConf: |-
+    max_locks_per_transaction=256
+    shared_buffers=12GB
+    effective_cache_size=31GB
+    maintenance_work_mem=2GB
+    checkpoint_completion_target=0.9
+    checkpoint_timeout=1h
+    synchronous_commit=off
+    wal_buffers=16MB
+    default_statistics_target=500
+    random_page_cost=1.1
+    effective_io_concurrency=500
+    work_mem=1024GB
+    min_wal_size=1GB
+    max_wal_size=2GB
+    max_parallel_workers_per_gather=4
+    max_parallel_maintenance_workers=4
+
+
+## Internal Dependencies: Kafka, Zookeper, etc.
+kafka:
+  enabled: true
+  image:
+    repository: "confluentinc/cp-kafka"
+    tag: "7.0.0"
+  port: 9092
+  service:
+    type: ClusterIP
+    nodePort: ""
+
+zookeeper:
+  enabled: true
+  image:
+    repository: "confluentinc/cp-zookeeper"
+    tag: "5.1.2"
+  port: 2181
+  service:
+    type: ClusterIP
+    nodePort: ""
+
+kafdrop:
+  enabled: true
+  replicas: 1
+  image:
+    repository: "obsidiandynamics/kafdrop"
+    tag: "latest"
+  port: 9000

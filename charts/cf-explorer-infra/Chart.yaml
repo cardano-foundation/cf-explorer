@@ -1,0 +1,13 @@
+apiVersion: v2
+name: cf-explorer-infra
+type: application
+version: 0.0.1
+dependencies:
+  - name: redis-cluster
+    version: 8.4.4
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis-cluster.enabled
+  - name: postgresql
+    version: 12.4.3
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled

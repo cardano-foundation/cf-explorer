@@ -1,11 +1,4 @@
 apiVersion: v2
-name: cf-ledger-crawler
+name: cf-explorer
 type: application
 version: 0.0.1
-dependencies:
-  - name: redis-cluster
-    version: 8.4.4
-    repository: https://charts.bitnami.com/bitnami
-  - name: postgresql
-    version: 12.4.3
-    repository: https://charts.bitnami.com/bitnami

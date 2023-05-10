@@ -1,0 +1,9 @@
+dependencies:
+- name: redis-cluster
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.4.4
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 12.4.3
+digest: sha256:da7836e5113143bebbfdbacfccbbb41a924787189b23d4a4e401294372318908
+generated: "2023-05-10T14:37:20.965444+01:00"
