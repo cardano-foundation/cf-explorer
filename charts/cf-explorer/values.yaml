@@ -4,9 +4,9 @@ crawler:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-crawler"
-    tag: "0.2.5-SNAPSHOT"
+    tag: "v0.2.4-25-g9282551"
 
-  springProfiles: n2n,sentinel
+  springProfiles: n2n,cluster
 
   port: 8080
 
@@ -15,11 +15,14 @@ crawler:
     bootstrapServer: kafka-explorer:9092
 
   redis:
+    secretName: cf-explorer-redis-cluster
+    cluster:
+      hosts: cf-explorer-redis-cluster-headless:6379
+
     master:
       name: mymaster
     sentinel:
-      host: cf-explorer-redis
-      pass: xEJ28kKHEK
+      host: cf-explorer-redis-headless
 
   crawler:
     name: dev-crawler
@@ -38,7 +41,10 @@ kafka:
   image:
     repository: "confluentinc/cp-kafka"
     tag: "7.0.0"
-  port: 29092
+  port: 9092
+  service:
+    type: ClusterIP
+    nodePort: ""
 
 zookeeper:
   enabled: true
@@ -46,6 +52,9 @@ zookeeper:
     repository: "confluentinc/cp-zookeeper"
     tag: "5.1.2"
   port: 2181
+  service:
+    type: ClusterIP
+    nodePort: ""
 
 kafdrop:
   enabled: true
@@ -55,13 +64,7 @@ kafdrop:
     tag: "latest"
   port: 9000
 
-redis:
-  password: redis_password
-  auth:
-    enabled: true
-    sentinel: true
-  master:
-    persistence:
-      enabled: true
-  sentinel:
-    enabled: true
+#redis-cluster:
+#  cluster:
+#    nodes: 6
+#    replicas: 1

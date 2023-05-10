@@ -3,6 +3,6 @@ name: cf-ledger-crawler
 type: application
 version: 0.0.1
 dependencies:
-  - name: redis
-    version: 17.10.2
+  - name: redis-cluster
+    version: 8.4.4
     repository: https://charts.bitnami.com/bitnami
