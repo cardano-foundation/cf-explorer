@@ -15,9 +15,9 @@ crawler:
     bootstrapServer: kafka-explorer:9092
 
   redis:
-    secretName: cf-explorer-redis-cluster
+    secretName: cf-explorer-infra-redis-cluster
     cluster:
-      hosts: cf-explorer-redis-cluster-headless:6379
+      hosts: cf-explorer-infra-redis-cluster-headless:6379
 
     master:
       name: mymaster
@@ -51,10 +51,10 @@ consumer:
   port: 8080
 
   postgres:
-    host: cf-explorer-postgresql
+    host: cf-explorer-infra-postgresql
     port: 5432
     user: cardano-master
-    secretName: cf-explorer-postgresql
+    secretName: cf-explorer-infra-postgresql
     dbName: explorer_api
 
   kafka:
