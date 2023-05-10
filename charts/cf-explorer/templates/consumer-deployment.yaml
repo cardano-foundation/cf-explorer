@@ -1,0 +1,66 @@
+{{ with .Values.consumer }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-ledger-consumer
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-ledger-consumer
+  template:
+    metadata:
+      labels:
+        app: cf-ledger-consumer
+    spec:
+      containers:
+        - name: cf-ledger-consumer
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+#          command: ["bash", "-c", "sleep 999999"]
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: POSTGRES_HOST
+              value: {{ .postgres.host }}
+            - name: POSTGRES_PORT
+              value: {{ .postgres.port | quote }}
+            - name: POSTGRES_USER
+              value: {{ .postgres.user }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secretName }}
+                  key: password
+            - name: POSTGRES_DB
+              value: {{ .postgres.dbName }}
+
+            - name: BOOSTRAP_SERVER_HOST
+              value: {{ .kafka.host }}
+            - name: BOOSTRAP_SERVER_PORT
+              value: {{ .kafka.port | quote }}
+
+            - name: BLOCKS_TOPIC
+              value: {{ .crawler.blocks.topic }}
+
+            - name: SCHEMA
+              value: {{ .schema }}
+            - name: MAXIMUM_POOL_SIZE
+              value: {{ .maximumPoolSize | quote }}
+            - name: JDBC_BATCH_SIZE
+              value: {{ .jdbcBatchSize | quote }}
+            - name: BLOCKS_BATCH_SIZE
+              value: {{ .blocksBatchSize | quote }}
+            - name: LOG
+              value: {{ .logLevel }}
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}
