@@ -53,6 +53,13 @@ spec:
             - name: BLOCKS_ROLLBACK_TOPIC
               value: {{ .crawler.blocks.rollbackTopic }}
 
+            - name: NODE_ADDRESS
+              value: {{ .cardano.node.address }}
+            - name: NODE_PORT
+              value: {{ .cardano.node.port | quote }}
+            - name: NETWORK_MAGIC
+              value: {{ .cardano.node.networkMagic | quote }}
+
           ports:
             - name: api
               containerPort: {{ .port }}
