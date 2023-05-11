@@ -1,0 +1,20 @@
+## Helm Dependencies
+
+redis-cluster:
+  enabled: false
+
+postgresql:
+  enabled: false
+
+## Internal Dependencies: Kafka, Zookeper, etc.
+kafka:
+  enabled: true
+  service:
+    type: NodePort
+    nodePort: "30092"
+
+zookeeper:
+  enabled: true
+  service:
+    type: NodePort
+    nodePort: "30081"

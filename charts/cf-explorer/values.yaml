@@ -70,3 +70,27 @@ consumer:
   jdbcBatchSize: 500
   blocksBatchSize: 1000
   logLevel: debug
+
+explorerApi:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
+    tag: "v0.3.7-SNAPSHOT-1-g3d82da8"
+
+  springProfiles: dev, cluster
+
+  port: 8080
+
+  redis:
+    secretName: cf-explorer-infra-redis-cluster
+    cluster:
+      hosts: cf-explorer-infra-redis-cluster-headless:6379
+
+  postgres:
+    host: cf-explorer-infra-postgresql
+    port: 5432
+    user: cardano-master
+    secretName: cf-explorer-infra-postgresql
+    dbName: explorer_api
