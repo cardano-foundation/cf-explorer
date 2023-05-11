@@ -1,6 +1,7 @@
 ## Helm Dependencies
 
 redis-cluster:
+  password: Mdkz5r5V6y
   enabled: true
 
 postgresql:
@@ -40,7 +41,7 @@ kafka:
   port: 9092
   service:
     type: ClusterIP
-    nodePort: "30092"
+#    nodePort: "30092"
 
 zookeeper:
   enabled: true
@@ -50,7 +51,7 @@ zookeeper:
   port: 2181
   service:
     type: ClusterIP
-    nodePort: "30081"
+#    nodePort: "30081"
 
 kafdrop:
   enabled: true

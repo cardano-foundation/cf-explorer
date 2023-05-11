@@ -1,0 +1,47 @@
+{{ with .Values.explorerApi }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-explorer-api
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-explorer-api
+  template:
+    metadata:
+      labels:
+        app: cf-explorer-api
+    spec:
+      containers:
+        - name: cf-explorer-api
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+#          command: ["bash", "-c", "sleep 999999"]
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: HOST
+              value: {{ .postgres.host }}
+            - name: PORT_DB
+              value: {{ .postgres.port | quote }}
+            - name: USERNAME_DB
+              value: {{ .postgres.user }}
+            - name: PASSWORD_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secretName }}
+                  key: password
+            - name: DB
+              value: {{ .postgres.dbName }}
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}

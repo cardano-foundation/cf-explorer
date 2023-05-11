@@ -44,7 +44,7 @@ consumer:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
-    tag: "0.2.7"
+    tag: "0.2.8"
 
   springProfiles: dev
 
@@ -77,7 +77,7 @@ explorerApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
-    tag: "v0.3.7-SNAPSHOT-1-g3d82da8"
+    tag: "v0.3.7-SNAPSHOT-2-ga2f4854"
 
   springProfiles: dev, cluster
 
