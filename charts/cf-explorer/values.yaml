@@ -4,9 +4,9 @@ crawler:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-crawler"
-    tag: "v0.2.4-25-g9282551"
+    tag: "0.2.6-SNAPSHOT"
 
-  springProfiles: n2n,cluster
+  springProfiles: n2n,standalone
 
   port: 8080
 
@@ -15,9 +15,16 @@ crawler:
     bootstrapServer: kafka-explorer:9092
 
   redis:
-    secretName: cf-explorer-infra-redis-cluster
-    cluster:
-      hosts: cf-explorer-infra-redis-cluster-headless:6379
+    mode: standalone
+    secretName: cf-explorer-infra-redis
+    standalone:
+      host: cf-explorer-infra-redis-headless
+      port: 6379
+
+#    mode: cluster
+#    secretName: cf-explorer-infra-redis-cluster
+#    cluster:
+#      hosts: cf-explorer-infra-redis-cluster-headless:6379
 
     master:
       name: mymaster
@@ -88,9 +95,9 @@ explorerApi:
   #    nodePort: "30092"
 
   redis:
-    secretName: cf-explorer-infra-redis-cluster
+    secretName: cf-explorer-infra-redis
     cluster:
-      hosts: cf-explorer-infra-redis-cluster-headless:6379
+      hosts: cf-explorer-infra-redis-headless:6379
 
   postgres:
     host: cf-explorer-infra-postgresql

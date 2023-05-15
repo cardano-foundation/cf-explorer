@@ -1,8 +1,13 @@
-## Helm Dependencies
+## Redis Configuration
+## There are two deployment types: Cluster and Standalone / Sentinel, they are mutually exclusive
+redis:
+  enabled: true
+  password: ypyxnN4K2U
+  replica:
+    replicaCount: 0
 
 redis-cluster:
-  password: Mdkz5r5V6y
-  enabled: true
+  enabled: false
 
 postgresql:
   enabled: true

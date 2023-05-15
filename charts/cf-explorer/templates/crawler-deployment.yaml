@@ -27,17 +27,17 @@ spec:
               value: {{ .port | quote }}
             - name: BOOTSTRAP_SERVER
               value: {{ .kafka.bootstrapServer }}
-
-#            - name: REDIS_MASTER_NAME
-#              value: {{ .redis.master.name }}
-#            - name: REDIS_SENTINEL_HOST
-#              value: {{ .redis.sentinel.host }}
-#            - name: REDIS_SENTINEL_PASS
-#              valueFrom:
-#                secretKeyRef:
-#                  name: {{ .redis.secretName }}
-#                  key: redis-password
-
+            {{- if eq .redis.mode "sentinel" }}
+            - name: REDIS_MASTER_NAME
+              value: {{ .redis.master.name }}
+            - name: REDIS_SENTINEL_HOST
+              value: {{ .redis.sentinel.host }}
+            - name: REDIS_SENTINEL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secretName }}
+                  key: redis-password
+            {{- else if eq .redis.mode "cluster" }}
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -45,6 +45,17 @@ spec:
                   key: redis-password
             - name: NODE_ADDRESSES
               value: {{ .redis.cluster.hosts }}
+            {{- else }}
+            - name: REDIS_STANDALONE_HOST
+              value: {{ .redis.standalone.host }}
+            - name: REDIS_STANDALONE_PORT
+              value: {{ .redis.standalone.port | quote }}
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secretName }}
+                  key: redis-password
+            {{- end }}
 
             - name: CRAWLER_NAME
               value: {{ .crawler.name }}

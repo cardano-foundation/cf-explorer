@@ -3,6 +3,10 @@ name: cf-explorer-infra
 type: application
 version: 0.0.1
 dependencies:
+  - name: redis
+    version: 17.10.3
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
   - name: redis-cluster
     version: 8.4.4
     repository: https://charts.bitnami.com/bitnami
