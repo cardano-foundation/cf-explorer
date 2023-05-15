@@ -1,8 +1,8 @@
 ## Redis Configuration
-## There are two deployment types: Cluster and Standalone / Sentinel, they are mutually exclusive
+# There are two deployment types: Cluster and Standalone / Sentinel, they are mutually exclusive
 redis:
   enabled: true
-  password: ypyxnN4K2U
+  password: ypyxnN4K2U # FIXME: this needs to disappear
   replica:
     replicaCount: 0
 
@@ -13,7 +13,7 @@ postgresql:
   enabled: true
   auth:
     username: cardano-master
-    postgresPassword: CHANGEME
+    postgresPassword: CHANGEME # FIXME: this needs to disappear
     database: explorer_api
   shmVolume:
     enabled: true
@@ -45,8 +45,9 @@ kafka:
     tag: "7.0.0"
   port: 9092
   service:
+    # If type changed to NodePort, specify the port to use externally
     type: ClusterIP
-#    nodePort: "30092"
+    nodePort: ""
 
 zookeeper:
   enabled: true
@@ -55,8 +56,9 @@ zookeeper:
     tag: "5.1.2"
   port: 2181
   service:
+    #  If type changed to NodePort, specify the port to use externally
     type: ClusterIP
-#    nodePort: "30081"
+    nodePort: ""
 
 kafdrop:
   enabled: true

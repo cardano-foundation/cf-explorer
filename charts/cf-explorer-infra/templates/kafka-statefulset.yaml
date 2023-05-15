@@ -55,11 +55,14 @@ spec:
           livenessProbe:
             exec:
               command: [ '/bin/bash', '-c', 'nc -z localhost 9092' ]
+            failureThreshold: 6
+            periodSeconds: 10
           startupProbe:
             exec:
               command: [ '/bin/bash', '-c', 'nc -z localhost 9092' ]
-            failureThreshold: 30
+            failureThreshold: 3
             periodSeconds: 10
+            initialDelaySeconds: 30
   volumeClaimTemplates:
     - metadata:
         name: "kafka-explorer"
