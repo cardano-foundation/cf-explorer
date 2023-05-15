@@ -1,0 +1,51 @@
+{{ with .Values.explorerFrontEnd }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-explorer-fe
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-explorer-fe
+  template:
+    metadata:
+      labels:
+        app: cf-explorer-fe
+    spec:
+      containers:
+        - name: cf-explorer-fe
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+#          command: ["bash", "-c", "sleep 999999"]
+          env:
+            - name: DANGEROUSLY_DISABLE_HOST_CHECK
+              value: "true"
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: {{ .port | quote }}
+
+            - name: REACT_APP_API_URL
+              value: {{ .reactAppApiUrl }}
+            - name: REACT_APP_PREPROD_API_URL
+              value: {{ .reactAppPreProdApiUrl }}
+            - name: REACT_APP_PREVIEW_API_URL
+              value: {{ .reactAppPreviewUrl }}
+            - name: REACT_APP_TESTNET_API_URL
+              value: {{ .reactAppTestnetApiUrl }}
+            - name: REACT_APP_MAINNET_API_URL
+              value: {{ .reactAppMainnetApiUrl }}
+            - name: REACT_APP_AUTH_API_URL
+              value: {{ .reactAppAuthUrl }}
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}
