@@ -35,6 +35,9 @@ spec:
                   key: password
             - name: POSTGRES_DB
               value: {{ .postgres.dbName }}
+            - name: SCHEMA
+              value: {{ .postgres.schema }}
+
 
             - name: BOOSTRAP_SERVER_HOST
               value: {{ .kafka.host }}
@@ -44,8 +47,6 @@ spec:
             - name: BLOCKS_TOPIC
               value: {{ .crawler.blocks.topic }}
 
-            - name: SCHEMA
-              value: {{ .schema }}
             - name: MAXIMUM_POOL_SIZE
               value: {{ .maximumPoolSize | quote }}
             - name: JDBC_BATCH_SIZE
@@ -54,6 +55,13 @@ spec:
               value: {{ .blocksBatchSize | quote }}
             - name: LOG
               value: {{ .logLevel }}
+
+            - name: FILE_GENESIS_PATH
+              value: /genesis/
+            - name: FILE_GENESIS
+              value: "{{ .network }}.genesis.json"
+            - name: NETWORK
+              value: {{ .networkMagic | quote }}
 
           ports:
             - name: api

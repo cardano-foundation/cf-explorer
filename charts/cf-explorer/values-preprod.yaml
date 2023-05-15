@@ -1,0 +1,23 @@
+crawler:
+
+  crawler:
+    name: preprod-crawler
+
+  cardano:
+    node:
+      networkMagic: "1"
+      address: preprod-node.world.dev.cardano.org
+      port: 30000
+
+consumer:
+
+  network: preprod
+
+  postgres:
+    schema: preprod
+
+  networkMagic: "1"
+
+explorerApi:
+  postgres:
+    schema: preprod

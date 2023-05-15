@@ -27,6 +27,7 @@ spec:
               value: {{ .port | quote }}
             - name: BOOTSTRAP_SERVER
               value: {{ .kafka.bootstrapServer }}
+
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
               value: {{ .redis.master.name }}

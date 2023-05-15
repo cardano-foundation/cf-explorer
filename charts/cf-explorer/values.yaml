@@ -15,16 +15,18 @@ crawler:
     bootstrapServer: kafka-explorer:9092
 
   redis:
+    ## Redis Standalone Values Example
     mode: standalone
     secretName: cf-explorer-infra-redis
     standalone:
       host: cf-explorer-infra-redis-headless
       port: 6379
 
-#    mode: cluster
-#    secretName: cf-explorer-infra-redis-cluster
-#    cluster:
-#      hosts: cf-explorer-infra-redis-cluster-headless:6379
+    ## Redis Cluster Values Example
+    # mode: cluster
+    # secretName: cf-explorer-infra-redis-cluster
+    # cluster:
+    #   hosts: cf-explorer-infra-redis-cluster-headless:6379
 
     master:
       name: mymaster
@@ -51,7 +53,7 @@ consumer:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
-    tag: "0.2.8"
+    tag: "0.2.12"
 
   springProfiles: dev
 
@@ -63,6 +65,7 @@ consumer:
     user: cardano-master
     secretName: cf-explorer-infra-postgresql
     dbName: explorer_api
+    schema: mainnet
 
   kafka:
     host: kafka-explorer
@@ -72,11 +75,13 @@ consumer:
     blocks:
       topic: local.crawler.blocks
 
-  schema: mainnet
+
   maximumPoolSize: 64
   jdbcBatchSize: 500
   blocksBatchSize: 1000
   logLevel: debug
+  network: mainnet
+  networkMagic: "764824073"
 
 explorerApi:
   enabled: true
@@ -84,7 +89,7 @@ explorerApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
-    tag: "v0.3.7-SNAPSHOT-2-ga2f4854"
+    tag: "0.3.8"
 
   springProfiles: dev, cluster
 
@@ -95,9 +100,18 @@ explorerApi:
   #    nodePort: "30092"
 
   redis:
+    ## Redis Standalone Values Example
+    mode: standalone
     secretName: cf-explorer-infra-redis
-    cluster:
-      hosts: cf-explorer-infra-redis-headless:6379
+    standalone:
+      host: cf-explorer-infra-redis-headless
+      port: 6379
+
+    ## Redis Cluster Values Example
+    # mode: cluster
+    # secretName: cf-explorer-infra-redis-cluster
+    # cluster:
+    #   hosts: cf-explorer-infra-redis-cluster-headless:6379
 
   postgres:
     host: cf-explorer-infra-postgresql
