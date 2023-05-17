@@ -28,6 +28,9 @@ argo-cd:
         - url: https://helm.traefik.io/traefik
           name: traefik
           type: helm
+        - url: https://helm.elastic.co
+          name: elastic
+          type: helm
         - url: git@github.com:cardano-foundation/cf-explorer.git
           sshPrivateKeySecret:
             name: github-deploy-key
