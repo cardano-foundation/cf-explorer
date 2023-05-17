@@ -16,6 +16,10 @@ spec:
       parameters:
         - name: "git.targetRevision"
           value: {{ .Values.git.targetRevision | default "HEAD" }}
+        - name: "stage"
+          value: {{ .Values.stage | default "prod" }}
+        - name: "network"
+          value: {{ .Values.network | default "mainnet" }}
   syncPolicy:
     automated:
       prune: true
