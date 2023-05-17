@@ -1,36 +1,36 @@
-#---
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: elastic-eck-operator
-#  namespace: argocd
-#  finalizers:
-#    - resources-finalizer.argocd.argoproj.io
-#spec:
-#  project: default
-#  source:
-#    repoURL: https://helm.elastic.co
-#    targetRevision: 2.7.0
-#    chart: eck-operator
-#  syncPolicy:
-#    automated:
-#      prune: true
-#    syncOptions:
-#      - CreateNamespace=true
-#
-#  destination:
-#    namespace: elastic-stack
-#    server: {{ .Values.spec.destination.server }}
-#---
-#apiVersion: elasticsearch.k8s.elastic.co/v1
-#kind: Elasticsearch
-#metadata:
-#  name: quickstart
-#  namespace: elastic-stack
-#spec:
-#  version: 8.7.1
-#  nodeSets:
-#    - name: default
-#      count: 1
-#      config:
-#        node.store.allow_mmap: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elastic-eck-operator
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://helm.elastic.co
+    targetRevision: 2.7.0
+    chart: eck-operator
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+
+  destination:
+    namespace: elastic-stack
+    server: {{ .Values.spec.destination.server }}
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart
+  namespace: elastic-stack
+spec:
+  version: 8.7.1
+  nodeSets:
+    - name: default
+      count: 1
+      config:
+        node.store.allow_mmap: false
