@@ -16,7 +16,7 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
-#      - ServerSideApply=true
+      - ServerSideApply=true
 
   destination:
     namespace: elastic
