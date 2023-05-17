@@ -1,3 +1,4 @@
+{{ if ".Values.cf-explorer.enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -26,3 +27,4 @@ spec:
   destination:
     namespace: cf-explorer
     server: {{ .Values.spec.destination.server }}
+{{ end }}
