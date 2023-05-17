@@ -84,7 +84,7 @@ consumer:
   networkMagic: "764824073"
 
 explorerApi:
-  enabled: true
+  enabled: false
   replicas: 1
 
   image:
@@ -121,7 +121,7 @@ explorerApi:
     dbName: explorer_api
 
 explorerFrontEnd:
-  enabled: true
+  enabled: false
   replicas: 1
 
   image:

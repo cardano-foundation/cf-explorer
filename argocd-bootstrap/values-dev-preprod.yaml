@@ -1,0 +1,12 @@
+git:
+  targetRevision: "feat/MET-755-Create_explorer_helm_chart"
+
+stage: dev
+
+network: preprod
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.dev.preprod.metadata.cardanofoundation.org

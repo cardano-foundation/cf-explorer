@@ -1,0 +1,42 @@
+git:
+  targetRevision: null
+
+stage: prod
+
+network: mainnet
+
+argo-cd:
+  enabled: true
+  server:
+    extraArgs:
+      - --insecure
+    ingress:
+      enabled: true
+      hosts:
+        - argocd.prod.mainnet.metadata.cardanofoundation.org
+    config:
+      repositories: |
+        - url:  https://charts.bitnami.com/bitnami
+          name: bitnami
+          type: helm
+        - url:  https://prometheus-community.github.io/helm-charts
+          name: prometheus-community
+          type: helm
+        - url:  https://grafana.github.io/helm-charts
+          name: grafana
+          type: helm
+        - url: https://helm.traefik.io/traefik
+          name: traefik
+          type: helm
+#      resource.customizations: |
+#        networking.k8s.io/Ingress:
+#          health.lua: |
+#            hs = {}
+#            hs.status = "Healthy"
+#            return hs
+
+sealed-secrets:
+  enabled: true
+
+traefik:
+  enabled: true

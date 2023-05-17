@@ -3,3 +3,4 @@
 .ansible
 **/values-secrets.yaml
 charts/**/charts
+argocd-bootstrap/**/charts

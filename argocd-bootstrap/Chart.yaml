@@ -1,0 +1,16 @@
+apiVersion: v2
+name: argocd-bootstrap
+version: 0.0.1
+dependencies:
+  - name: argo-cd
+    version: 5.33.4
+    repository: https://argoproj.github.io/argo-helm
+    condition: argo-cd.enabled
+  - name: sealed-secrets
+    version: 2.9.0
+    repository: https://bitnami-labs.github.io/sealed-secrets
+    condition: sealed-secrets.enabled
+  - name: traefik
+    version: 23.0.1
+    repository: https://helm.traefik.io/traefik
+    condition: traefik.enabled
