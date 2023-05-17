@@ -1,4 +1,4 @@
-{{ if ".Values.cf-explorer-infra.enabled" }}
+{{ if index .Values "cf-explorer-infra" "enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
