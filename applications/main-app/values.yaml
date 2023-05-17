@@ -1,6 +1,9 @@
 git:
   targetRevision: null
 
+cf-explorer-infra:
+  enabled: true
+
 spec:
   destination:
     server: https://kubernetes.default.svc

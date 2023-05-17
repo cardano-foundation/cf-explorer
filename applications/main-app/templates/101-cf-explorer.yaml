@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cf-explorer
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:cardano-foundation/cf-explorer.git
+    targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
+    path: charts/cf-explorer
+
+    helm:
+      valueFiles:
+      - values-preprod.yaml
+
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+
+  destination:
+    namespace: cf-explorer
+    server: {{ .Values.spec.destination.server }}

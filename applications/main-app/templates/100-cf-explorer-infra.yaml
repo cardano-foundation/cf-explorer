@@ -1,0 +1,28 @@
+{{ if ".Values.cf-explorer-infra.enabled" }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cf-explorer-infra
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:cardano-foundation/cf-explorer.git
+    targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
+    path: charts/cf-explorer-infra
+
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+
+  destination:
+    namespace: cf-explorer
+    server: {{ .Values.spec.destination.server }}
+{{ end }}
