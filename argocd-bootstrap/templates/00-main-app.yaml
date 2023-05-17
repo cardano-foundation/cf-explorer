@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: main-app
+  annotations:
+    "helm.sh/hook": post-install
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -14,9 +16,6 @@ spec:
       parameters:
         - name: "git.targetRevision"
           value: {{ .Values.git.targetRevision | default "HEAD" }}
-          # Postgresql
-        - name: "postgresql.admin.password"
-          value: {{ .Values.postgresql.admin.password }}
   syncPolicy:
     automated:
       prune: true

@@ -15,13 +15,22 @@ fi
 
 ## Sealed Secrets certificates
 kubectl create secret generic sealed-secrets-key \
+  --save-config \
+  --dry-run=client \
+  -o yaml \
   -n argocd \
   --from-file=../.keys/tls.crt \
-  --from-file=../.keys/tls.key
+  --from-file=../.keys/tls.key \
+  | kubectl apply -f -
+
 
 kubectl create secret generic github-deploy-key \
+  --save-config \
+  --dry-run=client \
+  -o yaml \
   -n argocd \
-  --from-file=../.keys/cf-explorer
+  --from-file=../.keys/cf-explorer \
+  | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
 #helm dependency build
