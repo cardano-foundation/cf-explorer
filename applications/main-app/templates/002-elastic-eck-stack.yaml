@@ -26,6 +26,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
+  namespace: elastic-stack
 spec:
   version: 8.7.1
   nodeSets:
