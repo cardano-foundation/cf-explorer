@@ -28,7 +28,7 @@ explorerApi:
   enabled: true
   postgres:
     schema: preprod
-  monitoringEnabled: false
+  monitoringEnabled: true
 
 explorerFrontEnd:
   enabled: true
