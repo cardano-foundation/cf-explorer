@@ -10,6 +10,8 @@ crawler:
 
   port: 8080
 
+  monitoringEnabled: false
+
   kafka:
     enabled: true
     bootstrapServer: kafka-explorer:9092
@@ -59,6 +61,8 @@ consumer:
 
   port: 8080
 
+  monitoringEnabled: false
+
   postgres:
     host: cf-explorer-infra-postgresql
     port: 5432
@@ -94,6 +98,8 @@ explorerApi:
   springProfiles: dev, cluster
 
   port: 8080
+
+  monitoringEnabled: false
 
   service:
     type: ClusterIP

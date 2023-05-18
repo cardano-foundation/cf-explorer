@@ -1,5 +1,7 @@
 crawler:
 
+  monitoringEnabled: true
+
   crawler:
     name: preprod-crawler
 

@@ -1,0 +1,19 @@
+{{ with .Values.crawler }}
+{{ if .enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cf-ledger-crawler
+  labels:
+    app: cf-ledger-crawler
+spec:
+  selector:
+    app: cf-ledger-crawler
+  ports:
+    - protocol: TCP
+      name: api
+      port: {{ .port }}
+      targetPort: api
+{{ end }}
+{{ end }}
