@@ -25,5 +25,9 @@ consumer:
   networkMagic: "1"
 
 explorerApi:
+  enabled: true
   postgres:
     schema: preprod
+
+explorerFrontEnd:
+  enabled: true
