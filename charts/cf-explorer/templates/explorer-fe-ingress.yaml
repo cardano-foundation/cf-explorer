@@ -7,7 +7,7 @@ metadata:
   name: cf-explorer-fe
 spec:
   rules:
-    - host: explorer.dev.preprod.metadata.cardanofoundation.org
+    - host: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
       http:
         paths:
           - path: /
