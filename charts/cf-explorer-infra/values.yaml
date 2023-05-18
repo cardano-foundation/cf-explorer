@@ -2,7 +2,7 @@
 # There are two deployment types: Cluster and Standalone / Sentinel, they are mutually exclusive
 redis:
   enabled: true
-  password: ypyxnN4K2U # FIXME: this needs to disappear
+  password: TKph84NKT5tuQA # FIXME: this needs to disappear
   replica:
     replicaCount: 0
 
@@ -13,6 +13,7 @@ postgresql:
   enabled: true
   auth:
     username: cardano-master
+    password: CEGiDk52K4Awi2 # FIXME: this needs to disappear
     postgresPassword: CHANGEME # FIXME: this needs to disappear
     database: explorer_api
   shmVolume:
