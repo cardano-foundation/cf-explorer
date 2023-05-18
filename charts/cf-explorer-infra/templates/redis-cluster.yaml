@@ -11,13 +11,8 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: redis-cluster
+    targetRevision: 8.6.1
     chart: redis-cluster
-    helm:
-      values: |
-        password: TKph84NKT5tuQA # FIXME: this needs to disappear
-        replica:
-          replicaCount: 0
   syncPolicy:
     automated:
       prune: true
