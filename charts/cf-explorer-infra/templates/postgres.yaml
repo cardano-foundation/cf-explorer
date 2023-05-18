@@ -45,6 +45,6 @@ spec:
       prune: true
       selfHeal: true
   destination:
-    namespace: {{ .Release.namespace }}
+    namespace: {{ .Release.Namespace }}
     server: https://kubernetes.default.svc
-{{{ end }}}
+{{ end }}
