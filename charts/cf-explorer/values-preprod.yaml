@@ -11,6 +11,8 @@ crawler:
 
 consumer:
 
+  springProfiles: local
+
   network: preprod
 
   postgres:
