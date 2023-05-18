@@ -1,0 +1,19 @@
+{{ with .Values.consumer }}
+{{ if .enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cf-ledger-consumer
+  labels:
+    app: cf-ledger-consumer
+spec:
+  selector:
+    app: cf-ledger-consumer
+  ports:
+    - protocol: TCP
+      name: api
+      port: {{ .port }}
+      targetPort: api
+{{ end }}
+{{ end }}
