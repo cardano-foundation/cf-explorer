@@ -1,4 +1,4 @@
-{{ if .Values.redis.postgresql }}
+{{ if .Values.postgresql.enabled }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

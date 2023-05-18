@@ -1,4 +1,4 @@
-{{ if .Values.redis.enabled }}
+{{ if index .Values "redis-cluster" "enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
