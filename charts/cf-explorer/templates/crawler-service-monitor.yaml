@@ -13,7 +13,7 @@ spec:
       port: api
   namespaceSelector:
     matchNames:
-      - {{ .Release.Namespace }}
+      - {{ $.Release.Namespace }}
   selector:
     matchLabels:
       app: cf-ledger-crawler
