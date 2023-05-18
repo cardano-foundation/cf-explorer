@@ -96,6 +96,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kibana-ingress
+  namespace: elastic-stack
 spec:
   rules:
     - host: kibana.dev.preprod.metadata.cardanofoundation.org
