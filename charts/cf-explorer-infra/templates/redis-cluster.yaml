@@ -1,0 +1,28 @@
+{{ if redis.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis-cluster
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: redis-cluster
+    chart: redis-cluster
+    helm:
+      values: |
+        password: TKph84NKT5tuQA # FIXME: this needs to disappear
+        replica:
+          replicaCount: 0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  destination:
+    namespace: {{ .Release.namespace }}
+    server: https://kubernetes.default.svc
+{{{ end }}}

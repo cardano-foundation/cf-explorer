@@ -2,9 +2,6 @@
 # There are two deployment types: Cluster and Standalone / Sentinel, they are mutually exclusive
 redis:
   enabled: true
-  password: TKph84NKT5tuQA # FIXME: this needs to disappear
-  replica:
-    replicaCount: 0
 
 redis-cluster:
   enabled: false
