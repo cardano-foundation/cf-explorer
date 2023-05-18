@@ -32,6 +32,8 @@ spec:
   version: 8.7.1
   elasticsearchRef:
     name: quickstart
+  kibanaRef:
+    name: quickstart
   config:
     filebeat.inputs:
     - type: container
