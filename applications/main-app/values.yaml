@@ -5,7 +5,7 @@ cf-explorer-infra:
   enabled: true
 
 cf-explorer:
-  enabled: false
+  enabled: true
 
 spec:
   destination:
