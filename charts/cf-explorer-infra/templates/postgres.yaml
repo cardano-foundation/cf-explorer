@@ -1,4 +1,4 @@
-{{ if redis.postgresql }}
+{{ if .Values.redis.postgresql }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
