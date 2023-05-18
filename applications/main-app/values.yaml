@@ -2,10 +2,10 @@ git:
   targetRevision: null
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
 
 cf-explorer:
-  enabled: true
+  enabled: false
 
 spec:
   destination:
