@@ -134,13 +134,13 @@ explorerFrontEnd:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-frontend"
     tag: "0.3.2"
 
-    reactAppApiUrl: http://api.dev.preprod.metadata.cardanofoundation.org/api/v1
+  reactAppApiUrl: http://api.dev.preprod.metadata.cardanofoundation.org/api/v1
 #    reactAppApiUrl: https://dev.cf-explorer-monolith-mainnet.metadata.dev.cf-deployments.org:8080/api/v1
-    reactAppPreProdApiUrl: https://dev.cf-explorer-monolith-testnets.metadata.dev.cf-deployments.org:18000/api/v1
-    reactAppPreviewUrl: https://dev.cf-explorer-monolith-testnets.metadata.dev.cf-deployments.org:18100/api/v1
-    reactAppTestnetApiUrl: https://dev.cf-explorer-monolith-testnets.metadata.dev.cf-deployments.org:18200/api/v1
-    reactAppMainnetApiUrl: https://dev.cf-explorer-monolith-mainnet.metadata.dev.cf-deployments.org:8080/api/v1
-    reactAppAuthUrl: https://dev.cf-explorer-monolith-mainnet.metadata.dev.cf-deployments.org:8080/api/v1
+  reactAppPreProdApiUrl: https://dev.cf-explorer-monolith-testnets.metadata.dev.cf-deployments.org:18000/api/v1
+  reactAppPreviewUrl: https://dev.cf-explorer-monolith-testnets.metadata.dev.cf-deployments.org:18100/api/v1
+  reactAppTestnetApiUrl: https://dev.cf-explorer-monolith-testnets.metadata.dev.cf-deployments.org:18200/api/v1
+  reactAppMainnetApiUrl: https://dev.cf-explorer-monolith-mainnet.metadata.dev.cf-deployments.org:8080/api/v1
+  reactAppAuthUrl: https://dev.cf-explorer-monolith-mainnet.metadata.dev.cf-deployments.org:8080/api/v1
 
   port: 1102
 

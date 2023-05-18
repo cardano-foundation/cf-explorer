@@ -35,13 +35,12 @@ argo-cd:
           sshPrivateKeySecret:
             name: github-deploy-key
             key: cf-explorer
-
-#      resource.customizations: |
-#        networking.k8s.io/Ingress:
-#          health.lua: |
-#            hs = {}
-#            hs.status = "Healthy"
-#            return hs
+      resource.customizations: |
+        networking.k8s.io/Ingress:
+          health.lua: |
+            hs = {}
+            hs.status = "Healthy"
+            return hs
 
 sealed-secrets:
   enabled: true
