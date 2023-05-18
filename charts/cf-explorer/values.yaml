@@ -4,7 +4,7 @@ crawler:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-crawler"
-    tag: "0.2.6-SNAPSHOT"
+    tag: "0.2.6"
 
   springProfiles: n2n,standalone
 
@@ -53,7 +53,7 @@ consumer:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
-    tag: "0.2.12"
+    tag: "0.2.13"
 
   springProfiles: dev
 
@@ -89,7 +89,7 @@ explorerApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
-    tag: "0.3.8"
+    tag: "0.3.9"
 
   springProfiles: dev, cluster
 
