@@ -5,8 +5,11 @@ stage: dev
 
 network: preprod
 
+traefik:
+  enabled: false
+
 argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.dev.preprod.metadata.cardanofoundation.org
+        - argocd.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
