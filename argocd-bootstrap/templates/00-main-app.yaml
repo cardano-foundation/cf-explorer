@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: git@github.com:cardano-foundation/cf-explorer.git
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
-    path: applications/main-app
+    path: charts/main-app
     helm:
       parameters:
         - name: "git.targetRevision"
