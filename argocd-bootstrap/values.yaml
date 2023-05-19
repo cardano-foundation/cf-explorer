@@ -46,4 +46,4 @@ sealed-secrets:
   enabled: true
 
 traefik:
-  enabled: true
+  enabled: false
