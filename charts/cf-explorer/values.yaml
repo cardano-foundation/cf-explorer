@@ -79,7 +79,6 @@ consumer:
     blocks:
       topic: local.crawler.blocks
 
-
   maximumPoolSize: 64
   jdbcBatchSize: 500
   blocksBatchSize: 1000
@@ -134,9 +133,8 @@ explorerFrontEnd:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-frontend"
     tag: "0.3.2"
 
-  reactAppApiUrl: https://api.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org/api/v1
-#    reactAppApiUrl: https://dev.cf-explorer-monolith-mainnet.metadata.dev.cf-deployments.org:8080/api/v1
-  reactAppPreProdApiUrl: https://api.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org/api/v1
+  reactAppApiUrl: https://api.{{ .Values.domain }}/api/v1
+  reactAppPreProdApiUrl: https://api.{{ .Values.domain }}/api/v1
   reactAppPreviewUrl: ""
   reactAppTestnetApiUrl: ""
   reactAppMainnetApiUrl: ""
