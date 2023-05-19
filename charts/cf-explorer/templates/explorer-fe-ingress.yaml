@@ -7,7 +7,7 @@ metadata:
   name: cf-explorer-fe
 spec:
   rules:
-    - host: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
+    - host: {{ $.Values.domain }}
       http:
         paths:
           - path: /
@@ -19,6 +19,6 @@ spec:
                   number: {{ .port }}
   tls:
     - hosts:
-        - dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
+        - {{ $.Values.domain }}
 {{ end }}
 {{ end }}

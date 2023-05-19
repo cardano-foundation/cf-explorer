@@ -13,8 +13,10 @@ spec:
     repoURL: git@github.com:cardano-foundation/cf-explorer.git
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
     path: charts/cf-explorer
-
     helm:
+      parameters:
+        - name: "domain"
+          value: {{ .Values.domain }}
       valueFiles:
       - values-preprod.yaml
 

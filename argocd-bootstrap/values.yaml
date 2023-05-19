@@ -17,8 +17,6 @@ argo-cd:
       - --insecure
     ingress:
       enabled: true
-      hosts:
-        - argocd.{{ tpl .Value.domain .}}
     config:
       repositories: |
         - url:  https://charts.bitnami.com/bitnami
