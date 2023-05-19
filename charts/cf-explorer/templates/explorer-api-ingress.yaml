@@ -17,5 +17,8 @@ spec:
                 name: cf-explorer-api
                 port:
                   number: {{ .port }}
+  tls:
+    - hosts:
+        - api.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
 {{ end }}
 {{ end }}
