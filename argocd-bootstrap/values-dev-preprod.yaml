@@ -12,4 +12,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
+        - argocd.{{ tpl .Value.domain . }}

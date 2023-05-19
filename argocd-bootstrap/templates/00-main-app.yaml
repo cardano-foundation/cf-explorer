@@ -18,6 +18,8 @@ spec:
           value: {{ .Values.stage | default "prod" }}
         - name: "network"
           value: {{ .Values.network | default "mainnet" }}
+        - name: "domain"
+          value: {{ .Values.domain }}
   syncPolicy:
     automated:
       prune: true

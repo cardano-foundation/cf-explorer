@@ -1,9 +1,14 @@
 git:
   targetRevision: null
 
-stage: prod
+# stage: one of [dev, uat, prod]
+stage: null
 
-network: mainnet
+# network: one of [mainnet, preprod, preview]
+network: null
+
+# domain: something like "grafana.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org"
+domain: null
 
 argo-cd:
   enabled: true
@@ -13,7 +18,7 @@ argo-cd:
     ingress:
       enabled: true
       hosts:
-        - argocd.prod.mainnet.metadata.cardanofoundation.org
+        - argocd.{{ tpl .Value.domain .}}
     config:
       repositories: |
         - url:  https://charts.bitnami.com/bitnami

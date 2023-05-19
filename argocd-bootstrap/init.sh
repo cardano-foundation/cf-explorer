@@ -38,5 +38,8 @@ kubectl create secret generic github-deploy-key \
 echo "Updating helm dependencies for main app"
 helm dependency update
 
-helm upgrade --install argocd -n argocd . -f values-secrets.yaml -f values-dev-preprod.yaml
+helm upgrade --install argocd -n argocd . \
+  --set domain=dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org \
+  -f values-dev-preprod.yaml \
+  -f values-secrets.yaml
 
