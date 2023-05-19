@@ -28,17 +28,17 @@ spec:
               value: {{ .port | quote }}
 
             - name: REACT_APP_API_URL
-              value: {{ .reactAppApiUrl }}
+              value: {{ tpl .reactAppApiUrl $ }}
             - name: REACT_APP_PREPROD_API_URL
-              value: {{ .reactAppPreProdApiUrl }}
+              value: {{ tpl .reactAppPreProdApiUrl $ }}
             - name: REACT_APP_PREVIEW_API_URL
-              value: {{ .reactAppPreviewUrl }}
+              value: {{ tpl .reactAppPreviewUrl $ }}
             - name: REACT_APP_TESTNET_API_URL
-              value: {{ .reactAppTestnetApiUrl }}
+              value: {{ tpl .reactAppTestnetApiUrl $ }}
             - name: REACT_APP_MAINNET_API_URL
-              value: {{ .reactAppMainnetApiUrl }}
+              value: {{ tpl .reactAppMainnetApiUrl $ }}
             - name: REACT_APP_AUTH_API_URL
-              value: {{ .reactAppAuthUrl }}
+              value: {{ tpl .reactAppAuthUrl $ }}
 
           ports:
             - name: api
