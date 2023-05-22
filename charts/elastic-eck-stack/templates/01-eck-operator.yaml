@@ -1,18 +1,16 @@
-{{ if index .Values "elastic-stack" "enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elastic-eck-stack
+  name: elastic-eck-operator
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: git@github.com:cardano-foundation/cf-explorer.git
-    targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
-    path: charts/elastic-eck-stack
-
+    repoURL: https://helm.elastic.co
+    targetRevision: 2.7.0
+    chart: eck-operator
   syncPolicy:
     automated:
       prune: true
@@ -20,6 +18,5 @@ spec:
       - CreateNamespace=true
 
   destination:
-    namespace: elastic-stack
+    namespace: {{ .Release.Namespace }}
     server: {{ .Values.spec.destination.server }}
-  {{ end }}
