@@ -9,7 +9,7 @@ cf-explorer:
 
 elastic-stack:
     enabled: true
-    
+
 spec:
   destination:
     server: https://kubernetes.default.svc

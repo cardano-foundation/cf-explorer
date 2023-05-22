@@ -19,7 +19,7 @@ metadata:
   name: kibana-ingress
 spec:
   rules:
-    - host: kibana.dev.preprod.metadata.cardanofoundation.org
+    - host: kibana.{{ $.Values.domain }}
       http:
         paths:
           - path: /

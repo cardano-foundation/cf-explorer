@@ -12,6 +12,10 @@ spec:
     repoURL: git@github.com:cardano-foundation/cf-explorer.git
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
     path: charts/elastic-eck-stack
+    helm:
+      parameters:
+        - name: "domain"
+          value: {{ .Values.domain }}
 
   syncPolicy:
     automated:
