@@ -7,6 +7,9 @@ cf-explorer-infra:
 cf-explorer:
   enabled: true
 
+elastic-stack:
+    enabled: true
+    
 spec:
   destination:
     server: https://kubernetes.default.svc
