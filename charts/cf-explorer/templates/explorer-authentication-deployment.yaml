@@ -69,7 +69,7 @@ spec:
             {{- end }}
 
             - name: FLYWAY_ENABLED
-              value: {{ .flywayEnabled }}
+              value: {{ .flywayEnabled | quote }}
             - name: SWAGGER_CLIENT_URL
               value: {{ .swaggerClientUrl }}
             - name: SWAGGER_SERVER_URL
