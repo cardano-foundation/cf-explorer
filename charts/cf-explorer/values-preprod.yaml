@@ -33,7 +33,7 @@ explorerApi:
 explorerAuthentication:
   enabled: true
   postgres:
-    schema: preprod
+    schema: preprod-auth
   monitoringEnabled: true
 
 explorerFrontEnd:
