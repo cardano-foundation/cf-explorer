@@ -125,6 +125,43 @@ explorerApi:
     secretName: postgresql
     dbName: explorer_api
 
+explorerAuthentication:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-authentication"
+    tag: "v0.1.1-7-g2e0c779"
+
+  springProfiles: dev, standalone
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  service:
+    type: ClusterIP
+  #    nodePort: "30092"
+
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
+    secretName: redis
+    standalone:
+      host: redis-headless
+      port: 6379
+
+  postgres:
+    host: postgresql
+    port: 5432
+    user: cardano-master
+    secretName: postgresql
+    dbName: explorer_api
+
+  flywayEnabled: true
+  swaggerClientUrl: http://localhost:3000
+  swaggerServerUrl: http://localhost:8021
+
 explorerFrontEnd:
   enabled: true
   replicas: 1

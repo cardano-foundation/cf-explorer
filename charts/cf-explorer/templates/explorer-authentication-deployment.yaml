@@ -1,0 +1,86 @@
+{{ with .Values.explorerAuthentication }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-explorer-authentication
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-explorer-authentication
+  template:
+    metadata:
+      labels:
+        app: cf-explorer-authentication
+    spec:
+      containers:
+        - name: cf-explorer-authentication
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+#          command: ["bash", "-c", "sleep 999999"]
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: DB_HOST
+              value: {{ .postgres.host }}
+            - name: DB_PORT
+              value: {{ .postgres.port | quote }}
+            - name: DB_USERNAME
+              value: {{ .postgres.user }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secretName }}
+                  key: password
+            - name: DB_NAME
+              value: {{ .postgres.dbName }}
+            - name: DB_SCHEMA
+              value: {{ .postgres.schema }}
+
+            {{- if eq .redis.mode "sentinel" }}
+            - name: REDIS_MASTER_NAME
+              value: {{ .redis.master.name }}
+            - name: REDIS_SENTINEL_HOST
+              value: {{ .redis.sentinel.host }}
+            - name: REDIS_SENTINEL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secretName }}
+                  key: redis-password
+            {{- else if eq .redis.mode "cluster" }}
+            - name: REDIS_CLUSTER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secretName }}
+                  key: redis-password
+            - name: NODE_ADDRESSES
+              value: {{ .redis.cluster.hosts }}
+            {{- else }}
+            - name: REDIS_STANDALONE_HOST
+              value: {{ .redis.standalone.host }}
+            - name: REDIS_STANDALONE_PORT
+              value: {{ .redis.standalone.port | quote }}
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secretName }}
+                  key: redis-password
+            {{- end }}
+
+            - name: FLYWAY_ENABLED
+              value: {{ .flywayEnabled }}
+            - name: SWAGGER_CLIENT_URL
+              value: {{ .swaggerClientUrl }}
+            - name: SWAGGER_SERVER_URL
+              value: {{ .swaggerServerUrl }}
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}

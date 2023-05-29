@@ -1,0 +1,21 @@
+{{ with .Values.explorerAuthentication }}
+{{ if and .enabled .monitoringEnabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cf-explorer-authentication
+  labels:
+    release: kube-prometheus-stack
+spec:
+  endpoints:
+    - path: /actuator/prometheus
+      port: api
+  namespaceSelector:
+    matchNames:
+      - {{ $.Release.Namespace }}
+  selector:
+    matchLabels:
+      app: cf-explorer-authentication
+{{ end }}
+{{ end }}
