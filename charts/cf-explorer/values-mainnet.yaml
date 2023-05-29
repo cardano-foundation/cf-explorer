@@ -30,5 +30,11 @@ explorerApi:
     schema: mainnet
   monitoringEnabled: true
 
+explorerAuthentication:
+  enabled: true
+  postgres:
+    schema: mainnet
+  monitoringEnabled: true
+
 explorerFrontEnd:
   enabled: true
