@@ -1,15 +1,9 @@
+# Git Specific configuration
 git:
+  # The target branch to point to. This can be set to a branch during chart development phase. Defaults to main
   targetRevision: null
 
-# stage: one of [dev, uat, prod]
-stage: null
-
-# network: one of [mainnet, preprod, preview]
-network: null
-
-# domain: something like "grafana.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org"
-domain: null
-
+# ArgoCD parameters
 argo-cd:
   enabled: true
   server:
@@ -45,8 +39,12 @@ argo-cd:
             hs.status = "Healthy"
             return hs
 
+# Sealed Secrets configuration
 sealed-secrets:
+  # Whether the Sealed Secrets app should be deployed.
   enabled: true
 
+# Traefik ingress configuration
 traefik:
+  # Whether the Sealed Secrets app should be deployed.
   enabled: false

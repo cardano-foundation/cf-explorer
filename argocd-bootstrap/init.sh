@@ -39,6 +39,7 @@ echo "Updating helm dependencies for main app"
 helm dependency update
 
 helm upgrade --install argocd -n argocd . \
-  -f values-ggargiulo-dev-preprod.yaml \
+  --set git.targetRevision=feat/MET-755-Create_explorer_helm_chart \
+  --set valueFile=values-ggargiulo-dev-preprod.yaml \
   -f values-secrets.yaml
 

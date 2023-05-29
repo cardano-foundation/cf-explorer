@@ -18,7 +18,10 @@ spec:
         - name: "domain"
           value: {{ .Values.domain }}
       valueFiles:
-      - values-preprod.yaml
+      - values-{{ .Values.network }}.yaml
+      {{- with index .Values. "cf-explorer" "values" }}
+      {{ toYml . | indent 6 }}
+      {{- end }}
 
   syncPolicy:
     automated:

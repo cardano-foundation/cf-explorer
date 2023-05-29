@@ -14,12 +14,9 @@ spec:
       parameters:
         - name: "git.targetRevision"
           value: {{ .Values.git.targetRevision | default "HEAD" }}
-        - name: "stage"
-          value: {{ .Values.stage | default "prod" }}
-        - name: "network"
-          value: {{ .Values.network | default "mainnet" }}
-        - name: "domain"
-          value: {{ .Values.domain }}
+      valueFiles:
+        - {{ .Values.valueFile }}
+
   syncPolicy:
     automated:
       prune: true

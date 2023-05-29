@@ -1,16 +1,19 @@
-git:
-  targetRevision: "feat/MET-755-Create_explorer_helm_chart"
-
 stage: dev
+
 network: preprod
 
 domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
+
+cf-explorer:
+  values: |
+    crawler.image.tag: "0.2.6"
+    consumer.image.tag: "0.2.13"
+    explorerApi.image.tag: "0.3.9"
+    explorerFrontEnd.image.tag: "0.3.2"
+
 
 argo-cd:
   server:
     ingress:
       hosts:
         - argocd.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
-
-traefik:
-  enabled: false

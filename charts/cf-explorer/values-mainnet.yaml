@@ -1,0 +1,34 @@
+crawler:
+
+  monitoringEnabled: true
+
+  crawler:
+    name: mainnet-crawler
+
+  cardano:
+    node:
+      networkMagic: "764824073"
+      address: relays-new.cardano-mainnet.iohk.io
+      port: 3001
+
+consumer:
+
+  springProfiles: local
+
+  monitoringEnabled: true
+  
+  network: mainnet
+
+  postgres:
+    schema: mainnet
+
+  networkMagic: "764824073"
+
+explorerApi:
+  enabled: true
+  postgres:
+    schema: mainnet
+  monitoringEnabled: true
+
+explorerFrontEnd:
+  enabled: true
