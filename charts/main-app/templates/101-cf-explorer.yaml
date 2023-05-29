@@ -17,10 +17,10 @@ spec:
       parameters:
         - name: "domain"
           value: {{ .Values.domain }}
-        - name: "explorerFrontEnd.image.tag"
-          value: "0.3.4"
       valueFiles:
-      - values-{{ .Values.network }}.yaml
+        - values-{{ .Values.network }}.yaml
+      values: |
+        explorerFrontEnd.image.tag: "0.3.4"
 
   syncPolicy:
     automated:
