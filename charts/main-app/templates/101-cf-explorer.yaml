@@ -20,7 +20,9 @@ spec:
       valueFiles:
         - values-{{ .Values.network }}.yaml
       values: |
-        explorerFrontEnd.image.tag: "0.3.4"
+        explorerFrontEnd:
+          image:
+            tag: "0.3.4"
 
   syncPolicy:
     automated:
