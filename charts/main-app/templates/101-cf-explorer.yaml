@@ -18,11 +18,11 @@ spec:
         - name: "domain"
           value: {{ .Values.domain }}
       valueFiles:
-        - values-{{ .Values.network }}.yaml
+      - values-{{ .Values.network }}.yaml
+      {{- with index .Values "cf-explorer" "values" }}
       values: |
-        explorerFrontEnd:
-          image:
-            tag: "0.3.4"
+{{ toYaml . | indent 8 }}
+      {{- end }}
 
   syncPolicy:
     automated:
