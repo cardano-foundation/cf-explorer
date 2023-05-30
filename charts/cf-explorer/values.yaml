@@ -175,7 +175,7 @@ explorerFrontEnd:
   reactAppPreviewUrl: ""
   reactAppTestnetApiUrl: ""
   reactAppMainnetApiUrl: ""
-  reactAppAuthUrl: ""
+  reactAppAuthUrl: https://auth.{{ .Values.domain }}/api/v1
 
   port: 1102
 
