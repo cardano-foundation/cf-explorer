@@ -20,7 +20,7 @@ cf-explorer:
         tag: "v0.1.0-19-gc98676e"
     explorerFrontEnd:
       image:
-        tag: "0.3.4"
+        tag: "0.3.4-PR211"
 
 argo-cd:
   server:
