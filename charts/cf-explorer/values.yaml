@@ -94,7 +94,7 @@ explorerApi:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
     tag: "0.3.9"
 
-  springProfiles: dev, cluster
+  springProfiles: dev, standalone
 
   port: 8080
 
