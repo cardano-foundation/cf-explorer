@@ -159,7 +159,7 @@ explorerAuthentication:
     dbName: explorer_api
 
   flywayEnabled: true
-  swaggerClientUrl: http://localhost:3000
+  swaggerClientUrl: https://{{ .Values.domain }}
   swaggerServerUrl: http://localhost:8021
 
 explorerFrontEnd:
