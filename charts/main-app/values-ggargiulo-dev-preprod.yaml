@@ -16,7 +16,7 @@ cf-explorer:
       image:
         tag: "0.3.9"
     explorerAuthentication:
-      replicas: 0
+      replicas: 1
       image:
         tag: "v0.1.0-19-gc98676e"
     explorerFrontEnd:
