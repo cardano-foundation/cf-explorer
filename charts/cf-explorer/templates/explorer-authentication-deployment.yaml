@@ -71,7 +71,7 @@ spec:
             - name: FLYWAY_ENABLED
               value: {{ .flywayEnabled | quote }}
             - name: SWAGGER_CLIENT_URL
-              value: {{ .swaggerClientUrl }}
+              value: {{ tpl .swaggerClientUrl $ }}
             - name: SWAGGER_SERVER_URL
               value: {{ .swaggerServerUrl }}
 
