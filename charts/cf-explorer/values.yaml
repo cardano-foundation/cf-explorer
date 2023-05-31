@@ -138,7 +138,7 @@ explorerApi:
     region: eu-west-1
     endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: s3-credentials
+      name: infra-secrets
       accessKeyKey: access-key
       secretKeyKey: secret-key
 
