@@ -52,8 +52,8 @@ spec:
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.secretName }}
-                  key: redis-password
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
             - name: NODE_ADDRESSES
               value: {{ .redis.cluster.hosts }}
             {{- else }}
@@ -64,8 +64,8 @@ spec:
             - name: REDIS_STANDALONE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.secretName }}
-                  key: redis-password
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
             {{- end }}
 
           ports:
