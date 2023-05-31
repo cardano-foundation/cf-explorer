@@ -17,8 +17,11 @@ spec:
       values: |
         auth:
           username: cardano-master
-          password: CEGiDk52K4Awi2 # FIXME: this needs to disappear
-          postgresPassword: CHANGEME # FIXME: this needs to disappear
+          existingSecret: infra-secrets
+          secretKeys:
+            adminPasswordKey: postgres-password
+            userPasswordKey: postgres-user-password
+            replicationPasswordKey: postgres-replication-password
           database: explorer_api
         shmVolume:
           enabled: true

@@ -31,8 +31,8 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secretName }}
-                  key: password
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.key }}
             - name: POSTGRES_DB
               value: {{ .postgres.dbName }}
             - name: SCHEMA

@@ -70,7 +70,9 @@ consumer:
     host: postgresql
     port: 5432
     user: cardano-master
-    secretName: postgresql
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
     dbName: explorer_api
     schema: mainnet
 
@@ -127,7 +129,9 @@ explorerApi:
     host: postgresql
     port: 5432
     user: cardano-master
-    secretName: postgresql
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
     dbName: explorer_api
 
 explorerAuthentication:
@@ -162,7 +166,9 @@ explorerAuthentication:
     host: postgresql
     port: 5432
     user: cardano-master
-    secretName: postgresql
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
     dbName: explorer_api
 
   flywayEnabled: true
