@@ -133,6 +133,15 @@ explorerApi:
       key: postgres-user-password
     dbName: explorer_api
 
+  s3:
+    bucketName: cf-dev-explorer-monolith-reports
+    region: eu-west-1
+    endpoint: https://s3-eu-west-1.amazonaws.com
+    secret:
+      name: s3-credentials
+      accessKeyKey: access-key
+      secretKeyKey: secret-key
+
 explorerAuthentication:
   enabled: true
   replicas: 1
