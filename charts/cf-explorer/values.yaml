@@ -6,7 +6,7 @@ crawler:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-crawler"
     tag: "0.2.6"
 
-  springProfiles: n2n,standalone
+  springProfiles: n2n,standalone,kafka
 
   port: 8080
 
