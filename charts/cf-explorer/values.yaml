@@ -22,7 +22,6 @@ crawler:
     secret:
       name: infra-secrets
       key: redis
-    secretName: redis
     standalone:
       host: redis-headless
       port: 6379
