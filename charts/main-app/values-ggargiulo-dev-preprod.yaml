@@ -18,7 +18,7 @@ cf-explorer:
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.2"
+        tag: "0.1.3-SNAPSHOT"
     explorerFrontEnd:
       image:
         tag: "0.3.4-PR211"
