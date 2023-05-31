@@ -46,8 +46,8 @@ spec:
             - name: REDIS_SENTINEL_PASS
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.secretName }}
-                  key: redis-password
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
             {{- else if eq .redis.mode "cluster" }}
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:

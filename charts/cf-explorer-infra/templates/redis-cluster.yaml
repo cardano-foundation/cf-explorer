@@ -13,6 +13,11 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 8.6.1
     chart: redis-cluster
+    helm:
+      values: |
+        auth:
+          existingSecret: infra-secrets
+          existingSecretPasswordKey: redis
   syncPolicy:
     automated:
       prune: true

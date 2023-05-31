@@ -19,6 +19,9 @@ crawler:
   redis:
     ## Redis Standalone Values Example
     mode: standalone
+    secret:
+      name: infra-secrets
+      key: redis
     secretName: redis
     standalone:
       host: redis-headless
@@ -107,7 +110,9 @@ explorerApi:
   redis:
     ## Redis Standalone Values Example
     mode: standalone
-    secretName: redis
+    secret:
+      name: infra-secrets
+      key: redis
     standalone:
       host: redis-headless
       port: 6379
@@ -146,7 +151,9 @@ explorerAuthentication:
   redis:
     ## Redis Standalone Values Example
     mode: standalone
-    secretName: redis
+    secret:
+      name: infra-secrets
+      key: redis
     standalone:
       host: redis-headless
       port: 6379

@@ -23,13 +23,22 @@ kubectl create secret generic sealed-secrets-key \
   --from-file=../.keys/tls.key \
   | kubectl apply -f -
 
-
+# Git Hub deploy key
 kubectl create secret generic github-deploy-key \
   --save-config \
   --dry-run=client \
   -o yaml \
   -n argocd \
   --from-file=../.keys/cf-explorer \
+  | kubectl apply -f -
+
+# Infra Secrets (eg Psql, Redis, etc.)
+kubectl create secret generic infra-secrets \
+  --save-config \
+  --dry-run=client \
+  -o yaml \
+  -n cf-explorer \
+  --from-env-file=../.keys/infra-secrets-ggargiulo-dev-preprod \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"

@@ -15,7 +15,9 @@ spec:
     chart: redis
     helm:
       values: |
-        password: TKph84NKT5tuQA # FIXME: this needs to disappear
+        auth:
+          existingSecret: infra-secrets
+          existingSecretPasswordKey: redis
         replica:
           replicaCount: 0
   syncPolicy:
