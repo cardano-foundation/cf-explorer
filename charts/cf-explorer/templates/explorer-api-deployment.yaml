@@ -71,7 +71,7 @@ spec:
               value: {{ .s3.bucketName }}
             - name: S3_REGION
               value: {{ .s3.region }}
-            - name: S3_ENDPOINT
+            - name: STORAGE_ENDPOINT
               value: {{ .s3.endpoint }}
             - name: S3_ACCESS_KEY
               valueFrom:
