@@ -11,7 +11,7 @@ cf-explorer:
         tag: "0.2.7"
     consumer:
       image:
-        tag: "0.2.14"
+        tag: "0.2.14-PR102"
     explorerApi:
       image:
         tag: "0.3.10"
