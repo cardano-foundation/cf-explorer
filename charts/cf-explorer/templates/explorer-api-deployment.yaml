@@ -81,8 +81,8 @@ spec:
             - name: S3_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.secret.name }}
-                  key: {{ .redis.secret.secretKeyKey }}
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.secretKeyKey }}
 
           ports:
             - name: api
