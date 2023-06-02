@@ -3,6 +3,16 @@
 This project contains manifests and scripts to bootstrap and deploy the Cardano Foundation Explorer project and all its
 dependencies.
 
+### Tested Configuration
+
+| Repository            | Version |
+|-----------------------|---------|
+| [cf-ledger-crawler](https://github.com/cardano-foundation/cf-ledger-crawler)     | 0.2.6   |
+| [cf-ledger-consumer](https://github.com/cardano-foundation/cf-ledger-consumer)    | 0.2.13 |
+| [cf-explorer-api](https://github.com/cardano-foundation/cf-explorer-api)       | 0.3.9   |
+| [cf-explorer-authentication](https://github.com/cardano-foundation/cf-explorer-authentication) | v0.1.1-7-g2e0c779   |
+| [cf-explorer-frontend](https://github.com/cardano-foundation/cf-explorer-frontend) | 0.3.2   |
+
 ## Continuous Deployment
 
 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) ís the Continuous Deployment system of choice for deploying the applications
