@@ -44,11 +44,11 @@ spec:
               value: {{ .network }}
 
             - name: LIST_SIZE_EACH_THREAD
-              value: 5
+              value: "5"
             - name: POOL_MAX_SIZE
-              value: 12
+              value: "12"
             - name: POOL_CORE_SIZE
-              value: 10
+              value: "10"
             - name: FLYWAY_ENABLE
               value: false
             - name: FLYWAY_VALIDATE
