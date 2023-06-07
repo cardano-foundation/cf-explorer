@@ -233,3 +233,35 @@ explorerFrontEnd:
   service:
     type: ClusterIP
   #    nodePort: "30092"
+
+consumerSchedules:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer-schedules"
+    tag: "0.2.2"
+
+  springProfiles: dev
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  postgres:
+    host: postgresql
+    port: 5432
+    user: cardano-master
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
+    dbName: explorer_api
+    schema: mainnet
+
+  kafka:
+    bootstrapServer: kafka-explorer:9092
+    reportsTopic: dev.explorer.api.reports
+
+  checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
+
+  network: mainnet

@@ -44,3 +44,10 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: preprod
+  monitoringEnabled: true
+  network: preprod

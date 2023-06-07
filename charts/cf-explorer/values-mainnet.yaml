@@ -44,3 +44,10 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: mainnet
+  monitoringEnabled: true
+  network: mainnet

@@ -1,0 +1,102 @@
+{{ with .Values.consumerSchedules }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-ledger-consumer-schedules
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-ledger-consumer-schedules
+  template:
+    metadata:
+      labels:
+        app: cf-ledger-consumer-schedules
+    spec:
+      containers:
+        - name: cf-ledger-consumer-schedules
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: SERVER_PORT
+              value: {{ .port | quote }}
+
+            - name: POSTGRES_HOST
+              value: {{ .postgres.host }}
+            - name: POSTGRES_PORT
+              value: {{ .postgres.port | quote }}
+            - name: POSTGRES_USER
+              value: {{ .postgres.user }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.key }}
+            - name: POSTGRES_DB
+              value: {{ .postgres.dbName }}
+            - name: POSTGRES_SCHEMA
+              value: {{ .postgres.schema }}
+
+            - name: MAXIMUM_POOL_SIZE
+              value: "48"
+            - name: META_DATA_JOB_ENABLED
+              value: "true"
+            - name: REPORT_HISTORY_JOB_ENABLED
+              value: "true"
+            - name: EXPIRED_REPORTS_RATE
+              value: "604800000"
+
+            - name: POOL_OFFLINE_DATA_JOB_ENABLED
+              value: "true"
+            - name: CRAWL_POOL_DATA_DELAY
+              value: "172800000"
+            - name: INSERT_POOL_DATA_DELAY
+              value: "180000"
+            - name: TOKEN_METDATA_URL
+              value: https://github.com/cardano-foundation/cardano-token-registry.git
+            - name: TOKEN_METADATA_FOLDER
+              value: "/mappings"
+            - name: NETWORK
+              value: {{ .network }}
+
+            - name: KAFKA_BOOSTRAP_SERVER_URL
+              value: {{ .kafka.bootstrapServer }}
+            - name: KAFKA_GROUP_ID
+              value: {{ .network }}
+            - name: KAFKA_REPORTS_TOPIC
+              value: {{ .reportsTopic }}
+
+            - name: API_CHECK_REWARD_URL
+              value: {{ .checkRewardUrl }}
+
+            - name: S3_BUCKET_NAME
+              value: {{ .s3.bucketName }}
+            - name: S3_REGION
+              value: {{ .s3.region }}
+            - name: S3_STORAGE_ENDPOINT
+              value: {{ .s3.endpoint }}
+            - name: S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.accessKeyKey }}
+            - name: S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.secretKeyKey }}
+
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}
