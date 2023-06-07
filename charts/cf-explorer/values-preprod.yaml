@@ -30,6 +30,12 @@ explorerApi:
     schema: preprod
   monitoringEnabled: true
 
+explorerRewardsApi:
+  enabled: true
+  postgres:
+    schema: preprod-rewards
+  monitoringEnabled: true
+
 explorerAuthentication:
   enabled: true
   postgres:

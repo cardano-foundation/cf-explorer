@@ -1,0 +1,79 @@
+{{ with .Values.explorerRewardsApi }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-explorer-rewards-api
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-explorer-rewards-api
+  template:
+    metadata:
+      labels:
+        app: cf-explorer-rewards-api
+    spec:
+      containers:
+        - name: cf-explorer-rewards-api
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: SERVER_PORT
+              value: {{ .port | quote }}
+
+            - name: POSTGRES_HOST
+              value: {{ .postgres.host }}
+            - name: POSTGRES_PORT
+              value: {{ .postgres.port | quote }}
+            - name: POSTGRES_USER
+              value: {{ .postgres.user }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.key }}
+            - name: POSTGRES_DB
+              value: {{ .postgres.dbName }}
+            - name: POSTGRES_SCHEMA
+              value: {{ .postgres.schema }}
+
+            - name: NETWORK
+              value: {{ .network }}
+
+            - name: LIST_SIZE_EACH_THREAD
+              value: 5
+            - name: POOL_MAX_SIZE
+              value: 12
+            - name: POOL_CORE_SIZE
+              value: 10
+            - name: FLYWAY_ENABLE
+              value: false
+            - name: FLYWAY_VALIDATE
+              value: false
+
+            - name: REWARD_PARALLEL_SAVING_ENABLED
+              value: true
+            - name: REWARD_SUB_LIST_SIZE
+              value: "500"
+            - name: REWARD_PARALLEL_SAVING_THREAD_NUM
+              value: "10"
+
+            - name: EPOCH_STAKE_PARALLEL_SAVING_ENABLED
+              value: true
+            - name: EPOCH_STAKE_SUB_LIST_SIZE
+              value: "500"
+            - name: EPOCH_STAKE_PARALLEL_SAVING_THREAD_NUM
+              value: "10"
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}

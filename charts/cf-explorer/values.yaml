@@ -142,6 +142,36 @@ explorerApi:
       accessKeyKey: access-key
       secretKeyKey: secret-key
 
+explorerRewardsApi:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-rewards"
+    tag: "0.1.1-SNAPSHOT"
+
+  springProfiles: local
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  service:
+    type: ClusterIP
+  #    nodePort: "30092"
+
+  postgres:
+    host: postgresql
+    port: 5432
+    user: cardano-master
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
+    dbName: explorer_api
+    schema: default
+
+  network: mainnet
+
 explorerAuthentication:
   enabled: true
   replicas: 1
