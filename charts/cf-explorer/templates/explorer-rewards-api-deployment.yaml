@@ -50,19 +50,19 @@ spec:
             - name: POOL_CORE_SIZE
               value: "10"
             - name: FLYWAY_ENABLE
-              value: false
+              value: "false"
             - name: FLYWAY_VALIDATE
-              value: false
+              value: "false"
 
             - name: REWARD_PARALLEL_SAVING_ENABLED
-              value: true
+              value: "true"
             - name: REWARD_SUB_LIST_SIZE
               value: "500"
             - name: REWARD_PARALLEL_SAVING_THREAD_NUM
               value: "10"
 
             - name: EPOCH_STAKE_PARALLEL_SAVING_ENABLED
-              value: true
+              value: "true"
             - name: EPOCH_STAKE_SUB_LIST_SIZE
               value: "500"
             - name: EPOCH_STAKE_PARALLEL_SAVING_THREAD_NUM
