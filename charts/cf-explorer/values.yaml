@@ -262,6 +262,15 @@ consumerSchedules:
     bootstrapServer: kafka-explorer:9092
     reportsTopic: dev.explorer.api.reports
 
+  s3:
+    bucketName: cf-dev-explorer-monolith-reports
+    region: eu-west-1
+    endpoint: https://s3-eu-west-1.amazonaws.com
+    secret:
+      name: infra-secrets
+      accessKeyKey: access-key
+      secretKeyKey: secret-key
+
   checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
 
   network: mainnet
