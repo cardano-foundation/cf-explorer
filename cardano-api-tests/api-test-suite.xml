@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Setel Regression Suite" configfailurepolicy="continue" verbose="1" parallel="classes" thread-count="3">
+    <parameter name="env" value="preprod"/>
+    <test name="Setel Admin test on chrome">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell">
+                    <![CDATA[
+                    import java.util.ArrayList;
+
+                    String whatGroup = System.getProperty("cardanoAPI.group");
+
+                    if (whatGroup.isEmpty()) {
+                        return true;
+                    }
+
+                    if (!whatGroup.contains(",")) {
+                        return groups.containsKey(whatGroup);
+                    }
+                    String[] whatGroups = whatGroup.split(",");
+
+                    boolean flag = false;
+                    for (String eachGroup: whatGroups) {
+                        if (groups.containsKey(eachGroup.trim())) {
+                            flag = true;
+                        }
+                    }
+                    flag;
+                ]]>
+                </script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="tests.delegation_controller.DelegationControllerTests"/>
+            <class name="tests.delegation_controller.DelegationPoolListTests"/>
+            <class name="tests.delegation_controller.DelegationHeaderTests"/>
+<!--            <class name="tests.delegation_controller.PoolDetailAnalyticTests"/>-->
+            <class name="tests.addresses.AddressAnalyticsTests"/>
+            <class name="tests.addresses.AddressesMinMaxBalanceTests"/>
+            <class name="tests.addresses.AddressTests"/>
+            <class name="tests.addresses.AddressTransactionTests"/>
+            <class name="tests.addresses.TopAddressTests"/>
+            <class name="tests.block.GetAllBlockTests"/>
+            <class name="tests.block.BlockDetailTests"/>
+            <class name="tests.block.BlockListTests"/>
+            <class name="tests.pool.PoolTests"/>
+            <class name="tests.tokens.Token"/>
+            <class name="tests.tokens.Tokens"/>
+            <class name="tests.tokens.TokenTxs"/>
+            <class name="tests.tokens.TokenMints"/>
+            <class name="tests.tokens.TokenTopHolder"/>
+            <class name="tests.stakes.StakeKeyAddress"/>
+            <class name="tests.stakes.StakeKeyInstantaneousRewards"/>
+            <class name="tests.stakes.StakeKeyWithdrawalHistoryTests"/>
+            <class name="tests.stakes.StakeKeyDelegationHistoryTest"/>
+            <class name="tests.stakes.StakeKeyListAddressTests"/>
+            <class name="tests.stakes.Stake"/>
+            <class name="tests.stakes.GetDataForStakeDeRegistrationTest"/>
+            <class name="tests.stakes.StakeAnalyticsTest"/>
+            <class name="tests.stakes.StakeKeyHistoryTests"/>
+            <class name="tests.stakes.GetDataForStakeRegistrationTest"/>
+            <class name="tests.stakes.GetTopDelegatorsTest"/>
+            <class name="tests.transaction.TransactionTests"></class>
+            <class name="tests.contract.ContractTests"></class>
+            <class name="tests.epoch.EpochCurrentTests"></class>
+            <class name="tests.epoch.EpochNoBlockTests"></class>
+            <class name="tests.epoch.EpochNoTests"></class>
+            <class name="tests.epoch.EpochTests"></class>
+            <class name="tests.policies.GetPolicyDetailsTests"></class>
+            <class name="tests.policies.GetTokenByPolicyTests"></class>
+            <class name="tests.policies.GetHolderByPolicyTests"></class>
+        </classes>
+    </test>
+</suite>
