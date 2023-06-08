@@ -124,6 +124,8 @@ explorerApi:
     # cluster:
     #   hosts: cf-explorer-infra-redis-cluster-headless:6379
 
+  explorerRewardsUrl: http://cf-explorer-rewards-api
+
   postgres:
     host: postgresql
     port: 5432

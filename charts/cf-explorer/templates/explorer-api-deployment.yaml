@@ -38,6 +38,15 @@ spec:
             - name: SCHEMA
               value: {{ .postgres.schema }}
 
+            - name: API_CHECK_REWARD_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/rewards/fetch"
+            - name: API_CHECK_POOL_HISTORY_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/pool-history/fetch"
+            - name: API_CHECK_POOL_INFO_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/pool-info/fetch"
+            - name: API_CHECK_EPOCH_STAKE_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/epoch-stake/fetch"
+
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
               value: {{ .redis.master.name }}
