@@ -33,7 +33,7 @@ explorerApi:
 explorerRewardsApi:
   enabled: true
   postgres:
-    schema: preprod-rewards
+    schema: preprod
   monitoringEnabled: true
 
 explorerAuthentication:
