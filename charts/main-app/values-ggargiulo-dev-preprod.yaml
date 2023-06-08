@@ -26,7 +26,8 @@ cf-explorer:
       image:
         tag: "0.3.4-PR211"
     consumerSchedules:
-      enabled: false
+      image:
+        tag: "0.2.2"
 
 argo-cd:
   server:

@@ -96,7 +96,7 @@ spec:
           ports:
             - name: api
               containerPort: {{ .port }}
-
+          imagePullPolicy: Always
       imagePullSecrets:
         - name: regcred
   revisionHistoryLimit: 2
