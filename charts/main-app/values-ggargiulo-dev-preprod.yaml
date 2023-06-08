@@ -27,7 +27,7 @@ cf-explorer:
         tag: "0.3.5"
     consumerSchedules:
       image:
-        tag: "0.2.2"
+        tag: "v0.2.1-14-g0a88ebf"
 
 argo-cd:
   server:
