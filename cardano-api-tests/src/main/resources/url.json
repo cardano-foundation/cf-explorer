@@ -1,0 +1,8 @@
+{
+  "mainnet": {
+    "API": "http://10.4.10.75:8034/api/v1/"
+  },
+  "preprod": {
+    "API": "http://preprod-automation-test.sotatek.works/api/v1/"
+  }
+}
