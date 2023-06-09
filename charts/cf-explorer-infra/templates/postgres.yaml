@@ -26,7 +26,7 @@ spec:
           database: explorer_api
         primary:
           persistence:
-            size: {{ .dbSize | 8Gi }}
+            size: {{ .dbSize | default 8Gi }}
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"

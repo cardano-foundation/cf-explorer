@@ -49,6 +49,6 @@ helm dependency update
 
 helm upgrade --install argocd -n argocd . \
   --set git.targetRevision=feature/MET-1233-1234_Implement_Consumer_Schedules_Explorer_Rewards_Charts \
-  --set valueFile=values-ggargiulo-dev-preprod.yaml \
+  --set valueFile=values-ggargiulo-dev-mainnet.yaml \
   -f values-secrets.yaml
 
