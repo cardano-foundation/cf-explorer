@@ -5,7 +5,8 @@ network: mainnet
 domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  dbSize: 150Gi
+  postgresql:
+    dbSize: 150Gi
 
 cf-explorer:
   values:
