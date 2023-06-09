@@ -14,7 +14,7 @@ cf-explorer:
         tag: "0.2.16"
     explorerApi:
       image:
-        tag: "0.3.10-SNAPSHOT-PR134"
+        tag: "v0.3.10-22-gac988aa"
     explorerRewardsApi:
       image:
         tag: "0.1.1-SNAPSHOT"
