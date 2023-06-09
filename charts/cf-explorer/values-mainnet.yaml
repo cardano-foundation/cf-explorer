@@ -33,7 +33,7 @@ explorerApi:
 explorerRewardsApi:
   enabled: true
   postgres:
-    schema: mainnet-rewards
+    schema: mainnet
   monitoringEnabled: true
 
 explorerAuthentication:

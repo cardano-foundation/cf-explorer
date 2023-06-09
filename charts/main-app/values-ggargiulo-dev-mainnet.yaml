@@ -1,0 +1,39 @@
+stage: dev
+
+network: mainnet
+
+domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
+
+cf-explorer-infra:
+  dbSize: 150Gi
+
+cf-explorer:
+  values:
+    crawler:
+      image:
+        tag: "0.2.7"
+    consumer:
+      image:
+        tag: "0.2.16"
+    explorerApi:
+      image:
+        tag: "v0.3.10-22-gac988aa"
+    explorerRewardsApi:
+      image:
+        tag: "0.1.1-SNAPSHOT"
+    explorerAuthentication:
+      replicas: 1
+      image:
+        tag: "0.1.3"
+    explorerFrontEnd:
+      image:
+        tag: "0.3.5"
+    consumerSchedules:
+      image:
+        tag: "v0.2.1-14-g0a88ebf"
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
