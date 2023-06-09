@@ -68,7 +68,7 @@ spec:
             - name: KAFKA_GROUP_ID
               value: {{ .network }}
             - name: KAFKA_REPORTS_TOPIC
-              value: {{ .reportsTopic }}
+              value: {{ .kafka.reportsTopic }}
 
             - name: API_CHECK_REWARD_URL
               value: {{ .checkRewardUrl }}
