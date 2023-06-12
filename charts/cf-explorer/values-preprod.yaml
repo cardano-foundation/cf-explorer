@@ -13,7 +13,7 @@ crawler:
 
 consumer:
 
-  springProfiles: local
+  springProfiles: dev
 
   monitoringEnabled: true
   
