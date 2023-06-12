@@ -40,6 +40,8 @@ spec:
 
             - name: FLYWAY_ENABLE
               value: "true"
+            - name: FLYWAY_VALIDATE
+              value: "false"
 
             - name: BOOSTRAP_SERVER_HOST
               value: {{ .kafka.host }}
