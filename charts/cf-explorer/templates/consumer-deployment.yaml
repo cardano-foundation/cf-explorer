@@ -38,6 +38,8 @@ spec:
             - name: SCHEMA
               value: {{ .postgres.schema }}
 
+            - name: FLYWAY_ENABLE
+              value: "true"
 
             - name: BOOSTRAP_SERVER_HOST
               value: {{ .kafka.host }}
