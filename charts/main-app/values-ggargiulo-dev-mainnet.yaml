@@ -6,7 +6,9 @@ domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   postgresql:
-    dbSize: 150Gi
+    dbSize: 750Gi
+  kafka:
+    dbSize: 750Gi
 
 cf-explorer:
   values:
@@ -20,7 +22,7 @@ cf-explorer:
       image:
         tag: "v0.3.10-22-gac988aa"
     explorerRewardsApi:
-      enabled: false
+      enabled: true
       image:
         tag: "0.1.1-SNAPSHOT"
     explorerAuthentication:
@@ -31,7 +33,7 @@ cf-explorer:
       image:
         tag: "0.3.5"
     consumerSchedules:
-      enabled: false
+      enabled: true
       image:
         tag: "v0.2.1-14-g0a88ebf"
 
