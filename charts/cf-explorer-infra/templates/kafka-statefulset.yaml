@@ -17,7 +17,7 @@ spec:
     spec:
       initContainers:
         - name: init
-          command: [ "bash", "-x", "/configmap/init.sh" ]
+          command: [ "sh", "-x", "/configmap/init.sh" ]
           image: alpine
           imagePullPolicy: "Always"
           volumeMounts:
