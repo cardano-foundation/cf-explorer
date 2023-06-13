@@ -5,7 +5,7 @@ network: mainnet
 domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
   postgresql:
     dbSize: 750Gi
   kafka:
