@@ -10,12 +10,20 @@ if [ $? != 0 ]; then
   kubectl create ns argocd > /dev/null 2>&1
 fi
 
+echo "Checking cf-explorer namespace existence"
+kubectl get ns cf-explorer > /dev/null 2>&1
+
+if [ $? != 0 ]; then
+  echo "cf-explorer namespace does not exist, creating..."
+  kubectl create ns cf-explorer > /dev/null 2>&1
+fi
+
 ## Create a Master Key
 # openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out tls.crt -keyout tls.key
 
 ## DockerHub secret
 kubectl create secret -n cf-explorer generic regcred \
-  --from-file=../.keys/docker-cred.json \
+  --from-file=.dockerconfigjson=../.keys/docker-cred.json \
   --type=kubernetes.io/dockerconfigjson \
   --save-config \
   --dry-run=client \
