@@ -13,9 +13,10 @@ fi
 ## Create a Master Key
 # openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out tls.crt -keyout tls.key
 
-## GitHub deploy key
-kubectl create secret -n cf-explorer docker-registry regcred \
-  --from-env-file=../.keys/docker-cred \
+## DockerHub secret
+kubectl create secret -n cf-explorer generic regcred \
+  --from-file=../.keys/docker-cred.json \
+  --type=kubernetes.io/dockerconfigjson \
   --save-config \
   --dry-run=client \
   -o yaml \
