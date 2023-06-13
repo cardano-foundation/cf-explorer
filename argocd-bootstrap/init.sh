@@ -50,7 +50,7 @@ kubectl create secret generic github-deploy-key \
   | kubectl apply -f -
 
 # Infra Secrets (eg Psql, Redis, etc.)
-kubectl create secret generic infra-secrets \
+kubectl create secret generic infra-other-secrets \
   --save-config \
   --dry-run=client \
   -o yaml \

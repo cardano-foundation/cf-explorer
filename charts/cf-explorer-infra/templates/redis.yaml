@@ -17,7 +17,7 @@ spec:
     helm:
       values: |
         auth:
-          existingSecret: infra-secrets
+          existingSecret: infra-other-secrets
           existingSecretPasswordKey: redis
         replica:
           replicaCount: 0

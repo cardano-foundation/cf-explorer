@@ -20,7 +20,7 @@ crawler:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       key: redis
     standalone:
       host: redis-headless
@@ -112,7 +112,7 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       key: redis
     standalone:
       host: redis-headless
@@ -141,7 +141,7 @@ explorerApi:
     region: eu-west-1
     endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       accessKeyKey: access-key
       secretKeyKey: secret-key
 
@@ -197,7 +197,7 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       key: redis
     standalone:
       host: redis-headless
@@ -271,7 +271,7 @@ consumerSchedules:
     region: eu-west-1
     endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       accessKeyKey: access-key
       secretKeyKey: secret-key
 
