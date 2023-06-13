@@ -73,7 +73,7 @@ spec:
             failureThreshold: 3
             periodSeconds: 10
             initialDelaySeconds: 30
-      volumeMounts:
+      volumes:
         - name: kafka-init
           configMap:
             name: kafka-init
