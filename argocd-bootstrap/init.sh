@@ -13,15 +13,23 @@ fi
 ## Create a Master Key
 # openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out tls.crt -keyout tls.key
 
-## Sealed Secrets certificates
-kubectl create secret generic sealed-secrets-key \
+## GitHub deploy key
+kubectl create secret -n cf-explorer docker-registry regcred \
+  --from-env-file=../.keys/docker-cred \
   --save-config \
   --dry-run=client \
   -o yaml \
-  -n argocd \
-  --from-file=../.keys/tls.crt \
-  --from-file=../.keys/tls.key \
   | kubectl apply -f -
+
+## Sealed Secrets certificates
+#kubectl create secret generic sealed-secrets-key \
+#  --save-config \
+#  --dry-run=client \
+#  -o yaml \
+#  -n argocd \
+#  --from-file=../.keys/tls.crt \
+#  --from-file=../.keys/tls.key \
+#  | kubectl apply -f -
 
 # Git Hub deploy key
 kubectl create secret generic github-deploy-key \
@@ -38,7 +46,7 @@ kubectl create secret generic infra-secrets \
   --dry-run=client \
   -o yaml \
   -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-ggargiulo-dev-preprod \
+  --from-env-file=../.keys/infra-secrets-dev-mainnet \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
@@ -48,7 +56,6 @@ echo "Updating helm dependencies for main app"
 helm dependency update
 
 helm upgrade --install argocd -n argocd . \
-  --set git.targetRevision=feature/MET-1233-1234_Implement_Consumer_Schedules_Explorer_Rewards_Charts \
-  --set valueFile=values-ggargiulo-dev-mainnet.yaml \
+  --set git.targetRevision=feat/MET-1304-Update_Helm_Chart_Official_cluster \
+  --set valueFile=values-dev-mainnet.yaml \
   -f values-secrets.yaml
-
