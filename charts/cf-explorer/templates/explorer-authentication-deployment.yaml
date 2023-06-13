@@ -22,19 +22,32 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
+
             - name: DB_HOST
-              value: {{ .postgres.host }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.hostKey }}
             - name: DB_PORT
-              value: {{ .postgres.port | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.portKey }}
             - name: DB_USERNAME
-              value: {{ .postgres.user }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.userKey }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.key }}
+                  key: {{ .postgres.secret.passwordKey }}
             - name: DB_NAME
-              value: {{ .postgres.dbName }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.dbKey }}
             - name: DB_SCHEMA
               value: {{ .postgres.schema }}
 

@@ -66,14 +66,14 @@ consumer:
   monitoringEnabled: false
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
-    schema: mainnet
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   kafka:
     host: kafka-explorer
@@ -127,13 +127,14 @@ explorerApi:
   explorerRewardsUrl: http://cf-explorer-rewards-api
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   s3:
     bucketName: cf-dev-explorer-monolith-reports
@@ -163,14 +164,14 @@ explorerRewardsApi:
   #    nodePort: "30092"
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
-    schema: default
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   network: mainnet
 
@@ -203,13 +204,14 @@ explorerAuthentication:
       port: 6379
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet-auth
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   flywayEnabled: true
   swaggerClientUrl: https://{{ .Values.domain }}
@@ -251,14 +253,14 @@ consumerSchedules:
   monitoringEnabled: false
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
-    schema: mainnet
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   kafka:
     bootstrapServer: kafka-explorer:9092
