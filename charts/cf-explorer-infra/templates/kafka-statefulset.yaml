@@ -63,6 +63,9 @@ spec:
             failureThreshold: 3
             periodSeconds: 10
             initialDelaySeconds: 30
+          volumeMounts:
+            - mountPath: /var/lib/kafka/data
+              name: kafka-explorer
   volumeClaimTemplates:
     - metadata:
         name: "kafka-explorer"
