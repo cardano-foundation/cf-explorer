@@ -5,7 +5,7 @@ network: mainnet
 domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
   postgresql:
     dbSize: 750Gi
   kafka:
@@ -14,18 +14,18 @@ cf-explorer-infra:
 cf-explorer:
   values:
     crawler:
-      enabled: true
+      enabled: false
       image:
         tag: "0.2.7"
     consumer:
-      enabled: true
+      enabled: false
       image:
         tag: "0.2.16"
     explorerApi:
       image:
         tag: "v0.3.10-22-gac988aa"
     explorerRewardsApi:
-      enabled: true
+      enabled: false
       image:
         tag: "0.1.1-SNAPSHOT"
     explorerAuthentication:
@@ -36,7 +36,7 @@ cf-explorer:
       image:
         tag: "0.3.5"
     consumerSchedules:
-      enabled: true
+      enabled: false
       image:
         tag: "v0.2.1-14-g0a88ebf"
 
