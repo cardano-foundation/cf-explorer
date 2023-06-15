@@ -23,11 +23,11 @@ cf-explorer:
         tag: "0.2.16"
     explorerApi:
       image:
-        tag: "v0.3.10-22-gac988aa"
+        tag: "v0.3.10"
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.1-SNAPSHOT"
+        tag: "0.1.1"
     explorerAuthentication:
       replicas: 1
       image:
@@ -38,7 +38,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "v0.2.1-14-g0a88ebf"
+        tag: "0.2.2"
 
 argo-cd:
   server:
