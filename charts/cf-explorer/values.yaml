@@ -124,6 +124,8 @@ explorerApi:
     # cluster:
     #   hosts: cf-explorer-infra-redis-cluster-headless:6379
 
+  explorerRewardsUrl: http://cf-explorer-rewards-api
+
   postgres:
     host: postgresql
     port: 5432
@@ -141,6 +143,36 @@ explorerApi:
       name: infra-secrets
       accessKeyKey: access-key
       secretKeyKey: secret-key
+
+explorerRewardsApi:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-rewards"
+    tag: "0.1.1-SNAPSHOT"
+
+  springProfiles: local
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  service:
+    type: ClusterIP
+  #    nodePort: "30092"
+
+  postgres:
+    host: postgresql
+    port: 5432
+    user: cardano-master
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
+    dbName: explorer_api
+    schema: default
+
+  network: mainnet
 
 explorerAuthentication:
   enabled: true
@@ -195,7 +227,7 @@ explorerFrontEnd:
   reactAppPreProdApiUrl: https://api.{{ .Values.domain }}/api/v1
   reactAppPreviewUrl: ""
   reactAppTestnetApiUrl: ""
-  reactAppMainnetApiUrl: ""
+  reactAppMainnetApiUrl: https://api.{{ .Values.domain }}/api/v1
   reactAppAuthUrl: https://auth-api.{{ .Values.domain }}/api/v1
 
   port: 1102
@@ -203,3 +235,44 @@ explorerFrontEnd:
   service:
     type: ClusterIP
   #    nodePort: "30092"
+
+consumerSchedules:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer-schedules"
+    tag: "0.2.2"
+
+  springProfiles: dev
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  postgres:
+    host: postgresql
+    port: 5432
+    user: cardano-master
+    secret:
+      name: infra-secrets
+      key: postgres-user-password
+    dbName: explorer_api
+    schema: mainnet
+
+  kafka:
+    bootstrapServer: kafka-explorer:9092
+    reportsTopic: dev.explorer.api.reports
+
+  s3:
+    bucketName: cf-dev-explorer-monolith-reports
+    region: eu-west-1
+    endpoint: https://s3-eu-west-1.amazonaws.com
+    secret:
+      name: infra-secrets
+      accessKeyKey: access-key
+      secretKeyKey: secret-key
+
+  checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
+
+  network: mainnet

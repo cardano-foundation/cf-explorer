@@ -1,0 +1,19 @@
+{{ with .Values.consumerSchedules }}
+{{ if .enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cf-ledger-consumer-schedules
+  labels:
+    app: cf-ledger-consumer-schedules
+spec:
+  selector:
+    app: cf-ledger-consumer-schedules
+  ports:
+    - protocol: TCP
+      name: api
+      port: {{ .port }}
+      targetPort: api
+{{ end }}
+{{ end }}

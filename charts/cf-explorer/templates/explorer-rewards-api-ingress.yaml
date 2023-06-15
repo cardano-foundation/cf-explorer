@@ -1,0 +1,24 @@
+{{ with .Values.explorerRewardsApi }}
+{{ if .enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cf-explorer-rewards-api
+spec:
+  rules:
+    - host: rewards-api.{{ $.Values.domain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cf-explorer-rewards-api
+                port:
+                  number: {{ .port }}
+  tls:
+    - hosts:
+        - api.{{ $.Values.domain }}
+{{ end }}
+{{ end }}

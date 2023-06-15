@@ -1,27 +1,29 @@
-{{ with .Values.consumer }}
+{{ with .Values.explorerRewardsApi }}
 {{ if .enabled }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cf-ledger-consumer
+  name: cf-explorer-rewards-api
 spec:
   replicas: {{ .replicas }}
   selector:
     matchLabels:
-      app: cf-ledger-consumer
+      app: cf-explorer-rewards-api
   template:
     metadata:
       labels:
-        app: cf-ledger-consumer
+        app: cf-explorer-rewards-api
     spec:
       containers:
-        - name: cf-ledger-consumer
+        - name: cf-explorer-rewards-api
           image: "{{ .image.repository }}:{{ .image.tag }}"
-#          command: ["bash", "-c", "sleep 999999"]
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
+            - name: SERVER_PORT
+              value: {{ .port | quote }}
+
             - name: POSTGRES_HOST
               value: {{ .postgres.host }}
             - name: POSTGRES_PORT
@@ -35,37 +37,36 @@ spec:
                   key: {{ .postgres.secret.key }}
             - name: POSTGRES_DB
               value: {{ .postgres.dbName }}
-            - name: SCHEMA
+            - name: POSTGRES_SCHEMA
               value: {{ .postgres.schema }}
 
-            - name: FLYWAY_ENABLE
-              value: "true"
-            - name: FLYWAY_VALIDATE
-              value: "true"
-
-            - name: BOOSTRAP_SERVER_HOST
-              value: {{ .kafka.host }}
-            - name: BOOSTRAP_SERVER_PORT
-              value: {{ .kafka.port | quote }}
-
-            - name: BLOCKS_TOPIC
-              value: {{ .crawler.blocks.topic }}
-
-            - name: MAXIMUM_POOL_SIZE
-              value: {{ .maximumPoolSize | quote }}
-            - name: JDBC_BATCH_SIZE
-              value: {{ .jdbcBatchSize | quote }}
-            - name: BLOCKS_BATCH_SIZE
-              value: {{ .blocksBatchSize | quote }}
-            - name: LOG
-              value: {{ .logLevel }}
-
-            - name: FILE_GENESIS_PATH
-              value: /genesis/
-            - name: FILE_GENESIS
-              value: "{{ .network }}.genesis.json"
             - name: NETWORK
-              value: {{ .networkMagic | quote }}
+              value: {{ .network }}
+
+            - name: LIST_SIZE_EACH_THREAD
+              value: "5"
+            - name: POOL_MAX_SIZE
+              value: "12"
+            - name: POOL_CORE_SIZE
+              value: "10"
+            - name: FLYWAY_ENABLE
+              value: "false"
+            - name: FLYWAY_VALIDATE
+              value: "false"
+
+            - name: REWARD_PARALLEL_SAVING_ENABLED
+              value: "true"
+            - name: REWARD_SUB_LIST_SIZE
+              value: "500"
+            - name: REWARD_PARALLEL_SAVING_THREAD_NUM
+              value: "10"
+
+            - name: EPOCH_STAKE_PARALLEL_SAVING_ENABLED
+              value: "true"
+            - name: EPOCH_STAKE_SUB_LIST_SIZE
+              value: "500"
+            - name: EPOCH_STAKE_PARALLEL_SAVING_THREAD_NUM
+              value: "10"
 
           ports:
             - name: api

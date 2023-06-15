@@ -15,6 +15,16 @@ spec:
       labels:
         app: kafka-explorer
     spec:
+      initContainers:
+        - name: init
+          command: [ "sh", "-x", "/configmap/init.sh" ]
+          image: alpine
+          imagePullPolicy: "Always"
+          volumeMounts:
+            - mountPath: /var/lib/kafka/data
+              name: kafka-explorer
+            - mountPath: /configmap
+              name: kafka-init
       containers:
         - name: kafka-explorer
           image: "{{ .image.repository }}:{{ .image.tag }}"
@@ -63,6 +73,15 @@ spec:
             failureThreshold: 3
             periodSeconds: 10
             initialDelaySeconds: 30
+          volumeMounts:
+            - mountPath: /var/lib/kafka/data
+              name: kafka-explorer
+      volumes:
+        - name: kafka-init
+          configMap:
+            name: kafka-init
+      securityContext:
+        fsGroup: 1000
   volumeClaimTemplates:
     - metadata:
         name: "kafka-explorer"
@@ -70,7 +89,7 @@ spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
-            storage: 128Mi
+            storage: {{ .dbSize | default "8Gi" }}
   revisionHistoryLimit: 2
 {{ end }}
 {{ end }}

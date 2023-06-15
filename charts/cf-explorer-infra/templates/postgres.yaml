@@ -1,4 +1,5 @@
-{{ if .Values.postgresql.enabled }}
+{{ with .Values.postgresql }}
+{{ if .enabled }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -23,6 +24,9 @@ spec:
             userPasswordKey: postgres-user-password
             replicationPasswordKey: postgres-replication-password
           database: explorer_api
+        primary:
+          persistence:
+            size: {{ .dbSize | default "8Gi" }}
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
@@ -48,6 +52,7 @@ spec:
       prune: true
       selfHeal: true
   destination:
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ $.Release.Namespace }}
     server: https://kubernetes.default.svc
+{{ end }}
 {{ end }}

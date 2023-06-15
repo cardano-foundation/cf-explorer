@@ -15,6 +15,11 @@ spec:
     repoURL: git@github.com:cardano-foundation/cf-explorer.git
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
     path: charts/cf-explorer-infra
+    helm:
+      {{- with index .Values "cf-explorer-infra" }}
+      values: |
+{{ toYaml . | indent 8 }}
+      {{- end }}
 
   syncPolicy:
     automated:

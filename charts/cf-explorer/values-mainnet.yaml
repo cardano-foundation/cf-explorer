@@ -13,7 +13,7 @@ crawler:
 
 consumer:
 
-  springProfiles: local
+  springProfiles: dev
 
   monitoringEnabled: true
   
@@ -30,11 +30,24 @@ explorerApi:
     schema: mainnet
   monitoringEnabled: true
 
-explorerAuthentication:
+explorerRewardsApi:
   enabled: true
   postgres:
     schema: mainnet
   monitoringEnabled: true
 
+explorerAuthentication:
+  enabled: true
+  postgres:
+    schema: mainnet-auth
+  monitoringEnabled: true
+
 explorerFrontEnd:
   enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: mainnet
+  monitoringEnabled: true
+  network: mainnet

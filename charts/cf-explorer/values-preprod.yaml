@@ -13,7 +13,7 @@ crawler:
 
 consumer:
 
-  springProfiles: local
+  springProfiles: dev
 
   monitoringEnabled: true
   
@@ -30,6 +30,12 @@ explorerApi:
     schema: preprod
   monitoringEnabled: true
 
+explorerRewardsApi:
+  enabled: true
+  postgres:
+    schema: preprod
+  monitoringEnabled: true
+
 explorerAuthentication:
   enabled: true
   postgres:
@@ -38,3 +44,10 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: preprod
+  monitoringEnabled: true
+  network: preprod
