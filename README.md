@@ -47,3 +47,12 @@ helm repo add traefik https://helm.traefik.io/traefik
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add elastic https://helm.elastic.co
 ```
+
+## Embedded Services
+
+### Kibana
+
+Kibana credentials are:
+
+* user: elastic
+* password: `kubectl get secret -n elastic-stack quickstart-es-elastic-user -o json | jq -r .data.elastic`
