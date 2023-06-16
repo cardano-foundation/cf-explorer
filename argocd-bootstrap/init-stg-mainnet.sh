@@ -65,6 +65,6 @@ echo "Updating helm dependencies for main app"
 helm dependency update
 
 helm upgrade --install argocd -n argocd . \
-  --set git.targetRevision=feat/MET-1304-Update_Helm_Chart_Official_cluster \
+  --set git.targetRevision=HEAD \
   --set valueFile=values-stg-mainnet.yaml \
   -f values-secrets.yaml
