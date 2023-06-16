@@ -30,14 +30,24 @@ kubectl create secret -n cf-explorer generic regcred \
   -o yaml \
   | kubectl apply -f -
 
+## Sealed Secrets certificates
+#kubectl create secret generic sealed-secrets-key \
+#  --save-config \
+#  --dry-run=client \
+#  -o yaml \
+#  -n argocd \
+#  --from-file=../.keys/tls.crt \
+#  --from-file=../.keys/tls.key \
+#  | kubectl apply -f -
+
 # Git Hub deploy key
-kubectl create secret generic github-deploy-key \
-  --save-config \
-  --dry-run=client \
-  -o yaml \
-  -n argocd \
-  --from-file=../.keys/cf-explorer \
-  | kubectl apply -f -
+#kubectl create secret generic github-deploy-key \
+#  --save-config \
+#  --dry-run=client \
+#  -o yaml \
+#  -n argocd \
+#  --from-file=../.keys/cf-explorer \
+#  | kubectl apply -f -
 
 # Infra Secrets (eg Psql, Redis, etc.)
 kubectl create secret generic infra-other-secrets \
@@ -45,7 +55,7 @@ kubectl create secret generic infra-other-secrets \
   --dry-run=client \
   -o yaml \
   -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-stg-preprod \
+  --from-env-file=../.keys/infra-secrets-dev-mainnet \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
@@ -55,6 +65,6 @@ echo "Updating helm dependencies for main app"
 helm dependency update
 
 helm upgrade --install argocd -n argocd . \
-  --set git.targetRevision=HEAD \
+  --set git.targetRevision=feat/Add_Stg_Preprod \
   --set valueFile=values-stg-preprod.yaml \
   -f values-secrets.yaml
