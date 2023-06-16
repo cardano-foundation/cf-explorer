@@ -20,7 +20,7 @@ crawler:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       key: redis
     standalone:
       host: redis-headless
@@ -66,14 +66,14 @@ consumer:
   monitoringEnabled: false
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
-    schema: mainnet
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   kafka:
     host: kafka-explorer
@@ -112,7 +112,7 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       key: redis
     standalone:
       host: redis-headless
@@ -127,20 +127,21 @@ explorerApi:
   explorerRewardsUrl: http://cf-explorer-rewards-api
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   s3:
     bucketName: cf-dev-explorer-monolith-reports
     region: eu-west-1
     endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       accessKeyKey: access-key
       secretKeyKey: secret-key
 
@@ -163,14 +164,14 @@ explorerRewardsApi:
   #    nodePort: "30092"
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
-    schema: default
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   network: mainnet
 
@@ -196,20 +197,21 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       key: redis
     standalone:
       host: redis-headless
       port: 6379
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet-auth
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   flywayEnabled: true
   swaggerClientUrl: https://{{ .Values.domain }}
@@ -224,10 +226,10 @@ explorerFrontEnd:
     tag: "0.3.2"
 
   reactAppApiUrl: https://api.{{ .Values.domain }}/api/v1
-  reactAppPreProdApiUrl: https://api.{{ .Values.domain }}/api/v1
+  reactAppPreProdApiUrl: https://api.{{ .Values.domain | replace "mainnet" "preprod" }}/api/v1
   reactAppPreviewUrl: ""
   reactAppTestnetApiUrl: ""
-  reactAppMainnetApiUrl: https://api.{{ .Values.domain }}/api/v1
+  reactAppMainnetApiUrl: https://api.{{ .Values.domain | replace "preprod" "mainnet" }}/api/v1
   reactAppAuthUrl: https://auth-api.{{ .Values.domain }}/api/v1
 
   port: 1102
@@ -251,14 +253,14 @@ consumerSchedules:
   monitoringEnabled: false
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
-    schema: mainnet
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
 
   kafka:
     bootstrapServer: kafka-explorer:9092
@@ -269,7 +271,7 @@ consumerSchedules:
     region: eu-west-1
     endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-secrets
+      name: infra-other-secrets
       accessKeyKey: access-key
       secretKeyKey: secret-key
 

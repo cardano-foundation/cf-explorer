@@ -16,7 +16,7 @@ spec:
     helm:
       values: |
         auth:
-          existingSecret: infra-secrets
+          existingSecret: infra-other-secrets
           existingSecretPasswordKey: redis
   syncPolicy:
     automated:

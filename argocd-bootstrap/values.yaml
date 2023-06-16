@@ -42,7 +42,7 @@ argo-cd:
 # Sealed Secrets configuration
 sealed-secrets:
   # Whether the Sealed Secrets app should be deployed.
-  enabled: true
+  enabled: false
 
 # Traefik ingress configuration
 traefik:
