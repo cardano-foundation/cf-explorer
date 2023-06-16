@@ -1,0 +1,47 @@
+stage: stg
+
+network: mainnet
+
+domain: stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+
+cf-explorer-infra:
+  enabled: true
+  postgresql:
+    enabled: false
+  kafka:
+    dbSize: 750Gi
+
+cf-explorer:
+  values:
+    crawler:
+      enabled: true
+      image:
+        tag: "0.2.7"
+    consumer:
+      enabled: true
+      image:
+        tag: "0.2.16"
+    explorerApi:
+      image:
+        tag: "0.3.10"
+    explorerRewardsApi:
+      enabled: true
+      image:
+        tag: "0.1.1"
+    explorerAuthentication:
+      replicas: 1
+      image:
+        tag: "0.1.3"
+    explorerFrontEnd:
+      image:
+        tag: "0.3.5"
+    consumerSchedules:
+      enabled: false
+      image:
+        tag: "0.2.2"
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
