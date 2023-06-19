@@ -1,15 +1,15 @@
 stage: dev
 
-network: mainnet
+network: preprod
 
-domain: dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+domain: argocd.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
   postgresql:
     enabled: false
   kafka:
-    dbSize: 750Gi
+    dbSize: 20Gi
 
 cf-explorer:
   values:
@@ -44,4 +44,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+        - argocd.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org 
