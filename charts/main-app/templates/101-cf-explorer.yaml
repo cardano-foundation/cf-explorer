@@ -18,7 +18,7 @@ spec:
         - name: "domain"
           value: {{ .Values.domain }}
       valueFiles:
-      - values-{{ .Values.stg }}-{{ .Values.network }}.yaml
+      - values-{{ .Values.stage }}-{{ .Values.network }}.yaml
       {{- with index .Values "cf-explorer" "values" }}
       values: |
 {{ toYaml . | indent 8 }}
