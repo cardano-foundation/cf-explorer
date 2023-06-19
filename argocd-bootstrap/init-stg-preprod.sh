@@ -41,22 +41,22 @@ kubectl create secret -n cf-explorer generic regcred \
 #  | kubectl apply -f -
 
 # Git Hub deploy key
-#kubectl create secret generic github-deploy-key \
-#  --save-config \
-#  --dry-run=client \
-#  -o yaml \
-#  -n argocd \
-#  --from-file=../.keys/cf-explorer \
-#  | kubectl apply -f -
-
-# Infra Secrets (eg Psql, Redis, etc.)
-kubectl create secret generic infra-other-secrets \
+kubectl create secret generic infra-secrets \
   --save-config \
   --dry-run=client \
   -o yaml \
-  -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-dev-mainnet \
+  -n argocd \
+  --from-file=ARGOCD_GITHUB_DEPLOY_KEY=../.keys/cf-explorer \
   | kubectl apply -f -
+
+# Infra Secrets (eg Psql, Redis, etc.)
+#kubectl create secret generic infra-other-secrets \
+#  --save-config \
+#  --dry-run=client \
+#  -o yaml \
+#  -n cf-explorer \
+#  --from-env-file=../.keys/infra-secrets-dev-mainnet \
+#  | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
 #helm dependency build
