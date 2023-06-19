@@ -147,13 +147,13 @@ explorerApi:
       passwordKey: POSTGRES_PASSWORD
 
   s3:
-    bucketName: cf-dev-explorer-monolith-reports
-    region: eu-west-1
-    endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-other-secrets
-      accessKeyKey: access-key
-      secretKeyKey: secret-key
+      name: infra-secrets
+      accessKeyKey: S3_ACCESS_KEY
+      secretKeyKey: S3_SECRET_KEY
+      bucketNameKey: S3_BUCKET_NAME
+      regionKey: S3_REGION
+      endpointKey: S3_STORAGE_ENDPOINT
 
 explorerRewardsApi:
   enabled: true
@@ -292,13 +292,13 @@ consumerSchedules:
       port: 6379
 
   s3:
-    bucketName: cf-dev-explorer-monolith-reports
-    region: eu-west-1
-    endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-other-secrets
-      accessKeyKey: access-key
-      secretKeyKey: secret-key
+      name: infra-secrets
+      accessKeyKey: S3_ACCESS_KEY
+      secretKeyKey: S3_SECRET_KEY
+      bucketNameKey: S3_BUCKET_NAME
+      regionKey: S3_REGION
+      endpointKey: S3_STORAGE_ENDPOINT
 
   checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
 
