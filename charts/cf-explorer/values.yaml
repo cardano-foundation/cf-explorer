@@ -16,7 +16,7 @@ crawler:
     enabled: true
 #    bootstrapServer: kafka-explorer:9092
     bootstrapServerSecret:
-      name: infra-other-secrets
+      name: infra-secrets
       key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   redis:
@@ -86,7 +86,7 @@ consumer:
 
   kafka:
     bootstrapServersSecret:
-      name: infra-other-secrets
+      name: infra-secrets
       key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   crawler:
