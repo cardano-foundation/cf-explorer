@@ -30,10 +30,13 @@ crawler:
       port: 6379
 
     ## Redis Cluster Values Example
-    # mode: cluster
-    # secretName: cf-explorer-infra-redis-cluster
-    # cluster:
-    #   hosts: cf-explorer-infra-redis-cluster-headless:6379
+#     mode: cluster
+#     secretName: cf-explorer-infra-redis-cluster
+#     cluster:
+#       secret:
+#         name: infra-secrets
+#         passwordKey: REDIS_MASTER_PASSWORD
+#         endpointKey: REDIS_ENDPOINT
 
     master:
       name: mymaster

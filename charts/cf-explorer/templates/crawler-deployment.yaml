@@ -48,7 +48,10 @@ spec:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
             - name: NODE_ADDRESSES
-              value: {{ .redis.cluster.hosts }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
