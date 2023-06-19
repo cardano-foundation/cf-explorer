@@ -1,5 +1,7 @@
 crawler:
 
+  springProfiles: n2n,cluster,kafka
+
   monitoringEnabled: true
 
   crawler:
@@ -35,6 +37,7 @@ consumer:
 
 explorerApi:
   enabled: true
+  springProfiles: dev,cluster
   postgres:
     schema: preprod
   redis:
@@ -54,6 +57,7 @@ explorerRewardsApi:
 
 explorerAuthentication:
   enabled: true
+  springProfiles: dev,cluster
   postgres:
     schema: preprod-auth
   redis:
