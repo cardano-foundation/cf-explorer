@@ -61,8 +61,8 @@ spec:
             - name: BOOTSTRAP_SERVERS
               valueFrom:
                 secretKeyRef:
-                  name: {{ .kafka.bootstrapServers.name }}
-                  key: {{ .kafka.bootstrapServers.key }}
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
 
             - name: BLOCKS_TOPIC
               value: {{ .crawler.blocks.topic }}
