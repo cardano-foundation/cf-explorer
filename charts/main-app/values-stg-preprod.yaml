@@ -16,7 +16,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.2.17-SNAPSHOT-PR142"
+        tag: "0.2.16-1-g1314ac8"
     explorerApi:
       image:
         tag: "0.3.11-SNAPSHOT-PR192"
