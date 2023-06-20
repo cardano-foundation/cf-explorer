@@ -7,7 +7,7 @@ domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 cf-explorer-infra:
   enabled: true
   postgresql:
-    enabled: false
+    dbSize: 150Gi
   kafka:
     dbSize: 20Gi
 
