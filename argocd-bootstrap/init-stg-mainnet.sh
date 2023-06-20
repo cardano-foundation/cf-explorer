@@ -30,16 +30,6 @@ kubectl create secret -n cf-explorer generic regcred \
   -o yaml \
   | kubectl apply -f -
 
-## Sealed Secrets certificates
-#kubectl create secret generic sealed-secrets-key \
-#  --save-config \
-#  --dry-run=client \
-#  -o yaml \
-#  -n argocd \
-#  --from-file=../.keys/tls.crt \
-#  --from-file=../.keys/tls.key \
-#  | kubectl apply -f -
-
 # Git Hub deploy key
 kubectl create secret generic github-deploy-key \
   --save-config \
@@ -55,7 +45,7 @@ kubectl create secret generic infra-other-secrets \
   --dry-run=client \
   -o yaml \
   -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-dev-mainnet \
+  --from-env-file=../.keys/infra-secrets-stg-mainnet \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"

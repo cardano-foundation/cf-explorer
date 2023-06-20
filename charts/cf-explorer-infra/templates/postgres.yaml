@@ -17,7 +17,7 @@ spec:
     helm:
       values: |
         auth:
-          username: cardano-master
+          username: cardano
           existingSecret: infra-secrets
           secretKeys:
             adminPasswordKey: postgres-password
