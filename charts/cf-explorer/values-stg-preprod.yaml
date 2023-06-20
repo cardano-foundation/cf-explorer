@@ -14,7 +14,6 @@ crawler:
       port: 30000
 
   redis:
-    ## Redis Standalone Values Example
     mode: cluster
     cluster:
       secret:
