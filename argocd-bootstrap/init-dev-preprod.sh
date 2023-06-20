@@ -53,7 +53,7 @@ kubectl create secret generic infra-other-secrets \
   --dry-run=client \
   -o yaml \
   -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-dev-preprod \
+  --from-env-file=../.keys/infra-other-secrets-dev-preprod \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
