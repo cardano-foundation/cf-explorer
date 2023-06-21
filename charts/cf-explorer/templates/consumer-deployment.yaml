@@ -73,8 +73,21 @@ spec:
             - name: LOG
               value: {{ .logLevel }}
 
+            - name: SUBMIT_API_CONFIG_URL
+              value: /genesis/preprod/submit-api-config.json
+            - name: BYRON_GENESIS_URL
+              value: /genesis/preprod/byron-genesis.json
+            - name: SHELLEY_GENESIS_URL
+              value: /genesis/preprod/shelley-genesis.json
+            - name: ALONZO_GENESIS_URL
+              value: /genesis/preprod/alonzo-genesis.json
+            - name: CONWAY_GENESIS_URL
+              value: genesis/preprod/conway-genesis.json
+
+            # To be deprecated
             - name: FILE_GENESIS_PATH
               value: /genesis/
+            # To be deprecated
             - name: FILE_GENESIS
               value: "{{ .network }}.genesis.json"
             - name: NETWORK
