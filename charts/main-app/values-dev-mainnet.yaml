@@ -21,7 +21,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.0-2-g2f16114"
+        tag: "v0.3.0-3-gc69bb0c"
     explorerApi:
       image:
         tag: "0.3.11"
