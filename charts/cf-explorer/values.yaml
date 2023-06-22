@@ -266,6 +266,16 @@ consumerSchedules:
     bootstrapServer: kafka-explorer:9092
     reportsTopic: dev.explorer.api.reports
 
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
+    secret:
+      name: infra-other-secrets
+      key: redis
+    standalone:
+      host: redis-headless
+      port: 6379
+
   s3:
     bucketName: cf-dev-explorer-monolith-reports
     region: eu-west-1

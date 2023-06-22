@@ -85,6 +85,36 @@ spec:
             - name: API_CHECK_REWARD_URL
               value: {{ .checkRewardUrl }}
 
+            {{- if eq .redis.mode "sentinel" }}
+            - name: REDIS_MASTER_NAME
+              value: {{ .redis.master.name }}
+            - name: REDIS_SENTINEL_HOST
+              value: {{ .redis.sentinel.host }}
+            - name: REDIS_SENTINEL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "cluster" }}
+            - name: REDIS_CLUSTER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: NODE_ADDRESSES
+              value: {{ .redis.cluster.hosts }}
+            {{- else }}
+            - name: REDIS_STANDALONE_HOST
+              value: {{ .redis.standalone.host }}
+            - name: REDIS_STANDALONE_PORT
+              value: {{ .redis.standalone.port | quote }}
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- end }}
+
             - name: S3_BUCKET_NAME
               value: {{ .s3.bucketName }}
             - name: S3_REGION
