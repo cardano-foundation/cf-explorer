@@ -10,17 +10,24 @@ if [ $? != 0 ]; then
   kubectl create ns argocd > /dev/null 2>&1
 fi
 
+echo "Checking cf-explorer namespace existence"
+kubectl get ns cf-explorer > /dev/null 2>&1
+
+if [ $? != 0 ]; then
+  echo "cf-explorer namespace does not exist, creating..."
+  kubectl create ns cf-explorer > /dev/null 2>&1
+fi
+
 ## Create a Master Key
 # openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out tls.crt -keyout tls.key
 
-## Sealed Secrets certificates
-kubectl create secret generic sealed-secrets-key \
+## DockerHub secret
+kubectl create secret -n cf-explorer generic regcred \
+  --from-file=.dockerconfigjson=../.keys/docker-cred.json \
+  --type=kubernetes.io/dockerconfigjson \
   --save-config \
   --dry-run=client \
   -o yaml \
-  -n argocd \
-  --from-file=../.keys/tls.crt \
-  --from-file=../.keys/tls.key \
   | kubectl apply -f -
 
 # Git Hub deploy key
@@ -38,7 +45,15 @@ kubectl create secret generic infra-secrets \
   --dry-run=client \
   -o yaml \
   -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-ggargiulo-dev-preprod \
+  --from-env-file=../.keys/infra-secrets-ggargiulo-dev-mainnet \
+  | kubectl apply -f -
+
+kubectl create secret generic infra-other-secrets \
+  --save-config \
+  --dry-run=client \
+  -o yaml \
+  -n cf-explorer \
+  --from-env-file=../.keys/infra-other-secrets-ggargiulo-dev-mainnet \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
