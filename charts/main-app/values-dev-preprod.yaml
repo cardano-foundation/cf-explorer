@@ -34,7 +34,7 @@ cf-explorer:
         tag: "0.1.3"
     explorerFrontEnd:
       image:
-        tag: "0.3.5"
+        tag: "0.4.0"
     consumerSchedules:
       enabled: true
       image:
