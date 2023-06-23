@@ -15,9 +15,5 @@ spec:
       name: api
       port: {{ .port }}
       targetPort: api
-      {{- with .service.nodePort }}
-      nodePort: {{ . }}
-      {{- end}}
-  type: {{ .service.type | default "ClusterIP" }}
 {{ end }}
 {{ end }}
