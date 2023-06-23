@@ -59,6 +59,8 @@ spec:
               value: "{{ .explorerRewardsUrl }}/api/v1/pool-info/fetch"
             - name: API_CHECK_EPOCH_STAKE_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/epoch-stake/fetch"
+            - name: API_CHECK_ADA_POTS_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/ada-pots/fetch"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
