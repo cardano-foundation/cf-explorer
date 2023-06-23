@@ -20,7 +20,7 @@ spec:
           image: "{{ .image.repository }}:{{ .image.tag }}"
           env:
             - name: CARDANO_NEWS_API_PORT
-              value: {{ .port }}
+              value: {{ .port | quote }}
           ports:
             - name: api
               containerPort: {{ .port }}
