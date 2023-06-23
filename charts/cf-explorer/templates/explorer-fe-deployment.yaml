@@ -30,8 +30,8 @@ spec:
             - name: REACT_APP_JSD_WIDGET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ jira.widget.secretName }}
-                  key: {{ jira.widget.secretKey }}
+                  name: {{ .jira.widget.secretName }}
+                  key: {{ .jira.widget.secretKey }}
 
             - name: REACT_APP_API_URL
               value: {{ tpl .reactAppApiUrl $ }}
