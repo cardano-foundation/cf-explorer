@@ -238,6 +238,11 @@ explorerFrontEnd:
     type: ClusterIP
   #    nodePort: "30092"
 
+  jira:
+    widget:
+      secretName: jira-widget
+      secretKey: widget-key
+
 consumerSchedules:
   enabled: true
   replicas: 1
