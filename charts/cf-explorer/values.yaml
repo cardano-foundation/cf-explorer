@@ -288,3 +288,14 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
 
   network: mainnet
+
+cardanoNewsApi:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-news-api"
+    tag: "0.1.2"
+
+  port: 8080
+

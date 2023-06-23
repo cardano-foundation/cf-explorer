@@ -1,0 +1,23 @@
+{{ with .Values.cardanoNewsApi }}
+{{ if .enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cardano-news-api
+  labels:
+    app: cardano-news-api
+spec:
+  selector:
+    app: cardano-news-api
+  ports:
+    - protocol: TCP
+      name: api
+      port: {{ .port }}
+      targetPort: api
+      {{- with .service.nodePort }}
+      nodePort: {{ . }}
+      {{- end}}
+  type: {{ .service.type | default "ClusterIP" }}
+{{ end }}
+{{ end }}

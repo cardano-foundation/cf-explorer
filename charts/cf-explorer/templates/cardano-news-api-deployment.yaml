@@ -1,0 +1,32 @@
+{{ with .Values.cardanoNewsApi }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cardano-news-api
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cardano-news-api
+  template:
+    metadata:
+      labels:
+        app: cardano-news-api
+    spec:
+      containers:
+        - name: cardano-news-api
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          env:
+            - name: CARDANO_NEWS_API_PORT
+              value: {{ .port }}
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}
