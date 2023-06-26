@@ -62,7 +62,7 @@ spec:
             - name: POOL_CORE_SIZE
               value: "10"
             - name: FLYWAY_ENABLE
-              value: "false"
+              value: "true"
             - name: FLYWAY_VALIDATE
               value: "false"
 
