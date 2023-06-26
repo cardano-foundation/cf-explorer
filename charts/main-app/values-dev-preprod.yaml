@@ -23,7 +23,7 @@ cf-explorer:
         tag: "v0.3.1"
     explorerApi:
       image:
-        tag: "0.3.11"
+        tag: "0.3.13"
     explorerRewardsApi:
       enabled: true
       image:
