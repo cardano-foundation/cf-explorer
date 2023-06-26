@@ -6,7 +6,7 @@ kind: ServiceMonitor
 metadata:
   name: cf-ledger-consumer-schedules
   labels:
-    release: kube-prometheus-stack
+    release: prometheus-stack
 spec:
   endpoints:
     - path: /actuator/prometheus
