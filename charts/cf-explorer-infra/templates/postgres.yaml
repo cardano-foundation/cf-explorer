@@ -31,7 +31,7 @@ spec:
             shared_buffers=1GB
             checkpoint_completion_target=0.9
             synchronous_commit=off
-            commit_delay=5000000
+            commit_delay=100000
             work_mem=1GB
             wal_buffers=16MB
             max_wal_size=1GB
