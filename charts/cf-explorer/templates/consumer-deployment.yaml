@@ -51,6 +51,8 @@ spec:
             - name: SCHEMA
               value: {{ .postgres.schema }}
 
+            - name: JPA_SHOW_SQL
+              value: {{ .jpa.showSql | default false | quote}}
             - name: FLYWAY_ENABLE
               value: "true"
             - name: FLYWAY_VALIDATE

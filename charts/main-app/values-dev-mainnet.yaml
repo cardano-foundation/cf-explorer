@@ -21,7 +21,9 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.1-14-g7b67672"
+        tag: "v0.3.1-15-g56b34e6"
+      jpa:
+        showSql: true
     explorerApi:
       image:
         tag: "0.3.13"
