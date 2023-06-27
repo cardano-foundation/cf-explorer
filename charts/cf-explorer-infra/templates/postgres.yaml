@@ -28,22 +28,14 @@ spec:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
           extendedConfiguration: |-
-            max_locks_per_transaction=256
-            shared_buffers=12GB
-            effective_cache_size=31GB
-            maintenance_work_mem=2GB
+            shared_buffers=1GB
             checkpoint_completion_target=0.9
-            checkpoint_timeout=1h
             synchronous_commit=off
+            commit_delay=5000000
+            work_mem=1GB
             wal_buffers=16MB
-            default_statistics_target=500
-            random_page_cost=1.1
-            effective_io_concurrency=500
-            work_mem=1024GB
-            min_wal_size=1GB
-            max_wal_size=2GB
-            max_parallel_workers_per_gather=4
-            max_parallel_maintenance_workers=4
+            max_wal_size=1GB
+            wal_level=minimal
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
