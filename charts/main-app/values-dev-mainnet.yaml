@@ -21,9 +21,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.1-15-g56b34e6"
-      jpa:
-        showSql: false
+        tag: "0.3.2-SNAPSHOT"
     explorerApi:
       image:
         tag: "0.3.13"
@@ -34,12 +32,12 @@ cf-explorer:
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.3"
+        tag: "0.1.4-SNAPSHOT"
     explorerFrontEnd:
       image:
         tag: "0.4.0"
     consumerSchedules:
-      enabled: false
+      enabled: true
       image:
         tag: "0.2.4-SNAPSHOT"
 
