@@ -36,6 +36,8 @@ spec:
             wal_buffers=16MB
             max_wal_size=1GB
             wal_level=minimal
+            archive_mode=off
+            max_wal_senders=0
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
