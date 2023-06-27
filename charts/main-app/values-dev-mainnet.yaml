@@ -19,7 +19,7 @@ cf-explorer:
       image:
         tag: "0.2.7"
     consumer:
-      enabled: false
+      enabled: true
       image:
         tag: "v0.3.1-15-g56b34e6"
       jpa:
@@ -39,7 +39,7 @@ cf-explorer:
       image:
         tag: "0.4.0"
     consumerSchedules:
-      enabled: false
+      enabled: true
       image:
         tag: "0.2.4-SNAPSHOT"
 
