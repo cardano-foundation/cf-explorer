@@ -28,9 +28,16 @@ spec:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
           extendedConfiguration: |-
-            wal_level=minimal
-            archive_mode=off
-            max_wal_senders=0
+            shared_buffers=512MB
+            checkpoint_completion_target=0.9
+            synchronous_commit=off
+            work_mem=256MB
+            wal_buffers=16MB
+            max_wal_size=1GB
+            track_counts=true
+            autovacuum=on
+            autovacuum_naptime=5min
+            log_autovacuum_min_duration=0
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
