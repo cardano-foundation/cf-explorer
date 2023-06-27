@@ -28,13 +28,6 @@ spec:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
           extendedConfiguration: |-
-            shared_buffers=1GB
-            checkpoint_completion_target=0.9
-            synchronous_commit=off
-            commit_delay=100000
-            work_mem=1GB
-            wal_buffers=16MB
-            max_wal_size=1GB
             wal_level=minimal
             archive_mode=off
             max_wal_senders=0
