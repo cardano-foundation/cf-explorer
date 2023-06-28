@@ -28,10 +28,14 @@ spec:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
           extendedConfiguration: |-
+            max_connections=250
+            shared_buffers=4GB
+            work_mem=1GB
+            random_page_cost=1
+            maintenance_work_mem=2GB
             shared_buffers=512MB
             checkpoint_completion_target=0.9
             synchronous_commit=off
-            work_mem=256MB
             wal_buffers=16MB
             max_wal_size=1GB
             track_counts=true
