@@ -87,7 +87,7 @@ consumer:
       topic: local.crawler.blocks
 
   maximumPoolSize: 64
-  jdbcBatchSize: 250
+  jdbcBatchSize: 750
   blocksBatchSize: 500
   logLevel: debug
   network: mainnet
