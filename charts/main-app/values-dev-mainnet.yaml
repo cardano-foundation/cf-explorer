@@ -22,8 +22,8 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.3.2-SNAPSHOT"
-      jdbcBatchSize: 25
-      blocksBatchSize: 250
+      jdbcBatchSize: 50
+      blocksBatchSize: 100
     explorerApi:
       image:
         tag: "0.3.13"
