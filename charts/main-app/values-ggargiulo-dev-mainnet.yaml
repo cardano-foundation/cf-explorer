@@ -21,24 +21,24 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.2-SNAPSHOT"
+        tag: "0.3.2"
     explorerApi:
       enabled: false
       image:
-        tag: "0.3.13"
+        tag: "0.3.14"
     explorerRewardsApi:
       enabled: false
       image:
-        tag: "0.1.2-SNAPSHOT"
+        tag: "0.1.2"
     explorerAuthentication:
       enabled: false
       replicas: 1
       image:
-        tag: "0.1.4-SNAPSHOT"
+        tag: "0.1.4"
     explorerFrontEnd:
       enabled: false
       image:
-        tag: "0.4.0"
+        tag: "0.4.1"
     consumerSchedules:
       enabled: true
       image:
