@@ -101,7 +101,7 @@ explorerApi:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
     tag: "0.3.9"
 
-  springProfiles: dev, standalone, koios
+  springProfiles: dev,standalone,koios,s3
 
   port: 8080
 
