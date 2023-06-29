@@ -62,6 +62,9 @@ spec:
             - name: API_CHECK_ADA_POTS_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/ada-pots/fetch"
 
+            - name: API_NEWS_URL
+              value: "http://cardano-news-api"
+
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
               value: {{ .redis.master.name }}

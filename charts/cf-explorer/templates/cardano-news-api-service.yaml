@@ -13,7 +13,7 @@ spec:
   ports:
     - protocol: TCP
       name: api
-      port: {{ .port }}
+      port: 80
       targetPort: api
 {{ end }}
 {{ end }}
