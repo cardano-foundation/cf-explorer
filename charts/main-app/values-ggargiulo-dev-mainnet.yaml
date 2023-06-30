@@ -12,7 +12,7 @@ cf-explorer-infra:
     dbSize: 750Gi
 
 cf-explorer:
-  enabled: false
+  enabled: true
   values:
     crawler:
       enabled: true
@@ -23,11 +23,11 @@ cf-explorer:
       image:
         tag: "0.3.2"
     explorerApi:
-      enabled: false
+      enabled: true
       image:
         tag: "0.3.14"
     explorerRewardsApi:
-      enabled: false
+      enabled: true
       image:
         tag: "0.1.2"
     explorerAuthentication:
@@ -36,7 +36,6 @@ cf-explorer:
       image:
         tag: "0.1.4"
     explorerFrontEnd:
-      enabled: false
       image:
         tag: "0.4.1"
     consumerSchedules:
