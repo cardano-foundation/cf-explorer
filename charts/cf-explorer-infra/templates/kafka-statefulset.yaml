@@ -76,6 +76,10 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/kafka/data
               name: kafka-explorer
+              subPath: data
+            - mountPath: /etc/kafka/secrets
+              name: kafka-explorer
+              subPath: secrets
       volumes:
         - name: kafka-init
           configMap:
