@@ -5,13 +5,14 @@ network: preprod
 domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
   postgresql:
     dbSize: 150Gi
   kafka:
     dbSize: 20Gi
 
 cf-explorer:
+  enabled: false
   values:
     crawler:
       enabled: true
