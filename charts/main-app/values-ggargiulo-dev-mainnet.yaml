@@ -23,11 +23,11 @@ cf-explorer:
       image:
         tag: "0.3.2"
     explorerApi:
-      enabled: true
+      enabled: false
       image:
         tag: "0.3.14"
     explorerRewardsApi:
-      enabled: true
+      enabled: false
       image:
         tag: "0.1.2"
     explorerAuthentication:
@@ -36,10 +36,11 @@ cf-explorer:
       image:
         tag: "0.1.4"
     explorerFrontEnd:
+      enabled: false
       image:
         tag: "0.4.1"
     consumerSchedules:
-      enabled: true
+      enabled: false
       image:
         tag: "0.2.4-SNAPSHOT"
 
