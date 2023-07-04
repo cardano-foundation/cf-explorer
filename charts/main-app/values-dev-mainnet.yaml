@@ -12,7 +12,7 @@ cf-explorer-infra:
     dbSize: 750Gi
 
 cf-explorer:
-  enabled: false
+  enabled: true
   values:
     crawler:
       enabled: true
