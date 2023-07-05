@@ -277,7 +277,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "fb199bed-3c9e-4f57-87e4-4fc53379477e"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "expr": "crawler_network_sync_percent",
@@ -336,7 +336,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "fb199bed-3c9e-4f57-87e4-4fc53379477e"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "expr": "crawler_count_rollback_total",
@@ -399,7 +399,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "fb199bed-3c9e-4f57-87e4-4fc53379477e"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "expr": "sum(crawler_block_processing_timer_seconds_sum) by (era)",
@@ -491,7 +491,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "fb199bed-3c9e-4f57-87e4-4fc53379477e"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "expr": "sum(crawler_block_processing_timer_seconds_sum)/sum(crawler_block_processing_timer_seconds_count)",
@@ -584,7 +584,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "fb199bed-3c9e-4f57-87e4-4fc53379477e"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "expr": "sum(rate(crawler_block_processing_timer_seconds_count[1m]))*60",
@@ -678,7 +678,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "b37a29fb-cdaf-4cea-b88d-45b8b0d93823"
+                        "uid": "prometheus"
                     },
                     "editorMode": "code",
                     "exemplar": false,
