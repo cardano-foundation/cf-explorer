@@ -228,12 +228,12 @@ explorerFrontEnd:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-frontend"
     tag: "0.3.2"
 
-  reactAppApiUrl: https://api.{{ .Values.network }}.{{ .Values.domain }}/api/v1
-  reactAppPreProdAppUrl: https://{{ .Values.network }}.{{ .Values.domain }}
-  reactAppPreviewAppUrl: https://{{ .Values.network }}.{{ .Values.domain }}
-  reactAppMainnetAppUrl: https://{{ .Values.domain }}
-  reactAppAuthUrl: https://auth-api.{{ .Values.network }}.{{ .Values.domain }}/api/v1
-  reactAppNetwork: {{ .Values.network }}
+  reactAppApiUrl: "https://api.{{ .Values.network }}.{{ .Values.domain }}/api/v1"
+  reactAppPreProdAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
+  reactAppPreviewAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
+  reactAppMainnetAppUrl: "https://{{ .Values.domain }}"
+  reactAppAuthUrl: "https://auth-api.{{ .Values.network }}.{{ .Values.domain }}/api/v1"
+  reactAppNetwork: "{{ .Values.network }}"
 
   port: 1102
 

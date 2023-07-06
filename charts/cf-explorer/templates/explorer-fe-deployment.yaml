@@ -35,14 +35,12 @@ spec:
 
             - name: REACT_APP_API_URL
               value: {{ tpl .reactAppApiUrl $ }}
-            - name: REACT_APP_PREPROD_API_URL
-              value: {{ tpl .reactAppPreProdApiUrl $ }}
-            - name: REACT_APP_PREVIEW_API_URL
-              value: {{ tpl .reactAppPreviewUrl $ }}
-            - name: REACT_APP_TESTNET_API_URL
-              value: {{ tpl .reactAppTestnetApiUrl $ }}
-            - name: REACT_APP_MAINNET_API_URL
-              value: {{ tpl .reactAppMainnetApiUrl $ }}
+            - name: REACT_APP_PREPROD_APP_URL
+              value: {{ tpl .reactAppPreProdAppUrl $ }}
+            - name: REACT_APP_PREVIEW_APP_URL
+              value: {{ tpl .reactAppPreviewAppUrl $ }}
+            - name: REACT_APP_MAINNET_APP_URL
+              value: {{ tpl .reactAppMainnetAppUrl $ }}
             - name: REACT_APP_AUTH_API_URL
               value: {{ tpl .reactAppAuthUrl $ }}
 
