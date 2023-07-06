@@ -11,8 +11,8 @@ data:
   POSTGRES_HOST: {{ .dbHost | default "postgresql" | b64enc | quote }}
   POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
   POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  POSTGRES_ADMIN_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
   POSTGRES_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
-  POSTGRES_USER_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
   POSTGRES_REPLICATION_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -34,8 +34,8 @@ spec:
           username: {{ .dbUser | default "cardano" }}
           existingSecret: postgres-secrets
           secretKeys:
-            adminPasswordKey: POSTGRES_PASSWORD
-            userPasswordKey: POSTGRES_USER_PASSWORD
+            adminPasswordKey: POSTGRES_ADMIN_PASSWORD
+            userPasswordKey: POSTGRES_PASSWORD
             replicationPasswordKey: POSTGRES_REPLICATION_PASSWORD
           database: {{ .dbName | default "explorer_api" }}
         primary:
