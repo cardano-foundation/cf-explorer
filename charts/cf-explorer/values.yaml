@@ -200,8 +200,8 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secret
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -243,7 +243,7 @@ explorerFrontEnd:
 
   jira:
     widget:
-      secretName: jira-widget
+      secretName: infra-secrets
       secretKey: REACT_APP_JSD_WIDGET_KEY
 
 consumerSchedules:
