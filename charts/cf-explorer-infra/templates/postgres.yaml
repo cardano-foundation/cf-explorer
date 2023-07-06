@@ -1,5 +1,19 @@
 {{ with .Values.postgresql }}
 {{ if .enabled }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "postgres-secret"
+  namespace: {{ $.Release.Namespace }}
+type: Opaque
+data:
+  POSTGRES_USER: cardano
+  POSTGRES_HOST: postgresql
+  POSTGRES_DB: explorer_api
+  # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  POSTGRES_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
+  POSTGRES_USER_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
+  POSTGRES_REPLICATION_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -18,11 +32,11 @@ spec:
       values: |
         auth:
           username: cardano
-          existingSecret: infra-secrets
+          existingSecret: postgres-secrets
           secretKeys:
-            adminPasswordKey: postgres-password
-            userPasswordKey: postgres-user-password
-            replicationPasswordKey: postgres-replication-password
+            adminPasswordKey: POSTGRES_PASSWORD
+            userPasswordKey: POSTGRES_USER_PASSWORD
+            replicationPasswordKey: POSTGRES_REPLICATION_PASSWORD
           database: explorer_api
         primary:
           persistence:
