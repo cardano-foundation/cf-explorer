@@ -7,10 +7,10 @@ metadata:
   namespace: {{ $.Release.Namespace }}
 type: Opaque
 data:
-  POSTGRES_USER: cardano
-  POSTGRES_HOST: postgresql
-  POSTGRES_DB: explorer_api
-  # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}
+  POSTGRES_HOST: {{ .dbHost | default "postgresql" | b64enc | quote }}
+  POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
+  POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
   POSTGRES_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
   POSTGRES_USER_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
   POSTGRES_REPLICATION_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
@@ -31,13 +31,13 @@ spec:
     helm:
       values: |
         auth:
-          username: cardano
+          username: {{ .dbUser | default "cardano" }}
           existingSecret: postgres-secrets
           secretKeys:
             adminPasswordKey: POSTGRES_PASSWORD
             userPasswordKey: POSTGRES_USER_PASSWORD
             replicationPasswordKey: POSTGRES_REPLICATION_PASSWORD
-          database: explorer_api
+          database: {{ .dbName | default "explorer_api" }}
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
