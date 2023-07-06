@@ -34,7 +34,7 @@ spec:
                   key: {{ .jira.widget.secretKey }}
 
             - name: REACT_APP_NETWORK
-              value: {{ tpl .reactAppNetwork }}
+              value: {{ tpl .reactAppNetwork $ }}
             - name: REACT_APP_API_URL
               value: {{ tpl .reactAppApiUrl $ }}
             - name: REACT_APP_PREPROD_APP_URL
