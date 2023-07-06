@@ -23,6 +23,14 @@ cf-explorer:
       image:
         tag: "0.3.4"
     explorerApi:
+      s3:
+        bucketName: dev-mr-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.3.14"
     explorerRewardsApi:
@@ -38,6 +46,14 @@ cf-explorer:
         tag: "0.4.4"
     consumerSchedules:
       enabled: true
+      s3:
+        bucketName: dev-mr-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.2.4-SNAPSHOT"
 
