@@ -7,7 +7,11 @@ metadata:
   name: cf-explorer-fe
 spec:
   rules:
+    {{ if eq .Values.network "mainnet" }}
     - host: {{ $.Values.domain }}
+    {{ else }}
+    - host: {{ $.Values.network }}.{{ $.Values.domain }}
+    {{ end }}
       http:
         paths:
           - path: /
@@ -19,6 +23,10 @@ spec:
                   number: {{ .port }}
   tls:
     - hosts:
+        {{ if eq .Values.network "mainnet" }}
         - {{ $.Values.domain }}
+        {{ else }}
+        - {{ $.Values.network }}.{{ $.Values.domain }}
+        {{ end }}
 {{ end }}
 {{ end }}
