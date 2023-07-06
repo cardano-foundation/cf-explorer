@@ -8,9 +8,9 @@ metadata:
 spec:
   rules:
     {{ if eq .Values.network "mainnet" }}
-    - host: {{ $.Values.domain }}
+    - host: {{ .Values.domain }}
     {{ else }}
-    - host: {{ $.Values.network }}.{{ $.Values.domain }}
+    - host: {{ .Values.network }}.{{ .Values.domain }}
     {{ end }}
       http:
         paths:
@@ -24,9 +24,9 @@ spec:
   tls:
     - hosts:
         {{ if eq .Values.network "mainnet" }}
-        - {{ $.Values.domain }}
+        - {{ .Values.domain }}
         {{ else }}
-        - {{ $.Values.network }}.{{ $.Values.domain }}
+        - {{ .Values.network }}.{{ .Values.domain }}
         {{ end }}
 {{ end }}
 {{ end }}
