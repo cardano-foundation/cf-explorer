@@ -7,7 +7,11 @@ metadata:
   name: cf-explorer-api
 spec:
   rules:
-    - host: api.{{ $.Values.domain }}
+    {{- if eq $.Values.network "mainnet" }}
+    - host: "api.{{ $.Values.domain }}"
+    {{- else }}
+    - host: "api.{{ $.Values.network }}.{{ $.Values.domain }}"
+    {{- end }}
       http:
         paths:
           - path: /
@@ -19,6 +23,10 @@ spec:
                   number: {{ .port }}
   tls:
     - hosts:
-        - api.{{ $.Values.domain }}
+        {{- if eq $.Values.network "mainnet" }}
+        - "api.{{ $.Values.domain }}"
+        {{- else }}
+        - "api.{{ $.Values.network }}.{{ $.Values.domain }}"
+        {{- end }}
 {{ end }}
 {{ end }}

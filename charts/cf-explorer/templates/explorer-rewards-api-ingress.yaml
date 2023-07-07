@@ -7,7 +7,11 @@ metadata:
   name: cf-explorer-rewards-api
 spec:
   rules:
-    - host: rewards-api.{{ $.Values.domain }}
+    {{- if eq $.Values.network "mainnet" }}
+    - host: "rewards-api.{{ $.Values.domain }}"
+    {{- else }}
+    - host: "rewards-api.{{ $.Values.network }}.{{ $.Values.domain }}"
+    {{- end }}
       http:
         paths:
           - path: /
@@ -19,6 +23,10 @@ spec:
                   number: {{ .port }}
   tls:
     - hosts:
-        - api.{{ $.Values.domain }}
+        {{- if eq $.Values.network "mainnet" }}
+        - "rewards-api.{{ $.Values.domain }}"
+        {{- else }}
+        - "rewards-api.{{ $.Values.network }}.{{ $.Values.domain }}"
+        {{- end }}
 {{ end }}
 {{ end }}
