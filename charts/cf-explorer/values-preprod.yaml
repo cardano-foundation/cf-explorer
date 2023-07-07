@@ -44,6 +44,8 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+  reactAppApiUrl: "https://api.{{ .Values.network }}.{{ .Values.domain }}/api/v1"
+  reactAppAuthUrl: "https://auth-api.{{ .Values.network }}.{{ .Values.domain }}/api/v1"
 
 consumerSchedules:
   enabled: true
