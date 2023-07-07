@@ -235,7 +235,7 @@ explorerFrontEnd:
   reactAppAuthUrl: "https://auth-api.{{ .Values.network }}.{{ .Values.domain }}/api/v1"
   reactAppNetwork: "{{ .Values.network }}"
 
-  port: 1102
+  port: 80
 
   service:
     type: ClusterIP
