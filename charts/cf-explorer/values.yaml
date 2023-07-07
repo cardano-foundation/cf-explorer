@@ -20,7 +20,7 @@ crawler:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secret
+      name: redis-secrets
       key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
@@ -115,7 +115,7 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secret
+      name: redis-secrets
       key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
@@ -200,7 +200,7 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secret
+      name: redis-secrets
       key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
@@ -278,7 +278,7 @@ consumerSchedules:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secret
+      name: redis-secrets
       key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
