@@ -9,19 +9,20 @@ spec:
   headers:
     customResponseHeaders:
       Cache-Control: "max-age=30, must-revalidate"
+  {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cf-explorer-fe
+  name: "cf-explorer-fe-{{ $v.name }}"
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: kube-system-api-cache-header-rewrite@kubernetescrd
 spec:
   rules:
     {{- if eq $.Values.network "mainnet" }}
-    - host: "{{ $.Values.domain }}"
+    - host: "{{ $v.domain }}"
     {{- else }}
-    - host: "{{ $.Values.network }}.{{ $.Values.domain }}"
+    - host: "{{ $.Values.network }}.{{ $v.domain }}"
     {{- end }}
       http:
         paths:
@@ -35,9 +36,10 @@ spec:
   tls:
     - hosts:
         {{- if eq $.Values.network "mainnet" }}
-        - "{{ $.Values.domain }}"
+        - "{{ $v.domain }}"
         {{- else }}
-        - "{{ $.Values.network }}.{{ $.Values.domain }}"
+        - "{{ $.Values.network }}.{{ $v.domain }}"
         {{- end }}
+  {{- end }}
 {{ end }}
 {{ end }}

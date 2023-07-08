@@ -1,16 +1,17 @@
 {{ with .Values.explorerRewardsApi }}
 {{ if .enabled }}
+  {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cf-explorer-rewards-api
+  name: "cf-explorer-rewards-api-{{ $v.name }}"
 spec:
   rules:
     {{- if eq $.Values.network "mainnet" }}
-    - host: "rewards-api.{{ $.Values.domain }}"
+    - host: "rewards-api.{{ $v.domain }}"
     {{- else }}
-    - host: "rewards-api.{{ $.Values.network }}.{{ $.Values.domain }}"
+    - host: "rewards-api.{{ $.Values.network }}.{{ $v.domain }}"
     {{- end }}
       http:
         paths:
@@ -24,9 +25,10 @@ spec:
   tls:
     - hosts:
         {{- if eq $.Values.network "mainnet" }}
-        - "rewards-api.{{ $.Values.domain }}"
+        - "rewards-api.{{ $v.domain }}"
         {{- else }}
-        - "rewards-api.{{ $.Values.network }}.{{ $.Values.domain }}"
+        - "rewards-api.{{ $.Values.network }}.{{ $v.domain }}"
         {{- end }}
+  {{- end }}
 {{ end }}
 {{ end }}

@@ -1,16 +1,17 @@
 {{ with .Values.explorerAuthentication }}
 {{ if .enabled }}
+  {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cf-explorer-authentication
+  name: "cf-explorer-authentication-{{ $v.name }}"
 spec:
   rules:
     {{- if eq $.Values.network "mainnet" }}
-    - host: "auth-api.{{ $.Values.domain }}"
+    - host: "auth-api.{{ $v.domain }}"
     {{- else }}
-    - host: "auth-api.{{ $.Values.network }}.{{ $.Values.domain }}"
+    - host: "auth-api.{{ $.Values.network }}.{{ $v.domain }}"
     {{- end }}
       http:
         paths:
@@ -24,9 +25,10 @@ spec:
   tls:
     - hosts:
         {{- if eq $.Values.network "mainnet" }}
-        - "auth-api.{{ $.Values.domain }}"
+        - "auth-api.{{ $v.domain }}"
         {{- else }}
-        - "auth-api.{{ $.Values.network }}.{{ $.Values.domain }}"
+        - "auth-api.{{ $.Values.network }}.{{ $v.domain }}"
         {{- end }}
+  {{- end }}
 {{ end }}
 {{ end }}

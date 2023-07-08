@@ -3,6 +3,13 @@ stage: stg
 network: mainnet
 
 domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+ingressDomains:
+  - name: cloudfront
+    domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
+  - name: global-lb
+    domain: stg.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+  - name: eu-west-1
+    domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
