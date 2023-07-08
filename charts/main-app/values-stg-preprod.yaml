@@ -9,9 +9,9 @@ cf-explorer-infra:
   postgresql:
     enabled: false
   redis:
-    enabled: false
+    enabled: true
   kafka:
-    dbSize: 750Gi
+    dbSize: 20Gi
 
 cf-explorer:
   values:
@@ -20,7 +20,7 @@ cf-explorer:
       image:
         tag: "0.2.7"
       redis:
-        mode: elasticache
+        mode: standalone
     consumer:
       enabled: true
       image:
@@ -29,7 +29,7 @@ cf-explorer:
       image:
         tag: "0.3.13"
       redis:
-        mode: elasticache
+        mode: standalone
     explorerRewardsApi:
       enabled: true
       image:
@@ -39,7 +39,7 @@ cf-explorer:
       image:
         tag: "0.1.4-SNAPSHOT"
       redis:
-        mode: elasticache
+        mode: standalone
     explorerFrontEnd:
       image:
         tag: "0.4.0"
@@ -47,7 +47,7 @@ cf-explorer:
       image:
         tag: "0.2.4-SNAPSHOT"
       redis:
-        mode: elasticache
+        mode: standalone
 
 argo-cd:
   server:
