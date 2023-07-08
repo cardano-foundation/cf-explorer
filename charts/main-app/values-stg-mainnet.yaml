@@ -31,7 +31,7 @@ cf-explorer:
         mode: standalone
     consumer:
       enabled: true
-      springProfiles: aws
+      springProfiles: aws,redis-standalone
       image:
         tag: "0.3.6-SNAPSHOT"
     explorerApi:
