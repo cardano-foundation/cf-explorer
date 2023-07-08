@@ -34,6 +34,8 @@ cf-explorer:
       springProfiles: aws,redis-standalone
       image:
         tag: "0.3.6-SNAPSHOT"
+      redis:
+        mode: standalone
     explorerApi:
       s3:
         bucketName: stg-cf-explorer-preprod-reports

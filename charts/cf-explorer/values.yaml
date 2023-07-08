@@ -75,6 +75,16 @@ consumer:
       dbKey: POSTGRES_DB
       passwordKey: POSTGRES_PASSWORD
 
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
+    secret:
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
+    standalone:
+      host: redis-headless
+      port: 6379
+
   jpa:
     showSql: false
 
