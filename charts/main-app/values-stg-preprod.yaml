@@ -2,11 +2,13 @@ stage: stg
 
 network: preprod
 
-domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
   postgresql:
+    enabled: false
+  redis:
     enabled: false
   kafka:
     dbSize: 750Gi
@@ -17,6 +19,8 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.7"
+      redis:
+        mode: elasticache
     consumer:
       enabled: true
       image:
@@ -24,6 +28,8 @@ cf-explorer:
     explorerApi:
       image:
         tag: "0.3.13"
+      redis:
+        mode: elasticache
     explorerRewardsApi:
       enabled: true
       image:
@@ -32,15 +38,19 @@ cf-explorer:
       replicas: 1
       image:
         tag: "0.1.4-SNAPSHOT"
+      redis:
+        mode: elasticache
     explorerFrontEnd:
       image:
         tag: "0.4.0"
     consumerSchedules:
       image:
         tag: "0.2.4-SNAPSHOT"
+      redis:
+        mode: elasticache
 
 argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+        - argocd.stg.cf-explorer-preprod.metadata.dev.cf-deployments.org

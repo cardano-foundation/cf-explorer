@@ -103,6 +103,19 @@ spec:
                   key: {{ .redis.secret.key }}
             - name: NODE_ADDRESSES
               value: {{ .redis.cluster.hosts }}
+            {{- else if eq .redis.mode "elasticache" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: REDIS_ENDPOINT
+            - name: REDIS_STANDALONE_PORT
+              value: "6379"
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
