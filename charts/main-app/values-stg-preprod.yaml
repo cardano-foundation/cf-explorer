@@ -30,7 +30,7 @@ cf-explorer:
       redis:
         mode: standalone
     consumer:
-      enabled: true
+      enabled: false
       image:
         tag: "0.3.5"
     explorerApi:
@@ -63,7 +63,7 @@ cf-explorer:
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
     consumerSchedules:
-      enabled: true
+      enabled: false
       s3:
         bucketName: stg-cf-explorer-preprod-reports
         region: eu-west-1
