@@ -20,11 +20,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: kube-system-api-cache-header-rewrite@kubernetescrd
 spec:
   rules:
-    {{- if eq $.Values.network "mainnet" }}
     - host: "{{ $v.domain }}"
-    {{- else }}
-    - host: "{{ $.Values.network }}.{{ $v.domain }}"
-    {{- end }}
       http:
         paths:
           - path: /
@@ -36,11 +32,7 @@ spec:
                   number: {{ $root.port }}
   tls:
     - hosts:
-        {{- if eq $.Values.network "mainnet" }}
         - "{{ $v.domain }}"
-        {{- else }}
-        - "{{ $.Values.network }}.{{ $v.domain }}"
-        {{- end }}
   {{- end }}
 {{ end }}
 {{ end }}

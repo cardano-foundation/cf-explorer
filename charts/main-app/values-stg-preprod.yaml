@@ -58,6 +58,9 @@ cf-explorer:
     explorerFrontEnd:
       image:
         tag: "0.4.0"
+      reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
+      reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
+      reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
     consumerSchedules:
       enabled: true
       s3:

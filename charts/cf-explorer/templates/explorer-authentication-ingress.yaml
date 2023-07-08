@@ -9,11 +9,7 @@ metadata:
   name: "cf-explorer-authentication-{{ $v.name }}"
 spec:
   rules:
-    {{- if eq $.Values.network "mainnet" }}
     - host: "auth-api.{{ $v.domain }}"
-    {{- else }}
-    - host: "auth-api.{{ $.Values.network }}.{{ $v.domain }}"
-    {{- end }}
       http:
         paths:
           - path: /
@@ -25,11 +21,7 @@ spec:
                   number: {{ $root.port }}
   tls:
     - hosts:
-        {{- if eq $.Values.network "mainnet" }}
         - "auth-api.{{ $v.domain }}"
-        {{- else }}
-        - "auth-api.{{ $.Values.network }}.{{ $v.domain }}"
-        {{- end }}
   {{- end }}
 {{ end }}
 {{ end }}
