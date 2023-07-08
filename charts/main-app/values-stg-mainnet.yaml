@@ -20,7 +20,7 @@ cf-explorer:
         domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
       - name: global-lb
         domain: stg.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
-      - name: eu-west-1
+      - name: eu-west-1-lb
         domain: stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: true

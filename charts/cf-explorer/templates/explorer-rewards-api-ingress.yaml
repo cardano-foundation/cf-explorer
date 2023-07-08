@@ -1,5 +1,6 @@
 {{ with .Values.explorerRewardsApi }}
 {{ if .enabled }}
+{{- $root := . -}}
   {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
@@ -21,7 +22,7 @@ spec:
               service:
                 name: cf-explorer-rewards-api
                 port:
-                  number: {{ .port }}
+                  number: {{ $root.port }}
   tls:
     - hosts:
         {{- if eq $.Values.network "mainnet" }}

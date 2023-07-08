@@ -1,5 +1,6 @@
 {{ with .Values.explorerFrontEnd }}
 {{ if .enabled }}
+{{- $root := . -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -32,7 +33,7 @@ spec:
               service:
                 name: cf-explorer-fe
                 port:
-                  number: {{ .port }}
+                  number: {{ $root.port }}
   tls:
     - hosts:
         {{- if eq $.Values.network "mainnet" }}
