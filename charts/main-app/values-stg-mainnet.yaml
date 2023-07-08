@@ -14,6 +14,7 @@ cf-explorer-infra:
     dbSize: 750Gi
 
 cf-explorer:
+  enabled: true
   values:
     ingressDomains:
       - name: cloudfront
@@ -30,8 +31,9 @@ cf-explorer:
         mode: standalone
     consumer:
       enabled: true
+      springProfiles: aws
       image:
-        tag: "0.3.4"
+        tag: "0.3.6-SNAPSHOT"
     explorerApi:
       s3:
         bucketName: stg-cf-explorer-mainnet-reports
