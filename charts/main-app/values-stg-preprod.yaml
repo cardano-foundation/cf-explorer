@@ -14,6 +14,7 @@ cf-explorer-infra:
     dbSize: 20Gi
 
 cf-explorer:
+  enabled: true
   values:
     ingressDomains:
       - name: cloudfront
@@ -31,7 +32,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.2-SNAPSHOT"
+        tag: "0.3.5"
     explorerApi:
       s3:
         bucketName: stg-cf-explorer-preprod-reports
@@ -42,22 +43,22 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.13"
+        tag: "0.3.17"
       redis:
         mode: standalone
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.2-SNAPSHOT"
+        tag: "0.1.2"
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.4-SNAPSHOT"
+        tag: "0.1.5"
       redis:
         mode: standalone
     explorerFrontEnd:
       image:
-        tag: "0.4.0"
+        tag: "0.4.4"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
@@ -72,7 +73,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.4-SNAPSHOT"
+        tag: "0.2.5"
       redis:
         mode: standalone
 
