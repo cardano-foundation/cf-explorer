@@ -11,9 +11,9 @@ data:
   POSTGRES_HOST: {{ .dbHost | default "postgresql" | b64enc | quote }}
   POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
   POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
-  POSTGRES_ADMIN_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
-  POSTGRES_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
-  POSTGRES_REPLICATION_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
+  POSTGRES_ADMIN_PASSWORD: {{ .dbAdminPassword | default "r4nd4lph4num4dm1n" | b64enc | quote }}
+  POSTGRES_PASSWORD: {{ .dbPassword | default "r4nd4lph4num" | b64enc | quote }}
+  POSTGRES_REPLICATION_PASSWORD: {{ .dbReplicationPassword | default "r4nd4lph4numr3pl1" | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
