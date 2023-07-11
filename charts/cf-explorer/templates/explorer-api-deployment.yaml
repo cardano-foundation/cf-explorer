@@ -23,32 +23,32 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
 
-            - name: HOST
+            - name: DB_HOST
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.hostKey }}
-            - name: PORT_DB
+            - name: DB_PORT
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.portKey }}
-            - name: USERNAME_DB
+            - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.userKey }}
-            - name: PASSWORD_DB
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.passwordKey }}
-            - name: DB
+            - name: DB_NAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.dbKey }}
-            - name: SCHEMA
+            - name: DB_SCHEMA
               value: {{ .postgres.schema }}
 
             - name: API_CHECK_REWARD_URL
@@ -111,7 +111,7 @@ spec:
               value: {{ .s3.bucketName }}
             - name: S3_REGION
               value: {{ .s3.region }}
-            - name: STORAGE_ENDPOINT
+            - name: S3_STORAGE_ENDPOINT
               value: {{ .s3.endpoint }}
             - name: S3_ACCESS_KEY
               valueFrom:
