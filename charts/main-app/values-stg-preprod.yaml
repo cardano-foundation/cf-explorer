@@ -56,7 +56,7 @@ cf-explorer:
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.5"
+        tag: "0.1.6-SNAPSHOT"
       redis:
         mode: standalone
     explorerFrontEnd:
@@ -65,6 +65,7 @@ cf-explorer:
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
+      reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
       s3:
