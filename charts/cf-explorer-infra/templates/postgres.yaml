@@ -5,11 +5,6 @@ kind: Secret
 metadata:
   name: "postgres-secrets"
   namespace: {{ $.Release.Namespace }}
-  # this avoids secret overwrite
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 type: Opaque
 data:
   POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}

@@ -5,11 +5,6 @@ kind: Secret
 metadata:
   name: "redis-secrets"
   namespace: {{ $.Release.Namespace }}
-  # this avoids secret overwrite
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 type: Opaque
 data:
   # generate 32 chars long random string, base64 encode it and then double-quote the result string.

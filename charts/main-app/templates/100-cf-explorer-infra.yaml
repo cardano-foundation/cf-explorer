@@ -21,11 +21,24 @@ spec:
 {{ toYaml . | indent 8 }}
       {{- end }}
 
+  ignoreDifferences:
+    - group: core
+      kind: Secret
+      name: redis-secrets
+      jsonPointers:
+        - /data
+    - group: core
+      kind: Secret
+      name: postgres-secrets
+      jsonPointers:
+        - /data
+
   syncPolicy:
     automated:
       prune: true
     syncOptions:
       - CreateNamespace=true
+      - RespectIgnoreDifferences=true
 
   destination:
     namespace: cf-explorer
