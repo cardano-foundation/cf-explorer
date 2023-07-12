@@ -38,7 +38,11 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.1"
+        tag: "0.4.5"
+      reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
       image:
