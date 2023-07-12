@@ -22,14 +22,8 @@ spec:
       {{- end }}
 
   ignoreDifferences:
-    - group: core
-      kind: Secret
-      name: redis-secrets
-      jqPathExpressions:
-        - '.data'
-    - group: core
-      kind: Secret
-      name: postgres-secrets
+    - group: "*"
+      kind: "Secret"
       jqPathExpressions:
         - '.data'
 
