@@ -25,13 +25,13 @@ spec:
     - group: core
       kind: Secret
       name: redis-secrets
-      jsonPointers:
-        - /data
+      jqPathExpressions:
+        - '.data'
     - group: core
       kind: Secret
       name: postgres-secrets
-      jsonPointers:
-        - /data
+      jqPathExpressions:
+        - '.data'
 
   syncPolicy:
     automated:
