@@ -33,7 +33,7 @@ cf-explorer:
       enabled: true
       #springProfiles: aws,redis-standalone
       image:
-        tag: "0.3.5"
+        tag: "0.3.4"
       redis:
         mode: standalone
     explorerApi:
@@ -46,7 +46,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.18-SNAPSHOT-PR318"
+        tag: "0.3.14"
       redis:
         mode: standalone
     explorerRewardsApi:
