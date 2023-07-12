@@ -1,6 +1,15 @@
 {{ with .Values.explorerApi }}
 {{ if .enabled }}
 {{- $root := . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-cache-header-rewrite
+  namespace: kube-system
+spec:
+  headers:
+    customResponseHeaders:
+      Cache-Control: "max-age=30, must-revalidate"
   {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
