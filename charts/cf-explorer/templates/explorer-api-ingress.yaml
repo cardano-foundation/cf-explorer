@@ -10,6 +10,7 @@ spec:
   headers:
     customResponseHeaders:
       Cache-Control: "max-age=30, must-revalidate"
+      expires:
   {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
