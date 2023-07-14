@@ -25,7 +25,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.18-SNAPSHOT-PR325"
+        tag: "0.3.14"
     explorerRewardsApi:
       enabled: true
       image:
@@ -34,11 +34,11 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.6"
+        tag: "0.1.4"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.5-develop"
+        tag: "0.4.5"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
