@@ -42,7 +42,7 @@ cf-explorer:
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
-      reactAppAuthUrl: "https://auth.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+      reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
       image:
