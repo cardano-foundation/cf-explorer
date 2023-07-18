@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: main-app
   annotations:
-    "helm.sh/hook": post-install
+    "helm.sh/hook": post-install, pre-upgrade
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
