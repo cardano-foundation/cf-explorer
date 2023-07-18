@@ -31,6 +31,7 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.3.6"
+      springProfiles: aws
       redis:
         mode: standalone
     explorerApi:
