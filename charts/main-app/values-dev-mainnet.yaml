@@ -16,11 +16,11 @@ cf-explorer:
   values:
     ingressDomains:
       - name: cloudfront
-        domain: dev.cf-explorer-preprod.metadata.dev.cf-deployments.org
+        domain: dev.cf-explorer-mainnet.metadata.dev.cf-deployments.org
       - name: global-lb
-        domain: dev.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+        domain: dev.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
-        domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+        domain: dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: true
       image:
