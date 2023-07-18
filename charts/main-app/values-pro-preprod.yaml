@@ -1,44 +1,40 @@
 stage: stg
 
-network: mainnet
+network: preprod
 
-domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+domain: pro.cf-explorer-mainnet.iris.cardano.org
 
 cf-explorer-infra:
-  enabled: true
-  postgresql:
-    enabled: false
-  redis:
-    enabled: true
-  kafka:
-    dbSize: 750Gi
+  enabled: false
 
 cf-explorer:
   enabled: true
   values:
     ingressDomains:
       - name: cloudfront
-        domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        domain: preprod.iris.cardano.org
       - name: global-lb
-        domain: stg.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
+        domain: pro.cf-explorer-preprod.global.iris.cardano.org
       - name: eu-west-1-lb
-        domain: stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+        domain: pro.cf-explorer-preprod.eu-west-1.iris.cardano.org
+      - name: us-east-1-lb
+        domain: pro.cf-explorer-preprod.us-east-1.iris.cardano.org
     crawler:
       enabled: true
       image:
-        tag: "0.2.7"
+        tag: "0.2.9"
       redis:
         mode: standalone
     consumer:
       enabled: true
       #springProfiles: aws,redis-standalone
       image:
-        tag: "0.3.4"
+        tag: "0.3.6"
       redis:
         mode: standalone
     explorerApi:
       s3:
-        bucketName: stg-cf-explorer-mainnet-reports
+        bucketName: pro-cf-explorer-preprod-reports
         region: eu-west-1
         endpoint: https://s3-eu-west-1.amazonaws.com
         secret:
@@ -46,30 +42,30 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.14"
+        tag: "0.3.19"
       redis:
         mode: standalone
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.2"
+        tag: "0.1.4"
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.6-SNAPSHOT"
+        tag: "0.1.6"
       redis:
         mode: standalone
     explorerFrontEnd:
       image:
-        tag: "0.4.4"
-      reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
-      reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
-      reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
-      reactAppAuthUrl: "https://auth-api.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+        tag: "0.4.6"
+      reactAppPreProdAppUrl: "https://preprod.iris.cardano.org"
+      reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
+      reactAppMainnetAppUrl: "https://iris.cardano.org"
+      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preprod.eu-west-1.iris.cardano.org/api/v1"
     consumerSchedules:
       enabled: true
       s3:
-        bucketName: stg-cf-explorer-mainnet-reports
+        bucketName: pro-cf-explorer-preprod-reports
         region: eu-west-1
         endpoint: https://s3-eu-west-1.amazonaws.com
         secret:
@@ -77,7 +73,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.5"
+        tag: "0.2.7"
       redis:
         mode: standalone
 
@@ -85,4 +81,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        - argocd.pro.cf-explorer-preprod.eu-west-1.iris.cardano.org

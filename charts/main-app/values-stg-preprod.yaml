@@ -2,45 +2,87 @@ stage: stg
 
 network: preprod
 
-domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
   postgresql:
     enabled: false
+  redis:
+    enabled: true
   kafka:
-    dbSize: 750Gi
+    dbSize: 20Gi
 
 cf-explorer:
+  enabled: true
   values:
+    ingressDomains:
+      - name: cloudfront
+        domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
+      - name: global-lb
+        domain: stg.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+      - name: eu-west-1-lb
+        domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: true
       image:
         tag: "0.2.7"
+      redis:
+        mode: standalone
     consumer:
       enabled: true
+      #springProfiles: aws,redis-standalone
       image:
-        tag: "0.3.2-SNAPSHOT"
+        tag: "0.3.4"
+      redis:
+        mode: standalone
     explorerApi:
+      s3:
+        bucketName: stg-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.13"
+        tag: "0.3.14"
+      redis:
+        mode: standalone
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.2-SNAPSHOT"
+        tag: "0.1.3-SNAPSHOT-PR56"
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.4-SNAPSHOT"
+        tag: "0.1.6"
+      redis:
+        mode: standalone
     explorerFrontEnd:
       image:
-        tag: "0.4.0"
+        tag: "0.4.4"
+      reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
+      reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
+      reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
+      reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
+      enabled: true
+      s3:
+        bucketName: stg-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.4-SNAPSHOT"
+        tag: "0.2.7"
+      redis:
+        mode: standalone
 
 argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+        - argocd.stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
