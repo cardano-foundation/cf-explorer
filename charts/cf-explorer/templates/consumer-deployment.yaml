@@ -101,10 +101,11 @@ spec:
             - name: FLYWAY_VALIDATE
               value: "true"
 
-            - name: BOOSTRAP_SERVER_HOST
-              value: {{ .kafka.host }}
-            - name: BOOSTRAP_SERVER_PORT
-              value: {{ .kafka.port | quote }}
+            - name: BOOTSTRAP_SERVERS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
 
             - name: BLOCKS_TOPIC
               value: {{ .crawler.blocks.topic }}

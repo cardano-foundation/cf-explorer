@@ -26,7 +26,10 @@ spec:
             - name: PORT
               value: {{ .port | quote }}
             - name: BOOTSTRAP_SERVER
-              value: {{ .kafka.bootstrapServer }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServerSecret.name }}
+                  key: {{ .kafka.bootstrapServerSecret.key }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
@@ -42,10 +45,13 @@ spec:
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.secret.name }}
-                  key: {{ .redis.secret.key }}
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.passwordKey }}
             - name: NODE_ADDRESSES
-              value: {{ .redis.cluster.hosts }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.endpointKey }}
             {{- else if eq .redis.mode "elasticache" }}
             - name: REDIS_STANDALONE_HOST
               valueFrom:
