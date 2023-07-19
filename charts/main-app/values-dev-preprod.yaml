@@ -44,7 +44,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.19"
+        tag: "v0.3.19-1-g503f09b6"
       redis:
         mode: standalone
     explorerRewardsApi:
