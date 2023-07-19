@@ -25,14 +25,24 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     consumer:
       enabled: true
       image:
         tag: "0.3.6"
       springProfiles: aws
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     explorerApi:
       s3:
         bucketName: stg-cf-explorer-preprod-reports
@@ -45,7 +55,12 @@ cf-explorer:
       image:
         tag: "0.3.20"
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     explorerRewardsApi:
       enabled: true
       image:
@@ -56,7 +71,12 @@ cf-explorer:
       image:
         tag: "0.1.6"
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     explorerFrontEnd:
       enabled: true
       image:
@@ -78,7 +98,12 @@ cf-explorer:
       image:
         tag: "0.2.7"
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
 
 argo-cd:
   server:
