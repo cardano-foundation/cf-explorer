@@ -255,7 +255,7 @@ explorerFrontEnd:
 
   jira:
     widget:
-      secretName: jira-widget
+      secretName: infra-secrets
       secretKey: REACT_APP_JSD_WIDGET_KEY
 
 consumerSchedules:
