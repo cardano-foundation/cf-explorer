@@ -17,20 +17,22 @@ spec:
       parameters:
         - name: "domain"
           value: {{ .Values.domain }}
+        - name: "network"
+          value: {{ .Values.network }}
       valueFiles:
-      - values-{{ .Values.stage }}-{{ .Values.network }}.yaml
+        - values-{{ .Values.network }}.yaml
       {{- with index .Values "cf-explorer" "values" }}
       values: |
-{{ toYaml . | indent 8 }}
-      {{- end }}
+  {{ toYaml . | indent 8 }}
+  {{- end }}
 
-  syncPolicy:
-    automated:
-      prune: true
-    syncOptions:
-      - CreateNamespace=true
+syncPolicy:
+  automated:
+    prune: true
+  syncOptions:
+    - CreateNamespace=true
 
-  destination:
-    namespace: cf-explorer
-    server: {{ .Values.spec.destination.server }}
-{{ end }}
+destination:
+  namespace: cf-explorer
+  server: {{ .Values.spec.destination.server }}
+  {{ end }}
