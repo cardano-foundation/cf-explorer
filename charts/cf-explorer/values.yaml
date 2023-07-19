@@ -20,8 +20,8 @@ crawler:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
+      name: infra-other-secrets
+      key: redis
     standalone:
       host: redis-headless
       port: 6379
@@ -68,22 +68,12 @@ consumer:
   postgres:
     schema: mainnet
     secret:
-      name: postgres-secrets
+      name: infra-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
       dbKey: POSTGRES_DB
       passwordKey: POSTGRES_PASSWORD
-
-  redis:
-    ## Redis Standalone Values Example
-    mode: standalone
-    secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
-    standalone:
-      host: redis-headless
-      port: 6379
 
   jpa:
     showSql: false
@@ -125,8 +115,8 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
+      name: infra-other-secrets
+      key: redis
     standalone:
       host: redis-headless
       port: 6379
@@ -142,7 +132,7 @@ explorerApi:
   postgres:
     schema: mainnet
     secret:
-      name: postgres-secrets
+      name: infra-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -179,7 +169,7 @@ explorerRewardsApi:
   postgres:
     schema: mainnet
     secret:
-      name: postgres-secrets
+      name: infra-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -210,8 +200,8 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
+      name: infra-other-secrets
+      key: redis
     standalone:
       host: redis-headless
       port: 6379
@@ -219,7 +209,7 @@ explorerAuthentication:
   postgres:
     schema: mainnet-auth
     secret:
-      name: postgres-secrets
+      name: infra-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -253,7 +243,7 @@ explorerFrontEnd:
 
   jira:
     widget:
-      secretName: infra-secrets
+      secretName: jira-widget
       secretKey: REACT_APP_JSD_WIDGET_KEY
 
 consumerSchedules:
@@ -264,7 +254,7 @@ consumerSchedules:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer-schedules"
     tag: "0.2.2"
 
-  springProfiles: dev,standalone,s3
+  springProfiles: dev,standalone
 
   port: 8080
 
@@ -273,7 +263,7 @@ consumerSchedules:
   postgres:
     schema: mainnet
     secret:
-      name: postgres-secrets
+      name: infra-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -288,8 +278,8 @@ consumerSchedules:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
+      name: infra-other-secrets
+      key: redis
     standalone:
       host: redis-headless
       port: 6379
