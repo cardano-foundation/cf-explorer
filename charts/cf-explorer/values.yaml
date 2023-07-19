@@ -23,8 +23,8 @@ crawler:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -67,6 +67,16 @@ consumer:
   port: 8080
 
   monitoringEnabled: false
+
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
+    secret:
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
+    standalone:
+      host: redis-headless
+      port: 6379
 
   postgres:
     schema: mainnet
@@ -118,8 +128,8 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -203,8 +213,8 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -281,8 +291,8 @@ consumerSchedules:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
