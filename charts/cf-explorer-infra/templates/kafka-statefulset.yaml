@@ -1,5 +1,13 @@
 {{ with .Values.kafka }}
 {{ if .enabled }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "kafka-secrets"
+type: Opaque
+data:
+  # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  KAFKA_BOOTSTRAP_SERVERS_TLS: {{ "kafka-explorer:9092" | b64enc | quote }}
 ---
 apiVersion: apps/v1
 kind: StatefulSet

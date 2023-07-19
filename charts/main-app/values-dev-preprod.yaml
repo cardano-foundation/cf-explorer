@@ -27,6 +27,9 @@ cf-explorer:
         tag: "0.2.10"
       redis:
         mode: standalone
+      kafka:
+        bootstrapServerSecret:
+          name: kafka-secrets
     consumer:
       enabled: true
       image:
