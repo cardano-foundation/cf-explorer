@@ -5,13 +5,7 @@ network: preprod
 domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: true
-  postgresql:
-    enabled: false
-  redis:
-    enabled: false
-  kafka:
-    enabled: false
+  enabled: false
 
 cf-explorer:
   enabled: true
