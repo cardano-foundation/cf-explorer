@@ -79,7 +79,7 @@ consumer:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -144,7 +144,7 @@ explorerApi:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -181,7 +181,7 @@ explorerRewardsApi:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -221,7 +221,7 @@ explorerAuthentication:
   postgres:
     schema: mainnet-auth
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -275,7 +275,7 @@ consumerSchedules:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
