@@ -28,8 +28,8 @@ spec:
             - name: BOOTSTRAP_SERVER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .kafka.bootstrapServerSecret.name }}
-                  key: {{ .kafka.bootstrapServerSecret.key }}
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
