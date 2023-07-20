@@ -46,7 +46,7 @@ cf-explorer:
             passwordKey: REDIS_MASTER_PASSWORD
             endpointKey: REDIS_ENDPOINT
       kafka:
-        useSsl: "false"
+        useSsl: "true"
         bootstrapServersSecret:
           name: infra-secrets
     explorerApi:
