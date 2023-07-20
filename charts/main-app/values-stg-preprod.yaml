@@ -20,9 +20,10 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "v0.2.10-1-gcae23e4"
+        tag: "v0.2.10-2-g92a5e3b"
       springProfiles: n2n,cluster,kafka
       kafka:
+        useSsl: "false"
         bootstrapServersSecret:
           name: infra-secrets
       redis:

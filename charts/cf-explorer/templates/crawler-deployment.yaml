@@ -30,6 +30,8 @@ spec:
                 secretKeyRef:
                   name: {{ .kafka.bootstrapServersSecret.name }}
                   key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafa.useSsl | default "false" }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
