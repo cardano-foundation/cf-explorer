@@ -44,6 +44,9 @@ cf-explorer:
             name: redis-secret
             passwordKey: REDIS_MASTER_PASSWORD
             endpointKey: REDIS_ENDPOINT
+      kafka:
+        bootstrapServersSecret:
+          name: infra-secrets
     explorerApi:
       s3:
         bucketName: stg-cf-explorer-preprod-reports
