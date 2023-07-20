@@ -36,7 +36,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.7-3-g17c09306"
+        tag: "v0.3.7-4-g483ea3b7"
       springProfiles: aws
       redis:
         mode: cluster
@@ -46,6 +46,7 @@ cf-explorer:
             passwordKey: REDIS_MASTER_PASSWORD
             endpointKey: REDIS_ENDPOINT
       kafka:
+        useSsl: "false"
         bootstrapServersSecret:
           name: infra-secrets
     explorerApi:

@@ -13,6 +13,7 @@ crawler:
   monitoringEnabled: false
 
   kafka:
+    useSsl: "false"
     bootstrapServersSecret:
       name: kafka-secrets
       key: KAFKA_BOOTSTRAP_SERVERS_TLS
@@ -284,6 +285,7 @@ consumerSchedules:
       passwordKey: POSTGRES_PASSWORD
 
   kafka:
+    useSsl: "false"
     bootstrapServer: kafka-explorer:9092
     reportsTopic: dev.explorer.api.reports
 

@@ -106,6 +106,8 @@ spec:
                 secretKeyRef:
                   name: {{ .kafka.bootstrapServersSecret.name }}
                   key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafka.useSsl | default "false" | quote }}
 
             - name: BLOCKS_TOPIC
               value: {{ .crawler.blocks.topic }}
