@@ -20,7 +20,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.10"
+        tag: "v0.2.10-1-gcae23e4"
       springProfiles: n2n,cluster,kafka
       kafka:
         bootstrapServersSecret:
