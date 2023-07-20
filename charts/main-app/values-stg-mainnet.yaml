@@ -5,13 +5,7 @@ network: mainnet
 domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: true
-  postgresql:
-    enabled: false
-  redis:
-    enabled: false
-  kafka:
-    enabled: false
+  enabled: false
 
 cf-explorer:
   enabled: true
@@ -26,18 +20,37 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.9"
+        tag: "v0.2.10-2-g92a5e3b"
+      springProfiles: n2n,cluster,kafka
+      kafka:
+        useSsl: "true"
+        bootstrapServersSecret:
+          name: infra-secrets
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secrets
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     consumer:
       enabled: true
-      #springProfiles: aws,redis-standalone
       image:
-        tag: "0.3.6"
+        tag: "v0.3.7-4-g483ea3b7"
       springProfiles: aws
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
+      kafka:
+        useSsl: "true"
+        bootstrapServersSecret:
+          name: infra-secrets
     explorerApi:
+      enabled: false
       s3:
         bucketName: stg-cf-explorer-mainnet-reports
         region: eu-west-1
@@ -49,20 +62,30 @@ cf-explorer:
       image:
         tag: "0.3.20"
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     explorerRewardsApi:
-      enabled: true
+      enabled: false
       image:
         tag: "0.1.4"
     explorerAuthentication:
-      enabled: true
+      enabled: false
       replicas: 1
       image:
         tag: "0.1.6"
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
     explorerFrontEnd:
-      enabled: true
+      enabled: false
       image:
         tag: "0.4.6"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
@@ -70,7 +93,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: true
+      enabled: false
       s3:
         bucketName: stg-cf-explorer-mainnet-reports
         region: eu-west-1
@@ -82,7 +105,12 @@ cf-explorer:
       image:
         tag: "0.2.7"
       redis:
-        mode: standalone
+        mode: cluster
+        cluster:
+          secret:
+            name: redis-secret
+            passwordKey: REDIS_MASTER_PASSWORD
+            endpointKey: REDIS_ENDPOINT
 
 argo-cd:
   server:
