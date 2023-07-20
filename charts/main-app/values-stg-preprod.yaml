@@ -21,6 +21,7 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.9"
+      springProfiles: n2n,cluster,kafka
       kafka:
         bootstrapServersSecret:
           name: infra-secrets
