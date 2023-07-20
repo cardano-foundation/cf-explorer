@@ -35,7 +35,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.6"
+        tag: "v0.3.7-2-g836d7c09"
       springProfiles: aws
       redis:
         mode: cluster
