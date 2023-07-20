@@ -33,11 +33,12 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.6"
+        tag: "0.3.8"
       springProfiles: aws
       redis:
         mode: standalone
     explorerApi:
+      enabled: true
       s3:
         bucketName: dev-cf-explorer-preprod-reports
         region: eu-west-1
@@ -47,13 +48,13 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.20"
+        tag: "0.3.21"
       redis:
         mode: standalone
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.4"
+        tag: "0.1.6"
     explorerAuthentication:
       enabled: true
       replicas: 1

@@ -12,7 +12,7 @@ cf-explorer-infra:
     dbSize: 750Gi
 
 cf-explorer:
-  enabled: true
+  enabled: false
   values:
     ingressDomains:
       - name: cloudfront
@@ -24,18 +24,21 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.9"
+        tag: "0.2.10"
       redis:
         mode: standalone
+      kafka:
+        bootstrapServerSecret:
+          name: kafka-secrets
     consumer:
-      enabled: false
+      enabled: true
       image:
-        tag: "0.3.6"
+        tag: "0.3.8"
       springProfiles: aws
       redis:
         mode: standalone
     explorerApi:
-      enabled: false
+      enabled: true
       s3:
         bucketName: dev-cf-explorer-mainnet-reports
         region: eu-west-1
@@ -45,13 +48,13 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.20"
+        tag: "0.3.21"
       redis:
         mode: standalone
     explorerRewardsApi:
-      enabled: false
+      enabled: true
       image:
-        tag: "0.1.4"
+        tag: "0.1.6"
     explorerAuthentication:
       enabled: true
       replicas: 1
@@ -68,7 +71,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: false
+      enabled: true
       s3:
         bucketName: dev-cf-explorer-mainnet-reports
         region: eu-west-1
