@@ -29,7 +29,7 @@ cf-explorer:
         mode: cluster
         cluster:
           secret:
-            name: redis-secret
+            name: redis-secrets
             passwordKey: REDIS_MASTER_PASSWORD
             endpointKey: REDIS_ENDPOINT
     consumer:
