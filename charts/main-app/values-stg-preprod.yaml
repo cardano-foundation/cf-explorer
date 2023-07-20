@@ -93,7 +93,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: false
+      enabled: true
       s3:
         bucketName: stg-cf-explorer-preprod-reports
         region: eu-west-1
