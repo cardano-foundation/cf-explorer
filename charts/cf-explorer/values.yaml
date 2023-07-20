@@ -286,8 +286,9 @@ consumerSchedules:
 
   kafka:
     useSsl: "false"
-    bootstrapServer: kafka-explorer:9092
-    reportsTopic: dev.explorer.api.reports
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   redis:
     ## Redis Standalone Values Example
