@@ -76,7 +76,12 @@ spec:
               value: {{ .network }}
 
             - name: KAFKA_BOOSTRAP_SERVER_URL
-              value: {{ .kafka.bootstrapServer }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafka.useSsl | default "false" | quote }}
             - name: KAFKA_GROUP_ID
               value: {{ .network }}
             - name: KAFKA_REPORTS_TOPIC

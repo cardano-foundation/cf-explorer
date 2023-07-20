@@ -103,7 +103,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.7"
+        tag: "v0.2.8-1-gb09e61d"
       redis:
         mode: cluster
         cluster:
@@ -111,6 +111,10 @@ cf-explorer:
             name: redis-secret
             passwordKey: REDIS_MASTER_PASSWORD
             endpointKey: REDIS_ENDPOINT
+      kafka:
+        useSsl: "true"
+        bootstrapServersSecret:
+          name: infra-secrets
 
 argo-cd:
   server:
