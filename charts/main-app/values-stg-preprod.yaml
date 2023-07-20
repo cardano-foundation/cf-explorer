@@ -23,7 +23,7 @@ cf-explorer:
         tag: "v0.2.10-2-g92a5e3b"
       springProfiles: n2n,cluster,kafka
       kafka:
-        useSsl: "false"
+        useSsl: "true"
         bootstrapServersSecret:
           name: infra-secrets
       redis:
