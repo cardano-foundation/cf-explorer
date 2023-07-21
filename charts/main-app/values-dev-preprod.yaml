@@ -12,7 +12,7 @@ cf-explorer-infra:
     dbSize: 20Gi
 
 cf-explorer:
-  enabled: false
+  enabled: true
   values:
     ingressDomains:
       - name: cloudfront
