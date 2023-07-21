@@ -5,7 +5,7 @@ network: mainnet
 domain: dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
   postgresql:
     dbSize: 1500Gi
   kafka:
