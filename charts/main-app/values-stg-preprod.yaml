@@ -50,7 +50,7 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
     explorerApi:
-      enabled: false
+      enabled: true
       s3:
         bucketName: stg-cf-explorer-preprod-reports
         region: eu-west-1
@@ -61,6 +61,7 @@ cf-explorer:
           secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.3.20"
+      springProfiles: dev,cluster,koios,s3
       redis:
         mode: cluster
         cluster:
