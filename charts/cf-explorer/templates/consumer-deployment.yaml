@@ -99,7 +99,7 @@ spec:
             - name: FLYWAY_ENABLE
               value: "true"
             - name: FLYWAY_VALIDATE
-              value: "true"
+              value: "false"
 
             - name: BOOTSTRAP_SERVERS
               valueFrom:
