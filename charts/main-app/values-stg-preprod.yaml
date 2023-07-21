@@ -104,6 +104,7 @@ cf-explorer:
           secretKeyKey: S3_SECRET_KEY
       image:
         tag: "v0.2.8-1-gb09e61d"
+      springProfiles: dev,cluster,koios,s3
       redis:
         mode: cluster
         cluster:
