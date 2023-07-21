@@ -289,6 +289,7 @@ consumerSchedules:
     bootstrapServersSecret:
       name: kafka-secrets
       key: KAFKA_BOOTSTRAP_SERVERS_TLS
+    reportsTopic: dev.explorer.api.reports
 
   redis:
     ## Redis Standalone Values Example
