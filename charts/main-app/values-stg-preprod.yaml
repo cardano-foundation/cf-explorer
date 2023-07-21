@@ -86,7 +86,7 @@ cf-explorer:
             passwordKey: REDIS_MASTER_PASSWORD
             endpointKey: REDIS_ENDPOINT
     explorerFrontEnd:
-      enabled: false
+      enabled: true
       image:
         tag: "0.4.6"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
