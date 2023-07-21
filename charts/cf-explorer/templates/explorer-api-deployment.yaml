@@ -61,6 +61,8 @@ spec:
               value: "{{ .explorerRewardsUrl }}/api/v1/epoch-stake/fetch"
             - name: API_CHECK_ADA_POTS_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/ada-pots/fetch"
+            - name: API_CHECK_EPOCH_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/epochs/fetch"
 
             - name: API_NEWS_URL
               value: "http://cardano-news-api"
