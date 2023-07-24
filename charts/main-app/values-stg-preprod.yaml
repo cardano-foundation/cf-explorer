@@ -36,7 +36,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.7-4-g483ea3b7"
+        tag: "0.3.8"
       springProfiles: aws
       redis:
         mode: cluster
@@ -104,7 +104,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "v0.2.8-1-gb09e61d"
+        tag: "0.2.8"
       springProfiles: dev,cluster,koios,s3
       redis:
         mode: cluster
