@@ -60,7 +60,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.20"
+        tag: "0.3.21"
       springProfiles: dev,cluster,koios,s3
       redis:
         mode: cluster
@@ -72,12 +72,12 @@ cf-explorer:
     explorerRewardsApi:
       enabled: false
       image:
-        tag: "0.1.4"
+        tag: "0.1.6"
     explorerAuthentication:
       enabled: false
       replicas: 1
       image:
-        tag: "0.1.6"
+        tag: "0.1.7"
       redis:
         mode: cluster
         cluster:
@@ -88,7 +88,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.6"
+        tag: "0.4.8"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
