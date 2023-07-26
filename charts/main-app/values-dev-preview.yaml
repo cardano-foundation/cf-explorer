@@ -12,7 +12,7 @@ cf-explorer-infra:
     dbSize: 20Gi
 
 cf-explorer:
-  enabled: false
+  enabled: true
   values:
     ingressDomains:
       - name: cloudfront
@@ -33,7 +33,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.8"
+        tag: "0.3.9"
       springProfiles: aws
       redis:
         mode: standalone
