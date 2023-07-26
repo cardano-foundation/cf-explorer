@@ -103,6 +103,16 @@ spec:
               value: {{ tpl .swaggerClientUrl $ }}
             - name: SWAGGER_SERVER_URL
               value: {{ .swaggerServerUrl }}
+            - name: SES_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: SES_ACCESS_KEY_ID
+            - name: SES_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: SES_SECRET_ACCESS_KEY
 
           ports:
             - name: api
