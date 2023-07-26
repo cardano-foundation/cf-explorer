@@ -9,7 +9,7 @@ crawler:
     node:
       networkMagic: "2"
       address: preview-node.world.dev.cardano.org
-      port: 30000
+      port: 30002
 
 consumer:
 
