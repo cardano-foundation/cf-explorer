@@ -7,7 +7,7 @@ crawler:
 
   cardano:
     node:
-      networkMagic: "1"
+      networkMagic: "2"
       address: preview-node.world.dev.cardano.org
       port: 30000
 
@@ -22,7 +22,7 @@ consumer:
   postgres:
     schema: preview
 
-  networkMagic: "1"
+  networkMagic: "2"
 
 explorerApi:
   enabled: true
