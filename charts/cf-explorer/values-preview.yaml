@@ -1,0 +1,53 @@
+crawler:
+
+  monitoringEnabled: true
+
+  crawler:
+    name: preview-crawler
+
+  cardano:
+    node:
+      networkMagic: "1"
+      address: preview-node.world.dev.cardano.org
+      port: 30000
+
+consumer:
+
+  springProfiles: dev
+
+  monitoringEnabled: true
+  
+  network: preview
+
+  postgres:
+    schema: preview
+
+  networkMagic: "1"
+
+explorerApi:
+  enabled: true
+  postgres:
+    schema: preview
+  monitoringEnabled: true
+
+explorerRewardsApi:
+  enabled: true
+  postgres:
+    schema: preview
+  monitoringEnabled: true
+
+explorerAuthentication:
+  enabled: true
+  postgres:
+    schema: preview-auth
+  monitoringEnabled: true
+
+explorerFrontEnd:
+  enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: preview
+  monitoringEnabled: true
+  network: preview
