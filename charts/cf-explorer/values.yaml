@@ -233,6 +233,7 @@ explorerAuthentication:
   flywayEnabled: true
   swaggerClientUrl: https://{{ .Values.domain }}
   swaggerServerUrl: http://localhost:8021
+  emailFrom: iris@{{ .Values.domain }}
 
 explorerFrontEnd:
   enabled: true
