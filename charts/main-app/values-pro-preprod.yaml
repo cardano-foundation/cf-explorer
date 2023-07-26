@@ -1,0 +1,84 @@
+stage: stg
+
+network: preprod
+
+domain: pro.cf-explorer-preprod.iris.cardano.org
+
+cf-explorer-infra:
+  enabled: false
+
+cf-explorer:
+  enabled: true
+  values:
+    ingressDomains:
+      - name: cloudfront
+        domain: preprod.iris.cardano.org
+      - name: global-lb
+        domain: pro.cf-explorer-preprod.global.iris.cardano.org
+      - name: eu-west-1-lb
+        domain: pro.cf-explorer-preprod.eu-west-1.iris.cardano.org
+      - name: us-east-1-lb
+        domain: pro.cf-explorer-preprod.us-east-1.iris.cardano.org
+    crawler:
+      enabled: true
+      image:
+        tag: "0.2.9"
+      redis:
+        mode: standalone
+    consumer:
+      enabled: true
+      image:
+        tag: "0.3.6"
+      springProfiles: aws
+      redis:
+        mode: standalone
+    explorerApi:
+      s3:
+        bucketName: pro-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
+      image:
+        tag: "0.3.20"
+      redis:
+        mode: standalone
+    explorerRewardsApi:
+      enabled: true
+      image:
+        tag: "0.1.4"
+    explorerAuthentication:
+      replicas: 1
+      image:
+        tag: "0.1.6"
+      redis:
+        mode: standalone
+    explorerFrontEnd:
+      image:
+        tag: "0.4.6"
+      reactAppPreProdAppUrl: "https://preprod.iris.cardano.org"
+      reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
+      reactAppMainnetAppUrl: "https://iris.cardano.org"
+      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preprod.eu-west-1.iris.cardano.org/api/v1"
+    consumerSchedules:
+      enabled: true
+      s3:
+        bucketName: pro-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
+      image:
+        tag: "0.2.7"
+      redis:
+        mode: standalone
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.pro.cf-explorer-preprod.eu-west-1.iris.cardano.org

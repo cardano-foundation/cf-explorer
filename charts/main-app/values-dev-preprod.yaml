@@ -14,39 +14,76 @@ cf-explorer-infra:
 cf-explorer:
   enabled: true
   values:
+    ingressDomains:
+      - name: cloudfront
+        domain: dev.cf-explorer-preprod.metadata.dev.cf-deployments.org
+      - name: global-lb
+        domain: dev.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+      - name: eu-west-1-lb
+        domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: true
       image:
-        tag: "0.2.7"
+        tag: "0.2.11"
+      redis:
+        mode: standalone
+      kafka:
+        bootstrapServerSecret:
+          name: kafka-secrets
     consumer:
       enabled: true
       image:
-        tag: "0.3.4"
+        tag: "0.3.8"
+      springProfiles: aws
+      redis:
+        mode: standalone
     explorerApi:
       enabled: true
+      s3:
+        bucketName: dev-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.14"
+        tag: "0.3.22"
+      redis:
+        mode: standalone
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.4"
+        tag: "0.1.6"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.4"
+        tag: "0.1.7"
+      redis:
+        mode: standalone
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.6"
+        tag: "0.4.8"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
+      s3:
+        bucketName: dev-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.4-SNAPSHOT"
+        tag: "0.2.8"
+      redis:
+        mode: standalone
 
 argo-cd:
   server:

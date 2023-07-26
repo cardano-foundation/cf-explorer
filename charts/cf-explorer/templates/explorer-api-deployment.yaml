@@ -23,32 +23,32 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
 
-            - name: HOST
+            - name: DB_HOST
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.hostKey }}
-            - name: PORT_DB
+            - name: DB_PORT
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.portKey }}
-            - name: USERNAME_DB
+            - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.userKey }}
-            - name: PASSWORD_DB
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.passwordKey }}
-            - name: DB
+            - name: DB_NAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.dbKey }}
-            - name: SCHEMA
+            - name: DB_SCHEMA
               value: {{ .postgres.schema }}
 
             - name: API_CHECK_REWARD_URL
@@ -61,6 +61,8 @@ spec:
               value: "{{ .explorerRewardsUrl }}/api/v1/epoch-stake/fetch"
             - name: API_CHECK_ADA_POTS_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/ada-pots/fetch"
+            - name: API_CHECK_EPOCH_URL
+              value: "{{ .explorerRewardsUrl }}/api/v1/epochs/fetch"
 
             - name: API_NEWS_URL
               value: "http://cardano-news-api"
@@ -79,10 +81,26 @@ spec:
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.passwordKey }}
+            - name: NODE_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.endpointKey }}
+            {{- else if eq .redis.mode "elasticache" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: REDIS_ENDPOINT
+            - name: REDIS_STANDALONE_PORT
+              value: "6379"
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
-            - name: NODE_ADDRESSES
-              value: {{ .redis.cluster.hosts }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
@@ -95,11 +113,20 @@ spec:
                   key: {{ .redis.secret.key }}
             {{- end }}
             - name: S3_BUCKET_NAME
-              value: {{ .s3.bucketName }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.bucketNameKey }}
             - name: S3_REGION
-              value: {{ .s3.region }}
-            - name: STORAGE_ENDPOINT
-              value: {{ .s3.endpoint }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.regionKey }}
+            - name: S3_STORAGE_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.endpointKey }}
             - name: S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:

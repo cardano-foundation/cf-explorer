@@ -2,16 +2,17 @@ stage: dev
 
 network: preprod
 
-domain: dev-mr.cf-explorer-preprod.metadata.dev.cf-deployments.org
+domain: siri.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
   postgresql:
-    enabled: false
+    dbSize: 150Gi
   kafka:
     dbSize: 20Gi
 
 cf-explorer:
+  enabled: true
   values:
     crawler:
       enabled: true
@@ -20,23 +21,39 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.1"
+        tag: "0.3.4"
     explorerApi:
+      s3:
+        bucketName: dev-mr-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.13"
+        tag: "0.3.14"
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.2-SNAPSHOT"
+        tag: "0.1.2"
     explorerAuthentication:
       replicas: 1
       image:
-        tag: "0.1.3"
+        tag: "0.1.4"
     explorerFrontEnd:
       image:
-        tag: "0.4.0"
+        tag: "0.4.4"
     consumerSchedules:
       enabled: true
+      s3:
+        bucketName: dev-mr-cf-explorer-preprod-reports
+        region: eu-west-1
+        endpoint: https://s3-eu-west-1.amazonaws.com
+        secret:
+          name: infra-secrets
+          accessKeyKey: S3_ACCESS_KEY
+          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.2.4-SNAPSHOT"
 
@@ -44,4 +61,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.dev-mr.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        - argocd.siri.metadata.dev.cf-deployments.org

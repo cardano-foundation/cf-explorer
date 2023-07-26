@@ -51,17 +51,63 @@ spec:
             - name: SCHEMA
               value: {{ .postgres.schema }}
 
+            {{- if eq .redis.mode "sentinel" }}
+            - name: REDIS_MASTER_NAME
+              value: {{ .redis.master.name }}
+            - name: REDIS_SENTINEL_HOST
+              value: {{ .redis.sentinel.host }}
+            - name: REDIS_SENTINEL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "cluster" }}
+            - name: REDIS_CLUSTER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: NODE_ADDRESSES
+              value: {{ .redis.cluster.hosts }}
+            {{- else if eq .redis.mode "elasticache" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: REDIS_ENDPOINT
+            - name: REDIS_STANDALONE_PORT
+              value: "6379"
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- else }}
+            - name: REDIS_STANDALONE_HOST
+              value: {{ .redis.standalone.host }}
+            - name: REDIS_STANDALONE_PORT
+              value: {{ .redis.standalone.port | quote }}
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- end }}
+
             - name: JPA_SHOW_SQL
               value: {{ .jpa.showSql | default false | quote}}
             - name: FLYWAY_ENABLE
               value: "true"
             - name: FLYWAY_VALIDATE
-              value: "true"
+              value: "false"
 
-            - name: BOOSTRAP_SERVER_HOST
-              value: {{ .kafka.host }}
-            - name: BOOSTRAP_SERVER_PORT
-              value: {{ .kafka.port | quote }}
+            - name: BOOTSTRAP_SERVERS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafka.useSsl | default "false" | quote }}
 
             - name: BLOCKS_TOPIC
               value: {{ .crawler.blocks.topic }}

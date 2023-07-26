@@ -21,11 +21,18 @@ spec:
 {{ toYaml . | indent 8 }}
       {{- end }}
 
+  ignoreDifferences:
+    - group: "*"
+      kind: "Secret"
+      jqPathExpressions:
+        - '.data'
+
   syncPolicy:
     automated:
       prune: true
     syncOptions:
       - CreateNamespace=true
+      - RespectIgnoreDifferences=true
 
   destination:
     namespace: cf-explorer

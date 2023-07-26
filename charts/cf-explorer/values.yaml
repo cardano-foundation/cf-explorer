@@ -13,15 +13,17 @@ crawler:
   monitoringEnabled: false
 
   kafka:
-    enabled: true
-    bootstrapServer: kafka-explorer:9092
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   redis:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -65,10 +67,20 @@ consumer:
 
   monitoringEnabled: false
 
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
+    secret:
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
+    standalone:
+      host: redis-headless
+      port: 6379
+
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -79,8 +91,10 @@ consumer:
     showSql: false
 
   kafka:
-    host: kafka-explorer
-    port: 9092
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   crawler:
     blocks:
@@ -115,8 +129,8 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -132,7 +146,7 @@ explorerApi:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -140,13 +154,13 @@ explorerApi:
       passwordKey: POSTGRES_PASSWORD
 
   s3:
-    bucketName: cf-dev-explorer-monolith-reports
-    region: eu-west-1
-    endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-other-secrets
-      accessKeyKey: access-key
-      secretKeyKey: secret-key
+      name: infra-secrets
+      accessKeyKey: S3_ACCESS_KEY
+      secretKeyKey: S3_SECRET_KEY
+      bucketNameKey: S3_BUCKET_NAME
+      regionKey: S3_REGION
+      endpointKey: S3_STORAGE_ENDPOINT
 
 explorerRewardsApi:
   enabled: true
@@ -169,7 +183,7 @@ explorerRewardsApi:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -200,8 +214,8 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -209,7 +223,7 @@ explorerAuthentication:
   postgres:
     schema: mainnet-auth
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -243,7 +257,7 @@ explorerFrontEnd:
 
   jira:
     widget:
-      secretName: jira-widget
+      secretName: infra-secrets
       secretKey: REACT_APP_JSD_WIDGET_KEY
 
 consumerSchedules:
@@ -254,7 +268,7 @@ consumerSchedules:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer-schedules"
     tag: "0.2.2"
 
-  springProfiles: dev,standalone
+  springProfiles: dev,standalone,koios,s3
 
   port: 8080
 
@@ -263,7 +277,7 @@ consumerSchedules:
   postgres:
     schema: mainnet
     secret:
-      name: infra-secrets
+      name: postgres-secrets
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -271,27 +285,30 @@ consumerSchedules:
       passwordKey: POSTGRES_PASSWORD
 
   kafka:
-    bootstrapServer: kafka-explorer:9092
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
     reportsTopic: dev.explorer.api.reports
 
   redis:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-other-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
 
   s3:
-    bucketName: cf-dev-explorer-monolith-reports
-    region: eu-west-1
-    endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
-      name: infra-other-secrets
-      accessKeyKey: access-key
-      secretKeyKey: secret-key
+      name: infra-secrets
+      accessKeyKey: S3_ACCESS_KEY
+      secretKeyKey: S3_SECRET_KEY
+      bucketNameKey: S3_BUCKET_NAME
+      regionKey: S3_REGION
+      endpointKey: S3_STORAGE_ENDPOINT
 
   checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
 

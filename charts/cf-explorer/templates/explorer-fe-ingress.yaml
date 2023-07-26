@@ -1,13 +1,15 @@
 {{ with .Values.explorerFrontEnd }}
 {{ if .enabled }}
+{{- $root := . -}}
+  {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cf-explorer-fe
+  name: "cf-explorer-fe-{{ $v.name }}"
 spec:
   rules:
-    - host: {{ $.Values.domain }}
+    - host: "{{ $v.domain }}"
       http:
         paths:
           - path: /
@@ -16,9 +18,10 @@ spec:
               service:
                 name: cf-explorer-fe
                 port:
-                  number: {{ .port }}
+                  number: {{ $root.port }}
   tls:
     - hosts:
-        - {{ $.Values.domain }}
+        - "{{ $v.domain }}"
+  {{- end }}
 {{ end }}
 {{ end }}
