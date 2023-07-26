@@ -200,7 +200,7 @@ explorerAuthentication:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-authentication"
     tag: "v0.1.1-7-g2e0c779"
 
-  springProfiles: dev, standalone
+  springProfiles: dev, standalone, aws
 
   port: 8080
 
