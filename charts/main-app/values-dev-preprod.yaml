@@ -59,7 +59,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "v0.1.9-8-g8acf1a9"
+        tag: "v0.1.9-9-g6d9ffe0"
       redis:
         mode: standalone
     explorerFrontEnd:
