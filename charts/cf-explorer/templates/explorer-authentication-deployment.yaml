@@ -104,7 +104,7 @@ spec:
             - name: SWAGGER_SERVER_URL
               value: {{ .swaggerServerUrl }}
             - name: SES_EMAIL_FROM
-              value: {{ tpl .emailFrom $ }}
+              value: {{ .emailFrom }}
             - name: SES_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

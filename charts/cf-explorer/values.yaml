@@ -200,7 +200,7 @@ explorerAuthentication:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-authentication"
     tag: "v0.1.1-7-g2e0c779"
 
-  springProfiles: dev, standalone
+  springProfiles: dev, standalone, ses
 
   port: 8080
 
@@ -233,7 +233,7 @@ explorerAuthentication:
   flywayEnabled: true
   swaggerClientUrl: https://{{ .Values.domain }}
   swaggerServerUrl: http://localhost:8021
-  emailFrom: iris@{{ .Values.domain }}
+  emailFrom: iris@metadata.dev.cf-deployments.org
 
 explorerFrontEnd:
   enabled: true
