@@ -33,7 +33,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.9-5-g7a30a536"
+        tag: "0.3.10"
       springProfiles: aws
       redis:
         mode: standalone
