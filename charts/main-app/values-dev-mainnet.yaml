@@ -38,7 +38,7 @@ cf-explorer:
       redis:
         mode: standalone
     explorerApi:
-      enabled: true
+      enabled: false
       s3:
         bucketName: dev-cf-explorer-mainnet-reports
         region: eu-west-1
@@ -52,18 +52,18 @@ cf-explorer:
       redis:
         mode: standalone
     explorerRewardsApi:
-      enabled: true
+      enabled: false
       image:
         tag: "0.1.6"
     explorerAuthentication:
-      enabled: true
+      enabled: false
       replicas: 1
       image:
         tag: "0.1.7"
       redis:
         mode: standalone
     explorerFrontEnd:
-      enabled: true
+      enabled: false
       image:
         tag: "0.4.8"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
@@ -71,7 +71,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: true
+      enabled: false
       s3:
         bucketName: dev-cf-explorer-mainnet-reports
         region: eu-west-1
