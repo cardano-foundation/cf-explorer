@@ -5,11 +5,11 @@ network: preview
 domain: dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
   postgresql:
-    dbSize: 150Gi
+    dbSize: 250Gi
   kafka:
-    dbSize: 20Gi
+    dbSize: 50Gi
 
 cf-explorer:
   enabled: false
