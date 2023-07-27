@@ -5,14 +5,14 @@ network: preview
 domain: dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
   postgresql:
     dbSize: 150Gi
   kafka:
     dbSize: 20Gi
 
 cf-explorer:
-  enabled: true
+  enabled: false
   values:
     ingressDomains:
       - name: cloudfront
