@@ -13,8 +13,6 @@ crawler:
 
 consumer:
 
-  springProfiles: dev
-
   monitoringEnabled: true
   
   network: preprod

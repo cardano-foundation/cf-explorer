@@ -61,7 +61,7 @@ consumer:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
     tag: "0.2.13"
 
-  springProfiles: dev
+  springProfiles: dev, caching
 
   port: 8080
 
