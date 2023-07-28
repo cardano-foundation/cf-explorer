@@ -65,7 +65,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: false
       image:
-        tag: "0.4.8"
+        tag: "0.4.13"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
