@@ -33,7 +33,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.10-5-g9cc6e816"
+        tag: "v0.3.10-4-gbecca7b7"
       redis:
         mode: standalone
     explorerApi:
