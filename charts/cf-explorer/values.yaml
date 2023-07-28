@@ -192,6 +192,10 @@ explorerRewardsApi:
 
   network: mainnet
 
+  koios:
+    baseUrlEnabled: false
+    baseUrl: ""
+
 explorerAuthentication:
   enabled: true
   replicas: 1

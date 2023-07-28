@@ -33,6 +33,8 @@ explorerRewardsApi:
   postgres:
     schema: mainnet
   monitoringEnabled: true
+  koios:
+    baseUrl: "https://koios-api.pro.dandelion-mainnet.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
 
 explorerAuthentication:
   enabled: true
