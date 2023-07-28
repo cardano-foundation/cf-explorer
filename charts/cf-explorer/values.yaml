@@ -312,6 +312,7 @@ consumerSchedules:
       endpointKey: S3_STORAGE_ENDPOINT
 
   checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
+  checkPoolHistoryUrl: http://cf-explorer-api/api/v1/pool-history/fetch
 
   network: mainnet
 

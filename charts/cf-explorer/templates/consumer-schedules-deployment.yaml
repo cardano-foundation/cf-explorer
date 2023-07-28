@@ -89,6 +89,19 @@ spec:
 
             - name: API_CHECK_REWARD_URL
               value: {{ .checkRewardUrl }}
+            - name: API_CHECK_POOL_HISTORY_URL
+              value: {{ .checkPoolHistoryUrl }}
+
+            - name: TOP_DELEGATORS_FIXED_DELAY
+              value: "300000"
+            - name: TOKEN_PAGE_CACHE_FIXED_DELAY
+              value: "100000"
+            - name: TOKEN_PAGE_CACHE_TTL
+              value: "300000"
+            - name: UNIQUE_ACCOUNT_FIXED_DELAY
+              value: "300000"
+            - name: UNIQUE_ACCOUNT_ENABLED
+              value: "true"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
