@@ -72,7 +72,7 @@ spec:
               value: https://github.com/cardano-foundation/cardano-token-registry.git
             - name: TOKEN_METADATA_FOLDER
               value: "/mappings"
-            - name: NETWORK
+            - name: NETWORK_NAME
               value: {{ .network }}
 
             - name: KAFKA_BOOSTRAP_SERVER_URL
