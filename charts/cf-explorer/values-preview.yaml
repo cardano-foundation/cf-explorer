@@ -33,6 +33,7 @@ explorerRewardsApi:
   postgres:
     schema: preview
   monitoringEnabled: true
+  network: preview
   koios:
     baseUrl: "https://koios-api.pro.dandelion-preview.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
 
