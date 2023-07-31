@@ -67,7 +67,7 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
-            - name: NODE_ADDRESSES
+            - name: REDIS_NODE_ADDRESSES
               value: {{ .redis.cluster.hosts }}
             {{- else if eq .redis.mode "elasticache" }}
             - name: REDIS_STANDALONE_HOST
