@@ -65,7 +65,7 @@ spec:
               value: "{{ .explorerRewardsUrl }}/api/v1/epochs/fetch"
 
             - name: API_NEWS_URL
-              value: "http://cardano-news-api"
+              value: "http://cardano-news-api?limit=%d&offset=%d"
             - name: API_NEWS_CACHE_TIME
               value: "120"
 
