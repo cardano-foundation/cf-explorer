@@ -72,7 +72,7 @@ spec:
               value: https://github.com/cardano-foundation/cardano-token-registry.git
             - name: TOKEN_METADATA_FOLDER
               value: "/mappings"
-            - name: NETWORK
+            - name: NETWORK_NAME
               value: {{ .network }}
 
             - name: KAFKA_BOOSTRAP_SERVER_URL
@@ -89,6 +89,19 @@ spec:
 
             - name: API_CHECK_REWARD_URL
               value: {{ .checkRewardUrl }}
+            - name: API_CHECK_POOL_HISTORY_URL
+              value: {{ .checkPoolHistoryUrl }}
+
+            - name: TOP_DELEGATORS_FIXED_DELAY
+              value: "300000"
+            - name: TOKEN_PAGE_CACHE_FIXED_DELAY
+              value: "100000"
+            - name: TOKEN_PAGE_CACHE_TTL
+              value: "300000"
+            - name: UNIQUE_ACCOUNT_FIXED_DELAY
+              value: "300000"
+            - name: UNIQUE_ACCOUNT_ENABLED
+              value: "true"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
@@ -136,27 +149,53 @@ spec:
                   key: {{ .redis.secret.key }}
             {{- end }}
 
-            - name: S3_BUCKET_NAME
+            - name: REPORT_S3_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
                   key: {{ .s3.secret.bucketNameKey }}
-            - name: S3_REGION
+            - name: REPORT_S3_REGION
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
                   key: {{ .s3.secret.regionKey }}
-            - name: S3_STORAGE_ENDPOINT
+            - name: REPORT_S3_STORAGE_ENDPOINT
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
                   key: {{ .s3.secret.endpointKey }}
-            - name: S3_ACCESS_KEY
+            - name: REPORT_S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
                   key: {{ .s3.secret.accessKeyKey }}
-            - name: S3_SECRET_KEY
+            - name: REPORT_S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.secretKeyKey }}
+
+            - name: TOKEN_LOGO_S3_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.bucketNameKey }}
+            - name: TOKEN_LOGO_S3_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.regionKey }}
+            - name: TOKEN_LOGO_S3_STORAGE_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.endpointKey }}
+            - name: TOKEN_LOGO_S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.accessKeyKey }}
+            - name: TOKEN_LOGO_S3_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}

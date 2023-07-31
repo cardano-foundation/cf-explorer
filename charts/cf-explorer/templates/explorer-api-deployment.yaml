@@ -65,7 +65,18 @@ spec:
               value: "{{ .explorerRewardsUrl }}/api/v1/epochs/fetch"
 
             - name: API_NEWS_URL
-              value: "http://cardano-news-api"
+              value: "http://cardano-news-api?limit=%d&offset=%d"
+            - name: API_NEWS_CACHE_TIME
+              value: "120"
+
+            - name: API_MARKET_URL
+              value: "https://api.coingecko.com/api/v3/coins/markets?ids=cardano&vs_currency=%s"
+            - name: API_MARKET_CACHE_TIME
+              value: "120"
+            - name: REPORT_LIMIT_PER_24HOURS
+              value: "2"
+            - name: EPOCH_DAYS
+              value: "5"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME

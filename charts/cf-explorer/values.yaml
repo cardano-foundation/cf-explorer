@@ -61,7 +61,7 @@ consumer:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
     tag: "0.2.13"
 
-  springProfiles: dev
+  springProfiles: aws, redis-standalone, caching
 
   port: 8080
 
@@ -192,6 +192,10 @@ explorerRewardsApi:
 
   network: mainnet
 
+  koios:
+    baseUrlEnabled: false
+    baseUrl: ""
+
 explorerAuthentication:
   enabled: true
   replicas: 1
@@ -200,7 +204,7 @@ explorerAuthentication:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-authentication"
     tag: "v0.1.1-7-g2e0c779"
 
-  springProfiles: dev, standalone
+  springProfiles: dev, standalone, ses
 
   port: 8080
 
@@ -233,6 +237,7 @@ explorerAuthentication:
   flywayEnabled: true
   swaggerClientUrl: https://{{ .Values.domain }}
   swaggerServerUrl: http://localhost:8021
+  emailFrom: iris@metadata.dev.cf-deployments.org
 
 explorerFrontEnd:
   enabled: true
@@ -311,6 +316,7 @@ consumerSchedules:
       endpointKey: S3_STORAGE_ENDPOINT
 
   checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
+  checkPoolHistoryUrl: http://cf-explorer-api/api/v1/pool-history/fetch
 
   network: mainnet
 
@@ -320,7 +326,7 @@ cardanoNewsApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-news-api"
-    tag: "0.1.2"
+    tag: "0.2.1"
 
   port: 8080
 

@@ -1,8 +1,8 @@
 stage: stg
 
-network: mainnet
+network: preview
 
-domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-preview.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: false
@@ -12,11 +12,11 @@ cf-explorer:
   values:
     ingressDomains:
       - name: cloudfront
-        domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        domain: stg.cf-explorer-preview.metadata.dev.cf-deployments.org
       - name: global-lb
-        domain: stg.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
+        domain: stg.cf-explorer-preview.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
-        domain: stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+        domain: stg.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: true
       image:
@@ -52,7 +52,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       s3:
-        bucketName: stg-cf-explorer-mainnet-reports
+        bucketName: stg-cf-explorer-preview-reports
         region: eu-west-1
         endpoint: https://s3-eu-west-1.amazonaws.com
         secret:
@@ -92,11 +92,11 @@ cf-explorer:
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
-      reactAppAuthUrl: "https://auth-api.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+      reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
       s3:
-        bucketName: stg-cf-explorer-mainnet-reports
+        bucketName: stg-cf-explorer-preview-reports
         region: eu-west-1
         endpoint: https://s3-eu-west-1.amazonaws.com
         secret:
@@ -122,4 +122,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        - argocd.stg.cf-explorer-preview.metadata.dev.cf-deployments.org

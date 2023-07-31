@@ -87,6 +87,15 @@ spec:
             - name: POOL_INFO_LIST_SIZE_EACH_THREAD
               value: "500"
 
+            - name: POOL_INFO_DATA_JOB_ENABLED
+              value: "true"
+            - name: FETCH_AND_SAVE_POOL_INFO_DATA_DELAY
+              value: "3600000"
+            - name: KOIOS_BASE_URL_ENABLED
+              value: {{ .koios.baseUrlEnabled | default "false" | quote }}
+            - name: KOIOS_BASE_URL
+              value: {{ .koios.baseUrl }}
+
           ports:
             - name: api
               containerPort: {{ .port }}

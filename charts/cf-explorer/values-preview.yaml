@@ -3,44 +3,44 @@ crawler:
   monitoringEnabled: true
 
   crawler:
-    name: preprod-crawler
+    name: preview-crawler
 
   cardano:
     node:
-      networkMagic: "1"
-      address: preprod-node.world.dev.cardano.org
-      port: 30000
+      networkMagic: "2"
+      address: preview-node.world.dev.cardano.org
+      port: 30002
 
 consumer:
 
   monitoringEnabled: true
   
-  network: preprod
+  network: preview
 
   postgres:
-    schema: preprod
+    schema: preview
 
-  networkMagic: "1"
+  networkMagic: "2"
 
 explorerApi:
   enabled: true
   postgres:
-    schema: preprod
+    schema: preview
   monitoringEnabled: true
 
 explorerRewardsApi:
   enabled: true
   postgres:
-    schema: preprod
+    schema: preview
   monitoringEnabled: true
-  network: preprod
+  network: preview
   koios:
-    baseUrl: "https://koios-api.pro.dandelion-preprod.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
+    baseUrl: "https://koios-api.pro.dandelion-preview.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
 
 explorerAuthentication:
   enabled: true
   postgres:
-    schema: preprod-auth
+    schema: preview-auth
   monitoringEnabled: true
 
 explorerFrontEnd:
@@ -49,6 +49,6 @@ explorerFrontEnd:
 consumerSchedules:
   enabled: true
   postgres:
-    schema: preprod
+    schema: preview
   monitoringEnabled: true
-  network: preprod
+  network: preview

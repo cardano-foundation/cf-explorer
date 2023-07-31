@@ -36,8 +36,8 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.8"
-      springProfiles: aws
+        tag: "0.3.11"
+      springProfiles: aws, redis-cluster, caching
       redis:
         mode: cluster
         cluster:
@@ -77,7 +77,7 @@ cf-explorer:
       enabled: false
       replicas: 1
       image:
-        tag: "0.1.7"
+        tag: "0.1.10"
       redis:
         mode: cluster
         cluster:
@@ -88,7 +88,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.8"
+        tag: "0.4.13"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"

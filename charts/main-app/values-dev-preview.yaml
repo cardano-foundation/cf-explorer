@@ -1,26 +1,26 @@
 stage: dev
 
-network: preprod
+network: preview
 
-domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+domain: dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
   postgresql:
-    dbSize: 150Gi
+    dbSize: 250Gi
   kafka:
-    dbSize: 20Gi
+    dbSize: 50Gi
 
 cf-explorer:
   enabled: true
   values:
     ingressDomains:
       - name: cloudfront
-        domain: dev.cf-explorer-preprod.metadata.dev.cf-deployments.org
+        domain: dev.cf-explorer-preview.metadata.dev.cf-deployments.org
       - name: global-lb
-        domain: dev.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+        domain: dev.cf-explorer-preview.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
-        domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+        domain: dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: true
       image:
@@ -39,7 +39,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       s3:
-        bucketName: dev-cf-explorer-preprod-reports
+        bucketName: dev-cf-explorer-preview-reports
         region: eu-west-1
         endpoint: https://s3-eu-west-1.amazonaws.com
         secret:
@@ -68,11 +68,11 @@ cf-explorer:
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
-      reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+      reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
       s3:
-        bucketName: dev-cf-explorer-preprod-reports
+        bucketName: dev-cf-explorer-preview-reports
         region: eu-west-1
         endpoint: https://s3-eu-west-1.amazonaws.com
         secret:
@@ -88,4 +88,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org 
+        - argocd.dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
