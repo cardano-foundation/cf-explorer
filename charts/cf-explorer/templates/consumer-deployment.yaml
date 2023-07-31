@@ -65,10 +65,13 @@ spec:
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.secret.name }}
-                  key: {{ .redis.secret.key }}
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.passwordKey }}
             - name: REDIS_NODE_ADDRESSES
-              value: {{ .redis.cluster.hosts }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.endpointKey }}
             {{- else if eq .redis.mode "elasticache" }}
             - name: REDIS_STANDALONE_HOST
               valueFrom:
