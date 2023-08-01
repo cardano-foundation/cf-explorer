@@ -57,7 +57,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.10"
+        tag: "v0.1.10-1-gf39423c"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
