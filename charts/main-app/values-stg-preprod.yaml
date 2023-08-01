@@ -21,7 +21,6 @@ cf-explorer:
       enabled: true
       image:
         tag: "v0.2.11-1-g923f176"
-      springProfiles: n2n,cluster,kafka
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
@@ -34,7 +33,6 @@ cf-explorer:
       enabled: true
       image:
         tag: "v0.3.11-1-g42d41be0"
-      springProfiles: aws, redis-standalone, caching
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
