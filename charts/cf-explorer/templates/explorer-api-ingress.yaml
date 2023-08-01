@@ -9,7 +9,7 @@ metadata:
 spec:
   headers:
     customResponseHeaders:
-      Cache-Control: "max-age=30, must-revalidate"
+      Cache-Control: "max-age=20, must-revalidate"
       expires:
   {{- range $v := $.Values.ingressDomains }}
 ---
