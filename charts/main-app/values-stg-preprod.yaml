@@ -43,14 +43,6 @@ cf-explorer:
           name: infra-secrets
     explorerApi:
       enabled: true
-      s3:
-        bucketName: stg-cf-explorer-preprod-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.3.24"
       springProfiles: dev,cluster,koios,s3
@@ -87,14 +79,6 @@ cf-explorer:
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      s3:
-        bucketName: stg-cf-explorer-preprod-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "v0.2.9-2-gfbb0750"
       redis:
