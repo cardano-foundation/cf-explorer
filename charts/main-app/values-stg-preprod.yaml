@@ -36,7 +36,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.11"
+        tag: "v0.3.11-1-g42d41be0"
       springProfiles: aws, redis-standalone, caching
       redis:
         mode: standalone
@@ -46,6 +46,7 @@ cf-explorer:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
           port: 6379
+          useSsl: "true"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
