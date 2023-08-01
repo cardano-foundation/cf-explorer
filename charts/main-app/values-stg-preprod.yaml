@@ -44,7 +44,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.24"
+        tag: "v0.3.25-1-ge0036608"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
