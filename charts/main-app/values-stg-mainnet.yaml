@@ -51,6 +51,9 @@ cf-explorer:
           name: infra-secrets
     explorerApi:
       enabled: true
+      postgres:
+        secret:
+          hostKey: POSTGRES_READ_ONLY_HOST
       s3:
         bucketName: stg-cf-explorer-mainnet-reports
         region: eu-west-1

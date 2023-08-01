@@ -43,6 +43,9 @@ cf-explorer:
           name: infra-secrets
     explorerApi:
       enabled: true
+      postgres:
+        secret:
+          hostKey: POSTGRES_READ_ONLY_HOST
       image:
         tag: "v0.3.25-1-ge0036608"
       redis:
