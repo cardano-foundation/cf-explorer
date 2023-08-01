@@ -96,7 +96,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "v0.2.9-1-ga67fbd7"
+        tag: "v0.2.9-2-gfbb0750"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
