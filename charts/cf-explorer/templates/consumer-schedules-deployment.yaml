@@ -147,6 +147,8 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
 
             - name: REPORT_S3_BUCKET_NAME
