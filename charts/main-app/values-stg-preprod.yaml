@@ -20,32 +20,24 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.11"
+        tag: "v0.2.11-1-g923f176"
       springProfiles: n2n,cluster,kafka
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
           name: infra-secrets
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
     consumer:
       enabled: true
       image:
         tag: "v0.3.11-1-g42d41be0"
       springProfiles: aws, redis-standalone, caching
       redis:
-        mode: standalone
-        secret:
-          name: redis-secrets
-          key: REDIS_MASTER_PASSWORD
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
-          port: 6379
           useSsl: "true"
       kafka:
         useSsl: "true"
