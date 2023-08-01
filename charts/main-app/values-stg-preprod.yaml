@@ -45,14 +45,10 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.3.24"
-      springProfiles: dev,cluster,koios,s3
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
     explorerRewardsApi:
       enabled: true
       image:
@@ -63,12 +59,9 @@ cf-explorer:
       image:
         tag: "0.1.10"
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secret
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
     explorerFrontEnd:
       enabled: true
       image:
