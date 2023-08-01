@@ -8,6 +8,7 @@ metadata:
 type: Opaque
 data:
   # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  REDIS_ENDPOINT: {{ "redis-headless:6379" | b64enc }}
   REDIS_MASTER_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
