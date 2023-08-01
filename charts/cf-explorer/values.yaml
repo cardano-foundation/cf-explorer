@@ -234,6 +234,11 @@ explorerAuthentication:
       dbKey: POSTGRES_DB
       passwordKey: POSTGRES_PASSWORD
 
+  region:
+    secret:
+      name: infra-secrets
+      key: AWS_REGION
+
   flywayEnabled: true
   swaggerClientUrl: https://{{ .Values.domain }}
   swaggerServerUrl: http://localhost:8021

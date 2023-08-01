@@ -104,7 +104,10 @@ spec:
             - name: SWAGGER_SERVER_URL
               value: {{ .swaggerServerUrl }}
             - name: AWS_REGION
-              value: eu-west-1
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .region.secret.name }}
+                  key: {{ .region.secret.key }}
             - name: SES_EMAIL_FROM
               value: {{ .emailFrom }}
             - name: SES_ACCESS_KEY_ID
