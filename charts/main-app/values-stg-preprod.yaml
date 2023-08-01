@@ -37,14 +37,15 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.3.11"
-      springProfiles: aws, redis-cluster, caching
+      springProfiles: aws, redis-standalone, caching
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        mode: standalone
+        secret:
+          name: redis-secrets
+          key: REDIS_MASTER_PASSWORD
+        standalone:
+          host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
+          port: 6379
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
