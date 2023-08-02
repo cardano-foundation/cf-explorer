@@ -20,7 +20,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "v0.2.11-1-g923f176"
+        tag: "0.2.12"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
@@ -32,7 +32,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.11-1-g42d41be0"
+        tag: "0.3.12"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
@@ -47,7 +47,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "v0.3.25-1-ge0036608"
+        tag: "0.3.26"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
@@ -60,7 +60,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "v0.1.10-1-gf39423c"
+        tag: "0.1.11"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
@@ -76,7 +76,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "v0.2.9-2-gfbb0750"
+        tag: "0.2.10"
       redis:
         standalone:
           host: master.stg-cf-explorer-preprod.szs8qo.euw1.cache.amazonaws.com
