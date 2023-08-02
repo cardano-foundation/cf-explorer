@@ -20,31 +20,23 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.11"
-      springProfiles: n2n,cluster,kafka
+        tag: "0.2.12"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
           name: infra-secrets
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
     consumer:
       enabled: true
       image:
-        tag: "0.3.11"
-      springProfiles: aws, redis-cluster, caching
+        tag: "0.3.12"
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
@@ -54,24 +46,12 @@ cf-explorer:
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
-      s3:
-        bucketName: stg-cf-explorer-mainnet-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.24"
-      springProfiles: dev,cluster,koios,s3
+        tag: "0.3.26"
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
     explorerRewardsApi:
       enabled: true
       image:
@@ -80,14 +60,11 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.10"
+        tag: "0.1.11"
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secret
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
     explorerFrontEnd:
       enabled: true
       image:
@@ -98,24 +75,12 @@ cf-explorer:
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      s3:
-        bucketName: stg-cf-explorer-mainnet-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.9"
-      springProfiles: dev,cluster,koios,s3
+        tag: "0.2.10"
       redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        standalone:
+          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
+          useSsl: "true"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
