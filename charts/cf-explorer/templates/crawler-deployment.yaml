@@ -71,13 +71,13 @@ spec:
             - name: REDIS_STANDALONE_HOST
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.cluster.secret.name }}
-                  key: {{ .redis.cluster.secret.endpointKey | trunc 5 }}
+                  name: redis-secrets
+                  key: REDIS_HOST
             - name: REDIS_STANDALONE_PORT
               valueFrom:
                 secretKeyRef:
-                  name: {{ .redis.cluster.secret.name }}
-                  key: {{ .redis.cluster.secret.endpointKey | trunc -5 | quote }}
+                  name: redis-secrets
+                  key: REDIS_PORT
             - name: REDIS_STANDALONE_PASSWORD
               valueFrom:
                 secretKeyRef:
