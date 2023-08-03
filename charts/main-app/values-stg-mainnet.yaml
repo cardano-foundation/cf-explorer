@@ -26,16 +26,16 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
       redis:
+        mode: managed-standalone
         standalone:
-          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
           useSsl: "true"
     consumer:
       enabled: true
       image:
         tag: "0.3.12"
       redis:
+        mode: managed-standalone
         standalone:
-          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
           useSsl: "true"
       kafka:
         useSsl: "true"
@@ -49,8 +49,8 @@ cf-explorer:
       image:
         tag: "0.3.26"
       redis:
+        mode: managed-standalone
         standalone:
-          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
           useSsl: "true"
     explorerRewardsApi:
       enabled: true
@@ -62,8 +62,8 @@ cf-explorer:
       image:
         tag: "0.1.11"
       redis:
+        mode: managed-standalone
         standalone:
-          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
           useSsl: "true"
     explorerFrontEnd:
       enabled: true
@@ -78,8 +78,8 @@ cf-explorer:
       image:
         tag: "0.2.10"
       redis:
+        mode: managed-standalone
         standalone:
-          host: master.stg-cf-explorer-mainnet.szs8qo.euw1.cache.amazonaws.com
           useSsl: "true"
       kafka:
         useSsl: "true"

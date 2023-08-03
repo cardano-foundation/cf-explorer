@@ -137,6 +137,24 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "managed-standalone" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_HOST
+            - name: REDIS_STANDALONE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_PORT
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
