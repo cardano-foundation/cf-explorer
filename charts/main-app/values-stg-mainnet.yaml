@@ -52,6 +52,7 @@ cf-explorer:
         mode: managed-standalone
         standalone:
           useSsl: "true"
+      tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
@@ -85,6 +86,7 @@ cf-explorer:
         useSsl: "true"
         bootstrapServersSecret:
           name: infra-secrets
+      tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
 argo-cd:
   server:
