@@ -2,7 +2,7 @@ stage: stg
 
 network: preprod
 
-domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: false

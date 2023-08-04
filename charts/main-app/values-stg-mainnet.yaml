@@ -2,7 +2,7 @@ stage: stg
 
 network: mainnet
 
-domain: stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: false
