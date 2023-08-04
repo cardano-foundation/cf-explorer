@@ -44,7 +44,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "v0.1.11-2-g17ddc47"
+        tag: "v0.1.11-3-g07fc2aa"
     explorerFrontEnd:
       enabled: true
       image:
