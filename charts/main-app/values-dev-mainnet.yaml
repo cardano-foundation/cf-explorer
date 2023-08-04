@@ -24,32 +24,18 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.11"
-      redis:
-        mode: standalone
+        tag: "0.2.12"
       kafka:
         bootstrapServerSecret:
           name: kafka-secrets
     consumer:
       enabled: true
       image:
-        tag: "0.3.11"
-      redis:
-        mode: standalone
+        tag: "0.3.12"
     explorerApi:
       enabled: true
-      s3:
-        bucketName: dev-cf-explorer-mainnet-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.24"
-      redis:
-        mode: standalone
+        tag: "0.3.26"
     explorerRewardsApi:
       enabled: true
       image:
@@ -58,9 +44,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.10"
-      redis:
-        mode: standalone
+        tag: "0.1.11"
     explorerFrontEnd:
       enabled: true
       image:
@@ -71,18 +55,8 @@ cf-explorer:
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      s3:
-        bucketName: dev-cf-explorer-mainnet-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.9"
-      redis:
-        mode: standalone
+        tag: "0.2.10"
 
 argo-cd:
   server:
