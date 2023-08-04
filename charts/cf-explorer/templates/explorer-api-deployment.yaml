@@ -168,6 +168,8 @@ spec:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
                   key: {{ .s3.secret.secretKeyKey }}
+            - name: TOKEN_LOGO_ENDPOINT
+              value: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
           ports:
             - name: api
