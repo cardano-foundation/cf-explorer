@@ -49,7 +49,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.26"
+        tag: "0.3.27"
       redis:
         mode: managed-standalone
         standalone:
