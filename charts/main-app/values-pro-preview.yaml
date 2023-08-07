@@ -8,7 +8,7 @@ cf-explorer-infra:
   enabled: false
 
 cf-explorer:
-  enabled: false
+  enabled: true
   values:
     ingressDomains:
       - name: cloudfront
