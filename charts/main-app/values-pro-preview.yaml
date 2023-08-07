@@ -1,0 +1,95 @@
+stage: stg
+
+network: preview
+
+domain: pro.cf-explorer-preview.iris.cardano.org
+
+cf-explorer-infra:
+  enabled: false
+
+cf-explorer:
+  enabled: false
+  values:
+    ingressDomains:
+      - name: cloudfront
+        domain: preview.iris.cardano.org
+      - name: global-lb
+        domain: pro.cf-explorer-preview.global.iris.cardano.org
+      - name: eu-west-1-lb
+        domain: pro.cf-explorer-preview.eu-west-1.iris.cardano.org
+      - name: us-east-1-lb
+        domain: pro.cf-explorer-preview.us-east-1.iris.cardano.org
+    crawler:
+      enabled: true
+      image:
+        tag: "0.2.12"
+      kafka:
+        useSsl: "true"
+        bootstrapServersSecret:
+          name: infra-secrets
+      redis:
+        mode: managed-standalone
+        standalone:
+          useSsl: "true"
+    consumer:
+      enabled: true
+      image:
+        tag: "0.3.12"
+      redis:
+        mode: managed-standalone
+        standalone:
+          useSsl: "true"
+      kafka:
+        useSsl: "true"
+        bootstrapServersSecret:
+          name: infra-secrets
+    explorerApi:
+      enabled: true
+      postgres:
+        secret:
+          hostKey: POSTGRES_READ_ONLY_HOST
+      image:
+        tag: "0.3.27"
+      redis:
+        mode: managed-standalone
+        standalone:
+          useSsl: "true"
+    explorerRewardsApi:
+      enabled: true
+      image:
+        tag: "0.1.7-SNAPSHOT"
+    explorerAuthentication:
+      enabled: true
+      replicas: 1
+      image:
+        tag: "0.1.11"
+      redis:
+        mode: managed-standalone
+        standalone:
+          useSsl: "true"
+    explorerFrontEnd:
+      enabled: true
+      image:
+        tag: "0.4.13"
+      reactAppPreProdAppUrl: "https://preprod.iris.cardano.org"
+      reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
+      reactAppMainnetAppUrl: "https://iris.cardano.org"
+      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preview.eu-west-1.iris.cardano.org/api/v1"
+    consumerSchedules:
+      enabled: true
+      image:
+        tag: "0.2.10"
+      redis:
+        mode: managed-standalone
+        standalone:
+          useSsl: "true"
+      kafka:
+        useSsl: "true"
+        bootstrapServersSecret:
+          name: infra-secrets
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.pro.cf-explorer-preview.eu-west-1.iris.cardano.org
