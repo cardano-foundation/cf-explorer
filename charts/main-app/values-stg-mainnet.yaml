@@ -8,7 +8,7 @@ cf-explorer-infra:
   enabled: false
 
 cf-explorer:
-  enabled: false
+  enabled: true
   values:
     ingressDomains:
       - name: cloudfront
@@ -61,7 +61,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.11"
+        tag: "0.1.12"
       redis:
         mode: managed-standalone
         standalone:
