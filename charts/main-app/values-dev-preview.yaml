@@ -47,6 +47,7 @@ cf-explorer:
         tag: "0.1.12"
     explorerFrontEnd:
       enabled: true
+      basicAuth: true
       image:
         tag: "0.4.14"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
