@@ -34,14 +34,6 @@ cf-explorer:
         tag: "0.3.12"
     explorerApi:
       enabled: true
-      s3:
-        bucketName: dev-cf-explorer-preview-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.3.27"
     explorerRewardsApi:
@@ -63,14 +55,6 @@ cf-explorer:
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      s3:
-        bucketName: dev-cf-explorer-preview-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
         tag: "0.2.10"
 
