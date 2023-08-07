@@ -2,7 +2,7 @@ stage: stg
 
 network: preprod
 
-domain: pro.cf-explorer-preprod.iris.cardano.org
+domain: preprod.iris.cardano.org
 
 cf-explorer-infra:
   enabled: false

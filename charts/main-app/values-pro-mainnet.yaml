@@ -2,7 +2,7 @@ stage: stg
 
 network: mainnet
 
-domain: pro.cf-explorer-mainnet.iris.cardano.org
+domain: iris.cardano.org
 
 cf-explorer-infra:
   enabled: false

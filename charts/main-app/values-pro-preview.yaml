@@ -2,7 +2,7 @@ stage: stg
 
 network: preview
 
-domain: pro.cf-explorer-preview.iris.cardano.org
+domain: preview.iris.cardano.org
 
 cf-explorer-infra:
   enabled: false
