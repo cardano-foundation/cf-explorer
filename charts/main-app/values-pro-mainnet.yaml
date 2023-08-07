@@ -70,7 +70,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.13"
+        tag: "0.4.14"
       reactAppPreProdAppUrl: "https://preprod.iris.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
       reactAppMainnetAppUrl: "https://iris.cardano.org"
