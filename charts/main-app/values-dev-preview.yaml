@@ -43,7 +43,7 @@ cf-explorer:
           accessKeyKey: S3_ACCESS_KEY
           secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.26"
+        tag: "0.3.27"
     explorerRewardsApi:
       enabled: true
       image:
