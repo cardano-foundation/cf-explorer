@@ -56,7 +56,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.10"
+        tag: "v0.2.11-1-ga4795232"
 
 argo-cd:
   server:
