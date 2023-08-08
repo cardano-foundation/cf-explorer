@@ -135,6 +135,13 @@ explorerApi:
       host: redis-headless
       port: 6379
 
+  kafka:
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
+    reportsTopic: dev.explorer.api.reports
+
     ## Redis Cluster Values Example
     # mode: cluster
     # secretName: cf-explorer-infra-redis-cluster

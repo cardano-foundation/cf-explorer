@@ -35,7 +35,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.28"
+        tag: "v0.3.28-1-g5dbb3576"
       kafka:
         bootstrapServerSecret:
           name: kafka-secrets
