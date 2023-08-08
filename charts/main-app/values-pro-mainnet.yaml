@@ -49,11 +49,12 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.27"
+        tag: "0.3.28"
       redis:
         mode: managed-standalone
         standalone:
           useSsl: "true"
+      tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
@@ -62,7 +63,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.11"
+        tag: "0.1.12"
       redis:
         mode: managed-standalone
         standalone:
@@ -79,7 +80,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.10"
+        tag: "0.2.12"
       redis:
         mode: managed-standalone
         standalone:
@@ -88,6 +89,7 @@ cf-explorer:
         useSsl: "true"
         bootstrapServersSecret:
           name: infra-secrets
+      tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
 argo-cd:
   server:
