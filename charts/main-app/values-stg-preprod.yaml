@@ -32,7 +32,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.12"
+        tag: "0.3.14"
       redis:
         mode: managed-standalone
         standalone:
@@ -47,7 +47,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.28"
+        tag: "0.3.29"
       redis:
         mode: managed-standalone
         standalone:

@@ -31,11 +31,11 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "v0.3.13-1-gf5fe7996"
+        tag: "0.3.14"
     explorerApi:
       enabled: true
       image:
-        tag: "v0.3.28-1-g5dbb3576"
+        tag: "0.3.29"
       kafka:
         bootstrapServerSecret:
           name: kafka-secrets
