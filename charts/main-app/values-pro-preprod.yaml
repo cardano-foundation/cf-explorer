@@ -5,7 +5,7 @@ network: preprod
 domain: preprod.iris.cardano.org
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
   postgresql:
     enabled: false
   kafka:
