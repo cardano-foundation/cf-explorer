@@ -5,7 +5,7 @@ network: preview
 domain: stg.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
   postgresql:
     enabled: false
   kafka:
