@@ -5,7 +5,11 @@ network: preprod
 domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
+  postgresql:
+    enabled: false
+  kafka:
+    dbSize: 20Gi
 
 cf-explorer:
   enabled: false
@@ -21,26 +25,10 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.12"
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
-      redis:
-        mode: managed-standalone
-        standalone:
-          useSsl: "true"
     consumer:
       enabled: true
       image:
         tag: "0.3.14"
-      redis:
-        mode: managed-standalone
-        standalone:
-          useSsl: "true"
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
     explorerApi:
       enabled: true
       postgres:
@@ -48,14 +36,6 @@ cf-explorer:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
         tag: "0.3.29"
-      redis:
-        mode: managed-standalone
-        standalone:
-          useSsl: "true"
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -66,10 +46,6 @@ cf-explorer:
       replicas: 1
       image:
         tag: "0.1.12"
-      redis:
-        mode: managed-standalone
-        standalone:
-          useSsl: "true"
     explorerFrontEnd:
       enabled: true
       image:
@@ -82,14 +58,6 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.12"
-      redis:
-        mode: managed-standalone
-        standalone:
-          useSsl: "true"
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
 argo-cd:
