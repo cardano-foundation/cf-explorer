@@ -5,7 +5,7 @@ network: preview
 domain: preview.iris.cardano.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
   postgresql:
     enabled: false
   kafka:
