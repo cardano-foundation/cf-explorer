@@ -53,6 +53,11 @@ spec:
             - name: REACT_APP_NETWORK_NAMES
               value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview"}'
 
+            - name: REACT_APP_HOT_JAR_HJID
+              value: "1906882"
+            - name: REACT_APP_HOT_JAR_HJSV
+              value: "6"
+
           ports:
             - name: api
               containerPort: {{ .port }}
