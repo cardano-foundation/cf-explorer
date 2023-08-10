@@ -18,7 +18,7 @@ spec:
               service:
                 name: cf-explorer-rewards-api
                 port:
-                  number: {{ $root.port }}
+                  number: 80
   tls:
     - hosts:
         - "rewards-api.{{ $v.domain }}"
