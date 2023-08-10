@@ -30,7 +30,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.14"
+        tag: "0.3.14-SNAPSHOT"
     explorerApi:
       enabled: true
       postgres:
