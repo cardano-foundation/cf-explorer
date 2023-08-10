@@ -72,6 +72,7 @@ cf-explorer:
         mode: managed-standalone
         standalone:
           useSsl: "true"
+      emailFrom: "iris@iris.cardano.org"
     explorerFrontEnd:
       enabled: true
       basicAuth: true
@@ -81,7 +82,6 @@ cf-explorer:
       reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
       reactAppMainnetAppUrl: "https://iris.cardano.org"
       reactAppAuthUrl: "https://auth-api.pro.cf-explorer-mainnet.eu-west-1.iris.cardano.org/api/v1"
-      emailFrom: "iris@iris.cardano.org"
     consumerSchedules:
       enabled: true
       image:
