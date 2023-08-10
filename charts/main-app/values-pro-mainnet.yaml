@@ -77,7 +77,7 @@ cf-explorer:
       enabled: true
       basicAuth: true
       image:
-        tag: "0.4.15"
+        tag: "0.4.16"
       reactAppPreProdAppUrl: "https://preprod.iris.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
       reactAppMainnetAppUrl: "https://iris.cardano.org"
