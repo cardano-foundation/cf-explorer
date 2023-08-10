@@ -30,7 +30,7 @@ spec:
               service:
                 name: cf-explorer-api
                 port:
-                  number: {{ $root.port }}
+                  number: 80
   tls:
     - hosts:
         - "api.{{ $v.domain }}"
