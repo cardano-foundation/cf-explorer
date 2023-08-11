@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:cardano-foundation/iris.git
+    repoURL: git@github.com:cardano-foundation/cf-explorer.git
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
     path: charts/grafana-dashboards
 

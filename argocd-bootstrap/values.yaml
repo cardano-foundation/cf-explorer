@@ -28,7 +28,7 @@ argo-cd:
         - url: https://helm.elastic.co
           name: elastic
           type: helm
-        - url: git@github.com:cardano-foundation/iris.git
+        - url: git@github.com:cardano-foundation/cf-explorer.git
           sshPrivateKeySecret:
             name: github-deploy-key
             key: cf-explorer
