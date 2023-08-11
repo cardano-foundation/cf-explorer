@@ -37,7 +37,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.29"
+        tag: "0.3.30"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -47,7 +47,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.12"
+        tag: "0.1.13"
       emailFrom: "admin@beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
