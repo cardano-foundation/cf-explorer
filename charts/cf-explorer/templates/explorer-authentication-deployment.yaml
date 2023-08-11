@@ -130,6 +130,8 @@ spec:
                   key: {{ .region.secret.key }}
             - name: SES_EMAIL_FROM
               value: {{ .emailFrom }}
+            - name: SES_EMAIL_FROM_NAME
+              value: {{ .emailFromName }}
             - name: SES_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
