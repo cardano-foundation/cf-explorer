@@ -72,7 +72,7 @@ cf-explorer:
         mode: managed-standalone
         standalone:
           useSsl: "true"
-      emailFrom: "iris@beta.explorer.cardano.org"
+      emailFrom: "admin@beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       basicAuth: true
