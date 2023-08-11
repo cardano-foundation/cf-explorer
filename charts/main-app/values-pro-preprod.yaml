@@ -2,7 +2,7 @@ stage: pro
 
 network: preprod
 
-domain: preprod.iris.cardano.org
+domain: preprod.beta.explorer.cardano.org
 
 cf-explorer-infra:
   enabled: true
@@ -16,13 +16,13 @@ cf-explorer:
   values:
     ingressDomains:
       - name: cloudfront
-        domain: preprod.iris.cardano.org
+        domain: preprod.beta.explorer.cardano.org
       - name: global-lb
-        domain: pro.cf-explorer-preprod.global.iris.cardano.org
+        domain: pro.cf-explorer-preprod.global.beta.explorer.cardano.org
       - name: eu-west-1-lb
-        domain: pro.cf-explorer-preprod.eu-west-1.iris.cardano.org
+        domain: pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org
       - name: us-east-1-lb
-        domain: pro.cf-explorer-preprod.us-east-1.iris.cardano.org
+        domain: pro.cf-explorer-preprod.us-east-1.beta.explorer.cardano.org
     crawler:
       enabled: true
       image:
@@ -48,16 +48,16 @@ cf-explorer:
       replicas: 1
       image:
         tag: "0.1.12"
-      emailFrom: "iris@iris.cardano.org"
+      emailFrom: "iris@beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       basicAuth: true
       image:
         tag: "0.4.17"
-      reactAppPreProdAppUrl: "https://preprod.iris.cardano.org"
-      reactAppPreviewAppUrl:  "https://preview.iris.cardano.org"
-      reactAppMainnetAppUrl: "https://iris.cardano.org"
-      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preprod.eu-west-1.iris.cardano.org/api/v1"
+      reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
+      reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
+      reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
+      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org/api/v1"
     consumerSchedules:
       enabled: true
       image:
@@ -68,4 +68,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.pro.cf-explorer-preprod.eu-west-1.iris.cardano.org
+        - argocd.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org
