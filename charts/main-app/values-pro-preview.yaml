@@ -51,7 +51,6 @@ cf-explorer:
       emailFrom: "admin@beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
-      basicAuth: true
       image:
         tag: "0.4.20"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
