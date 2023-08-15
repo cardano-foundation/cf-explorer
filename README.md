@@ -7,11 +7,11 @@ dependencies.
 
 | Repository            | Version |
 |-----------------------|---------|
-| [cf-ledger-crawler](https://github.com/cardano-foundation/cf-ledger-crawler)     | 0.2.6   |
-| [cf-ledger-consumer](https://github.com/cardano-foundation/cf-ledger-consumer)    | 0.2.13 |
-| [cf-explorer-api](https://github.com/cardano-foundation/cf-explorer-api)       | 0.3.9   |
-| [cf-explorer-authentication](https://github.com/cardano-foundation/cf-explorer-authentication) | v0.1.1-7-g2e0c779   |
-| [cf-explorer-frontend](https://github.com/cardano-foundation/cf-explorer-frontend) | 0.4.0   |
+| cf-ledger-crawler     | 0.2.6   |
+| cf-ledger-consumer    | 0.2.13 |
+| cf-explorer-api       | 0.3.9   |
+| cf-explorer-authentication | v0.1.1-7-g2e0c779   |
+| cf-explorer-frontend | 0.4.0   |
 
 ## Continuous Deployment
 
