@@ -76,7 +76,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.23"
+        tag: "0.4.24"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
