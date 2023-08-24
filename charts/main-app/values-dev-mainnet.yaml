@@ -11,6 +11,8 @@ cf-explorer-infra:
       master:
         persistence:
           size: 20Gi
+      diagnosticMode:
+        enabled: true
   postgresql:
     dbSize: 1500Gi
   kafka:
