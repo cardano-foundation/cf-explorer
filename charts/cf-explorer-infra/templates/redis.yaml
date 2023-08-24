@@ -25,12 +25,10 @@ spec:
     targetRevision: 17.10.3
     chart: redis
     helm:
+    {{- with .values }}
       values: |
-        auth:
-          existingSecret: redis-secrets
-          existingSecretPasswordKey: REDIS_MASTER_PASSWORD
-        replica:
-          replicaCount: 0
+{{ toYaml . | indent 8 }}
+    {{- end }}
   syncPolicy:
     automated:
       prune: true

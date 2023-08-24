@@ -2,6 +2,12 @@
 # There are two deployment types: Cluster and Standalone / Sentinel, they are mutually exclusive
 redis:
   enabled: true
+  values:
+    auth:
+      existingSecret: redis-secrets
+      existingSecretPasswordKey: REDIS_MASTER_PASSWORD
+    replica:
+      replicaCount: 0
 
 redis-cluster:
   enabled: false
