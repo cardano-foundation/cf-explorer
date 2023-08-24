@@ -8,8 +8,9 @@ cf-explorer-infra:
   enabled: true
   redis:
     values:
-      diagnosticMode:
-        enabled: true
+      master:
+        persistence:
+          size: 20Gi
   postgresql:
     dbSize: 1500Gi
   kafka:
