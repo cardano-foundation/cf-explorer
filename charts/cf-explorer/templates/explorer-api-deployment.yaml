@@ -86,7 +86,7 @@ spec:
             - name: REPORT_LIMIT_PER_24HOURS
               value: "2"
             - name: EPOCH_DAYS
-              value: "5"
+              value: {{ .epochDays | default 5 | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
