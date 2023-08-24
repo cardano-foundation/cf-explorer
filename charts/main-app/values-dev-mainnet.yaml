@@ -7,8 +7,9 @@ domain: dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
 cf-explorer-infra:
   enabled: true
   redis:
-    diagnosticMode:
-      enabled: true
+    values:
+      diagnosticMode:
+        enabled: true
   postgresql:
     dbSize: 1500Gi
   kafka:
