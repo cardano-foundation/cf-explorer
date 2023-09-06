@@ -2,7 +2,7 @@ stage: dev
 
 network: preprod
 
-domain: dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
+domain: dev-sranjan.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer:
   values:
@@ -28,9 +28,3 @@ cf-explorer:
     consumerSchedules:
       image:
         tag: "v0.2.1-14-g0a88ebf"
-
-argo-cd:
-  server:
-    ingress:
-      hosts:
-        - argocd.dev.ggargiulo-clusters.eu-west-1.metadata.dev.cf-deployments.org
