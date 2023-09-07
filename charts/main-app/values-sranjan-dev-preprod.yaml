@@ -17,9 +17,7 @@ cf-explorer:
     crawler:
       enabled: false
     consumer:
-      enabled: true
-      image:
-        tag: "ls-713c6c2"
+      enabled: false
     explorerApi:
       enabled: false
       image:
