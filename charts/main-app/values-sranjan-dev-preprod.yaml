@@ -11,6 +11,9 @@ cf-explorer-infra:
   kafka:
     dbSize: 20Gi
 
+elastic-stack:
+  enabled: false
+
 cf-explorer:
   enabled: true
   values:
