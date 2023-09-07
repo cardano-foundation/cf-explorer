@@ -19,11 +19,11 @@ cf-explorer:
     consumer:
       enabled: false
     explorerApi:
-      enabled: false
+      enabled: true
       image:
         tag: "0.3.31"
     explorerRewardsApi:
-      enabled: false
+      enabled: true
       image:
         tag: "0.1.7-SNAPSHOT"
     explorerAuthentication:
@@ -32,7 +32,7 @@ cf-explorer:
       image:
         tag: "0.1.13"
     explorerFrontEnd:
-      enabled: false
+      enabled: true
       image:
         tag: "0.4.24"
       reactAppPreProdAppUrl: "https://dev-sranjan.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
@@ -40,7 +40,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: false
+      enabled: true
       image:
         tag: "0.2.12"
 
