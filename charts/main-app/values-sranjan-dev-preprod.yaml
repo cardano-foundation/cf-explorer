@@ -17,6 +17,13 @@ elastic-stack:
 cf-explorer:
   enabled: true
   values:
+    ingressDomains:
+      - name: cloudfront
+        domain: dev-sranjan.cf-explorer-preprod.metadata.dev.cf-deployments.org
+      - name: global-lb
+        domain: dev-sranjan.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+      - name: eu-west-1-lb
+        domain: dev-sranjan.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
     crawler:
       enabled: false
     consumer:
