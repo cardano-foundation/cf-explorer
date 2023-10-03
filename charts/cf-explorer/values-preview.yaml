@@ -24,6 +24,7 @@ consumer:
 
 explorerApi:
   enabled: true
+  epochDays: 1
   postgres:
     schema: preview
   monitoringEnabled: true

@@ -135,6 +135,13 @@ explorerApi:
       host: redis-headless
       port: 6379
 
+  kafka:
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
+    reportsTopic: dev.explorer.api.reports
+
     ## Redis Cluster Values Example
     # mode: cluster
     # secretName: cf-explorer-infra-redis-cluster
@@ -156,11 +163,13 @@ explorerApi:
   s3:
     secret:
       name: infra-secrets
-      accessKeyKey: S3_ACCESS_KEY
-      secretKeyKey: S3_SECRET_KEY
-      bucketNameKey: S3_BUCKET_NAME
-      regionKey: S3_REGION
-      endpointKey: S3_STORAGE_ENDPOINT
+      accessKeyKey: REPORT_S3_ACCESS_KEY
+      secretKeyKey: REPORT_S3_SECRET_KEY
+      bucketNameKey: REPORT_S3_BUCKET_NAME
+      regionKey: REPORT_S3_REGION
+      endpointKey: REPORT_S3_STORAGE_ENDPOINT
+
+  tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
 explorerRewardsApi:
   enabled: true
@@ -234,10 +243,16 @@ explorerAuthentication:
       dbKey: POSTGRES_DB
       passwordKey: POSTGRES_PASSWORD
 
+  region:
+    secret:
+      name: infra-secrets
+      key: AWS_REGION
+
   flywayEnabled: true
-  swaggerClientUrl: https://{{ .Values.domain }}
+  swaggerClientUrl: https://{{ .Values.domain }}/en
   swaggerServerUrl: http://localhost:8021
-  emailFrom: iris@metadata.dev.cf-deployments.org
+  emailFrom: admin@metadata.dev.cf-deployments.org
+  emailFromName: Cardano Foundation
 
 explorerFrontEnd:
   enabled: true
@@ -253,6 +268,7 @@ explorerFrontEnd:
   reactAppMainnetAppUrl: "https://{{ .Values.domain }}"
   reactAppAuthUrl: "https://auth-api.{{ .Values.domain }}/api/v1"
   reactAppNetwork: "{{ .Values.network }}"
+  reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
 
   port: 80
 
@@ -309,16 +325,25 @@ consumerSchedules:
   s3:
     secret:
       name: infra-secrets
-      accessKeyKey: S3_ACCESS_KEY
-      secretKeyKey: S3_SECRET_KEY
-      bucketNameKey: S3_BUCKET_NAME
-      regionKey: S3_REGION
-      endpointKey: S3_STORAGE_ENDPOINT
+      report:
+        accessKeyKey: REPORT_S3_ACCESS_KEY
+        secretKeyKey: REPORT_S3_SECRET_KEY
+        bucketNameKey: REPORT_S3_BUCKET_NAME
+        regionKey: REPORT_S3_REGION
+        endpointKey: REPORT_S3_STORAGE_ENDPOINT
+      tokenLogo:
+        accessKeyKey: TOKEN_LOGO_S3_ACCESS_KEY
+        secretKeyKey: TOKEN_LOGO_S3_SECRET_KEY
+        bucketNameKey: TOKEN_LOGO_S3_BUCKET_NAME
+        regionKey: TOKEN_LOGO_S3_REGION
+        endpointKey: TOKEN_LOGO_S3_STORAGE_ENDPOINT
 
-  checkRewardUrl: http://cf-explorer-api/api/v1/rewards/fetch
-  checkPoolHistoryUrl: http://cf-explorer-api/api/v1/pool-history/fetch
+  checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
+  checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
   network: mainnet
+
+  tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
 cardanoNewsApi:
   enabled: true

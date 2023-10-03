@@ -45,15 +45,7 @@ kubectl create secret generic infra-secrets \
   --dry-run=client \
   -o yaml \
   -n cf-explorer \
-  --from-env-file=../.keys/infra-secrets-ggargiulo-dev-mainnet \
-  | kubectl apply -f -
-
-kubectl create secret generic infra-other-secrets \
-  --save-config \
-  --dry-run=client \
-  -o yaml \
-  -n cf-explorer \
-  --from-env-file=../.keys/infra-other-secrets-ggargiulo-dev-mainnet \
+  --from-env-file=../.keys/infra-secrets-sranjan-dev \
   | kubectl apply -f -
 
 #echo "Fetching helm dependencies for main app"
@@ -63,7 +55,7 @@ echo "Updating helm dependencies for main app"
 helm dependency update
 
 helm upgrade --install argocd -n argocd . \
-  --set git.targetRevision=HEAD \
-  --set valueFile=values-ggargiulo-dev-mainnet.yaml \
-  -f values-secrets.yaml
-
+  --set git.targetRevision=develop \
+  --set valueFile=values-sranjan-dev-preprod.yaml \
+  -f values-secrets.yaml \
+  -f values-sranjan-dev.yaml

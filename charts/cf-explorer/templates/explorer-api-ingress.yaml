@@ -9,7 +9,7 @@ metadata:
 spec:
   headers:
     customResponseHeaders:
-      Cache-Control: "max-age=30, must-revalidate"
+      Cache-Control: "max-age=20, must-revalidate"
       expires:
   {{- range $v := $.Values.ingressDomains }}
 ---
@@ -30,7 +30,7 @@ spec:
               service:
                 name: cf-explorer-api
                 port:
-                  number: {{ $root.port }}
+                  number: 80
   tls:
     - hosts:
         - "api.{{ $v.domain }}"

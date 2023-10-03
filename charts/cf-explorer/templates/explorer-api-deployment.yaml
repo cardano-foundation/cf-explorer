@@ -51,6 +51,16 @@ spec:
             - name: DB_SCHEMA
               value: {{ .postgres.schema }}
 
+            - name: KAFKA_BOOTSTRAP_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafka.useSsl | default "false" | quote }}
+            - name: KAFKA_REPORTS_TOPIC
+              value: {{ .kafka.reportsTopic }}
+
             - name: API_CHECK_REWARD_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/rewards/fetch"
             - name: API_CHECK_POOL_HISTORY_URL
@@ -76,7 +86,7 @@ spec:
             - name: REPORT_LIMIT_PER_24HOURS
               value: "2"
             - name: EPOCH_DAYS
-              value: "5"
+              value: {{ .epochDays | default 5 | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
@@ -112,6 +122,24 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "managed-standalone" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_HOST
+            - name: REDIS_STANDALONE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_PORT
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
@@ -122,6 +150,8 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
             - name: S3_BUCKET_NAME
               valueFrom:
@@ -148,6 +178,8 @@ spec:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
                   key: {{ .s3.secret.secretKeyKey }}
+            - name: TOKEN_LOGO_ENDPOINT
+              value: {{ .tokenLogoEndpoint }}
 
           ports:
             - name: api

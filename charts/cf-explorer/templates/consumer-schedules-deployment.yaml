@@ -137,6 +137,24 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "managed-standalone" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_HOST
+            - name: REDIS_STANDALONE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_PORT
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
@@ -147,59 +165,63 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
 
             - name: REPORT_S3_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.bucketNameKey }}
+                  key: {{ .s3.secret.report.bucketNameKey }}
             - name: REPORT_S3_REGION
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.regionKey }}
+                  key: {{ .s3.secret.report.regionKey }}
             - name: REPORT_S3_STORAGE_ENDPOINT
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.endpointKey }}
+                  key: {{ .s3.secret.report.endpointKey }}
             - name: REPORT_S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.accessKeyKey }}
+                  key: {{ .s3.secret.report.accessKeyKey }}
             - name: REPORT_S3_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.secretKeyKey }}
+                  key: {{ .s3.secret.report.secretKeyKey }}
 
             - name: TOKEN_LOGO_S3_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.bucketNameKey }}
+                  key: {{ .s3.secret.tokenLogo.bucketNameKey }}
             - name: TOKEN_LOGO_S3_REGION
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.regionKey }}
+                  key: {{ .s3.secret.tokenLogo.regionKey }}
             - name: TOKEN_LOGO_S3_STORAGE_ENDPOINT
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.endpointKey }}
+                  key: {{ .s3.secret.tokenLogo.endpointKey }}
             - name: TOKEN_LOGO_S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.accessKeyKey }}
+                  key: {{ .s3.secret.tokenLogo.accessKeyKey }}
             - name: TOKEN_LOGO_S3_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ .s3.secret.name }}
-                  key: {{ .s3.secret.secretKeyKey }}
+                  key: {{ .s3.secret.tokenLogo.secretKeyKey }}
+            - name: TOKEN_LOGO_ENDPOINT
+              value: {{ .tokenLogoEndpoint }}
 
 
           ports:

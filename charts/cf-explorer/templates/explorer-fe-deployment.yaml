@@ -48,8 +48,10 @@ spec:
 
             - name: REACT_APP_EXT_ADA_PRICE_URL
               value: https://www.coingecko.com/en/coins/cardano
+            - name: REACT_APP_CARDANO_NEWS_URL
+              value: {{ tpl .reactAppCardanoNewsUrl $ }}
             - name: REACT_APP_NETWORK_NAMES
-              value: '{"mainnet":"Mainnet","preprod":"Preprod"}'
+              value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview"}'
 
           ports:
             - name: api

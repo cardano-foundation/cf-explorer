@@ -67,6 +67,10 @@ spec:
               value: "-1"
             - name: KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS
               value: "604800000"
+            - name: KAFKA_MESSAGE_MAX_BYTES
+              value: "200000000"
+            - name: KAFKA_SOCKET_REQUEST_MAX_BYTES
+              value: "200000000"
           ports:
             - name: api
               containerPort: {{ .port }}

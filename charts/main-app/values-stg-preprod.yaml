@@ -2,10 +2,14 @@ stage: stg
 
 network: preprod
 
-domain: stg.cf-explorer-preprod.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
+  postgresql:
+    enabled: false
+  kafka:
+    dbSize: 20Gi
 
 cf-explorer:
   enabled: true
@@ -20,103 +24,41 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.11"
-      springProfiles: n2n,cluster,kafka
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
-      redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        tag: "0.2.13"
     consumer:
       enabled: true
       image:
-        tag: "0.3.11"
-      springProfiles: aws, redis-cluster, caching
-      redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secret
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
+        tag: "0.3.14"
     explorerApi:
       enabled: true
-      s3:
-        bucketName: stg-cf-explorer-preprod-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
+      postgres:
         secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
+          hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.22"
-      springProfiles: dev,cluster,koios,s3
-      redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        tag: "0.3.31"
+      tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.6"
+        tag: "0.1.7-SNAPSHOT"
     explorerAuthentication:
-      enabled: false
+      enabled: true
       replicas: 1
       image:
-        tag: "0.1.10"
-      redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secret
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
+        tag: "0.1.13"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.13"
+        tag: "0.4.24-PR2063"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      s3:
-        bucketName: stg-cf-explorer-preprod-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.8"
-      springProfiles: dev,cluster,koios,s3
-      redis:
-        mode: cluster
-        cluster:
-          secret:
-            name: redis-secrets
-            passwordKey: REDIS_MASTER_PASSWORD
-            endpointKey: REDIS_ENDPOINT
-      kafka:
-        useSsl: "true"
-        bootstrapServersSecret:
-          name: infra-secrets
+        tag: "0.2.12"
+      tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
 argo-cd:
   server:

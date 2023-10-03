@@ -6,6 +6,13 @@ domain: dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
+  redis:
+    values:
+      master:
+        persistence:
+          size: 20Gi
+      diagnosticMode:
+        enabled: false
   postgresql:
     dbSize: 1500Gi
   kafka:
@@ -24,32 +31,21 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.11"
-      redis:
-        mode: standalone
+        tag: "0.2.13"
       kafka:
         bootstrapServerSecret:
           name: kafka-secrets
     consumer:
       enabled: true
       image:
-        tag: "0.3.11"
-      redis:
-        mode: standalone
+        tag: "0.3.14"
     explorerApi:
       enabled: true
-      s3:
-        bucketName: dev-cf-explorer-mainnet-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.3.24"
-      redis:
-        mode: standalone
+        tag: "0.3.31"
+      kafka:
+        bootstrapServerSecret:
+          name: kafka-secrets
     explorerRewardsApi:
       enabled: true
       image:
@@ -58,31 +54,19 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.10"
-      redis:
-        mode: standalone
+        tag: "0.1.13"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.13"
+        tag: "0.4.24-PR2063"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      s3:
-        bucketName: dev-cf-explorer-mainnet-reports
-        region: eu-west-1
-        endpoint: https://s3-eu-west-1.amazonaws.com
-        secret:
-          name: infra-secrets
-          accessKeyKey: S3_ACCESS_KEY
-          secretKeyKey: S3_SECRET_KEY
       image:
-        tag: "0.2.9"
-      redis:
-        mode: standalone
+        tag: "0.2.14"
 
 argo-cd:
   server:
