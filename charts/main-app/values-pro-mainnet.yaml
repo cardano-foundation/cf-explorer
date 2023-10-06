@@ -1,3 +1,6 @@
+git:
+  targetRevision: main
+
 stage: pro
 
 network: mainnet
