@@ -117,6 +117,9 @@ spec:
               value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
 
+            - name: REDIS_PUBSUB_TOPIC
+              value: {{ .redis.pubSubTopic | default "blocks" | quote }}
+
             - name: JPA_SHOW_SQL
               value: {{ .jpa.showSql | default false | quote}}
             - name: FLYWAY_ENABLE

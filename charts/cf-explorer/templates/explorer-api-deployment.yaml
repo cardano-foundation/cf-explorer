@@ -153,6 +153,10 @@ spec:
             - name: REDIS_USE_SSL
               value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
+
+            - name: REDIS_PUBSUB_TOPIC
+              value: {{ .redis.pubSubTopic | default "blocks" | quote }}
+
             - name: S3_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
@@ -180,6 +184,9 @@ spec:
                   key: {{ .s3.secret.secretKeyKey }}
             - name: TOKEN_LOGO_ENDPOINT
               value: {{ .tokenLogoEndpoint }}
+
+            - name: WEB_SOCKET_MARKET_PUBLISH_DELAY_TIME
+              value: {{ .webSocketMarketPublishDelayTime | default "20000" | quote }}
 
           ports:
             - name: api
