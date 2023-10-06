@@ -92,7 +92,7 @@ spec:
             - name: API_CHECK_POOL_HISTORY_URL
               value: {{ .checkPoolHistoryUrl }}
 
-            - name STAKE_TX_BALANCE_JOB_ENABLED
+            - name: STAKE_TX_BALANCE_JOB_ENABLED
               value: {{ .stakeTxBalanceJobEnabled | default "true" | quote }}
             - name: STAKE_TX_BALANCE_FIXED_DELAY
               value: {{ .stakeTxBalanceFixedDelay | default "300000" | quote }}
