@@ -29,7 +29,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13"
+        tag: "0.2.14"
     consumer:
       enabled: true
       image:
@@ -40,7 +40,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.31"
+        tag: "0.3.31-PR746"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true

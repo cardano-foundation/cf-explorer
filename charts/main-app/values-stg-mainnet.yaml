@@ -20,7 +20,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13"
+        tag: "0.2.14"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
@@ -47,7 +47,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.31"
+        tag: "0.3.31-PR746"
       redis:
         mode: managed-standalone
         standalone:
