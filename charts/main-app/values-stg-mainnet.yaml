@@ -20,7 +20,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13-PR97"
+        tag: "0.2.14"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
