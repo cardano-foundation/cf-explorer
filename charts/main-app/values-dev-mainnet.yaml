@@ -31,25 +31,22 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13-PR97"
+        tag: "0.2.14"
       kafka:
         bootstrapServerSecret:
           name: kafka-secrets
     consumer:
       enabled: true
       image:
-        tag: "0.3.14"
+        tag: "0.3.18"
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.31"
-      kafka:
-        bootstrapServerSecret:
-          name: kafka-secrets
+        tag: "0.3.34"
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7-SNAPSHOT"
+        tag: "0.1.7"
     explorerAuthentication:
       enabled: true
       replicas: 1
@@ -58,7 +55,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.24-PR2063"
+        tag: "0.4.28"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
@@ -66,7 +63,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.14"
+        tag: "0.2.17"
 
 argo-cd:
   server:
