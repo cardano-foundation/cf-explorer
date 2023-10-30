@@ -148,7 +148,7 @@ spec:
               value: {{ .logLevel }}
 
             - name: SUBMIT_API_CONFIG_URL
-              value: "/genesis/{{ .network }}/submit-api-config.json"
+              value: "https://book.world.dev.cardano.org/environments/{{ .network }}/config.json"
             - name: BYRON_GENESIS_URL
               value: "/genesis/{{ .network }}/byron-genesis.json"
             - name: SHELLEY_GENESIS_URL
