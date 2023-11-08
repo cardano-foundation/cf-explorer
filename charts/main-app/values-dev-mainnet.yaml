@@ -51,7 +51,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.13"
+        tag: "0.1.14"
     explorerFrontEnd:
       enabled: true
       image:
@@ -64,6 +64,17 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.17"
+    keycloak:
+      enabled: true
+      image:
+        tag: 0.1.15-SNAPSHOT-PR110
+      setupImage:
+        tag: 0.1.15-SNAPSHOT-PR110
+      hostname: keycloak.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+      frontendDomainPublicUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+      webOrigin: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+      redirectUri: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/*
+      forwardEventUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
 
 argo-cd:
   server:

@@ -13,8 +13,6 @@ cf-explorer-infra:
 
 cf-explorer:
   enabled: true
-  git:
-    targetRevision: feat/add-keycloak
   values:
     ingressDomains:
       - name: cloudfront
