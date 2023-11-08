@@ -57,6 +57,12 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.17"
+  keycloak:
+    enabled: true
+    image:
+      tag: 1.0.0-PR91
+    setupImage:
+      tag: 0.1.15-SNAPSHOT-PR11
 
 argo-cd:
   server:
