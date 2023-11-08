@@ -1,0 +1,16 @@
+{{ with .Values.keycloak }}
+{{ if .enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak
+data:
+  keycloak-setup.sh: |
+    cp /opt/keycloak/data/import/realms.json.tpl /tmp/realms.json.tpl
+    for envvar in WEB_ORIGIN REDIRECT_URI
+    do
+      sed -i "s|__${envvar}__|${!envvar}|" /tmp/realms.json.tpl
+    done
+    cp /tmp/realms.json.tpl /dest-imports/realms.json
+{{ end }}
+{{ end }}

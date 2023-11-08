@@ -62,9 +62,12 @@ spec:
               value: {{ .kafka.reportsTopic }}
 
             - name: AUTH_FILE_PATH
-              value: {{ .authFilePath | default "/app/auth/policy.json" | quote }}
+              value: {{ .authFilePath | default "/app/permission/policy.json" | quote }}
             - name: RSA_PUBLIC_KEY_AUTH
-              value: {{ .rsaPublicKeyAuth | default "CHANGEME" | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PUBLIC_KEY_AUTH
 
             - name: API_CHECK_REWARD_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/rewards/fetch"
@@ -192,6 +195,11 @@ spec:
 
             - name: WEB_SOCKET_MARKET_PUBLISH_DELAY_TIME
               value: {{ .webSocketMarketPublishDelayTime | default "20000" | quote }}
+
+            - name: BYRON_GENESIS_FILE
+              value: "/app/genesis/{{ .network }}/byron-genesis.json"
+            - name: SHELLEY_GENESIS_FILE
+              value: "/app/genesis/{{ .network }}/shelley-genesis.json"
 
           ports:
             - name: api

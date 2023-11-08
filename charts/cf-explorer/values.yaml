@@ -355,3 +355,23 @@ cardanoNewsApi:
 
   port: 8080
 
+keycloak:
+  enabled: true
+  image:
+    repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/keycloak-spi
+    tag: 1.0.0-PR91
+  setupImage:
+    repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/keycloak-spi
+    tag: 0.1.15-SNAPSHOT-PR110
+  adminUser: null
+  hostname: null
+  adminSecretKey: null
+  adminSecretName: null
+  frontendDomainPublicUrl: null
+  postgresDbSecretKey: null
+  postgresHostSecretKey: null
+  postgresPassSecretKey: null
+  postgresSecretName: null
+  postgresUserSecretKey: null
+  redirectUri: null
+  port: 8080
