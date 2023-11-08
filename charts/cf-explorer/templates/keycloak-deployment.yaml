@@ -41,6 +41,7 @@ spec:
           env:
             - name: KC_DB_URL
               valueFrom:
+                secretKeyRef:
                   name: {{ .postgresSecretName | default "keycloak-postgres-secrets" | quote }}
                   key: {{ .postgresDbUrlSecretKey | default "KC_DB_URL" | quote }}
             - name: KC_DB
