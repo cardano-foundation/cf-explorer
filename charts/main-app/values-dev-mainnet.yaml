@@ -67,9 +67,9 @@ cf-explorer:
     keycloak:
       enabled: true
       image:
-        tag: 0.1.15-SNAPSHOT-PR110
+        tag: 0.1.15-SNAPSHOT
       setupImage:
-        tag: 0.1.15-SNAPSHOT-PR110
+        tag: 0.1.15-SNAPSHOT
       hostname: keycloak.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
       frontendDomainPublicUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
       webOrigin: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
