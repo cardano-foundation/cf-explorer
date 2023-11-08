@@ -1,0 +1,27 @@
+{{ with .Values.keycloak }}
+{{ if .enabled }}
+{{- $root := . -}}
+  {{- range $v := $.Values.ingressTLDs }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "keycloak-{{ $v.name }}"
+spec:
+  rules:
+    - host: "auth.{{ $v.domain }}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: {{ $root.port }}
+  tls:
+    - hosts:
+        - "auth.{{ $v.domain }}"
+  {{- end }}
+{{ end }}
+{{ end }}

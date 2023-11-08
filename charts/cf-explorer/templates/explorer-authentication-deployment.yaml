@@ -143,6 +143,33 @@ spec:
                   name: infra-secrets
                   key: SES_SECRET_ACCESS_KEY
 
+            - name: KEYCLOAK_REALM_NAME
+              value: {{ .keycloakRealmName | default "cardano_explorer" | quote }}
+            - name: KEYCLOAK_SERVER_URL
+              value: {{ .keycloakServerUrl | default "http://keycloak:8080" | quote }}
+            - name: KEYCLOAK_CLIENT_ID
+              value: {{ .keycloakClientId | default "cardano_authentication_client" | quote }}
+            - name: KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: KEYCLOAK_CLIENT_SECRET
+            - name: RSA_PUBLIC_KEY_AUTH
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PUBLIC_KEY_AUTH
+            - name: RSA_PUBLIC_KEY_MAIL
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PUBLIC_KEY_MAIL
+            - name: RSA_PRIVATE_KEY_MAIL
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PRIVATE_KEY_MAIL
+
           ports:
             - name: api
               containerPort: {{ .port }}

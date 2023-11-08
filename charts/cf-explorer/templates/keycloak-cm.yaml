@@ -1,0 +1,11 @@
+{{ with .Values.keycloak }}
+{{ if .enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak
+data:
+  keycloak-setup.sh: |
+    envsubst < /opt/keycloak/data/import/realms.json.tpl > /dest-imports/realms.json
+{{ end }}
+{{ end }}

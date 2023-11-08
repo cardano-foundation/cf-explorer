@@ -57,6 +57,9 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.2.17"
+    keycloak:
+      redirectUri: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/*"
+      webOrigin: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
 
 argo-cd:
   server:
