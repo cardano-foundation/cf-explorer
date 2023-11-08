@@ -65,6 +65,10 @@ cf-explorer:
       tag: 1.0.0-PR91
     setupImage:
       tag: 0.1.15-SNAPSHOT-PR110
+    hostname: keycloak.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+    frontendDomainPublicUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+    webOrigin: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+    redirectUri: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/*
 
 argo-cd:
   server:
