@@ -62,7 +62,7 @@ spec:
               value: {{ .kafka.reportsTopic }}
 
             - name: AUTH_FILE_PATH
-              value: {{ .authFilePath | default "/app/auth/policy.json" | quote }}
+              value: {{ .authFilePath | default "/app/permission/policy.json" | quote }}
             - name: RSA_PUBLIC_KEY_AUTH
               valueFrom:
                 secretKeyRef:

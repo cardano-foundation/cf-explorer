@@ -69,6 +69,7 @@ cf-explorer:
       frontendDomainPublicUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
       webOrigin: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
       redirectUri: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/*
+      forwardEventUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
 
 argo-cd:
   server:
