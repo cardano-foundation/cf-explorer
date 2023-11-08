@@ -64,7 +64,10 @@ spec:
             - name: AUTH_FILE_PATH
               value: {{ .authFilePath | default "/app/auth/policy.json" | quote }}
             - name: RSA_PUBLIC_KEY_AUTH
-              value: {{ .rsaPublicKeyAuth | default "CHANGEME" | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PUBLIC_KEY_AUTH
 
             - name: API_CHECK_REWARD_URL
               value: "{{ .explorerRewardsUrl }}/api/v1/rewards/fetch"
