@@ -362,7 +362,7 @@ keycloak:
     tag: 1.0.0-PR91
   setupImage:
     repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/keycloak-spi
-    tag: 0.1.15-SNAPSHOT-PR11
+    tag: 0.1.15-SNAPSHOT-PR110
   adminUser: null
   hostname: null
   adminSecretKey: null
