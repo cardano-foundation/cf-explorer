@@ -28,6 +28,7 @@ explorerApi:
   postgres:
     schema: preview
   monitoringEnabled: true
+  network: preview
 
 explorerRewardsApi:
   enabled: true

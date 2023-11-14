@@ -27,6 +27,7 @@ explorerApi:
   postgres:
     schema: preprod
   monitoringEnabled: true
+  network: preprod
 
 explorerRewardsApi:
   enabled: true

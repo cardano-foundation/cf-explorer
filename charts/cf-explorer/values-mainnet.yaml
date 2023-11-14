@@ -27,6 +27,7 @@ explorerApi:
   postgres:
     schema: mainnet
   monitoringEnabled: true
+  network: mainnet
 
 explorerRewardsApi:
   enabled: true
