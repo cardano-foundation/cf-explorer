@@ -35,7 +35,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.34"
+        tag: "0.3.35"
     explorerRewardsApi:
       enabled: true
       image:
@@ -48,7 +48,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.28"
+        tag: "0.4.29"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
@@ -56,7 +56,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.17"
+        tag: "0.2.18"
     keycloak:
       enabled: true
       image:
