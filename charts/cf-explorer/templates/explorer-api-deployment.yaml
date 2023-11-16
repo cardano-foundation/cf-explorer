@@ -33,7 +33,7 @@ spec:
                 secretKeyRef:
                   name: {{ .postgres.ledgerSync.secret.name }}
                   key: {{ .postgres.ledgerSync.secret.portKey }}
-            - name: LEDGER_SYNC_USERNAME
+            - name: LEDGER_SYNC_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.ledgerSync.secret.name }}
@@ -59,7 +59,7 @@ spec:
                 secretKeyRef:
                   name: {{ .postgres.explorer.secret.name }}
                   key: {{ .postgres.explorer.secret.portKey }}
-            - name: EXPLORER_USERNAME
+            - name: EXPLORER_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.explorer.secret.name }}
