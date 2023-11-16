@@ -25,31 +25,58 @@ spec:
             - name: SERVER_PORT
               value: {{ .port | quote }}
 
-            - name: POSTGRES_HOST
+            - name: LEDGER_SYNC_HOST
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.hostKey }}
-            - name: POSTGRES_PORT
+                  name: {{ .postgres.ledgerSync.name }}
+                  key: {{ .postgres.ledgerSync.hostKey }}
+            - name: LEDGER_SYNC_PORT
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.portKey }}
-            - name: POSTGRES_USER
+                  name: {{ .postgres.ledgerSync.name }}
+                  key: {{ .postgres.ledgerSync.portKey }}
+            - name: LEDGER_SYNC_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.userKey }}
-            - name: POSTGRES_PASSWORD
+                  name: {{ .postgres.ledgerSync.name }}
+                  key: {{ .postgres.ledgerSync.userKey }}
+            - name: LEDGER_SYNC_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.passwordKey }}
-            - name: POSTGRES_DB
+                  name: {{ .postgres.ledgerSync.name }}
+                  key: {{ .postgres.ledgerSync.passwordKey }}
+            - name: LEDGER_SYNC_DB
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.dbKey }}
+                  name: {{ .postgres.ledgerSync.name }}
+                  key: {{ .postgres.ledgerSync.dbKey }}
+
+            - name: EXPLORER_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.name }}
+                  key: {{ .postgres.explorer.hostKey }}
+            - name: EXPLORER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.name }}
+                  key: {{ .postgres.explorer.portKey }}
+            - name: EXPLORER_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.name }}
+                  key: {{ .postgres.explorer.userKey }}
+            - name: EXPLORER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.name }}
+                  key: {{ .postgres.explorer.passwordKey }}
+            - name: EXPLORER_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.name }}
+                  key: {{ .postgres.explorer.dbKey }}
+
             - name: POSTGRES_SCHEMA
               value: {{ .postgres.schema }}
 

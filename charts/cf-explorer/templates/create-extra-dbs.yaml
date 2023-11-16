@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: create-rds-extra-dbs
+  namespace: {{ $.Release.Namespace }}
+data:
+  create-extra-dbs.sh: |
+    for db in ${EXTRA_DBS}; do
+      psql -c "CREATE DATABASE ${db};"
+    done
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-extra-dbs
+  namespace: {{ $.Release.Namespace }}
+spec:
+  backoffLimit: 5
+  template:
+    spec:
+      containers:
+      - name: create-extra-dbs
+        image: postgres
+        command: ["/bin/bash", "/configmap/create-extra-dbs.sh"]
+        env:
+        - name: EXTRA_DBS
+          value: {{ join " " .extraDbs | default "explorer_db" | quote }}
+        - name: PGHOST
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: POSTGRES_HOST
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: POSTGRES_USER
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: POSTGRES_PASSWORD
+        - name: PGDATABASE
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: POSTGRES_DB
+        volumeMounts:
+        - name: configmap
+          mountPath: /configmap
+      restartPolicy: Never
+      volumes:
+      - name: configmap
+        configMap:
+          name: create-extra-dbs
