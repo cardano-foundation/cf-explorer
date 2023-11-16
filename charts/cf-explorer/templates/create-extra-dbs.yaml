@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: create-rds-extra-dbs
+  name: create-extra-dbs
   namespace: {{ $.Release.Namespace }}
 data:
   create-extra-dbs.sh: |
