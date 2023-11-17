@@ -11,6 +11,8 @@ data:
   POSTGRES_HOST: {{ .dbHost | default "postgresql" | b64enc | quote }}
   POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
   POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  LEDGER_SYNC_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  EXPLORER_DB: {{ .explorerDbName | default "explorer_db" | b64enc | quote }}
   POSTGRES_ADMIN_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
   POSTGRES_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
   POSTGRES_REPLICATION_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}

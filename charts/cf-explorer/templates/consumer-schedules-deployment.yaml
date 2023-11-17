@@ -25,33 +25,69 @@ spec:
             - name: SERVER_PORT
               value: {{ .port | quote }}
 
-            - name: POSTGRES_HOST
+            - name: LEDGER_SYNC_HOST
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.hostKey }}
-            - name: POSTGRES_PORT
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.hostKey }}
+            - name: LEDGER_SYNC_PORT
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.portKey }}
-            - name: POSTGRES_USER
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.portKey }}
+            - name: LEDGER_SYNC_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.userKey }}
-            - name: POSTGRES_PASSWORD
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.userKey }}
+            - name: LEDGER_SYNC_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.passwordKey }}
-            - name: POSTGRES_DB
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.passwordKey }}
+            - name: LEDGER_SYNC_DB
               valueFrom:
                 secretKeyRef:
-                  name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.dbKey }}
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.dbKey }}
+
+            - name: EXPLORER_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.hostKey }}
+            - name: EXPLORER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.portKey }}
+            - name: EXPLORER_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.userKey }}
+            - name: EXPLORER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.passwordKey }}
+            - name: EXPLORER_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.dbKey }}
+
             - name: POSTGRES_SCHEMA
               value: {{ .postgres.schema }}
+
+            - name: LEDGER_SYNC_FLYWAY_ENABLE
+              value: {{ .ledgerSyncFlywayEnable | default "true" | quote }}
+            - name: LEDGER_SYNC_FLYWAY_VALIDATE
+              value: {{ .ledgerSyncFlywayValidate | default "false" | quote }}
+            - name: EXPLORER_FLYWAY_ENABLE
+              value: {{ .explorerFlywayEnable | default "true" | quote }}
+            - name: EXPLORER_FLYWAY_VALIDATE
+              value: {{ .explorerFlywayValidate | default "false" | quote }}
 
             - name: MAXIMUM_POOL_SIZE
               value: "48"
