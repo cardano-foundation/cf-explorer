@@ -326,7 +326,10 @@ consumerSchedules:
         portKey: POSTGRES_PORT
         dbKey: EXPLORER_DB
         passwordKey: POSTGRES_PASSWORD
-
+  ledgerSyncFlywayEnable: null
+  ledgerSyncFlywayValidate: null
+  explorerFlywayEnable: null
+  explorerFlywayValidate: null
 
   kafka:
     useSsl: "false"

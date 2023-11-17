@@ -80,6 +80,15 @@ spec:
             - name: POSTGRES_SCHEMA
               value: {{ .postgres.schema }}
 
+            - name: LEDGER_SYNC_FLYWAY_ENABLE
+              value: {{ .ledgerSyncFlywayEnable | default "true" | quote }}
+            - name: LEDGER_SYNC_FLYWAY_VALIDATE
+              value: {{ .ledgerSyncFlywayValidate | default "false" | quote }}
+            - name: EXPLORER_SYNC_FLYWAY_ENABLE
+              value: {{ .explorerFlywayEnable | default "true" | quote }}
+            - name: EXPLORER_SYNC_FLYWAY_VALIDATE
+              value: {{ .explorerFlywayValidate | default "false" | quote }}
+
             - name: MAXIMUM_POOL_SIZE
               value: "48"
             - name: META_DATA_JOB_ENABLED
