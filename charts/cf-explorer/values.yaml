@@ -302,7 +302,7 @@ consumerSchedules:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer-schedules"
     tag: "0.2.2"
 
-  springProfiles: dev,standalone,koios,s3
+  springProfiles: prod,standalone,koios,s3
 
   port: 8080
 

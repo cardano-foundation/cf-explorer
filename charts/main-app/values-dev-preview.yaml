@@ -55,7 +55,6 @@ cf-explorer:
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
       enabled: true
-      springProfiles: prod,standalone,koios,s3
       image:
         tag: "0.2.18"
     keycloak:
