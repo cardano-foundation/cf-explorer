@@ -42,7 +42,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.35"
+        tag: "0.3.34"
     explorerRewardsApi:
       enabled: true
       image:
@@ -55,7 +55,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.29"
+        tag: "0.4.28"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
