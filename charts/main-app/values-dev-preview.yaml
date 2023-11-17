@@ -57,7 +57,7 @@ cf-explorer:
       enabled: true
       springProfiles: prod,standalone,koios,s3
       image:
-        tag: "0.2.18"
+        tag: "0.2.18-SNAPSHOT-PR242"
     keycloak:
       enabled: true
       image:
