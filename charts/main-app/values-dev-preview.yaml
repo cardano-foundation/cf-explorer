@@ -35,7 +35,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.35"
+        tag: "0.3.35-SNAPSHOT"
     explorerRewardsApi:
       enabled: true
       image:
