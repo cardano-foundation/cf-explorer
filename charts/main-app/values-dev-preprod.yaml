@@ -31,11 +31,11 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.18"
+        tag: "0.3.19-SNAPSHOT"
     explorerApi:
       enabled: true
       image:
-        tag: "0.3.35"
+        tag: "0.3.35-SNAPSHOT"
     explorerRewardsApi:
       enabled: true
       image:
