@@ -55,7 +55,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.28-PR2395"
+        tag: "0.5.0-PR2395"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
