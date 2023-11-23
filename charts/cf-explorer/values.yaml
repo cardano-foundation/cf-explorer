@@ -282,6 +282,7 @@ explorerFrontEnd:
   reactAppAuthUrl: "https://auth-api.{{ .Values.domain }}/api/v1"
   reactAppNetwork: "{{ .Values.network }}"
   reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
+  reactAppWsUrl: "wss://api.{{ .Values.domain }}/ws"
 
   port: 80
 

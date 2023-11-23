@@ -45,6 +45,8 @@ spec:
               value: {{ tpl .reactAppMainnetAppUrl $ }}
             - name: REACT_APP_AUTH_API_URL
               value: {{ tpl .reactAppAuthUrl $ }}
+            - name: REACT_APP_WS_URL
+              value: {{ .tpl .reactAppWsUrl $ }}
 
             - name: REACT_APP_EXT_ADA_PRICE_URL
               value: https://www.coingecko.com/en/coins/cardano
