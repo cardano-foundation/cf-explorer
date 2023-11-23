@@ -36,7 +36,7 @@ cf-explorer:
       enabled: true
       springProfiles: prod,standalone,koios,s3
       image:
-        tag: "0.3.36-SNAPSHOT-PR867"
+        tag: "0.3.35-SNAPSHOT-PR879"
     explorerRewardsApi:
       enabled: true
       image:
