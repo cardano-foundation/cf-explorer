@@ -80,8 +80,7 @@ cf-explorer:
 adahandle-resolver:
   enabled: true
   git:
-    target:
-      targetRevision: "helm-chart-v2"
+    targetRevision: "helm-chart-v2"
 
 argo-cd:
   server:
