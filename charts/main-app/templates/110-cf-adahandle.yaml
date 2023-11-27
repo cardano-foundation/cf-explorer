@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:cardano-foundation/adahandle-resolver.git
-    targetRevision: {{ index .Values "adahandle-resolver"  git targetRevision | default "HEAD" }}
+    targetRevision: {{ index .Values "adahandle-resolver"  "git" "targetRevision" | default "HEAD" }}
     path: deploy/adahandle-resolver
     helm:
       parameters:
