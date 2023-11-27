@@ -78,7 +78,7 @@ cf-explorer:
 
 # Ada Handle Parameters
 adahandle-resolver:
-  enabled: true
+  enabled: false
   git:
     targetRevision: "helm-chart-v2"
 
