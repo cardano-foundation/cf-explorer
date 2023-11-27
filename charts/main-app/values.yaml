@@ -20,9 +20,14 @@ cf-explorer:
   # Whether the Explorer Resources should be deployed.
   enabled: true
 
+# Ada Handle Parameters
+adahandle-resolver:
+  # Whether the Explorer Resources should be deployed.
+  enabled: false
+
 # Elastic Stack Parameters
 elastic-stack:
-  # Whether the Elastic Stack should be deployed.
+  # Whether the Ada Handle app should be deployed.
   enabled: true
 
 grafana-dashboards:

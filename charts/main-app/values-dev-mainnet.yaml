@@ -76,6 +76,13 @@ cf-explorer:
       redirectUri: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/*
       forwardEventUrl: https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
 
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  git:
+    target:
+      targetRevision: "helm-chart-v2"
+
 argo-cd:
   server:
     ingress:
