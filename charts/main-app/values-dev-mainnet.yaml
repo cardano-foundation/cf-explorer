@@ -79,12 +79,11 @@ cf-explorer:
 # Ada Handle Parameters
 adahandle-resolver:
   enabled: true
-  git:
-    targetRevision: "helm-chart-v2"
   values:
+    springProfiles: mainnet,postgres
     image:
       repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/adahandle-resolver
-      tag: "v0.0.6-9-ge229a80"
+      tag: "0.1.0"
 
 argo-cd:
   server:

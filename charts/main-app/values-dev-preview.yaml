@@ -69,6 +69,15 @@ cf-explorer:
       redirectUri: https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/*
       forwardEventUrl: https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
 
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  values:
+    springProfiles: preview,postgres
+    image:
+      repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/adahandle-resolver
+      tag: "0.1.0"
+
 argo-cd:
   server:
     ingress:
