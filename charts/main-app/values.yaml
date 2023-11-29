@@ -28,7 +28,7 @@ adahandle-resolver:
 # Elastic Stack Parameters
 elastic-stack:
   # Whether the Ada Handle app should be deployed.
-  enabled: true
+  enabled: false
 
 grafana-dashboards:
   enabled: true
