@@ -71,7 +71,7 @@ cf-explorer:
 
 # Ada Handle Parameters
 adahandle-resolver:
-  enabled: false
+  enabled: true
   values:
     springProfiles: preprod,postgres
     image:
