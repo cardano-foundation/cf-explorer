@@ -82,7 +82,6 @@ adahandle-resolver:
   values:
     springProfiles: mainnet,postgres
     image:
-      repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/adahandle-resolver
       tag: "0.1.0"
 
 argo-cd:
