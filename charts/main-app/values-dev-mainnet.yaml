@@ -63,7 +63,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.19-SNAPSHOT-PR249"
+        tag: "0.2.19-SNAPSHOT-PR253"
     keycloak:
       enabled: true
       image:
