@@ -35,6 +35,9 @@ elastic-stack:
 grafana-dashboards:
   enabled: true
 
+not-found:
+  enabled: true
+
 spec:
   destination:
     server: https://kubernetes.default.svc
