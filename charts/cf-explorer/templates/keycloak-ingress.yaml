@@ -1,4 +1,4 @@
-{{ with .Values.explorerAuthentication }}
+{{ with .Values.keycloak }}
 {{ if .enabled }}
 {{- $root := . -}}
   {{- range $v := $.Values.ingressDomains }}
