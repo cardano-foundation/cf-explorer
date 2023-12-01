@@ -45,6 +45,3 @@ kafdrop:
     repository: "obsidiandynamics/kafdrop"
     tag: "latest"
   port: 9000
-
-not-found:
-  enabled: true
