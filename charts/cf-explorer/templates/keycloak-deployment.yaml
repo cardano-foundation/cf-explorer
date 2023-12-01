@@ -65,7 +65,7 @@ spec:
             - name: KEYCLOAK_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .adminSecretName | default "keycloak-secrets" | quote }}
+                  name: {{ .adminSecretName | default "infra-secrets" | quote }}
                   key: {{ .adminSecretKey | default "KEYCLOAK_ADMIN_PASSWORD" | quote }}
 
             - name: FORWARD_EVENT_URL
