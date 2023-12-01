@@ -30,7 +30,7 @@ cf-explorer:
         standalone:
           useSsl: "true"
     consumer:
-      enabled: true
+      enabled: false
       image:
         tag: "0.3.20-SNAPSHOT-PR316"
       redis:
@@ -79,7 +79,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: true
+      enabled: false
       image:
         tag: "0.2.19-SNAPSHOT-PR253"
       redis:
