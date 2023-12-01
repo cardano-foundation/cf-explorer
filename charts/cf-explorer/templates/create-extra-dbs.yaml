@@ -5,9 +5,10 @@ metadata:
   namespace: {{ $.Release.Namespace }}
 data:
   create-extra-dbs.sh: |
+    set -x
     export PGDATABASE=postgres
     for db in ${EXTRA_DBS}; do
-      psql -c "CREATE DATABASE ${db};"
+      psql -c "CREATE DATABASE ${db};" || true
     done
 ---
 apiVersion: batch/v1
@@ -25,7 +26,7 @@ spec:
         command: ["/bin/bash", "/configmap/create-extra-dbs.sh"]
         env:
         - name: EXTRA_DBS
-          value: {{ join " " .extraDbs | default "explorer_db keycloak" | quote }}
+          value: {{ join " " .extraDbs | default "explorer_api explorer_db keycloak" | quote }}
         - name: PGHOST
           valueFrom:
             secretKeyRef:
