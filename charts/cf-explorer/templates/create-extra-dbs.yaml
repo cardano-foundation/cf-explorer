@@ -5,6 +5,7 @@ metadata:
   namespace: {{ $.Release.Namespace }}
 data:
   create-extra-dbs.sh: |
+    export PGDATABASE=postgres
     for db in ${EXTRA_DBS}; do
       psql -c "CREATE DATABASE ${db};"
     done
