@@ -20,7 +20,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13"
+        tag: "0.2.14"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
@@ -32,7 +32,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.14"
+        tag: "0.3.20-SNAPSHOT-PR316"
       redis:
         mode: managed-standalone
         standalone:
@@ -47,7 +47,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.31"
+        tag: "0.5.0"
       redis:
         mode: managed-standalone
         standalone:
@@ -60,12 +60,12 @@ cf-explorer:
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7-SNAPSHOT"
+        tag: "0.1.7"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.13"
+        tag: "0.1.15"
       redis:
         mode: managed-standalone
         standalone:
@@ -73,7 +73,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.24-PR2063"
+        tag: "0.5.0"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
@@ -81,7 +81,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.12"
+        tag: "0.2.19-SNAPSHOT-PR253"
       redis:
         mode: managed-standalone
         standalone:
@@ -91,6 +91,25 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+    keycloak:
+      enabled: true
+      image:
+        tag: 0.1.15-SNAPSHOT
+      setupImage:
+        tag: 0.1.15-SNAPSHOT
+      hostname: keycloak.stg.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
+      frontendDomainPublicUrl: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+      webOrigin: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+      redirectUri: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org/*
+      forwardEventUrl: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
+
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  values:
+    springProfiles: mainnet,postgres
+    image:
+      tag: "0.1.0"
 
 argo-cd:
   server:
