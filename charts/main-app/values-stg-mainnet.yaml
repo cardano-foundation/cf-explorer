@@ -70,6 +70,7 @@ cf-explorer:
         mode: managed-standalone
         standalone:
           useSsl: "true"
+      keycloakServerUrl: "https://keycloak.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
     explorerFrontEnd:
       enabled: true
       image:
@@ -97,7 +98,7 @@ cf-explorer:
         tag: 0.1.15-SNAPSHOT
       setupImage:
         tag: 0.1.15-SNAPSHOT
-      hostname: keycloak.stg.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
+      hostname: keycloak.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
       frontendDomainPublicUrl: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
       webOrigin: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
       redirectUri: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org/*
