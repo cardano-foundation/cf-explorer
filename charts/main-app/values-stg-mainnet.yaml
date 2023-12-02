@@ -30,7 +30,7 @@ cf-explorer:
         standalone:
           useSsl: "true"
     consumer:
-      enabled: false
+      enabled: true
       image:
         tag: "0.3.20-SNAPSHOT-PR316"
       redis:
@@ -42,7 +42,7 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
     explorerApi:
-      enabled: false
+      enabled: true
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
@@ -58,11 +58,11 @@ cf-explorer:
           name: infra-secrets
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
-      enabled: false
+      enabled: true
       image:
         tag: "0.1.7"
     explorerAuthentication:
-      enabled: false
+      enabled: true
       replicas: 1
       image:
         tag: "0.1.15"
@@ -80,7 +80,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: false
+      enabled: true
       image:
         tag: "0.2.19-SNAPSHOT-PR253"
       redis:
