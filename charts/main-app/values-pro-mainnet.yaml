@@ -25,7 +25,7 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13"
+        tag: "0.2.14"
       kafka:
         useSsl: "true"
         bootstrapServersSecret:
@@ -37,7 +37,7 @@ cf-explorer:
     consumer:
       enabled: true
       image:
-        tag: "0.3.14"
+        tag: "0.3.20-SNAPSHOT-PR316"
       redis:
         mode: managed-standalone
         standalone:
@@ -52,7 +52,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.31"
+        tag: "0.5.0"
       redis:
         mode: managed-standalone
         standalone:
@@ -65,21 +65,22 @@ cf-explorer:
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7-SNAPSHOT"
+        tag: "0.1.7"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.13"
+        tag: "0.1.15"
       redis:
         mode: managed-standalone
         standalone:
           useSsl: "true"
       emailFrom: "admin@beta.explorer.cardano.org"
+      keycloakServerUrl: "https://keycloak.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.24-PR2063"
+        tag: "0.5.0"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
@@ -88,7 +89,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.12"
+        tag: "0.2.19-SNAPSHOT-PR253"
       redis:
         mode: managed-standalone
         standalone:
@@ -98,6 +99,25 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+    keycloak:
+      enabled: true
+      image:
+        tag: 0.1.15-SNAPSHOT
+      setupImage:
+        tag: 0.1.15-SNAPSHOT
+      hostname: keycloak.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org
+      frontendDomainPublicUrl: https://beta.explorer.cardano.org
+      webOrigin: https://beta.explorer.cardano.org
+      redirectUri: https://beta.explorer.cardano.org/*
+      forwardEventUrl: https://beta.explorer.cardano.org/api/v1/user/role-mapping
+
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  values:
+    springProfiles: mainnet,postgres
+    image:
+      tag: "0.1.0"
 
 argo-cd:
   server:

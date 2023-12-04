@@ -29,33 +29,34 @@ cf-explorer:
     crawler:
       enabled: true
       image:
-        tag: "0.2.13"
+        tag: "0.2.14"
     consumer:
       enabled: true
       image:
-        tag: "0.3.14"
+        tag: "0.3.20-SNAPSHOT-PR316"
     explorerApi:
       enabled: true
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.3.31"
+        tag: "0.5.0"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7-SNAPSHOT"
+        tag: "0.1.7"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.13"
+        tag: "0.1.15"
       emailFrom: "admin@beta.explorer.cardano.org"
+      keycloakServerUrl: "https://keycloak.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.4.24-PR2063"
+        tag: "0.5.0"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
@@ -63,8 +64,27 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.12"
+        tag: "0.2.19-SNAPSHOT-PR253"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+    keycloak:
+      enabled: true
+      image:
+        tag: 0.1.15-SNAPSHOT
+      setupImage:
+        tag: 0.1.15-SNAPSHOT
+      hostname: keycloak.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org
+      frontendDomainPublicUrl: https://preprod.beta.explorer.cardano.org
+      webOrigin: https://preprod.beta.explorer.cardano.org
+      redirectUri: https://preprod.beta.explorer.cardano.org/*
+      forwardEventUrl: https://preprod.beta.explorer.cardano.org/api/v1/user/role-mapping
+
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  values:
+    springProfiles: preprod,postgres
+    image:
+      tag: "0.1.0"
 
 argo-cd:
   server:
