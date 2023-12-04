@@ -36,7 +36,7 @@ cf-explorer:
         bootstrapServerSecret:
           name: kafka-secrets
     consumer:
-      enabled: true
+      enabled: false
       image:
         tag: "0.3.20-SNAPSHOT-PR316"
     explorerApi:
@@ -61,7 +61,7 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: true
+      enabled: false
       image:
         tag: "0.2.19-SNAPSHOT-PR253"
     keycloak:
