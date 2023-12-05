@@ -82,7 +82,7 @@ adahandle-resolver:
   values:
     springProfiles: mainnet,postgres
     image:
-      tag: "0.1.0"
+      tag: "0.1.2"
 
 argo-cd:
   server:
