@@ -1,13 +1,27 @@
 {{ with .Values.explorerApi }}
 {{ if .enabled }}
+{{- $root := . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-cache-header-rewrite
+  namespace: kube-system
+spec:
+  headers:
+    customResponseHeaders:
+      Cache-Control: "max-age=20, must-revalidate"
+      expires:
+  {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cf-explorer-api
+  name: "cf-explorer-api-{{ $v.name }}"
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-api-cache-header-rewrite@kubernetescrd
 spec:
   rules:
-    - host: api.{{ $.Values.domain }}
+    - host: "api.{{ $v.domain }}"
       http:
         paths:
           - path: /
@@ -16,9 +30,10 @@ spec:
               service:
                 name: cf-explorer-api
                 port:
-                  number: {{ .port }}
+                  number: 80
   tls:
     - hosts:
-        - api.{{ $.Values.domain }}
+        - "api.{{ $v.domain }}"
+  {{- end }}
 {{ end }}
 {{ end }}

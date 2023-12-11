@@ -1,4 +1,15 @@
-{{ if index .Values.redis.enabled }}
+{{ with .Values.redis }}
+{{ if .enabled }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "redis-secrets"
+  namespace: {{ $.Release.Namespace }}
+type: Opaque
+data:
+  # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  REDIS_ENDPOINT: {{ "redis-headless:6379" | b64enc }}
+  REDIS_MASTER_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -14,17 +25,16 @@ spec:
     targetRevision: 17.10.3
     chart: redis
     helm:
+    {{- with .values }}
       values: |
-        auth:
-          existingSecret: infra-secrets
-          existingSecretPasswordKey: redis
-        replica:
-          replicaCount: 0
+{{ toYaml . | indent 8 }}
+    {{- end }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
   destination:
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ $.Release.Namespace }}
     server: https://kubernetes.default.svc
+{{ end }}
 {{ end }}

@@ -1,0 +1,107 @@
+{{ with .Values.explorerRewardsApi }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-explorer-rewards-api
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-explorer-rewards-api
+  template:
+    metadata:
+      labels:
+        app: cf-explorer-rewards-api
+    spec:
+      containers:
+        - name: cf-explorer-rewards-api
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: SERVER_PORT
+              value: {{ .port | quote }}
+
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.hostKey }}
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.portKey }}
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.userKey }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.passwordKey }}
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.dbKey }}
+            - name: POSTGRES_SCHEMA
+              value: {{ .postgres.schema }}
+
+            - name: NETWORK
+              value: {{ .network }}
+
+            - name: LIST_SIZE_EACH_THREAD
+              value: "5"
+            - name: POOL_MAX_SIZE
+              value: "12"
+            - name: POOL_CORE_SIZE
+              value: "10"
+            - name: FLYWAY_ENABLE
+              value: "true"
+            - name: FLYWAY_VALIDATE
+              value: "false"
+
+            - name: REWARD_PARALLEL_SAVING_ENABLED
+              value: "true"
+            - name: REWARD_SUB_LIST_SIZE
+              value: "500"
+            - name: REWARD_PARALLEL_SAVING_THREAD_NUM
+              value: "10"
+
+            - name: EPOCH_STAKE_PARALLEL_SAVING_ENABLED
+              value: "true"
+            - name: EPOCH_STAKE_SUB_LIST_SIZE
+              value: "500"
+            - name: EPOCH_STAKE_PARALLEL_SAVING_THREAD_NUM
+              value: "10"
+
+            - name: REWARD_LIST_SIZE_EACH_THREAD
+              value: "5"
+            - name: EPOCH_STAKE_LIST_SIZE_EACH_THREAD
+              value: "5"
+            - name: POOL_INFO_LIST_SIZE_EACH_THREAD
+              value: "500"
+
+            - name: POOL_INFO_DATA_JOB_ENABLED
+              value: "true"
+            - name: FETCH_AND_SAVE_POOL_INFO_DATA_DELAY
+              value: "3600000"
+            - name: KOIOS_BASE_URL_ENABLED
+              value: {{ .koios.baseUrlEnabled | default "false" | quote }}
+            - name: KOIOS_BASE_URL
+              value: {{ .koios.baseUrl }}
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}

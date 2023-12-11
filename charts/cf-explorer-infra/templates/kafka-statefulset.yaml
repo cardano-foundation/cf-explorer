@@ -1,5 +1,13 @@
 {{ with .Values.kafka }}
 {{ if .enabled }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "kafka-secrets"
+type: Opaque
+data:
+  # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  KAFKA_BOOTSTRAP_SERVERS_TLS: {{ "kafka-explorer:9092" | b64enc | quote }}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -15,6 +23,16 @@ spec:
       labels:
         app: kafka-explorer
     spec:
+      initContainers:
+        - name: init
+          command: [ "sh", "-x", "/configmap/init.sh" ]
+          image: alpine
+          imagePullPolicy: "Always"
+          volumeMounts:
+            - mountPath: /var/lib/kafka/data
+              name: kafka-explorer
+            - mountPath: /configmap
+              name: kafka-init
       containers:
         - name: kafka-explorer
           image: "{{ .image.repository }}:{{ .image.tag }}"
@@ -49,6 +67,10 @@ spec:
               value: "-1"
             - name: KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS
               value: "604800000"
+            - name: KAFKA_MESSAGE_MAX_BYTES
+              value: "200000000"
+            - name: KAFKA_SOCKET_REQUEST_MAX_BYTES
+              value: "200000000"
           ports:
             - name: api
               containerPort: {{ .port }}
@@ -63,6 +85,19 @@ spec:
             failureThreshold: 3
             periodSeconds: 10
             initialDelaySeconds: 30
+          volumeMounts:
+            - mountPath: /var/lib/kafka/data
+              name: kafka-explorer
+              subPath: data
+            - mountPath: /etc/kafka/secrets
+              name: kafka-explorer
+              subPath: secrets
+      volumes:
+        - name: kafka-init
+          configMap:
+            name: kafka-init
+      securityContext:
+        fsGroup: 1000
   volumeClaimTemplates:
     - metadata:
         name: "kafka-explorer"
@@ -70,7 +105,7 @@ spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
-            storage: 128Mi
+            storage: {{ .dbSize | default "8Gi" }}
   revisionHistoryLimit: 2
 {{ end }}
 {{ end }}

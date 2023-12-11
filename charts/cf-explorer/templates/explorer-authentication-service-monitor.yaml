@@ -6,7 +6,7 @@ kind: ServiceMonitor
 metadata:
   name: cf-explorer-authentication
   labels:
-    release: kube-prometheus-stack
+    release: prometheus-stack
 spec:
   endpoints:
     - path: /actuator/prometheus

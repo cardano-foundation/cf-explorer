@@ -27,23 +27,38 @@ spec:
             - name: PORT
               value: {{ .port | quote }}
 
+            - name: REACT_APP_JSD_WIDGET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .jira.widget.secretName }}
+                  key: {{ .jira.widget.secretKey }}
+
+            - name: REACT_APP_NETWORK
+              value: {{ tpl .reactAppNetwork $ }}
             - name: REACT_APP_API_URL
               value: {{ tpl .reactAppApiUrl $ }}
-            - name: REACT_APP_PREPROD_API_URL
-              value: {{ tpl .reactAppPreProdApiUrl $ }}
-            - name: REACT_APP_PREVIEW_API_URL
-              value: {{ tpl .reactAppPreviewUrl $ }}
-            - name: REACT_APP_TESTNET_API_URL
-              value: {{ tpl .reactAppTestnetApiUrl $ }}
-            - name: REACT_APP_MAINNET_API_URL
-              value: {{ tpl .reactAppMainnetApiUrl $ }}
+            - name: REACT_APP_PREPROD_APP_URL
+              value: {{ tpl .reactAppPreProdAppUrl $ }}
+            - name: REACT_APP_PREVIEW_APP_URL
+              value: {{ tpl .reactAppPreviewAppUrl $ }}
+            - name: REACT_APP_MAINNET_APP_URL
+              value: {{ tpl .reactAppMainnetAppUrl $ }}
             - name: REACT_APP_AUTH_API_URL
               value: {{ tpl .reactAppAuthUrl $ }}
+            - name: REACT_APP_WS_URL
+              value: {{ tpl .reactAppWsUrl $ }}
+
+            - name: REACT_APP_EXT_ADA_PRICE_URL
+              value: https://www.coingecko.com/en/coins/cardano
+            - name: REACT_APP_CARDANO_NEWS_URL
+              value: {{ tpl .reactAppCardanoNewsUrl $ }}
+            - name: REACT_APP_NETWORK_NAMES
+              value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview"}'
 
           ports:
             - name: api
               containerPort: {{ .port }}
-
+          imagePullPolicy: Always
       imagePullSecrets:
         - name: regcred
   revisionHistoryLimit: 2

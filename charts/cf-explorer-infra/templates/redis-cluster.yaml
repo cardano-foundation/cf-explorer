@@ -1,4 +1,13 @@
 {{ if index .Values "redis-cluster" "enabled" }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "redis-secrets"
+  namespace: {{ $.Release.Namespace }}
+type: Opaque
+data:
+  # generate 32 chars long random string, base64 encode it and then double-quote the result string.
+  REDIS_MASTER_PASSWORD: {{ randAlphaNum 32 | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -16,8 +25,8 @@ spec:
     helm:
       values: |
         auth:
-          existingSecret: infra-secrets
-          existingSecretPasswordKey: redis
+          existingSecret: redis-secrets
+          existingSecretPasswordKey: REDIS_MASTER_PASSWORD
   syncPolicy:
     automated:
       prune: true

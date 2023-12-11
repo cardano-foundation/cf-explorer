@@ -5,13 +5,15 @@ dependencies.
 
 ### Tested Configuration
 
-| Repository            | Version |
-|-----------------------|---------|
-| [cf-ledger-crawler](https://github.com/cardano-foundation/cf-ledger-crawler)     | 0.2.6   |
-| [cf-ledger-consumer](https://github.com/cardano-foundation/cf-ledger-consumer)    | 0.2.13 |
-| [cf-explorer-api](https://github.com/cardano-foundation/cf-explorer-api)       | 0.3.9   |
-| [cf-explorer-authentication](https://github.com/cardano-foundation/cf-explorer-authentication) | v0.1.1-7-g2e0c779   |
-| [cf-explorer-frontend](https://github.com/cardano-foundation/cf-explorer-frontend) | 0.3.2   |
+| Repository                   | Version |
+|------------------------------|---------|
+| cf-ledger-crawler            | 0.2.12  |
+| cf-ledger-consumer           | 0.3.14  |
+| cf-ledger-consumer-schedules | 0.2.12  |
+| cf-explorer-api              | 0.3.31  |
+| cf-explorer-rewards-api      | 0.1.6   |
+| cf-explorer-authentication   | 0.1.13  |
+| cf-explorer-frontend         | 0.4.24  |
 
 ## Continuous Deployment
 
@@ -47,3 +49,12 @@ helm repo add traefik https://helm.traefik.io/traefik
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add elastic https://helm.elastic.co
 ```
+
+## Embedded Services
+
+### Kibana
+
+Kibana credentials are:
+
+* user: elastic
+* password: `kubectl get secret -n elastic-stack quickstart-es-elastic-user -o json | jq -r .data.elastic`

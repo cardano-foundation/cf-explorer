@@ -13,8 +13,6 @@ crawler:
 
 consumer:
 
-  springProfiles: local
-
   monitoringEnabled: true
   
   network: mainnet
@@ -29,12 +27,28 @@ explorerApi:
   postgres:
     schema: mainnet
   monitoringEnabled: true
+  network: mainnet
 
-explorerAuthentication:
+explorerRewardsApi:
   enabled: true
   postgres:
     schema: mainnet
   monitoringEnabled: true
+  koios:
+    baseUrl: "https://koios-api.pro.dandelion-mainnet.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
+
+explorerAuthentication:
+  enabled: true
+  postgres:
+    schema: mainnet-auth
+  monitoringEnabled: true
 
 explorerFrontEnd:
   enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: mainnet
+  monitoringEnabled: true
+  network: mainnet

@@ -1,0 +1,21 @@
+{{ with .Values.explorerRewardsApi }}
+{{ if and .enabled .monitoringEnabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cf-explorer-rewards-api
+  labels:
+    release: prometheus-stack
+spec:
+  endpoints:
+    - path: /actuator/prometheus
+      port: api
+  namespaceSelector:
+    matchNames:
+      - {{ $.Release.Namespace }}
+  selector:
+    matchLabels:
+      app: cf-explorer-rewards-api
+{{ end }}
+{{ end }}

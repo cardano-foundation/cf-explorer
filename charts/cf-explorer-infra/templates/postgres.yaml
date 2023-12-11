@@ -1,4 +1,21 @@
-{{ if .Values.postgresql.enabled }}
+{{ with .Values.postgresql }}
+{{ if .enabled }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "postgres-secrets"
+  namespace: {{ $.Release.Namespace }}
+type: Opaque
+data:
+  POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}
+  POSTGRES_HOST: {{ .dbHost | default "postgresql" | b64enc | quote }}
+  POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
+  POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  LEDGER_SYNC_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  EXPLORER_DB: {{ .explorerDbName | default "explorer_db" | b64enc | quote }}
+  POSTGRES_ADMIN_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
+  POSTGRES_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
+  POSTGRES_REPLICATION_PASSWORD: {{ randAlphaNum 16 | b64enc | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -16,38 +33,45 @@ spec:
     helm:
       values: |
         auth:
-          username: cardano-master
-          existingSecret: infra-secrets
+          username: {{ .dbUser | default "cardano" }}
+          existingSecret: postgres-secrets
           secretKeys:
-            adminPasswordKey: postgres-password
-            userPasswordKey: postgres-user-password
-            replicationPasswordKey: postgres-replication-password
-          database: explorer_api
+            adminPasswordKey: POSTGRES_ADMIN_PASSWORD
+            userPasswordKey: POSTGRES_PASSWORD
+            replicationPasswordKey: POSTGRES_REPLICATION_PASSWORD
+          database: {{ .dbName | default "explorer_api" }}
+        primary:
+          persistence:
+            size: {{ .dbSize | default "8Gi" }}
+          extendedConfiguration: |-
+            effective_cache_size=12GB
+            max_connections=250
+            shared_buffers=4GB
+            work_mem=2GB
+            random_page_cost=1.1
+            maintenance_work_mem=2GB
+            shared_buffers=12GB
+            checkpoint_completion_target=0.9
+            synchronous_commit=off
+            effective_io_concurrency=500
+            wal_buffers=16MB
+            min_wal_size=500MB
+            max_wal_size=1GB
+            max_parallel_workers_per_gather=4
+            max_parallel_maintenance_workers=4
+            track_counts=true
+            autovacuum=on
+            autovacuum_naptime=5min
+            log_autovacuum_min_duration=0
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
-        extendedConf: |-
-          max_locks_per_transaction=256
-          shared_buffers=12GB
-          effective_cache_size=31GB
-          maintenance_work_mem=2GB
-          checkpoint_completion_target=0.9
-          checkpoint_timeout=1h
-          synchronous_commit=off
-          wal_buffers=16MB
-          default_statistics_target=500
-          random_page_cost=1.1
-          effective_io_concurrency=500
-          work_mem=1024GB
-          min_wal_size=1GB
-          max_wal_size=2GB
-          max_parallel_workers_per_gather=4
-          max_parallel_maintenance_workers=4
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
   destination:
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ $.Release.Namespace }}
     server: https://kubernetes.default.svc
+{{ end }}
 {{ end }}

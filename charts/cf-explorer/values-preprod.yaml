@@ -13,8 +13,6 @@ crawler:
 
 consumer:
 
-  springProfiles: local
-
   monitoringEnabled: true
   
   network: preprod
@@ -29,6 +27,16 @@ explorerApi:
   postgres:
     schema: preprod
   monitoringEnabled: true
+  network: preprod
+
+explorerRewardsApi:
+  enabled: true
+  postgres:
+    schema: preprod
+  monitoringEnabled: true
+  network: preprod
+  koios:
+    baseUrl: "https://koios-api.pro.dandelion-preprod.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
 
 explorerAuthentication:
   enabled: true
@@ -38,3 +46,10 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: preprod
+  monitoringEnabled: true
+  network: preprod

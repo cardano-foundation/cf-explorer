@@ -1,0 +1,281 @@
+{{ with .Values.consumerSchedules }}
+{{ if .enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-ledger-consumer-schedules
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: cf-ledger-consumer-schedules
+  template:
+    metadata:
+      labels:
+        app: cf-ledger-consumer-schedules
+    spec:
+      containers:
+        - name: cf-ledger-consumer-schedules
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .springProfiles }}
+            - name: SERVER_PORT
+              value: {{ .port | quote }}
+
+            - name: LEDGER_SYNC_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.hostKey }}
+            - name: LEDGER_SYNC_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.portKey }}
+            - name: LEDGER_SYNC_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.userKey }}
+            - name: LEDGER_SYNC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.passwordKey }}
+            - name: LEDGER_SYNC_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSync.secret.name }}
+                  key: {{ .postgres.ledgerSync.secret.dbKey }}
+
+            - name: EXPLORER_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.hostKey }}
+            - name: EXPLORER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.portKey }}
+            - name: EXPLORER_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.userKey }}
+            - name: EXPLORER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.passwordKey }}
+            - name: EXPLORER_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.explorer.secret.name }}
+                  key: {{ .postgres.explorer.secret.dbKey }}
+
+            - name: POSTGRES_SCHEMA
+              value: {{ .postgres.schema }}
+
+            - name: LEDGER_SYNC_FLYWAY_ENABLE
+              value: {{ .ledgerSyncFlywayEnable | default "true" | quote }}
+            - name: LEDGER_SYNC_FLYWAY_VALIDATE
+              value: {{ .ledgerSyncFlywayValidate | default "false" | quote }}
+            - name: EXPLORER_FLYWAY_ENABLE
+              value: {{ .explorerFlywayEnable | default "true" | quote }}
+            - name: EXPLORER_FLYWAY_VALIDATE
+              value: {{ .explorerFlywayValidate | default "false" | quote }}
+
+            - name: MAXIMUM_POOL_SIZE
+              value: "48"
+            - name: META_DATA_JOB_ENABLED
+              value: "true"
+            - name: REPORT_HISTORY_JOB_ENABLED
+              value: "true"
+            - name: EXPIRED_REPORTS_RATE
+              value: "604800000"
+
+            - name: POOL_OFFLINE_DATA_JOB_ENABLED
+              value: "true"
+            - name: CRAWL_POOL_DATA_DELAY
+              value: "172800000"
+            - name: INSERT_POOL_DATA_DELAY
+              value: "180000"
+            - name: TOKEN_METDATA_URL
+              value: https://github.com/cardano-foundation/cardano-token-registry.git
+            - name: TOKEN_METADATA_FOLDER
+              value: "/mappings"
+            - name: NETWORK_NAME
+              value: {{ .network }}
+
+            - name: KAFKA_BOOSTRAP_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafka.useSsl | default "false" | quote }}
+            - name: KAFKA_GROUP_ID
+              value: {{ .network }}
+            - name: KAFKA_REPORTS_TOPIC
+              value: {{ .kafka.reportsTopic }}
+
+            - name: API_CHECK_REWARD_URL
+              value: {{ .checkRewardUrl }}
+            - name: API_CHECK_POOL_HISTORY_URL
+              value: {{ .checkPoolHistoryUrl }}
+
+            - name: STAKE_TX_BALANCE_JOB_ENABLED
+              value: {{ .stakeTxBalanceJobEnabled | default "true" | quote }}
+            - name: STAKE_TX_BALANCE_FIXED_DELAY
+              value: {{ .stakeTxBalanceFixedDelay | default "300000" | quote }}
+            - name: AGGREGATE_POOL_INFO_FIXED_DELAY
+              value: {{ .aggregatePoolInfoFixedDelay | default "20000" | quote }}
+            - name: TOKEN_INFO_JOB_ENABLED
+              value: {{ .tokenInfoJobEnabled | default "true" | quote }}
+            - name: TOKEN_INFO_FIXED_DELAY
+              value: {{ .tokenInfoFixedDelay | default "60000" | quote }}
+            - name: TOP_DELEGATORS_FIXED_DELAY
+              value: "300000"
+            - name: TOKEN_PAGE_CACHE_FIXED_DELAY
+              value: "100000"
+            - name: TOKEN_PAGE_CACHE_TTL
+              value: "300000"
+            - name: UNIQUE_ACCOUNT_FIXED_DELAY
+              value: "300000"
+            - name: UNIQUE_ACCOUNT_ENABLED
+              value: "true"
+
+            {{- if eq .redis.mode "sentinel" }}
+            - name: REDIS_MASTER_NAME
+              value: {{ .redis.master.name }}
+            - name: REDIS_SENTINEL_HOST
+              value: {{ .redis.sentinel.host }}
+            - name: REDIS_SENTINEL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "cluster" }}
+            - name: REDIS_CLUSTER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.passwordKey }}
+            - name: NODE_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.endpointKey }}
+            {{- else if eq .redis.mode "elasticache" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: REDIS_ENDPOINT
+            - name: REDIS_STANDALONE_PORT
+              value: "6379"
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            {{- else if eq .redis.mode "managed-standalone" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_HOST
+            - name: REDIS_STANDALONE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_PORT
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
+            {{- else }}
+            - name: REDIS_STANDALONE_HOST
+              value: {{ .redis.standalone.host }}
+            - name: REDIS_STANDALONE_PORT
+              value: {{ .redis.standalone.port | quote }}
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
+            {{- end }}
+
+            - name: REPORT_S3_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.report.bucketNameKey }}
+            - name: REPORT_S3_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.report.regionKey }}
+            - name: REPORT_S3_STORAGE_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.report.endpointKey }}
+            - name: REPORT_S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.report.accessKeyKey }}
+            - name: REPORT_S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.report.secretKeyKey }}
+
+            - name: TOKEN_LOGO_S3_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.tokenLogo.bucketNameKey }}
+            - name: TOKEN_LOGO_S3_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.tokenLogo.regionKey }}
+            - name: TOKEN_LOGO_S3_STORAGE_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.tokenLogo.endpointKey }}
+            - name: TOKEN_LOGO_S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.tokenLogo.accessKeyKey }}
+            - name: TOKEN_LOGO_S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .s3.secret.name }}
+                  key: {{ .s3.secret.tokenLogo.secretKeyKey }}
+            - name: TOKEN_LOGO_ENDPOINT
+              value: {{ .tokenLogoEndpoint }}
+
+
+          ports:
+            - name: api
+              containerPort: {{ .port }}
+
+      imagePullSecrets:
+        - name: regcred
+  revisionHistoryLimit: 2
+{{ end }}
+{{ end }}

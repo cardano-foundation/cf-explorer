@@ -38,6 +38,24 @@ spec:
               command: [ '/bin/bash', '-c', 'echo "ruok" | nc -w 2 localhost 2181 | grep imok' ]
             failureThreshold: 12
             periodSeconds: 5
+          volumeMounts:
+            - mountPath: /var/lib/zookeeper/data
+              name: zookeeper-db
+              subPath: data
+            - mountPath: /var/lib/zookeeper/log
+              name: zookeeper-db
+              subPath: log
+            - mountPath: /etc/zookeeper/secrets
+              name: zookeeper-db
+              subPath: secrets
+  volumeClaimTemplates:
+    - metadata:
+        name: "zookeeper-db"
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .dbSize | default "1Gi" }}
   revisionHistoryLimit: 2
 {{ end }}
 {{ end }}

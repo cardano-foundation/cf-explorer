@@ -1,0 +1,94 @@
+{{ with .Values.keycloak }}
+{{ if .enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: keycloak
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      initContainers:
+        - name: setup
+          image: {{ .setupImage.repository }}:{{ .setupImage.tag }}
+          imagePullPolicy: Always
+          command: ["sh", "/configmap/keycloak-setup.sh"]
+          volumeMounts:
+          - name: keycloak-configmap
+            mountPath: /configmap
+          - name: keycloak-imports
+            mountPath: /dest-imports
+          env:
+            - name: WEB_ORIGIN
+              value: {{ .webOrigin | default "http://localhost" | quote }}
+            - name: REDIRECT_URI
+              value: {{ .redirectUri | default "http://localhost/*" | quote }}
+      containers:
+        - args:
+            - start
+            - --import-realm
+          #command: ["bash", "-c", "while true; do sleep 59595; done"]
+          env:
+            - name: KC_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgresSecretName | default "keycloak-postgres-secrets" | quote }}
+                  key: {{ .postgresDbUrlSecretKey | default "KC_DB_URL" | quote }}
+            - name: KC_DB
+              value: "postgres"
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgresSecretName | default "keycloak-postgres-secrets" | quote }}
+                  key: {{ .postgresPassSecretKey | default "POSTGRES_PASSWORD" | quote }}
+            - name: KC_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgresSecretName | default "keycloak-postgres-secrets" | quote }}
+                  key: {{ .postgresUserSecretKey | default "POSTGRES_USER" | quote }}
+            - name: KC_HOSTNAME
+              value: {{ .hostname | default "keycloak.example.com" | quote }}
+            - name: KC_PROXY
+              value: edge
+            - name: KEYCLOAK_ADMIN
+              value: {{ .adminUser | default "cardano-admin" | quote }}
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .adminSecretName | default "infra-secrets" | quote }}
+                  key: {{ .adminSecretKey | default "KEYCLOAK_ADMIN_PASSWORD" | quote }}
+
+            - name: FORWARD_EVENT_URL
+              value: {{ .forwardEventUrl | default "http://example.com/api/v1/user/role-mapping" }}
+
+          image: {{ .image.repository }}:{{ .image.tag }}
+          name: keycloak
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8787
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+          - name: keycloak-imports
+            mountPath: /opt/keycloak/data/import
+      restartPolicy: Always
+      volumes:
+      - name: keycloak-imports
+        emptyDir:
+          sizeLimit: 10Mi
+      - name: keycloak-configmap
+        configMap:
+          name: keycloak
+{{ end }}
+{{ end }}

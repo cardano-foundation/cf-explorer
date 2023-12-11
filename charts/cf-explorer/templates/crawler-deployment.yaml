@@ -26,7 +26,12 @@ spec:
             - name: PORT
               value: {{ .port | quote }}
             - name: BOOTSTRAP_SERVER
-              value: {{ .kafka.bootstrapServer }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .kafka.bootstrapServersSecret.name }}
+                  key: {{ .kafka.bootstrapServersSecret.key }}
+            - name: KAFKA_USE_SSL
+              value: {{ .kafka.useSsl | default "false" | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
@@ -42,10 +47,44 @@ spec:
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.passwordKey }}
+            - name: NODE_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.endpointKey }}
+            {{- else if eq .redis.mode "elasticache" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: REDIS_ENDPOINT
+            - name: REDIS_STANDALONE_PORT
+              value: "6379"
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
-            - name: NODE_ADDRESSES
-              value: {{ .redis.cluster.hosts }}
+            {{- else if eq .redis.mode "managed-standalone" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_HOST
+            - name: REDIS_STANDALONE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_PORT
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
@@ -56,6 +95,8 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
 
             - name: CRAWLER_NAME
@@ -75,7 +116,7 @@ spec:
           ports:
             - name: api
               containerPort: {{ .port }}
-
+          imagePullPolicy: Always
       imagePullSecrets:
         - name: regcred
   revisionHistoryLimit: 2

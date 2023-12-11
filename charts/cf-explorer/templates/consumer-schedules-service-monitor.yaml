@@ -1,0 +1,21 @@
+{{ with .Values.consumerSchedules }}
+{{ if and .enabled .monitoringEnabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cf-ledger-consumer-schedules
+  labels:
+    release: prometheus-stack
+spec:
+  endpoints:
+    - path: /actuator/prometheus
+      port: api
+  namespaceSelector:
+    matchNames:
+      - {{ $.Release.Namespace }}
+  selector:
+    matchLabels:
+      app: cf-ledger-consumer-schedules
+{{ end }}
+{{ end }}

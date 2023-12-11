@@ -1,0 +1,73 @@
+git:
+  targetRevision: main
+
+stage: pro
+
+network: preprod
+
+domain: preprod.beta.explorer.cardano.org
+
+cf-explorer-infra:
+  enabled: true
+  postgresql:
+    enabled: false
+  kafka:
+    dbSize: 20Gi
+
+cf-explorer:
+  enabled: true
+  values:
+    ingressDomains:
+      - name: cloudfront
+        domain: preprod.beta.explorer.cardano.org
+      - name: global-lb
+        domain: pro.cf-explorer-preprod.global.beta.explorer.cardano.org
+      - name: eu-west-1-lb
+        domain: pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org
+      - name: us-east-1-lb
+        domain: pro.cf-explorer-preprod.us-east-1.beta.explorer.cardano.org
+    crawler:
+      enabled: true
+      image:
+        tag: "0.2.13"
+    consumer:
+      enabled: true
+      image:
+        tag: "0.3.14"
+    explorerApi:
+      enabled: true
+      postgres:
+        secret:
+          hostKey: POSTGRES_READ_ONLY_HOST
+      image:
+        tag: "0.3.31"
+      tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+    explorerRewardsApi:
+      enabled: true
+      image:
+        tag: "0.1.7-SNAPSHOT"
+    explorerAuthentication:
+      enabled: true
+      replicas: 1
+      image:
+        tag: "0.1.13"
+      emailFrom: "admin@beta.explorer.cardano.org"
+    explorerFrontEnd:
+      enabled: true
+      image:
+        tag: "0.4.24-PR2063"
+      reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
+      reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
+      reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
+      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org/api/v1"
+    consumerSchedules:
+      enabled: true
+      image:
+        tag: "0.2.12"
+      tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org

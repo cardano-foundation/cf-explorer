@@ -1,0 +1,41 @@
+{{ with .Values.keycloak }}
+{{ if .enabled }}
+{{- $root := . -}}
+  {{- range $v := $.Values.ingressDomains }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "keycloak-{{ $v.name }}"
+spec:
+  rules:
+    - host: "keycloak.{{ $v.domain }}"
+      http:
+        paths:
+        - backend:
+            service:
+              name: keycloak
+              port:
+                number: 8080
+          path: /
+          pathType: Prefix
+        - path: /realms/master
+          pathType: Prefix
+          backend:
+            service:
+              name: nginx-not-found
+              port:
+                number: 80
+        - path: /admin
+          pathType: Prefix
+          backend:
+            service:
+              name: nginx-not-found
+              port:
+                number: 80
+  tls:
+    - hosts:
+        - "keycloak.{{ $v.domain }}"
+  {{- end }}
+{{ end }}
+{{ end }}

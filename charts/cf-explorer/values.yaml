@@ -1,3 +1,5 @@
+extraDbs: null
+
 crawler:
   enabled: true
   replicas: 1
@@ -13,15 +15,17 @@ crawler:
   monitoringEnabled: false
 
   kafka:
-    enabled: true
-    bootstrapServer: kafka-explorer:9092
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   redis:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
@@ -59,25 +63,40 @@ consumer:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
     tag: "0.2.13"
 
-  springProfiles: dev
+  springProfiles: aws, redis-standalone, caching
 
   port: 8080
 
   monitoringEnabled: false
 
-  postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
     secret:
-      name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
+    standalone:
+      host: redis-headless
+      port: 6379
+
+  postgres:
     schema: mainnet
+    secret:
+      name: postgres-secrets
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
+
+  jpa:
+    showSql: false
 
   kafka:
-    host: kafka-explorer
-    port: 9092
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
 
   crawler:
     blocks:
@@ -94,11 +113,13 @@ explorerApi:
   enabled: true
   replicas: 1
 
+  network: mainnet
+
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-api"
     tag: "0.3.9"
 
-  springProfiles: dev, standalone
+  springProfiles: dev,standalone,koios,s3
 
   port: 8080
 
@@ -112,11 +133,18 @@ explorerApi:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
+
+  kafka:
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
+    reportsTopic: dev.explorer.api.reports
 
     ## Redis Cluster Values Example
     # mode: cluster
@@ -124,23 +152,71 @@ explorerApi:
     # cluster:
     #   hosts: cf-explorer-infra-redis-cluster-headless:6379
 
+  explorerRewardsUrl: http://cf-explorer-rewards-api
+
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
-    secret:
-      name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+    schema: mainnet
+    ledgerSync:
+      secret:
+        name: postgres-secrets
+        userKey: POSTGRES_USER
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: LEDGER_SYNC_DB
+        passwordKey: POSTGRES_PASSWORD
+    explorer:
+      secret:
+        name: postgres-secrets
+        userKey: POSTGRES_USER
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: EXPLORER_DB
+        passwordKey: POSTGRES_PASSWORD
 
   s3:
-    bucketName: cf-dev-explorer-monolith-reports
-    region: eu-west-1
-    endpoint: https://s3-eu-west-1.amazonaws.com
     secret:
       name: infra-secrets
-      accessKeyKey: access-key
-      secretKeyKey: secret-key
+      accessKeyKey: REPORT_S3_ACCESS_KEY
+      secretKeyKey: REPORT_S3_SECRET_KEY
+      bucketNameKey: REPORT_S3_BUCKET_NAME
+      regionKey: REPORT_S3_REGION
+      endpointKey: REPORT_S3_STORAGE_ENDPOINT
+
+  tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+
+explorerRewardsApi:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-rewards"
+    tag: "0.1.1-SNAPSHOT"
+
+  springProfiles: dev,koios
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  service:
+    type: ClusterIP
+  #    nodePort: "30092"
+
+  postgres:
+    schema: mainnet
+    secret:
+      name: postgres-secrets
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
+
+  network: mainnet
+
+  koios:
+    baseUrlEnabled: false
+    baseUrl: ""
 
 explorerAuthentication:
   enabled: true
@@ -150,7 +226,7 @@ explorerAuthentication:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-authentication"
     tag: "v0.1.1-7-g2e0c779"
 
-  springProfiles: dev, standalone
+  springProfiles: dev, standalone, ses
 
   port: 8080
 
@@ -164,24 +240,32 @@ explorerAuthentication:
     ## Redis Standalone Values Example
     mode: standalone
     secret:
-      name: infra-secrets
-      key: redis
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
     standalone:
       host: redis-headless
       port: 6379
 
   postgres:
-    host: postgresql
-    port: 5432
-    user: cardano-master
+    schema: mainnet-auth
+    secret:
+      name: postgres-secrets
+      userKey: POSTGRES_USER
+      hostKey: POSTGRES_HOST
+      portKey: POSTGRES_PORT
+      dbKey: POSTGRES_DB
+      passwordKey: POSTGRES_PASSWORD
+
+  region:
     secret:
       name: infra-secrets
-      key: postgres-user-password
-    dbName: explorer_api
+      key: AWS_REGION
 
   flywayEnabled: true
-  swaggerClientUrl: https://{{ .Values.domain }}
+  swaggerClientUrl: https://{{ .Values.domain }}/en
   swaggerServerUrl: http://localhost:8021
+  emailFrom: admin@metadata.dev.cf-deployments.org
+  emailFromName: Cardano Foundation
 
 explorerFrontEnd:
   enabled: true
@@ -191,15 +275,130 @@ explorerFrontEnd:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-explorer-frontend"
     tag: "0.3.2"
 
-  reactAppApiUrl: https://api.{{ .Values.domain }}/api/v1
-  reactAppPreProdApiUrl: https://api.{{ .Values.domain }}/api/v1
-  reactAppPreviewUrl: ""
-  reactAppTestnetApiUrl: ""
-  reactAppMainnetApiUrl: ""
-  reactAppAuthUrl: https://auth-api.{{ .Values.domain }}/api/v1
+  reactAppApiUrl: "https://api.{{ .Values.domain }}/api/v1"
+  reactAppPreProdAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
+  reactAppPreviewAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
+  reactAppMainnetAppUrl: "https://{{ .Values.domain }}"
+  reactAppAuthUrl: "https://auth-api.{{ .Values.domain }}/api/v1"
+  reactAppNetwork: "{{ .Values.network }}"
+  reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
+  reactAppWsUrl: "wss://api.{{ .Values.domain }}/ws"
 
-  port: 1102
+  port: 80
 
   service:
     type: ClusterIP
   #    nodePort: "30092"
+
+  jira:
+    widget:
+      secretName: infra-secrets
+      secretKey: REACT_APP_JSD_WIDGET_KEY
+
+consumerSchedules:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer-schedules"
+    tag: "0.2.2"
+
+  springProfiles: prod,standalone,koios,s3
+
+  port: 8080
+
+  monitoringEnabled: false
+
+  postgres:
+    schema: mainnet
+    ledgerSync:
+      secret:
+        name: postgres-secrets
+        userKey: POSTGRES_USER
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: LEDGER_SYNC_DB
+        passwordKey: POSTGRES_PASSWORD
+    explorer:
+      secret:
+        name: postgres-secrets
+        userKey: POSTGRES_USER
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: EXPLORER_DB
+        passwordKey: POSTGRES_PASSWORD
+  ledgerSyncFlywayEnable: null
+  ledgerSyncFlywayValidate: null
+  explorerFlywayEnable: null
+  explorerFlywayValidate: null
+
+  kafka:
+    useSsl: "false"
+    bootstrapServersSecret:
+      name: kafka-secrets
+      key: KAFKA_BOOTSTRAP_SERVERS_TLS
+    reportsTopic: dev.explorer.api.reports
+
+  redis:
+    ## Redis Standalone Values Example
+    mode: standalone
+    secret:
+      name: redis-secrets
+      key: REDIS_MASTER_PASSWORD
+    standalone:
+      host: redis-headless
+      port: 6379
+
+  s3:
+    secret:
+      name: infra-secrets
+      report:
+        accessKeyKey: REPORT_S3_ACCESS_KEY
+        secretKeyKey: REPORT_S3_SECRET_KEY
+        bucketNameKey: REPORT_S3_BUCKET_NAME
+        regionKey: REPORT_S3_REGION
+        endpointKey: REPORT_S3_STORAGE_ENDPOINT
+      tokenLogo:
+        accessKeyKey: TOKEN_LOGO_S3_ACCESS_KEY
+        secretKeyKey: TOKEN_LOGO_S3_SECRET_KEY
+        bucketNameKey: TOKEN_LOGO_S3_BUCKET_NAME
+        regionKey: TOKEN_LOGO_S3_REGION
+        endpointKey: TOKEN_LOGO_S3_STORAGE_ENDPOINT
+
+  checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
+  checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
+
+  network: mainnet
+
+  tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+
+cardanoNewsApi:
+  enabled: true
+  replicas: 1
+
+  image:
+    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-news-api"
+    tag: "0.2.1"
+
+  port: 8080
+
+keycloak:
+  enabled: true
+  image:
+    repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/keycloak-spi
+    tag: 1.0.0-PR91
+  setupImage:
+    repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/keycloak-spi
+    tag: 0.1.15-SNAPSHOT-PR110
+  adminUser: null
+  hostname: null
+  adminSecretKey: null
+  adminSecretName: null
+  frontendDomainPublicUrl: null
+  postgresDbSecretKey: null
+  postgresHostSecretKey: null
+  postgresPassSecretKey: null
+  postgresSecretName: null
+  postgresUserSecretKey: null
+  redirectUri: null
+  port: 8080

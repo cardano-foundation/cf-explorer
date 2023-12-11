@@ -22,19 +22,32 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
+
             - name: DB_HOST
-              value: {{ .postgres.host }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.hostKey }}
             - name: DB_PORT
-              value: {{ .postgres.port | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.portKey }}
             - name: DB_USERNAME
-              value: {{ .postgres.user }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.userKey }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
-                  key: {{ .postgres.secret.key }}
+                  key: {{ .postgres.secret.passwordKey }}
             - name: DB_NAME
-              value: {{ .postgres.dbName }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.secret.name }}
+                  key: {{ .postgres.secret.dbKey }}
             - name: DB_SCHEMA
               value: {{ .postgres.schema }}
 
@@ -52,10 +65,44 @@ spec:
             - name: REDIS_CLUSTER_PASSWORD
               valueFrom:
                 secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.passwordKey }}
+            - name: NODE_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.cluster.secret.name }}
+                  key: {{ .redis.cluster.secret.endpointKey }}
+            {{- else if eq .redis.mode "elasticache" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: REDIS_ENDPOINT
+            - name: REDIS_STANDALONE_PORT
+              value: "6379"
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
-            - name: NODE_ADDRESSES
-              value: {{ .redis.cluster.hosts }}
+            {{- else if eq .redis.mode "managed-standalone" }}
+            - name: REDIS_STANDALONE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_HOST
+            - name: REDIS_STANDALONE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets
+                  key: REDIS_PORT
+            - name: REDIS_STANDALONE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .redis.secret.name }}
+                  key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- else }}
             - name: REDIS_STANDALONE_HOST
               value: {{ .redis.standalone.host }}
@@ -66,6 +113,8 @@ spec:
                 secretKeyRef:
                   name: {{ .redis.secret.name }}
                   key: {{ .redis.secret.key }}
+            - name: REDIS_USE_SSL
+              value: {{ .redis.standalone.useSsl | default "false" | quote }}
             {{- end }}
 
             - name: FLYWAY_ENABLED
@@ -74,11 +123,57 @@ spec:
               value: {{ tpl .swaggerClientUrl $ }}
             - name: SWAGGER_SERVER_URL
               value: {{ .swaggerServerUrl }}
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .region.secret.name }}
+                  key: {{ .region.secret.key }}
+            - name: SES_EMAIL_FROM
+              value: {{ .emailFrom }}
+            - name: SES_EMAIL_FROM_NAME
+              value: {{ .emailFromName }}
+            - name: SES_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: SES_ACCESS_KEY_ID
+            - name: SES_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: SES_SECRET_ACCESS_KEY
+
+            - name: KEYCLOAK_REALM_NAME
+              value: {{ .keycloakRealmName | default "cardano_explorer" | quote }}
+            - name: KEYCLOAK_SERVER_URL
+              value: {{ .keycloakServerUrl | default "http://keycloak:8080" | quote }}
+            - name: KEYCLOAK_CLIENT_ID
+              value: {{ .keycloakClientId | default "cardano_authentication_client" | quote }}
+            - name: KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: KEYCLOAK_CLIENT_SECRET
+            - name: RSA_PUBLIC_KEY_AUTH
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PUBLIC_KEY_AUTH
+            - name: RSA_PUBLIC_KEY_MAIL
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PUBLIC_KEY_MAIL
+            - name: RSA_PRIVATE_KEY_MAIL
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: RSA_PRIVATE_KEY_MAIL
 
           ports:
             - name: api
               containerPort: {{ .port }}
-
+          imagePullPolicy: Always
       imagePullSecrets:
         - name: regcred
   revisionHistoryLimit: 2
