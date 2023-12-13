@@ -23,6 +23,9 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
 
+            - name: PORT
+              value: {{ .port | default "8080" | quote }}
+
             - name: POSTGRES_HOST
               valueFrom:
                 secretKeyRef:
