@@ -74,7 +74,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.1"
+        tag: "0.5.2"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
@@ -110,7 +110,7 @@ adahandle-resolver:
   values:
     springProfiles: mainnet,postgres
     image:
-      tag: "0.1.0"
+      tag: "0.1.2"
 
 argo-cd:
   server:
