@@ -36,7 +36,7 @@ cf-explorer:
         bootstrapServerSecret:
           name: kafka-secrets
     consumer:
-      enabled: false
+      enabled: true
       image:
         tag: "0.3.20-SNAPSHOT-PR316"
     explorerApi:
@@ -55,13 +55,13 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.0"
+        tag: "0.5.2"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
     consumerSchedules:
-      enabled: false
+      enabled: true
       image:
         tag: "0.2.19-SNAPSHOT-PR253"
     keycloak:
@@ -82,7 +82,7 @@ adahandle-resolver:
   values:
     springProfiles: mainnet,postgres
     image:
-      tag: "0.1.0"
+      tag: "0.1.2"
 
 argo-cd:
   server:

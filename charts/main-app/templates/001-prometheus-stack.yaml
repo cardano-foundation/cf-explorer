@@ -1,3 +1,4 @@
+{{ if index .Values "kube-prometheus-stack" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,7 +10,9 @@ spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 45.7.1
+    {{- with index .Values "kube-prometheus-stack" }}
+    targetRevision: {{ .version }}
+    {{- end }}
     chart: kube-prometheus-stack
     helm:
       parameters:
@@ -31,3 +34,4 @@ spec:
   destination:
     namespace: observe
     server: {{ .Values.spec.destination.server }}
+{{ end }}
