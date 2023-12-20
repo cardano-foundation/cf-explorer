@@ -42,7 +42,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.5.0-PR897"
+        tag: "0.5.0-sanchonet-PR919"
     explorerRewardsApi:
       enabled: true
       image:
@@ -51,11 +51,11 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.15"
+        tag: "0.5.0-sanchonet-SNAPSHOT-PR118"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.3-PR2577"
+        tag: "0.5.3-PR2693"
       reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
@@ -63,7 +63,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.19-SNAPSHOT-PR253"
+        tag: "0.5.0-sanchonet-PR278"
     keycloak:
       enabled: true
       image:
