@@ -37,6 +37,8 @@ spec:
               value: {{ tpl .reactAppNetwork $ }}
             - name: REACT_APP_API_URL
               value: {{ tpl .reactAppApiUrl $ }}
+            - name: REACT_APP_SANCHONET_APP_URL
+              value: {{ tpl .reactAppSanchonetAppUrl $ }}
             - name: REACT_APP_PREPROD_APP_URL
               value: {{ tpl .reactAppPreProdAppUrl $ }}
             - name: REACT_APP_PREVIEW_APP_URL
@@ -47,6 +49,8 @@ spec:
               value: {{ tpl .reactAppAuthUrl $ }}
             - name: REACT_APP_WS_URL
               value: {{ tpl .reactAppWsUrl $ }}
+            - name: REACT_APP_ADA_HANDLE_API
+              value {{ tpl .reactAppAdaHandleApi }}
 
             - name: REACT_APP_EXT_ADA_PRICE_URL
               value: https://www.coingecko.com/en/coins/cardano
