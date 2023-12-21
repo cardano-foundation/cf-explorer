@@ -276,6 +276,7 @@ explorerFrontEnd:
     tag: "0.3.2"
 
   reactAppApiUrl: "https://api.{{ .Values.domain }}/api/v1"
+  reactAppSanchonetAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
   reactAppPreProdAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
   reactAppPreviewAppUrl: "https://{{ .Values.network }}.{{ .Values.domain }}"
   reactAppMainnetAppUrl: "https://{{ .Values.domain }}"
