@@ -82,6 +82,9 @@ adahandle-resolver:
   values:
     ingress:
       enabled: true
+      additionalDomains:
+        - dev.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        - dev.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
     springProfiles: mainnet,postgres
     image:
       tag: "0.1.2"

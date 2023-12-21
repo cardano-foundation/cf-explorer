@@ -75,6 +75,9 @@ adahandle-resolver:
   values:
     ingress:
       enabled: true
+      additionalDomains:
+        - dev.cf-explorer-preview.metadata.dev.cf-deployments.org
+        - dev.cf-explorer-preview.global.metadata.dev.cf-deployments.org
     springProfiles: preview,postgres
     image:
       tag: "0.1.2"
