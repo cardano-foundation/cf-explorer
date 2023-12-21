@@ -73,6 +73,8 @@ cf-explorer:
 adahandle-resolver:
   enabled: true
   values:
+    ingress:
+      enabled: true
     springProfiles: preview,postgres
     image:
       tag: "0.1.2"
