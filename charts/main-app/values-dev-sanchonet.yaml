@@ -9,7 +9,7 @@ cf-explorer-infra:
   postgresql:
     dbSize: 250Gi
   kafka:
-    dbSize: 150Gi
+    enabled: false
 
 cf-ledger-sync:
   enabled: true
@@ -18,7 +18,7 @@ cf-ledger-sync:
       repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync
       tag: "716e612"
     ingress:
-     enabled: true
+     enabled: false
 
 cf-explorer:
   enabled: true
