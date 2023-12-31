@@ -57,7 +57,7 @@ spec:
             - name: REACT_APP_CARDANO_NEWS_URL
               value: {{ tpl .reactAppCardanoNewsUrl $ }}
             - name: REACT_APP_NETWORK_NAMES
-              value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview"}'
+              value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview", "sanchonet":"Sanchonet"}'
 
           ports:
             - name: api
