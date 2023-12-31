@@ -7,7 +7,7 @@ domain: dev.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
 cf-explorer-infra:
   enabled: true
   postgresql:
-    dbSize: 250Gi
+    dbSize: 100Gi
   kafka:
     enabled: false
 
