@@ -33,7 +33,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.5.0-sanchonet-PR897"
+        tag: "0.5.0-PR897"
     explorerRewardsApi:
       enabled: true
       image:
