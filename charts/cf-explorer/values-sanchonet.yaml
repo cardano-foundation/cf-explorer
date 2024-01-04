@@ -11,6 +11,8 @@ explorerApi:
   monitoringEnabled: true
   network: sanchonet
   springProfiles: dev,standalone,s3
+  byronGenesisFile: "https://book.world.dev.cardano.org/environments/sanchonet/byron-genesis.json"
+  shelleyGenesisFile: "https://book.world.dev.cardano.org/environments/sanchonet/shelley-genesis.json"
 
 explorerRewardsApi:
   enabled: true
