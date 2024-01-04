@@ -10,6 +10,7 @@ explorerApi:
     schema: sanchonet
   monitoringEnabled: true
   network: sanchonet
+  springProfiles: dev,standalone,s3
 
 explorerRewardsApi:
   enabled: true
@@ -35,3 +36,4 @@ consumerSchedules:
     schema: sanchonet
   monitoringEnabled: true
   network: sanchonet
+  springProfiles: prod,standalone,s3
