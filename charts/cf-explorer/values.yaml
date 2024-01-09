@@ -284,7 +284,7 @@ explorerFrontEnd:
   reactAppNetwork: "{{ .Values.network }}"
   reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
   reactAppWsUrl: "wss://api.{{ .Values.domain }}/ws"
-  reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1/"  
+  reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1"
 
   port: 80
 
