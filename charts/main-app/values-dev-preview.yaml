@@ -80,7 +80,7 @@ adahandle-resolver:
         - adahandle-resolver.dev.cf-explorer-preview.global.metadata.dev.cf-deployments.org
     springProfiles: preview,postgres
     image:
-      tag: "0.1.2"
+      tag: "0.1.3"
 
 kube-prometheus-stack:
   enabled: true

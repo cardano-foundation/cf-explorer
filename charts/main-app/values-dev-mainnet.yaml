@@ -87,7 +87,7 @@ adahandle-resolver:
         - adahandle-resolver.dev.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
     springProfiles: mainnet,postgres
     image:
-      tag: "0.1.2"
+      tag: "0.1.3"
 
 argo-cd:
   server:

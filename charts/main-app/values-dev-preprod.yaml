@@ -80,7 +80,7 @@ adahandle-resolver:
         - adahandle-resolver.dev.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
     springProfiles: preprod,postgres
     image:
-      tag: "0.1.2"
+      tag: "0.1.3"
 
 argo-cd:
   server:
