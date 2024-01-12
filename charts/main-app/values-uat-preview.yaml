@@ -1,4 +1,4 @@
-stage: dev
+stage: uat
 
 network: preview
 
