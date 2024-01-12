@@ -1,0 +1,89 @@
+stage: dev
+
+network: preprod
+
+domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+
+cf-explorer-infra:
+  enabled: true
+  postgresql:
+    dbSize: 150Gi
+  kafka:
+    dbSize: 20Gi
+
+cf-explorer:
+  enabled: true
+  values:
+    ingressDomains:
+      - name: cloudfront
+        domain: dev.cf-explorer-preprod.metadata.dev.cf-deployments.org
+      - name: global-lb
+        domain: dev.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+      - name: eu-west-1-lb
+        domain: dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+    crawler:
+      enabled: true
+      image:
+        tag: "0.2.14"
+      kafka:
+        bootstrapServerSecret:
+          name: kafka-secrets
+    consumer:
+      enabled: true
+      image:
+        tag: "0.3.20-SNAPSHOT-PR316"
+    explorerApi:
+      enabled: true
+      image:
+        tag: "0.5.0-PR897"
+    explorerRewardsApi:
+      enabled: true
+      image:
+        tag: "0.1.7"
+    explorerAuthentication:
+      enabled: true
+      replicas: 1
+      image:
+        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
+    explorerFrontEnd:
+      enabled: true
+      image:
+        tag: "0.5.3-PR2577"
+      reactAppPreProdAppUrl: "https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppPreviewAppUrl: "https://dev.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppMainnetAppUrl: "https://dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppAuthUrl: "https://auth-api.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+    consumerSchedules:
+      enabled: true
+      image:
+        tag: "0.5.0-sanchonet-PR278"
+    keycloak:
+      enabled: true
+      image:
+        tag: 0.1.15-SNAPSHOT
+      setupImage:
+        tag: 0.1.15-SNAPSHOT
+      hostname: keycloak.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+      frontendDomainPublicUrl: https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+      webOrigin: https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+      redirectUri: https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/*
+      forwardEventUrl: https://dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
+
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  values:
+    ingress:
+      enabled: true
+      additionalDomains:
+        - adahandle-resolver.dev.cf-explorer-preprod.metadata.dev.cf-deployments.org
+        - adahandle-resolver.dev.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
+    springProfiles: preprod,postgres
+    image:
+      tag: "0.1.2"
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.dev.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org 
