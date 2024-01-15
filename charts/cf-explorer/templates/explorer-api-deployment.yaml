@@ -225,9 +225,9 @@ spec:
               value: {{ .webSocketMarketPublishDelayTime | default "20000" | quote }}
 
             - name: BYRON_GENESIS_FILE
-              value: "/app/genesis/{{ .network }}/byron-genesis.json"
+              value: {{ .byronGenesisFile | default "/app/genesis/{{ .network }}/byron-genesis.json" | quote }}
             - name: SHELLEY_GENESIS_FILE
-              value: "/app/genesis/{{ .network }}/shelley-genesis.json"
+              value: {{ .shelleyGenesisFile | default "/app/genesis/{{ .network }}/shelley-genesis.json" | quote }}
 
           ports:
             - name: api

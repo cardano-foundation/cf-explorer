@@ -1,34 +1,35 @@
 stage: stg
 
-network: preview
+network: sanchonet
 
-domain: stg.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
+domain: stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
   postgresql:
-    enabled: false
+    dbSize: 100Gi
   kafka:
-    dbSize: 150Gi
+    enabled: true
+
+cf-ledger-sync:
+  enabled: true
+  values:
+    image:
+      repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync
+      tag: "716e612"
+    ingress:
+     enabled: false
 
 cf-explorer:
   enabled: true
   values:
     ingressDomains:
       - name: cloudfront
-        domain: stg.cf-explorer-preview.metadata.dev.cf-deployments.org
+        domain: stg.cf-explorer-sanchonet.metadata.dev.cf-deployments.org
       - name: global-lb
-        domain: stg.cf-explorer-preview.global.metadata.dev.cf-deployments.org
+        domain: stg.cf-explorer-sanchonet.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
-        domain: stg.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
-    crawler:
-      enabled: true
-      image:
-        tag: "0.2.14"
-    consumer:
-      enabled: true
-      image:
-        tag: "0.3.20-SNAPSHOT-PR316"
+        domain: stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
       enabled: true
       postgres:
@@ -66,22 +67,26 @@ cf-explorer:
         tag: 0.1.15-SNAPSHOT
       setupImage:
         tag: 0.1.15-SNAPSHOT
-      hostname: keycloak.stg.cf-explorer-preview.global.metadata.dev.cf-deployments.org
-      frontendDomainPublicUrl: https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org
-      webOrigin: https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org
-      redirectUri: https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org/*
-      forwardEventUrl: https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
+      hostname: keycloak.stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
+      frontendDomainPublicUrl: https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
+      webOrigin: https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
+      redirectUri: https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/*
+      forwardEventUrl: https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
 
 # Ada Handle Parameters
 adahandle-resolver:
   enabled: true
   values:
-    springProfiles: preview,postgres
+    springProfiles: sanchonet,postgres
     image:
       tag: "0.1.2"
+
+kube-prometheus-stack:
+  enabled: true
+  version: 55.4.0
 
 argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.stg.cf-explorer-preview.metadata.dev.cf-deployments.org
+        - argocd.stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org

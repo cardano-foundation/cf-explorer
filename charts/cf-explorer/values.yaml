@@ -183,6 +183,8 @@ explorerApi:
       endpointKey: REPORT_S3_STORAGE_ENDPOINT
 
   tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+  byronGenesisFile: "/app/genesis/{{ .Values.network }}/byron-genesis.json"
+  shelleyGenesisFile: "/app/genesis/{{ .Values.network }}/shelley-genesis.json"
 
 explorerRewardsApi:
   enabled: true
