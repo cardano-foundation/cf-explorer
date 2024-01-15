@@ -29,6 +29,9 @@ explorerApi:
   monitoringEnabled: true
   network: mainnet
 
+  byronGenesisFile: /app/genesis/mainnet/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/mainnet/shelley-genesis.json
+
 explorerRewardsApi:
   enabled: true
   postgres:

@@ -29,6 +29,9 @@ explorerApi:
   monitoringEnabled: true
   network: preprod
 
+  byronGenesisFile: /app/genesis/preprod/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/preprod/shelley-genesis.json
+
 explorerRewardsApi:
   enabled: true
   postgres:

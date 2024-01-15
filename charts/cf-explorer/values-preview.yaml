@@ -30,6 +30,9 @@ explorerApi:
   monitoringEnabled: true
   network: preview
 
+  byronGenesisFile: /app/genesis/preview/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/preview/shelley-genesis.json
+
 explorerRewardsApi:
   enabled: true
   postgres:
