@@ -18,7 +18,7 @@ cf-explorer-infra:
 # ledger-sync Parameters
 cf-ledger-sync:
   # Whether LS Resources should be deployed.
-  enabled: true
+  enabled: false
 
 # Explorer Parameters
 cf-explorer:
