@@ -52,6 +52,10 @@ cf-explorer:
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+    crawler:
+      enabled: false
+    consumer:
+      enabled: false
     consumerSchedules:
       enabled: true
       image:
