@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/cardano-foundation/cf-ledger-sync.git
-    targetRevision: {{ .Values.cf-ledger-sync.git.targetRevision | default "HEAD" }}
+    targetRevision: {{ index .Values "cf-ledger-sync" "values" "git" "targetRevision" | default "HEAD" }}
     path: deploy/cf-ledger-sync
     helm:
       parameters:
