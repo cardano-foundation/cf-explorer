@@ -28,6 +28,7 @@ cf-ledger-sync:
       tag: "3cceb3d"
     ingress:
      enabled: false
+    storeCardanoHost: relays-new.cardano-mainnet.iohk.io
 
 cf-explorer:
   enabled: true
