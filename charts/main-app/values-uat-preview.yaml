@@ -18,7 +18,7 @@ cf-ledger-sync:
       targetRevision: main
     image:
       repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync
-      tag: "3cceb3d"
+      tag: "latest"
     ingress:
      enabled: false
 
@@ -35,7 +35,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.5.0-PR925"
+        tag: "0.7.0"
     explorerRewardsApi:
       enabled: true
       image:
@@ -44,7 +44,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
+        tag: "0.1.15"
     explorerFrontEnd:
       enabled: true
       image:
@@ -61,7 +61,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.5.0-sanchonet-PR278"
+        tag: "0.7.0-PR292"
     keycloak:
       enabled: true
       image:

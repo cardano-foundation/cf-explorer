@@ -118,7 +118,7 @@ spec:
             - name: API_MARKET_URL
               value: "https://api.coingecko.com/api/v3/coins/markets?ids=cardano&vs_currency=%s"
             - name: API_MARKET_CACHE_TIME
-              value: "120"
+              value: "180"
             - name: REPORT_LIMIT_PER_24HOURS
               value: "2"
             - name: EPOCH_DAYS
