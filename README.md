@@ -3,17 +3,28 @@
 This project contains manifests and scripts to bootstrap and deploy the Cardano Foundation Explorer project and all its
 dependencies.
 
-### Tested Configuration
+### Tested Configuration 
+For (mainnet, preprod, preview) network
 
 | Repository                   | Version |
 |------------------------------|---------|
-| cf-ledger-crawler            | 0.5.0   |
-| cf-ledger-consumer           | 0.5.0   |
-| cf-ledger-consumer-schedules | 0.2.18  |
-| cf-explorer-api              | 0.5.0   |
+| cf-ledger-sync               | latest   |
+| cf-ledger-consumer-schedules | 0.7.0-PR292  |
+| cf-explorer-api              | 0.7.0   |
 | cf-explorer-rewards-api      | 0.1.7   |
 | cf-explorer-authentication   | 0.1.15  |
-| cf-explorer-frontend         | 0.5.0   |
+| cf-explorer-frontend         | 0.5.3-PR2782   |
+
+For sanchonet network 
+
+| Repository                   | Version |
+|------------------------------|---------|
+| cf-ledger-sync               | latest   |
+| cf-ledger-consumer-schedules | 0.5.0-sanchonet-PR278  |
+| cf-explorer-api              | 0.5.0-sanchonet-PR919   |
+| cf-explorer-rewards-api      | don't need reward service  |
+| cf-explorer-authentication   | 0.1.15  |
+| cf-explorer-frontend         | 0.5.3-PR2693   |
 
 ## Continuous Deployment
 
