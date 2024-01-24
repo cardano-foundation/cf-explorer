@@ -61,7 +61,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.7.0-PR292"
+        tag: "0.5.0-sanchonet-PR278"
     keycloak:
       enabled: true
       image:
