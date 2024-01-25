@@ -28,6 +28,7 @@ cf-ledger-sync:
       tag: "3cceb3d"
     ingress:
       enabled: false
+    useLocalCardanoNode: false
     localCardanoNode:
       enabled: true
       network: "mainnet"
