@@ -15,12 +15,15 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: main
+      targetRevision: "chore/add-cardano-node-to-helm-chart"
     image:
-      repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "3cceb3d"
     ingress:
-     enabled: false
+      enabled: false
+    localCardanoNode:
+      enabled: true
+      network: "sanchonet"
 
 cf-explorer:
   enabled: true
