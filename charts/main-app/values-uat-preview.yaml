@@ -21,9 +21,9 @@ cf-ledger-sync:
       tag: "3cceb3d"
     ingress:
       enabled: false
-    useLocalCardanoNode: true
+    useLocalCardanoNode: false
     localCardanoNode:
-      enabled: true
+      enabled: false
       network: "preview"
 
 cf-explorer:
