@@ -44,7 +44,7 @@ kube-prometheus-stack:
 grafana-dashboards:
   enabled: true
 
-not-found:
+nginx-edge-cases:
   enabled: true
 
 spec:
