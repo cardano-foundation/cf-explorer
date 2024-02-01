@@ -51,6 +51,8 @@ spec:
               value: {{ tpl .reactAppWsUrl $ }}
             - name: REACT_APP_ADA_HANDLE_API
               value: {{ tpl .reactAppAdaHandleApi $ }}
+            - name: REACT_APP_BOLNISI_NAME_API
+              value: {{ tpl .reactAppBolnisiNameApi $ }}
 
             - name: REACT_APP_EXT_ADA_PRICE_URL
               value: https://www.coingecko.com/en/coins/cardano
