@@ -52,7 +52,7 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
-  reactAppBolnisiName: "https://minio.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/georgian-wine/public/winerymapping.json"
+  reactAppBolnisiNameApi: "https://minio.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/georgian-wine/public/winerymapping.json"
 
 consumerSchedules:
   enabled: true
