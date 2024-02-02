@@ -67,6 +67,7 @@ cf-explorer:
       enabled: true
       image:
         tag: "0.7.0-PR297"
+      tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
       image:
