@@ -90,6 +90,8 @@ kube-prometheus-stack:
   version: 55.4.0
 
 argo-cd:
+  crds:
+    install: false
   server:
     ingress:
       hosts:
