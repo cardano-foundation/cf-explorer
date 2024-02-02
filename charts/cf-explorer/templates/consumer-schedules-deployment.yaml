@@ -104,10 +104,10 @@ spec:
               value: "172800000"
             - name: INSERT_POOL_DATA_DELAY
               value: "180000"
-            - name: TOKEN_METDATA_URL
-              value: https://github.com/cardano-foundation/cardano-token-registry.git
+            - name: TOKEN_METADATA_URL
+              value: {{ .tokenMetadataUrl | default "https://github.com/cardano-foundation/cardano-token-registry.git" | quote }}
             - name: TOKEN_METADATA_FOLDER
-              value: "/mappings"
+              value: {{ .tokenMetadataFolder | default "/mappings" | quote }}
             - name: NETWORK_NAME
               value: {{ .network }}
 

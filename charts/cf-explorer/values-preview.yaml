@@ -57,3 +57,6 @@ consumerSchedules:
     schema: preview
   monitoringEnabled: true
   network: preview
+
+  tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
+  tokenMetadataFolder: "/registry"

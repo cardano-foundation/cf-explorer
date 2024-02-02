@@ -39,3 +39,6 @@ consumerSchedules:
   monitoringEnabled: true
   network: sanchonet
   springProfiles: prod,standalone,s3
+
+  tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
+  tokenMetadataFolder: "/registry"
