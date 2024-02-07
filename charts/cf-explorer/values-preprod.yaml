@@ -36,7 +36,7 @@ explorerApi:
   tokenMetadataFolder: "/registry"
 
   apiBolnisiOffchainUrl: "https://offchain.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}"
-  apiBolnisiPublicKeyUrl: "https://api.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/pubkeys/{wineryId}/v/0"
+  apiBolnisiPublicKeyUrl: "https://api.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/pubkeys/wineryId/v/0"
 
 explorerRewardsApi:
   enabled: true
