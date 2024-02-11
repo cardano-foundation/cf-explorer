@@ -44,6 +44,7 @@ spec:
                 secretKeyRef:
                   name: {{ .postgresSecretName | default "keycloak-postgres-secrets" | quote }}
                   key: {{ .postgresDbUrlSecretKey | default "KC_DB_URL" | quote }}
+            # NOTE: this is the db engine, db name is part of the url
             - name: KC_DB
               value: "postgres"
             - name: KC_DB_PASSWORD

@@ -47,7 +47,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.5.0"
+        tag: "0.5.0-sanchonet-PR919"
       redis:
         mode: managed-standalone
         standalone:
@@ -65,7 +65,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.15"
+        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
       redis:
         mode: managed-standalone
         standalone:
@@ -74,7 +74,8 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.0"
+        tag: "0.5.3-PR2693"
+      reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
@@ -82,7 +83,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.19-SNAPSHOT-PR253"
+        tag: "0.5.0-sanchonet-PR278"
       redis:
         mode: managed-standalone
         standalone:
@@ -110,7 +111,7 @@ adahandle-resolver:
   values:
     springProfiles: mainnet,postgres
     image:
-      tag: "0.1.0"
+      tag: "0.1.2"
 
 argo-cd:
   server:

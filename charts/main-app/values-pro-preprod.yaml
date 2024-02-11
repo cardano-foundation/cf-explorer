@@ -40,7 +40,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.5.0"
+        tag: "0.5.0-sanchonet-PR919"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -50,13 +50,14 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.1.15"
+        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
       emailFrom: "admin@beta.explorer.cardano.org"
       keycloakServerUrl: "https://keycloak.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.3"
+        tag: "0.5.3-PR2693"
+      reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
@@ -67,7 +68,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.2.19-SNAPSHOT-PR253"
+        tag: "0.5.0-sanchonet-PR278"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
@@ -87,7 +88,7 @@ adahandle-resolver:
   values:
     springProfiles: preprod,postgres
     image:
-      tag: "0.1.0"
+      tag: "0.1.2"
 
 argo-cd:
   server:

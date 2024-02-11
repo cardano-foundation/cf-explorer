@@ -32,6 +32,10 @@ elastic-stack:
   # Whether the Ada Handle app should be deployed.
   enabled: false
 
+kube-prometheus-stack:
+  enabled: true
+  version: 45.7.1
+
 grafana-dashboards:
   enabled: true
 
