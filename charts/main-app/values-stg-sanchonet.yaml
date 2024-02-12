@@ -24,8 +24,8 @@ cf-ledger-sync:
     useLocalCardanoNode: true
     localCardanoNode:
       image:
-        image: rcmorano/cardano-node
-        tag: main-amd64
+        image: ghcr.io/intersectmbo/cardano-node:8.8.0-pre
+        tag: 8.8.0-pre
       enabled: true
       network: "sanchonet"
 
