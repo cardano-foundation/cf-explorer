@@ -26,6 +26,12 @@ spec:
 {{ toYaml . | indent 8 }}
       {{- end }}
 
+  ignoreDifferences:
+    - group: "*"
+      kind: "Secret"
+      jqPathExpressions:
+        - '.data'
+
   syncPolicy:
     automated:
       prune: true
