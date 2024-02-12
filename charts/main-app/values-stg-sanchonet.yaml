@@ -21,6 +21,10 @@ cf-ledger-sync:
       tag: "716e612"
     ingress:
      enabled: false
+    useLocalCardanoNode: true
+    localCardanoNode:
+      enabled: true
+      network: "sanchonet"
 
 cf-explorer:
   enabled: true
