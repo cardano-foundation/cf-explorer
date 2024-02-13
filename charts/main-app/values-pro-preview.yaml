@@ -1,5 +1,5 @@
 git:
-  targetRevision: production-merge-test
+  targetRevision: production-us-east-1
 
 stage: pro
 
