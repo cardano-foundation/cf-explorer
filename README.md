@@ -9,11 +9,11 @@ dependencies.
 |------------------------------|---------|
 | cf-ledger-crawler            | 0.5.0   |
 | cf-ledger-consumer           | 0.5.0   |
-| cf-ledger-consumer-schedules | 0.2.18  |
+| cf-ledger-consumer-schedules | 0.2.19  |
 | cf-explorer-api              | 0.5.0   |
 | cf-explorer-rewards-api      | 0.1.7   |
 | cf-explorer-authentication   | 0.1.15  |
-| cf-explorer-frontend         | 0.5.0   |
+| cf-explorer-frontend         | 0.5.3   |
 
 ## Continuous Deployment
 
