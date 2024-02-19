@@ -95,6 +95,11 @@ spec:
               value: {{ .koios.baseUrlEnabled | default "false" | quote }}
             - name: KOIOS_BASE_URL
               value: {{ .koios.baseUrl }}
+            - name: KOIOS_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .koios.secret.name }}
+                  key: {{ .koios.secret.authTokenKey }}
 
           ports:
             - name: api

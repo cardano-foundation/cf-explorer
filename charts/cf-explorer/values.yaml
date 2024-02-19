@@ -219,6 +219,9 @@ explorerRewardsApi:
   koios:
     baseUrlEnabled: false
     baseUrl: ""
+    secret:
+      name: infra-secrets
+      authTokenKey: KOIOS_AUTH_TOKEN
 
 explorerAuthentication:
   enabled: true
@@ -287,6 +290,7 @@ explorerFrontEnd:
   reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
   reactAppWsUrl: "wss://api.{{ .Values.domain }}/ws"
   reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1"
+  reactAppApiUrlCoinGecko: "https://api.coingecko.com/api/v3/coins/markets"
 
   port: 80
 
