@@ -1,6 +1,6 @@
 stage: uat
 
-I'm network: preview
+network: preview
 
 domain: uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
 
