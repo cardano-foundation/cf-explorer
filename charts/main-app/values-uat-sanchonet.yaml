@@ -21,10 +21,13 @@ cf-ledger-sync:
       tag: "853641d-7694421959"
     ingress:
       enabled: false
-    useLocalCardanoNode: false
+    useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
       network: "sanchonet"
+      image:
+        repository: rcmorano/cardano-node
+        tag: 8.8.0-pre
 
 cf-explorer:
   enabled: true
