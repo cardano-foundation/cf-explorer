@@ -26,7 +26,7 @@ cf-ledger-sync:
       enabled: true
       network: "sanchonet"
       image:
-        repository: rcmorano/cardano-node
+        repository: ghcr.io/intersectmbo/cardano-node
         tag: 8.8.0-pre
 
 cf-explorer:
