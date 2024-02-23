@@ -42,7 +42,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.8.0-PR988"
+        tag: "0.8.0-PR988-54cd78b-7989690297"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: false
@@ -56,7 +56,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.9.0-PR3014-ebb35c3-7986768699"
+        tag: "0.9.0-PR3014-cb916fe-8016041845"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
@@ -69,7 +69,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.8.0-PR302"
+        tag: "0.8.0-PR302-b534d7a-7988102753"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
