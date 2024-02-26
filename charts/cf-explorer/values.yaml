@@ -217,6 +217,9 @@ explorerRewardsApi:
   koios:
     baseUrlEnabled: false
     baseUrl: ""
+    secret:
+      name: infra-secrets
+      authTokenKey: KOIOS_AUTH_TOKEN
 
 explorerAuthentication:
   enabled: true

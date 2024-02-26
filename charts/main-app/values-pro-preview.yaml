@@ -45,7 +45,7 @@ cf-explorer:
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7"
+        tag: "0.1.8-SNAPSHOT-PR93-1299c79-7912678888"
     explorerAuthentication:
       enabled: true
       replicas: 1
