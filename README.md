@@ -3,6 +3,32 @@
 This project contains manifests and scripts to bootstrap and deploy the Cardano Foundation Explorer project and all its
 dependencies.
 
+```mermaid
+flowchart LR
+    A[Explorer Frontend] --> B[Explorer API]
+    A --> C[Explorer Authentication\n Service]
+    C --> D[Keycloak]
+    B --> E[(Postgres Database)]
+    F[Explorer Rewards Service] --> E
+    G[Koios] --> F
+    H[Explorer Scheduled\n Services] --> E
+    E --> H
+    I[LedgerSync] --> E 
+    cp{{Explorer Common\nPackage}}
+
+    style A fill:#5C8DFF,stroke:#5C8DFF
+    style B fill:#5C8DFF,stroke:#5C8DFF
+    style C fill:#5C8DFF,stroke:#5C8DFF
+    style D fill:#1EC198,stroke:#1EC198
+    style E fill:#1EC198,stroke:#1EC198
+
+    style F fill:#5C8DFF,stroke:#5C8DFF
+    style G fill:#1EC198,stroke:#1EC198
+    style H fill:#5C8DFF,stroke:#5C8DFF
+    style I fill:#1EC198,stroke:#1EC198
+    style cp fill:#F6C667,stroke:#F6C667
+```
+
 ### Tested Configuration
 
 | Repository                   | Version |
