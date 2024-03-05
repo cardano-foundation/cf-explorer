@@ -51,7 +51,7 @@ cf-ledger-sync-resync:
       enabled: false
     useLocalCardanoNode: true
     localCardanoNode:
-      enabled: true
+      enabled: false
       network: "mainnet"
 
 cf-explorer:
