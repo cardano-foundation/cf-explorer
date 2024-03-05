@@ -18,6 +18,10 @@ cf-explorer-infra:
   kafka:
     dbSize: 20Gi
 
+postgres:
+  operator:
+    enabled: true
+
 cf-ledger-sync:
   enabled: true
   values:
