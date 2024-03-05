@@ -23,7 +23,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: "postgres-secrets"
-  namespace: {{ $.Release.Namespace }}
+  namespace: cf-ledger-resync
 type: Opaque
 data:
   POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}
