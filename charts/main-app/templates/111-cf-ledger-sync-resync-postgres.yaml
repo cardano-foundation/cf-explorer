@@ -1,0 +1,21 @@
+{{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "createDb" ) }}
+---
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  # name must start w/ teamId
+  name: cf-ledger-sync-resync-pg
+  namespace: cf-ledger-sync-resync
+spec:
+  teamId: "cf"
+  volume:
+    size: 1Gi
+  numberOfInstances: 1
+  users:
+    cardano: []
+  databases:
+    explorer_api: cardano
+  postgresql:
+    version: "15"
+  enableLogicalBackup: false
+{{ end }}

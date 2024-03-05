@@ -33,6 +33,23 @@ cf-ledger-sync:
       enabled: true
       network: "mainnet"
 
+cf-ledger-sync-resync:
+  enabled: true
+  createDb: true
+  values:
+    replicaCount: 0
+    git:
+      targetRevision: "chore/add-cardano-node-to-helm-chart"
+    image:
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+      tag: "853641d-7694421959"
+    ingress:
+      enabled: false
+    useLocalCardanoNode: true
+    localCardanoNode:
+      enabled: true
+      network: "mainnet"
+
 cf-explorer:
   enabled: true
   values:
