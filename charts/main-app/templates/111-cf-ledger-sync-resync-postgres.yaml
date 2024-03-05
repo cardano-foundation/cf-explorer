@@ -18,4 +18,18 @@ spec:
   postgresql:
     version: "15"
   enableLogicalBackup: false
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "postgres-secrets"
+  namespace: {{ $.Release.Namespace }}
+type: Opaque
+data:
+  POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}
+  POSTGRES_HOST: {{ .dbHost | default "cf-ledger-sync-resync-pg" | b64enc | quote }}
+  POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
+  POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  ## FIXME
+  POSTGRES_PASSWORD: {{ "3dvpeArRCqxV6h9fw4H9izMAgaOrxbg3hFJg8EGmRPysvaO3WTyf13eAQ2obCfHs" b64enc | quote }}
 {{ end }}
