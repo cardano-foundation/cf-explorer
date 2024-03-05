@@ -5,7 +5,7 @@ kind: postgresql
 metadata:
   # name must start w/ teamId
   name: cf-ledger-sync-resync-pg
-  namespace: cf-ledger-sync-resync
+  namespace: cf-ledger-resync
 spec:
   teamId: "cf"
   volume:
