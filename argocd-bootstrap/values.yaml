@@ -28,6 +28,9 @@ argo-cd:
         - url: https://helm.elastic.co
           name: elastic
           type: helm
+        - url:  https://opensource.zalando.com/postgres-operator/charts/postgres-operator
+          name: postgres-operator-charts
+          type: helm
         - url: git@github.com:cardano-foundation/cf-explorer.git
           sshPrivateKeySecret:
             name: github-deploy-key
