@@ -14,6 +14,7 @@ cf-explorer-infra:
 cf-ledger-sync:
   enabled: true
   values:
+    replicaCount: 0
     git:
       targetRevision: "chore/add-cardano-node-to-helm-chart"
     image:
