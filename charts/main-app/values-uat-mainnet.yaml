@@ -43,7 +43,7 @@ cf-ledger-sync-resync:
     createDb: true
     size: 1000Gi
   values:
-    replicaCount: 0
+    replicaCount: 1
     git:
       targetRevision: "chore/add-cardano-node-to-helm-chart"
     image:
