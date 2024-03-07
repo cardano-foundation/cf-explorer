@@ -40,7 +40,7 @@ cf-ledger-sync:
 cf-ledger-sync-resync:
   enabled: true
   postgres:
-    createDb: true
+    createDb: false
     size: 1000Gi
   values:
     replicaCount: 0
