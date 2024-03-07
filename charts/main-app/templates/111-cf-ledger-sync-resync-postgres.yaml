@@ -9,7 +9,7 @@ metadata:
 spec:
   teamId: "cf"
   volume:
-    size: {{ .Values.cf-ledger-sync-resync.postgres.size | default "1Gi" }}
+    size: {{ index .Values "cf-ledger-sync-resync" "postgres" "size" | default "1Gi" }}
   numberOfInstances: 1
   users:
     cardano: []
