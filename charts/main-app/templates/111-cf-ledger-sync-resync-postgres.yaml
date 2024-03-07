@@ -1,4 +1,4 @@
-{{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "createDb" ) }}
+{{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "postgres" "createDb" ) }}
 ---
 apiVersion: "acid.zalan.do/v1"
 kind: postgresql
@@ -9,7 +9,7 @@ metadata:
 spec:
   teamId: "cf"
   volume:
-    size: 1Gi
+    size: {{ .Values.cf-ledger-sync-resync.postgres.size | default "1Gi" }}
   numberOfInstances: 1
   users:
     cardano: []
