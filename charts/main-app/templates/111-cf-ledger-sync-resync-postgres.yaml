@@ -31,5 +31,5 @@ data:
   POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
   POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
   ## FIXME
-  POSTGRES_PASSWORD: {{ "3dvpeArRCqxV6h9fw4H9izMAgaOrxbg3hFJg8EGmRPysvaO3WTyf13eAQ2obCfHs" | b64enc | quote }}
+  POSTGRES_PASSWORD: {{ "zUDVNHmTPFajS3pxXOk1rJyFpuXqpvN9k4GRxtAubVetW8RURrY6iwSnNNEA2NXD" | b64enc | quote }}
 {{ end }}
