@@ -69,7 +69,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.8.0-PR315-ff52fa5-8092136214"
+        tag: "0.9.0-PR318-4932450-8235150499"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
