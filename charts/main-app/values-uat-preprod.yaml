@@ -1,6 +1,6 @@
 stage: uat
 
-network: preprod
+cfnetwork: preprod
 
 domain: uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
@@ -39,7 +39,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.8.0-PR988-54cd78b-7989690297"
+        tag: "0.8.0-PR1038-f74b963-8135114438"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -66,7 +66,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.8.0-PR302-b534d7a-7988102753"
+        tag: "0.8.0-PR315-ff52fa5-8092136214"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
