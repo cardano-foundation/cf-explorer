@@ -1,6 +1,6 @@
 stage: uat
 
-cfnetwork: preprod
+network: preprod
 
 domain: uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
 
