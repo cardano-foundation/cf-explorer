@@ -17,7 +17,7 @@ cf-ledger-sync:
       tag: "7b05530-8279271870"
     ingress:
       enabled: false
-    useLocalCardanoNode: true
+    useLocalCardanoNode: false
     localCardanoNode:
       enabled: true
       network: "mainnet"
@@ -36,7 +36,10 @@ cf-explorer:
         domain: stg.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
         domain: stg.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
-
+    crawler:
+      enabled: false
+    consumer:
+      enabled: false
     explorerApi:
       enabled: true
       postgres:
