@@ -1,18 +1,18 @@
-{{ if index .Values "adahandle-resolver" "enabled" }}
+{{ if index .Values "cf-ledger-sync-resync" "enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: adahandle-resolver
+  name: cf-ledger-sync-resync
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/cardano-foundation/cf-adahandle-resolver.git
-    targetRevision: {{ index .Values "adahandle-resolver" "git" "targetRevision" | default "HEAD" }}
-    path: deploy/adahandle-resolver
+    repoURL: https://github.com/cardano-foundation/cf-ledger-sync.git
+    targetRevision: {{ index .Values "cf-ledger-sync" "values" "git" "targetRevision" | default "HEAD" }}
+    path: deploy/cf-ledger-sync
     helm:
       parameters:
         - name: "domain"
@@ -20,17 +20,11 @@ spec:
         - name: "network"
           value: {{ .Values.network }}
       valueFiles:
-      - values-postgres.yaml
-      {{- with index .Values "adahandle-resolver" "values" }}
+      - values-{{ .Values.network }}.yaml
+      {{- with index .Values "cf-ledger-sync-resync" "values" }}
       values: |
 {{ toYaml . | indent 8 }}
       {{- end }}
-
-  ignoreDifferences:
-    - group: "*"
-      kind: "Secret"
-      jqPathExpressions:
-        - '.data'
 
   syncPolicy:
     automated:
@@ -39,6 +33,6 @@ spec:
       - CreateNamespace=true
 
   destination:
-    namespace: adahandle
+    namespace: cf-ledger-resync
     server: {{ .Values.spec.destination.server }}
 {{ end }}

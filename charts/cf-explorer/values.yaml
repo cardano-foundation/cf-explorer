@@ -183,6 +183,8 @@ explorerApi:
       endpointKey: REPORT_S3_STORAGE_ENDPOINT
 
   tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+  byronGenesisFile: /app/genesis/{{ .Values.network }}/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/{{ .Values.network }}/shelley-genesis.json
 
 explorerRewardsApi:
   enabled: true
@@ -217,6 +219,9 @@ explorerRewardsApi:
   koios:
     baseUrlEnabled: false
     baseUrl: ""
+    secret:
+      name: infra-secrets
+      authTokenKey: KOIOS_AUTH_TOKEN
 
 explorerAuthentication:
   enabled: true
@@ -284,7 +289,8 @@ explorerFrontEnd:
   reactAppNetwork: "{{ .Values.network }}"
   reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
   reactAppWsUrl: "wss://api.{{ .Values.domain }}/ws"
-  reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1/"  
+  reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1"
+  reactAppApiUrlCoinGecko: "https://api.coingecko.com/api/v3/coins/markets"
 
   port: 80
 
@@ -380,7 +386,7 @@ cardanoNewsApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-news-api"
-    tag: "0.2.1"
+    tag: "0.2.2"
 
   port: 8080
 

@@ -29,6 +29,12 @@ explorerApi:
   monitoringEnabled: true
   network: mainnet
 
+  byronGenesisFile: /app/genesis/mainnet/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/mainnet/shelley-genesis.json
+
+  apiBolnisiOffchainUrl: "https://offchain.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}"
+  apiBolnisiPublicKeyUrl: "https://api.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/pubkeys/{wineryId}/v/0"
+
 explorerRewardsApi:
   enabled: true
   postgres:
@@ -45,6 +51,7 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+  reactAppBolnisiNameApi: "https://minio.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/georgian-wine/public/winerymapping.json"
 
 consumerSchedules:
   enabled: true

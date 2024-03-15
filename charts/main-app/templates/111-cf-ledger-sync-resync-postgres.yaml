@@ -1,0 +1,55 @@
+{{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "postgres" "createDb" ) }}
+---
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  # name must start w/ teamId
+  name: cf-ledger-sync-resync-pg
+  namespace: cf-ledger-resync
+spec:
+  teamId: "cf"
+  volume:
+    size: {{ index .Values "cf-ledger-sync-resync" "postgres" "size" | default "1Gi" }}
+  numberOfInstances: 1
+  users:
+    cardano: []
+  databases:
+    explorer_api: cardano
+  postgresql:
+    version: "15"
+    parameters:
+      effective_cache_size: "12GB"
+      max_connections: "250"
+      shared_buffers: "4GB"
+      work_mem: "2GB"
+      random_page_cost: "1.1"
+      maintenance_work_mem: "2GB"
+      checkpoint_completion_target: "0.9"
+      synchronous_commit: "off"
+      effective_io_concurrency: "500"
+      wal_buffers: "16MB"
+      min_wal_size: "500MB"
+      max_wal_size: "1GB"
+      max_parallel_workers_per_gather: "4"
+      max_parallel_maintenance_workers: "4"
+      track_counts: "true"
+      autovacuum: "on"
+      autovacuum_naptime: "5min"
+      log_autovacuum_min_duration: "0"
+  enableLogicalBackup: false
+  enableShmVolume: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "postgres-secrets"
+  namespace: cf-ledger-resync
+type: Opaque
+data:
+  POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}
+  POSTGRES_HOST: {{ .dbHost | default "cf-ledger-sync-resync-pg" | b64enc | quote }}
+  POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
+  POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
+  ## FIXME
+  POSTGRES_PASSWORD: {{ "zUDVNHmTPFajS3pxXOk1rJyFpuXqpvN9k4GRxtAubVetW8RURrY6iwSnNNEA2NXD" | b64enc | quote }}
+{{ end }}

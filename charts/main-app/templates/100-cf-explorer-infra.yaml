@@ -12,7 +12,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:cardano-foundation/cf-explorer.git
+    repoURL: {{ .Values.git.repoURL | default "https://github.com/cardano-foundation/cf-explorer.git" }}
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
     path: charts/cf-explorer-infra
     helm:

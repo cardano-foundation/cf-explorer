@@ -29,6 +29,15 @@ explorerApi:
   monitoringEnabled: true
   network: preprod
 
+  byronGenesisFile: /app/genesis/preprod/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/preprod/shelley-genesis.json
+
+  tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
+  tokenMetadataFolder: "/registry"
+
+  apiBolnisiOffchainUrl: "https://offchain.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}"
+  apiBolnisiPublicKeyUrl: "https://api.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/pubkeys/{wineryId}/v/0"
+
 explorerRewardsApi:
   enabled: true
   postgres:
@@ -46,6 +55,7 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+  reactAppBolnisiNameApi: "https://minio.stg.cf-bolnisi-preprod.eu-west-1.metadata.dev.cf-deployments.org/georgian-wine/public/winerymapping.json"
 
 consumerSchedules:
   enabled: true
@@ -53,3 +63,6 @@ consumerSchedules:
     schema: preprod
   monitoringEnabled: true
   network: preprod
+
+  tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
+  tokenMetadataFolder: "/registry"

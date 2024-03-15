@@ -104,10 +104,10 @@ spec:
               value: "172800000"
             - name: INSERT_POOL_DATA_DELAY
               value: "180000"
-            - name: TOKEN_METDATA_URL
-              value: https://github.com/cardano-foundation/cardano-token-registry.git
+            - name: TOKEN_METADATA_URL
+              value: {{ .tokenMetadataUrl | default "https://github.com/cardano-foundation/cardano-token-registry.git" | quote }}
             - name: TOKEN_METADATA_FOLDER
-              value: "/mappings"
+              value: {{ .tokenMetadataFolder | default "/mappings" | quote }}
             - name: NETWORK_NAME
               value: {{ .network }}
 
@@ -138,8 +138,6 @@ spec:
               value: {{ .tokenInfoJobEnabled | default "true" | quote }}
             - name: TOKEN_INFO_FIXED_DELAY
               value: {{ .tokenInfoFixedDelay | default "60000" | quote }}
-            - name: TOP_DELEGATORS_FIXED_DELAY
-              value: "300000"
             - name: TOKEN_PAGE_CACHE_FIXED_DELAY
               value: "100000"
             - name: TOKEN_PAGE_CACHE_TTL
@@ -148,6 +146,10 @@ spec:
               value: "300000"
             - name: UNIQUE_ACCOUNT_ENABLED
               value: "true"
+            - name: SMART_CONTRACT_INFO_FIXED_DELAY
+              value: "40000"
+            - name: NATIVE_SCRIPT_INFO_FIXED_DELAY
+              value: "40000"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME

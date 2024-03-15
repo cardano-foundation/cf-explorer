@@ -1,0 +1,136 @@
+stage: uat
+
+network: mainnet
+
+domain: uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+
+cf-explorer-infra:
+  enabled: true
+  redis:
+    values:
+      master:
+        persistence:
+          size: 20Gi
+      diagnosticMode:
+        enabled: false
+  postgresql:
+    dbSize: 1500Gi
+  kafka:
+    dbSize: 20Gi
+
+postgres:
+  operator:
+    enabled: true
+
+cf-ledger-sync:
+  enabled: true
+  values:
+    git:
+      targetRevision: "chore/add-cardano-node-to-helm-chart"
+    image:
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+      tag: "853641d-7694421959"
+    ingress:
+      enabled: false
+    useLocalCardanoNode: true
+    localCardanoNode:
+      enabled: true
+      network: "mainnet"
+
+cf-ledger-sync-resync:
+  enabled: true
+  postgres:
+    createDb: true
+    size: 1000Gi
+  values:
+    replicaCount: 1
+    git:
+      targetRevision: "chore/add-cardano-node-to-helm-chart"
+    image:
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+      tag: "5b2da38-8137609501"
+      storeCardanoHost: cardano-node.cf-explorer
+      storeCardanoPort: 3001
+    ingress:
+      enabled: false
+    useLocalCardanoNode: false
+    localCardanoNode:
+      enabled: false
+      network: "mainnet"
+
+cf-explorer:
+  enabled: true
+  values:
+    ingressDomains:
+      - name: cloudfront
+        domain: uat.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+      - name: global-lb
+        domain: uat.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
+      - name: eu-west-1-lb
+        domain: uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+    explorerApi:
+      enabled: true
+      image:
+        tag: "0.8.0-PR1038-f74b963-8135114438"
+      tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+    explorerRewardsApi:
+      enabled: true
+      image:
+        tag: "0.1.8-SNAPSHOT-PR93-1299c79-7912678888"
+    explorerAuthentication:
+      enabled: true
+      replicas: 1
+      image:
+        tag: "0.5.0-SNAPSHOT-sanchonet-PR123"
+    explorerFrontEnd:
+      enabled: true
+      image:
+        tag: "1.0.0-PR3105-fd55648-8247466176"
+      reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppMainnetAppUrl: "https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
+      reactAppAuthUrl: "https://auth-api.uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+    crawler:
+      enabled: false
+    consumer:
+      enabled: false
+    consumerSchedules:
+      enabled: true
+      image:
+        tag: "0.9.0-PR318-4932450-8235150499"
+      tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+    keycloak:
+      enabled: true
+      image:
+        tag: 0.1.15-SNAPSHOT
+      setupImage:
+        tag: 0.1.15-SNAPSHOT
+      hostname: keycloak.uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+      frontendDomainPublicUrl: https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+      webOrigin: https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
+      redirectUri: https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/*
+      forwardEventUrl: https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
+
+# Ada Handle Parameters
+adahandle-resolver:
+  enabled: true
+  values:
+    ingress:
+      enabled: true
+      additionalDomains:
+        - adahandle-resolver.uat.cf-explorer-mainnet.metadata.dev.cf-deployments.org
+        - adahandle-resolver.uat.cf-explorer-mainnet.global.metadata.dev.cf-deployments.org
+    springProfiles: mainnet,postgres
+    image:
+      tag: "0.1.3"
+
+kube-prometheus-stack:
+  enabled: true
+  version: 55.4.0
+
+argo-cd:
+  server:
+    ingress:
+      hosts:
+        - argocd.dev.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org

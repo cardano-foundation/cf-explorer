@@ -15,6 +15,17 @@ cf-explorer-infra:
   # Whether Infra resources should be deployed.
   enabled: true
 
+# ledger-sync Parameters
+cf-ledger-sync:
+  # Whether LS Resources should be deployed.
+  enabled: false
+
+# ledger-sync Parameters
+cf-ledger-sync-resync:
+  # Whether LS Resources should be deployed.
+  enabled: false
+  createDb: false
+
 # Explorer Parameters
 cf-explorer:
   # Whether the Explorer Resources should be deployed.
@@ -32,6 +43,10 @@ elastic-stack:
   # Whether the Ada Handle app should be deployed.
   enabled: false
 
+postgres:
+  operator:
+    enabled: false
+
 kube-prometheus-stack:
   enabled: true
   version: 45.7.1
@@ -39,7 +54,7 @@ kube-prometheus-stack:
 grafana-dashboards:
   enabled: true
 
-not-found:
+nginx-edge-cases:
   enabled: true
 
 spec:
