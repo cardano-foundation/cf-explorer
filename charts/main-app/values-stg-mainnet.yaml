@@ -18,6 +18,9 @@ cf-ledger-sync:
     ingress:
       enabled: false
     useLocalCardanoNode: false
+    storeCardanoHost: backbone.cardano.iog.io
+    storeCardanoPort: 3001
+    storeCardanoProtocolMagic: "764824073"
     localCardanoNode:
       enabled: true
       network: "mainnet"
