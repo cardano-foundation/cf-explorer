@@ -10,7 +10,7 @@ argo-cd:
     extraArgs:
       - --insecure
     ingress:
-      enabled: true
+      enabled: false
     config:
       repositories: |
         - url:  https://charts.bitnami.com/bitnami

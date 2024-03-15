@@ -53,7 +53,6 @@ spec:
               value: {{ tpl .reactAppAdaHandleApi $ }}
             - name: REACT_APP_BOLNISI_NAME_API
               value: {{ .reactAppBolnisiNameApi | default "" }}
-
             - name: REACT_APP_API_URL_COIN_GECKO
               value: {{ .reactAppApiUrlCoinGecko | default "https://api.coingecko.com/api/v3/coins/markets" }}
             - name: REACT_APP_EXT_ADA_PRICE_URL
