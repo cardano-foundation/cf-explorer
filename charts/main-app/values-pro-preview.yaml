@@ -84,7 +84,7 @@ adahandle-resolver:
   values:
     springProfiles: preview,postgres
     image:
-      tag: "0.1.2"
+      tag: "0.1.3"
 
 argo-cd:
   server:
