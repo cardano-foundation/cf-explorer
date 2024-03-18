@@ -14,6 +14,24 @@ cf-explorer-infra:
   kafka:
     dbSize: 20Gi
 
+cf-ledger-sync:
+  enabled: true
+  values:
+    git:
+      targetRevision: "chore/add-cardano-node-to-helm-chart"
+    image:
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+      tag: "853641d-7694421959"
+    ingress:
+      enabled: false
+    useLocalCardanoNode: true
+    localCardanoNode:
+      enabled: true
+      network: "preprod"
+      image:
+        repository: ghcr.io/intersectmbo/cardano-node
+        tag: 8.9.0
+
 cf-explorer:
   enabled: true
   values:
