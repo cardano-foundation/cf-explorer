@@ -27,36 +27,32 @@ cf-explorer:
       - name: us-east-1-lb
         domain: pro.cf-explorer-preview.us-east-1.beta.explorer.cardano.org
     crawler:
-      enabled: true
-      image:
-        tag: "0.2.14"
+      enabled: false
     consumer:
-      enabled: true
-      image:
-        tag: "0.3.20-SNAPSHOT-PR316"
+      enabled: false
     explorerApi:
       enabled: true
+      image:
+        tag: "0.8.0-PR1038-f74b963-8135114438"
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
-      image:
-        tag: "0.5.0-sanchonet-PR919"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7"
+        tag: "0.1.8-SNAPSHOT-PR93-1299c79-7912678888"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
+        tag: "0.5.0-SNAPSHOT-sanchonet-PR123"
       emailFrom: "admin@beta.explorer.cardano.org"
       keycloakServerUrl: "https://keycloak.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.3-PR2693"
+        tag: "1.0.0-PR3105-904d413-8293557624"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
@@ -68,7 +64,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.5.0-sanchonet-PR278"
+        tag: "0.9.0-PR318-4932450-8235150499"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
