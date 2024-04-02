@@ -65,7 +65,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.0.0-PR3105-904d413-8293557624"
+        tag: "1.0.0-PR3105-cee63ea-8321247451"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
