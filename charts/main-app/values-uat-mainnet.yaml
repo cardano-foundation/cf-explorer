@@ -36,6 +36,9 @@ cf-ledger-sync:
     localCardanoNode:
       enabled: true
       network: "mainnet"
+    blocks:
+      batchSize: "10"
+      commitThreshold: "300"
 
 cf-ledger-sync-resync:
   enabled: false
