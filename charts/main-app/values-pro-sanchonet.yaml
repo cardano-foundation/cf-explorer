@@ -15,7 +15,7 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "chore/add-cardano-node-to-helm-chart"
+      targetRevision: "develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "0d6d20f-8246831004"
