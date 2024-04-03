@@ -38,7 +38,7 @@ cf-ledger-sync:
       network: "mainnet"
 
 cf-ledger-sync-resync:
-  enabled: true
+  enabled: false
   postgres:
     createDb: true
     size: 1000Gi
