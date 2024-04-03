@@ -28,7 +28,7 @@ cf-ledger-sync:
         repository: ghcr.io/blinklabs-io/cardano-node
         tag: 8.9.0-1-amd64
     blocks:
-      batchSize: 50
+      batchSize: "10"
 
 cf-explorer:
   enabled: true
