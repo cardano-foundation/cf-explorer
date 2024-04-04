@@ -376,9 +376,9 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
-  drepInfoJobEnabled: false
+  drepInfoJobEnabled: null
   drepInfoFixedDelay: null
-  governanceInfoJobEnabled: false
+  governanceInfoJobEnabled: null
   governanceInfoFixedDelay: null
 
   network: mainnet
