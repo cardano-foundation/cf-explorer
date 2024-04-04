@@ -98,6 +98,15 @@ spec:
             - name: EXPIRED_REPORTS_RATE
               value: "604800000"
 
+            - name: DREP_INFO_JOB_ENABLED
+              value: {{ .drepInfoJobEnabled | default "false" }}
+            - name: DREP_INFO_FIXED_DELAY
+              value: {{ .drepInfoFixedDelay | default "100000" }}
+            - name: GOVERNANCE_INFO_JOB_ENABLED
+              value: {{ .governanceInfoJobEnabled | default "false" }}
+            - name: GOVERNANCE_INFO_FIXED_DELAY
+              value: {{ .governanceInfoFixedDelay | default "100000" }}
+
             - name: POOL_OFFLINE_DATA_JOB_ENABLED
               value: "true"
             - name: CRAWL_POOL_DATA_DELAY
