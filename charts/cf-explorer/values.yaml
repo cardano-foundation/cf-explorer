@@ -376,6 +376,11 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
+  drepInfoJobEnabled: false
+  drepInfoFixedDelay: null
+  governanceInfoJobEnabled: false
+  governanceInfoFixedDelay: false
+
   network: mainnet
 
   tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
