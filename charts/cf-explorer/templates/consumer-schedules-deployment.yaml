@@ -99,11 +99,11 @@ spec:
               value: "604800000"
 
             - name: DREP_INFO_JOB_ENABLED
-              value: {{ .drepInfoJobEnabled | default "false" }}
+              value: {{ .drepInfoJobEnabled | default "false" | quote }}
             - name: DREP_INFO_FIXED_DELAY
               value: {{ .drepInfoFixedDelay | default "100000" }}
             - name: GOVERNANCE_INFO_JOB_ENABLED
-              value: {{ .governanceInfoJobEnabled | default "false" }}
+              value: {{ .governanceInfoJobEnabled | default "false" | quote }}
             - name: GOVERNANCE_INFO_FIXED_DELAY
               value: {{ .governanceInfoFixedDelay | default "100000" }}
 
