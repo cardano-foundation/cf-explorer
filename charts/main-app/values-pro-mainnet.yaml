@@ -23,7 +23,7 @@ cf-ledger-sync:
     blocks:
       batchSize: "10"
     useLocalCardanoNode: true
-    storeCardanoHost: backbone.mainnet.emurgornd.com
+    #storeCardanoHost: backbone.mainnet.emurgornd.com
     localCardanoNode:
       enabled: true
       network: "mainnet"
