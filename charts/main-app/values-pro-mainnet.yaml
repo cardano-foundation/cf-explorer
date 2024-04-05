@@ -20,6 +20,8 @@ cf-ledger-sync:
       tag: "0d6d20f-8246831004"
     ingress:
       enabled: false
+    blocks:
+      batchSize: "10"
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
@@ -27,8 +29,28 @@ cf-ledger-sync:
       image:
         repository: ghcr.io/blinklabs-io/cardano-node
         tag: 8.9.0-1-amd64
-    blocks:
-      batchSize: "10"
+      tolerations:
+        - key: "role"
+          operator: "Equal"
+          value: "cardano-node"
+          effect: "PreferNoSchedule"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node.kubernetes.io/role
+                operator: In
+                values:
+                - cardano-node
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            preference:
+              matchExpressions:
+                - key: node.kubernetes.io/role
+                  operator: In
+                  values:
+                  - cardano-node
 
 cf-explorer:
   enabled: true
