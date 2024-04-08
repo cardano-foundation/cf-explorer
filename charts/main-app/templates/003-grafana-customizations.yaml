@@ -25,7 +25,7 @@ spec:
     - group: "*"
       kind: "ConfigMap"
       jqPathExpressions:
-        - '.data.contactpoints.yaml'
+        - '.data."contactpoints.yaml"'
 
   destination:
     namespace: observe
