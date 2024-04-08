@@ -20,6 +20,12 @@ spec:
     syncOptions:
       - CreateNamespace=true
 
+  ignoreDifferences:
+    - group: "*"
+      kind: "Configmap"
+      jqPathExpressions:
+        - '.data.contactpoints.yaml'
+
   destination:
     namespace: observe
     server: {{ .Values.spec.destination.server }}
