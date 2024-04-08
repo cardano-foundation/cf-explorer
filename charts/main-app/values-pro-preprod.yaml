@@ -104,6 +104,10 @@ adahandle-resolver:
     image:
       tag: "0.1.3"
 
+kube-prometheus-stack:
+  enabled: true
+  version: 58.0.0
+
 argo-cd:
   server:
     ingress:
