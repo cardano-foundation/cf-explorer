@@ -24,10 +24,13 @@ spec:
         grafana:
           plugins:
             - grafana-singlestat-panel
-          alerting:
-{{ (.Files.Glob "grafana-provisioning/alerting/rules.yaml").AsConfig | indent 12 }}
-{{ (.Files.Glob "grafana-provisioning/alerting/contactpoints.yaml").AsConfig | indent 12 }}
-{{ (.Files.Glob "grafana-provisioning/alerting/policies.yaml").AsConfig | indent 12 }}
+          sidecar:
+            alerts:
+              enabled: true
+            datasources:
+              enabled: true
+            notifiers:
+              enabled: true
   syncPolicy:
     automated:
       prune: true

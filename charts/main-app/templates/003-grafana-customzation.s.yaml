@@ -1,9 +1,9 @@
-{{ if index .Values "grafana-dashboards" "enabled" }}
+{{ if index .Values "grafana-customizations" "enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana-dashboards
+  name: grafana-customizations
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: {{ .Values.git.repoURL | default "https://github.com/cardano-foundation/cf-explorer.git" }}
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
-    path: charts/grafana-dashboards
+    path: charts/grafana-customizations
 
   syncPolicy:
     automated:
