@@ -19,7 +19,7 @@ cf-ledger-sync:
       targetRevision: "chore/add-cardano-node-to-helm-chart"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "5b2da38-8137609501"
+      tag: "0d6d20f-8246831004"
     ingress:
       enabled: false
     useLocalCardanoNode: false

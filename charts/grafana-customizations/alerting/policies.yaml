@@ -1,0 +1,7 @@
+apiVersion: 1
+policies:
+    - orgId: 1
+      receiver: cf-slack
+      group_by:
+        - grafana_folder
+        - alertname

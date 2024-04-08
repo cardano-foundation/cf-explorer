@@ -24,6 +24,13 @@ spec:
         grafana:
           plugins:
             - grafana-singlestat-panel
+          sidecar:
+            alerts:
+              enabled: true
+            datasources:
+              enabled: true
+            notifiers:
+              enabled: true
   syncPolicy:
     automated:
       prune: true

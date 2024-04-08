@@ -51,7 +51,7 @@ kube-prometheus-stack:
   enabled: true
   version: 45.7.1
 
-grafana-dashboards:
+grafana-customizations:
   enabled: true
 
 nginx-edge-cases:
