@@ -25,9 +25,9 @@ spec:
           plugins:
             - grafana-singlestat-panel
           alerting:
-{{ (.Files.Glob "grafana-provisioning/alerting/rules.yaml").AsConfig | indent 14 }}
-{{ (.Files.Glob "grafana-provisioning/alerting/contactpoints.yaml").AsConfig | indent 14 }}
-{{ (.Files.Glob "grafana-provisioning/alerting/policies.yaml").AsConfig | indent 14 }}
+{{ (.Files.Glob "grafana-provisioning/alerting/rules.yaml").AsConfig | indent 12 }}
+{{ (.Files.Glob "grafana-provisioning/alerting/contactpoints.yaml").AsConfig | indent 12 }}
+{{ (.Files.Glob "grafana-provisioning/alerting/policies.yaml").AsConfig | indent 12 }}
   syncPolicy:
     automated:
       prune: true
