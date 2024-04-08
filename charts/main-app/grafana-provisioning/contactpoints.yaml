@@ -1,0 +1,11 @@
+apiVersion: 1
+contactPoints:
+    - orgId: 1
+      name: cf-slack
+      receivers:
+        - uid: b8098160-faa8-4355-8a14-ba2085743722
+          type: slack
+          settings:
+            url: https://hooks.slack.com/services/_CHANGE_ME_
+            username: _CHANGE_ME_ 
+          disableResolveMessage: false
