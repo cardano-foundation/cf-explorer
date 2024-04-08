@@ -25,11 +25,8 @@ spec:
           plugins:
             - grafana-singlestat-panel
           alerting:
-            rules.yaml:
 {{ (.Files.Glob "grafana-provisioning/alerting/rules.yaml").AsConfig | indent 14 }}
-            contactpoints.yaml:
 {{ (.Files.Glob "grafana-provisioning/alerting/contactpoints.yaml").AsConfig | indent 14 }}
-            policies.yaml:
 {{ (.Files.Glob "grafana-provisioning/alerting/policies.yaml").AsConfig | indent 14 }}
   syncPolicy:
     automated:
