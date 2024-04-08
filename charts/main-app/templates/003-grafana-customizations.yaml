@@ -23,7 +23,7 @@ spec:
 
   ignoreDifferences:
     - group: "*"
-      kind: "Configmap"
+      kind: "ConfigMap"
       jqPathExpressions:
         - '.data.contactpoints.yaml'
 
