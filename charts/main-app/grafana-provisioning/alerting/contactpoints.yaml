@@ -3,9 +3,9 @@ contactPoints:
     - orgId: 1
       name: cf-slack
       receivers:
-        - uid: b8098160-faa8-4355-8a14-ba2085743722
+        - uid: e550fb1e-3ed1-4148-8a2d-0f6855c1117f
           type: slack
           settings:
             url: https://hooks.slack.com/services/_CHANGE_ME_
-            username: _CHANGE_ME_ 
+            username: _CHANGE_ME_
           disableResolveMessage: false
