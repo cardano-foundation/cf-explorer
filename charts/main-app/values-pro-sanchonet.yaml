@@ -15,7 +15,7 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "chore/add-cardano-node-to-helm-chart"
+      targetRevision: "develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "0d6d20f-8246831004"
@@ -65,17 +65,19 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.0.0-PR3105-904d413-8293557624"
+        tag: "1.0.0-PR3105-cee63ea-8321247451"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
       reactAppAuthUrl: "https://auth-api.pro.cf-explorer-sanchonet.eu-west-1.beta.explorer.cardano.org/api/v1"
+      reactAppApiUrl: "https://api.pro.cf-explorer-sanchonet.eu-west-1.beta.explorer.cardano.org/api/v1"
+      reactAppWsUrl: "wss://api.pro.cf-explorer-sanchonet.eu-west-1.beta.explorer.cardano.org/ws"
     consumerSchedules:
       enabled: true
       image:
         tag: "0.9.0-PR318-4932450-8235150499"
-      tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+      tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
       image:
@@ -98,7 +100,7 @@ adahandle-resolver:
 
 kube-prometheus-stack:
   enabled: true
-  version: 55.4.0
+  version: 58.0.0
 
 argo-cd:
   crds:
