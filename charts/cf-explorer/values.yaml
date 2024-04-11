@@ -128,6 +128,9 @@ explorerApi:
   service:
     type: ClusterIP
   #    nodePort: "30092"
+  #
+  swagger:
+    enabled: true
 
   redis:
     ## Redis Standalone Values Example
