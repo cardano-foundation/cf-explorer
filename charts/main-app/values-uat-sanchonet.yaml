@@ -24,7 +24,7 @@ cf-ledger-sync:
       enabled: false
     useLocalCardanoNode: true
     localCardanoNode:
-      enabled: true
+      enabled: false
       network: "sanchonet"
       image:
         repository: ghcr.io/intersectmbo/cardano-node
