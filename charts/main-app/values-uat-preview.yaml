@@ -18,14 +18,40 @@ cf-ledger-sync:
     git:
       targetRevision: "develop"
     image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "ccfcc9c-8553801455"
+      repository: "cardanofoundation/cf-ledger-sync"
+      tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
     ingress:
       enabled: false
     useLocalCardanoNode: false
     localCardanoNode:
       enabled: false
       network: "preview"
+
+cf-ledger-sync-resync:
+  enabled: true
+  postgres:
+    createDb: true
+    size: 250Gi
+  values:
+    replicaCount: 0
+    git:
+      targetRevision: "chore/add-new-aggregation-app"
+    image:
+      tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
+      storeCardanoHost: cardano-node.cf-explorer
+      storeCardanoPort: 3001
+    ingress:
+      enabled: false
+    useLocalCardanoNode: false
+    localCardanoNode:
+      enabled: false
+      network: "preview"
+    aggregation:
+      image:
+        tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
+      store:
+        account:
+          history_cleanup_enabled: "false"
 
 cf-explorer:
   enabled: true
