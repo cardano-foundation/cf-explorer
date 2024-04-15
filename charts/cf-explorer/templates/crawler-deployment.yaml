@@ -106,6 +106,9 @@ spec:
             - name: BLOCKS_ROLLBACK_TOPIC
               value: {{ .crawler.blocks.rollbackTopic }}
 
+            - name: TOPOLOGY_URL
+              value: "https://book.world.dev.cardano.org/environments/mainnet/topology-legacy.json"
+
             - name: NODE_ADDRESS
               value: {{ .cardano.node.address }}
             - name: NODE_PORT
