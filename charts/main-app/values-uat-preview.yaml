@@ -61,7 +61,7 @@ cf-ledger-sync-resync:
         passwordKey: password
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
       postgres:
