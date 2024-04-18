@@ -37,7 +37,7 @@ cf-ledger-sync-resync:
     createDb: true
     size: 250Gi
   values:
-    replicaCount: 0
+    replicaCount: "0"
     git:
       targetRevision: "parameterize-psql-secret-name-key"
     image:
