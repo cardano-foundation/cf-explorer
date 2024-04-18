@@ -39,7 +39,7 @@ cf-ledger-sync-resync:
   values:
     replicaCount: 0
     git:
-      targetRevision: "chore/add-new-aggregation-app"
+      targetRevision: "develop"
     image:
       tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
       storeCardanoHost: cardano-node.cf-explorer
