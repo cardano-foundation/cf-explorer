@@ -63,7 +63,7 @@ cf-ledger-sync-resync:
       enabled: true
       replicaCount: 1
       image:
-        tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
+        tag: "41fc060-8737136064"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
