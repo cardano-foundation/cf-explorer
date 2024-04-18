@@ -38,18 +38,4 @@ spec:
       log_autovacuum_min_duration: "0"
   enableLogicalBackup: false
   enableShmVolume: true
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: "postgres-secrets"
-  namespace: cf-ledger-resync
-type: Opaque
-data:
-  POSTGRES_USER: {{ .dbUser | default "cardano" | b64enc | quote }}
-  POSTGRES_HOST: {{ .dbHost | default "cf-ledger-sync-resync-pg" | b64enc | quote }}
-  POSTGRES_PORT: {{ .dbPort | default "5432" | b64enc | quote }}
-  POSTGRES_DB: {{ .dbName | default "explorer_api" | b64enc | quote }}
-  ## FIXME
-  POSTGRES_PASSWORD: {{ "zUDVNHmTPFajS3pxXOk1rJyFpuXqpvN9k4GRxtAubVetW8RURrY6iwSnNNEA2NXD" | b64enc | quote }}
 {{ end }}
