@@ -36,6 +36,10 @@ cf-ledger-sync-resync:
   postgres:
     createDb: true
     size: 250Gi
+    tolerations:
+      - key: resync-pg
+        operator: Exists
+        effect: NoSchedule
   values:
     git:
       targetRevision: "parameterize-psql-secret-name-key"

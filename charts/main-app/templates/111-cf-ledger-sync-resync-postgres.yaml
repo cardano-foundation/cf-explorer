@@ -48,4 +48,8 @@ spec:
       memory: 8Gi
   enableLogicalBackup: false
   enableShmVolume: true
+  {{- with .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
+  tolerations:
+{{ toYaml . | indent 4 }}
+  {{- end }}
 {{ end }}
