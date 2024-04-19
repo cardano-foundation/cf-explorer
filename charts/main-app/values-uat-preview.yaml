@@ -39,7 +39,7 @@ cf-ledger-sync-resync:
     tolerations:
       - key: role
         value: resync-pg
-        operator: Exists
+        operator: Equal
         effect: PreferNoSchedule
   values:
     git:
