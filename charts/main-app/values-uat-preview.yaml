@@ -40,7 +40,7 @@ cf-ledger-sync-resync:
       - key: role
         value: resync-pg
         operator: Exists
-        effect: NoSchedule
+        effect: PreferNoSchedule
   values:
     git:
       targetRevision: "parameterize-psql-secret-name-key"
