@@ -26,10 +26,10 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "chore/add-cardano-node-to-helm-chart"
+      targetRevision: "develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "0d6d20f-8246831004"
+      tag: "41fc060-8737136064"
     ingress:
       enabled: false
     useLocalCardanoNode: true
@@ -40,17 +40,17 @@ cf-ledger-sync:
       batchSize: "10"
 
 cf-ledger-sync-resync:
-  enabled: false
+  enabled: true
   postgres:
     createDb: true
-    size: 1000Gi
+    size: 1500Gi
   values:
     replicaCount: 1
     git:
-      targetRevision: "chore/add-cardano-node-to-helm-chart"
+      targetRevision: "develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "5b2da38-8137609501"
+      tag: "41fc060-8737136064"
       storeCardanoHost: cardano-node.cf-explorer
       storeCardanoPort: 3001
     ingress:
@@ -59,6 +59,16 @@ cf-ledger-sync-resync:
     localCardanoNode:
       enabled: false
       network: "mainnet"
+    indexer:
+      enabled: true
+      replicaCount: 0
+      postgres:
+        secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
+        host: cf-ledger-sync-resync-pg
+        port: "5432"
+        db: "explorer_api"
+        userKey: username
+        passwordKey: password
 
 cf-explorer:
   enabled: true
