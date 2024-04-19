@@ -40,7 +40,7 @@ cf-ledger-sync-resync:
     git:
       targetRevision: "parameterize-psql-secret-name-key"
     image:
-      tag: "0.0.1-SNAPSHOT-0f76222-8663068367"
+      tag: "41fc060-8737136064"
       storeCardanoHost: cardano-node.cf-explorer
       storeCardanoPort: 3001
     ingress:

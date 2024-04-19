@@ -47,7 +47,7 @@ cf-ledger-sync-resync:
   values:
     replicaCount: 1
     git:
-      targetRevision: "develop"
+      targetRevision: "parameterize-psql-secret-name-key"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "41fc060-8737136064"
