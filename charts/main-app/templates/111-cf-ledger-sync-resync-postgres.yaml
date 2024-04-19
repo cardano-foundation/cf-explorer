@@ -45,7 +45,7 @@ spec:
       memory: 100Mi
     limits:
       cpu: "4"
-      memory: 4Gi
+      memory: 8Gi
   enableLogicalBackup: false
   enableShmVolume: true
 {{ end }}
