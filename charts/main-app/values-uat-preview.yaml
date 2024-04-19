@@ -37,7 +37,8 @@ cf-ledger-sync-resync:
     createDb: true
     size: 250Gi
     tolerations:
-      - key: resync-pg
+      - key: role
+        value: resync-pg
         operator: Exists
         effect: NoSchedule
   values:
