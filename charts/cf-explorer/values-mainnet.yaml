@@ -52,8 +52,7 @@ explorerAuthentication:
 explorerFrontEnd:
   enabled: true
   reactAppBolnisiNameApi: "https://minio.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/georgian-wine/public/winerymapping.json"
-  reactAppFfGlobalIsConwayEra: false
-  
+
 consumerSchedules:
   enabled: true
   postgres:
