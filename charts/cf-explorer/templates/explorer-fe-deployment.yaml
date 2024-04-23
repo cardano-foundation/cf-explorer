@@ -61,6 +61,8 @@ spec:
               value: {{ tpl .reactAppCardanoNewsUrl $ }}
             - name: REACT_APP_NETWORK_NAMES
               value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview", "sanchonet":"Sanchonet"}'
+            - name: REACT_APP_FF_GLOBAL_IS_CONWAY_ERA
+              value: {{ tpl .reactAppFfGlobalIsConwayEra $ }}
 
           ports:
             - name: api

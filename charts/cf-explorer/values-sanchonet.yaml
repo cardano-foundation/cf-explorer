@@ -31,6 +31,7 @@ explorerAuthentication:
 
 explorerFrontEnd:
   enabled: true
+  reactAppFfGlobalIsConwayEra: true
 
 consumerSchedules:
   enabled: true
