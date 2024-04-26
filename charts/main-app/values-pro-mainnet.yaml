@@ -85,7 +85,7 @@ cf-explorer:
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
-      reactAppAuthUrl: "https://auth-api.beta.explorer.cardano.org/api/v1"
+      reactAppAuthUrl: "https://auth-api.pro.cf-explorer-mainnet.es-east-1.beta.explorer.cardano.org/api/v1"
       # temporary
       #reactAppApiUrl: "https://api.pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org/api/v1"
       #reactAppWsUrl: "wss://api.pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org/ws"
