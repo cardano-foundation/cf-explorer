@@ -34,6 +34,6 @@ spec:
       - CreateNamespace=true
 
   destination:
-    namespace: {{ $.Release.Namespace }}
+    namespace: cf-explorer
     server: https://kubernetes.default.svc
 {{ end }}
