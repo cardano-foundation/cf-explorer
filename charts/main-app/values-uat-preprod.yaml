@@ -53,7 +53,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.2.0-PR3312-d872dd4-8813172629"
+        tag: "1.2.0-PR3312-27e71db-8849164031"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
