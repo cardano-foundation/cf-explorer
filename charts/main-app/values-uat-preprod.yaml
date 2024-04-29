@@ -39,12 +39,12 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "0.9.0-PR1144"
+        tag: "1.0.0-PR1144-f280a6d"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.8-SNAPSHOT-PR93-1299c79-7912678888"
+        tag: "1.0.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
@@ -66,7 +66,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.9.0-PR358"
+        tag: "1.0.0-PR358"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
