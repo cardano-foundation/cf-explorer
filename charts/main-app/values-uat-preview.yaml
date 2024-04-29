@@ -156,3 +156,6 @@ argo-cd:
     ingress:
       hosts:
         - argocd.uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
+
+nginx-edge-cases:
+  enabled: false
