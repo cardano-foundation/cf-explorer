@@ -32,7 +32,7 @@ cf-ledger-sync:
       network: "preview"
 
 cf-ledger-sync-resync:
-  enabled: true
+  enabled: false
   postgres:
     createDb: true
     size: 250Gi
@@ -45,7 +45,8 @@ cf-ledger-sync-resync:
     git:
       targetRevision: "parameterize-psql-secret-name-key"
     image:
-      tag: "41fc060-8737136064"
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+      tag: "a842354-8831465254"
       storeCardanoHost: cardano-node.cf-explorer
       storeCardanoPort: 3001
     ingress:
@@ -68,7 +69,8 @@ cf-ledger-sync-resync:
       enabled: true
       replicaCount: 1
       image:
-        tag: "41fc060-8737136064"
+      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+      tag: "a842354-8831465254"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
