@@ -45,7 +45,7 @@ spec:
       memory: 100Mi
     limits:
       cpu: "6"
-      memory: 12Gi
+      memory: 14Gi
   enableLogicalBackup: false
   enableShmVolume: true
   {{- with index .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
