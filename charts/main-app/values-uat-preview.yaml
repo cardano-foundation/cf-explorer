@@ -29,7 +29,7 @@ cf-ledger-sync:
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
-      sleep: false
+      sleep: true
       network: "preview"
 
 cf-ledger-sync-resync:
