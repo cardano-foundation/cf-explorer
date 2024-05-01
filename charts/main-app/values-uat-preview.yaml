@@ -29,6 +29,9 @@ cf-ledger-sync:
     useLocalCardanoNode: false
     localCardanoNode:
       enabled: true
+      image:
+        repository: ghcr.io/intersectmbo/cardano-node
+        tag: 8.9.0
       sleep: false
       mithrilRestore: "false"
       network: "preview"
