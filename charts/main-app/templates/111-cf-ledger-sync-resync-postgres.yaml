@@ -1,6 +1,8 @@
 {{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "postgres" "createDb" ) }}
 ---
 ## Full definition https://github.com/zalando/postgres-operator/blob/master/manifests/complete-postgres-manifest.yaml
+
+# Backups https://github.com/zalando/postgres-operator/blob/5357062857f3b724546a80849c2257ae7b804c14/charts/postgres-operator/values.yaml#L350
 ---
 apiVersion: "acid.zalan.do/v1"
 kind: postgresql
@@ -46,7 +48,7 @@ spec:
     limits:
       cpu: "6"
       memory: 14Gi
-  enableLogicalBackup: false
+  enableLogicalBackup: true
   logicalBackupSchedule: "*/5 * * * *"
   enableShmVolume: true
   {{- with index .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
