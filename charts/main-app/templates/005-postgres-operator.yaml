@@ -17,7 +17,7 @@ spec:
       values: |
         configKubernetes:
           enable_pod_antiaffinity: true
-          pod_environment_secret: cf-explorer/infra-secrets
+          pod_environment_secret: cf-explorer/logical-backup-secrets
 
   syncPolicy:
     automated:
