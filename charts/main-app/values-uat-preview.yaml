@@ -20,7 +20,7 @@ cf-ledger-sync:
   values:
     replicaCount: 1
     git:
-      targetRevision: "develop"
+      targetRevision: "parameterize-psql-secret-name-key"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "ccfcc9c-8553801455"
@@ -29,6 +29,7 @@ cf-ledger-sync:
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
+      sleep: true
       network: "preview"
 
 cf-ledger-sync-resync:
