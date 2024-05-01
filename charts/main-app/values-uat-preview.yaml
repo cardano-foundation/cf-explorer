@@ -32,7 +32,7 @@ cf-ledger-sync:
       network: "preview"
 
 cf-ledger-sync-resync:
-  enabled: false
+  enabled: true
   postgres:
     createDb: true
     size: 250Gi
@@ -56,7 +56,7 @@ cf-ledger-sync-resync:
       enabled: false
       network: "preview"
     indexer:
-      enabled: true
+      enabled: false
       replicaCount: 0
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
@@ -66,7 +66,7 @@ cf-ledger-sync-resync:
         userKey: username
         passwordKey: password
     aggregation:
-      enabled: true
+      enabled: false
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
