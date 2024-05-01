@@ -30,6 +30,7 @@ cf-ledger-sync:
     localCardanoNode:
       enabled: true
       sleep: true
+      mithrilRestore: false
       network: "preview"
 
 cf-ledger-sync-resync:
