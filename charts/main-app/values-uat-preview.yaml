@@ -26,9 +26,9 @@ cf-ledger-sync:
       tag: "ccfcc9c-8553801455"
     ingress:
       enabled: false
-    useLocalCardanoNode: true
+    useLocalCardanoNode: false
     localCardanoNode:
-      enabled: true
+      enabled: false
       network: "preview"
 
 cf-ledger-sync-resync:
