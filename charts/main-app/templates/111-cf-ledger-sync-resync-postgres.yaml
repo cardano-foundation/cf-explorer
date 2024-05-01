@@ -47,7 +47,6 @@ spec:
       cpu: "6"
       memory: 14Gi
   enableLogicalBackup: true
-  logicalBackupRetention: "3 months"
   logicalBackupSchedule: "*/5 * * * *"
   enableShmVolume: true
   {{- with index .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
