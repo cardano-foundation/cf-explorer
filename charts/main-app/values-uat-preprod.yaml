@@ -27,7 +27,7 @@ cf-ledger-sync:
       network: "preprod"
 
 cf-ledger-sync-resync:
-  enabled: false
+  enabled: true
   postgres:
     createDb: true
     size: 450Gi
