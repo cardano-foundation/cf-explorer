@@ -18,7 +18,7 @@ spec:
         configKubernetes:
           enable_pod_antiaffinity: true
         configLogicalBackup:
-          logical_backup_cronjob_environment_secret: logical-backup-secrets
+          logical_backup_cronjob_environment_secret: "logical-backup-secrets"
 
   syncPolicy:
     automated:
