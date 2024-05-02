@@ -24,16 +24,16 @@ spec:
     parameters:
       max_connections: "500"
       max_locks_per_transaction: "256"
-      shared_buffers: "4GB"
-      effective_cache_size: "4GB"
-#      maintenance_work_mem: "4GB"
+      shared_buffers: "8GB"
+      effective_cache_size: "8GB"
+      maintenance_work_mem: "4GB"
       checkpoint_completion_target: "0.9"
       checkpoint_timeout: "15m"
       wal_buffers: "16MB"
       default_statistics_target: "500"
       random_page_cost: "1.1"
       effective_io_concurrency: "500"
-      work_mem: "6GB"
+      work_mem: "12GB"
       min_wal_size: "1GB"
       max_wal_size: "2GB"
       max_parallel_workers_per_gather: "4"
@@ -49,7 +49,6 @@ spec:
       cpu: "6"
       memory: 14Gi
   enableLogicalBackup: false
-#  logicalBackupSchedule: "*/5 * * * *"
   enableShmVolume: true
   {{- with index .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
   tolerations:
