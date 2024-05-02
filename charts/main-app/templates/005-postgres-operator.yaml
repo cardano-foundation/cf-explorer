@@ -16,9 +16,9 @@ spec:
     helm:
       values: |
         configKubernetes:
-          enable_pod_antiaffinity: true
-#        configLogicalBackup:
-#          logical_backup_cronjob_environment_secret: "logical-backup-secrets"
+          enable_pod_antiaffinity: "true"
+        configLogicalBackup:
+          logical_backup_cronjob_environment_secret: "cf-ledger-resync/logical-backup-secrets"
 
   syncPolicy:
     automated:
