@@ -52,8 +52,8 @@ cf-ledger-sync-resync:
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "a842354-8831465254"
-#    storeCardanoHost: cardano-node.cf-explorer
-#    storeCardanoPort: 3001
+    storeCardanoHost: cardano-node.cf-explorer
+    storeCardanoPort: 3001
     ingress:
       enabled: false
     useLocalCardanoNode: false
