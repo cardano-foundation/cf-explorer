@@ -1,8 +1,6 @@
 {{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "postgres" "createDb" ) }}
 ---
 ## Full definition https://github.com/zalando/postgres-operator/blob/master/manifests/complete-postgres-manifest.yaml
-
-# Backups https://github.com/zalando/postgres-operator/blob/5357062857f3b724546a80849c2257ae7b804c14/charts/postgres-operator/values.yaml#L350
 ---
 apiVersion: "acid.zalan.do/v1"
 kind: postgresql
@@ -24,16 +22,16 @@ spec:
     parameters:
       max_connections: "500"
       max_locks_per_transaction: "256"
-      shared_buffers: "8GB"
-      effective_cache_size: "8GB"
+      shared_buffers: "10GB"
+      effective_cache_size: "10GB"
       maintenance_work_mem: "4GB"
       checkpoint_completion_target: "0.9"
       checkpoint_timeout: "15m"
-      wal_buffers: "16MB"
+      wal_buffers: "64MB"
       default_statistics_target: "500"
       random_page_cost: "1.1"
       effective_io_concurrency: "500"
-      work_mem: "12GB"
+      work_mem: "10GB"
       min_wal_size: "1GB"
       max_wal_size: "2GB"
       max_parallel_workers_per_gather: "4"
