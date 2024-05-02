@@ -45,7 +45,6 @@ cf-ledger-sync-resync:
     createDb: true
     size: 1500Gi
   values:
-    replicaCount: 0
     git:
       targetRevision: "parameterize-psql-secret-name-key"
     image:
@@ -61,7 +60,7 @@ cf-ledger-sync-resync:
       network: "mainnet"
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
