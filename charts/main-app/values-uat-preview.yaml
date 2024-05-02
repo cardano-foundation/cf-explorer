@@ -72,7 +72,7 @@ cf-ledger-sync-resync:
         passwordKey: password
     aggregation:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "a842354-8831465254"
