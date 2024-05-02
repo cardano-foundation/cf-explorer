@@ -86,6 +86,8 @@ cf-ledger-sync-resync:
       store:
         account:
           history_cleanup_enabled: "false"
+        executor:
+          use_virtual_thread_for_batch_processing: "true"
 
 cf-explorer:
   enabled: true
