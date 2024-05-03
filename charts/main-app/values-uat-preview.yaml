@@ -61,8 +61,8 @@ cf-ledger-sync-resync:
       enabled: false
       network: "preview"
     indexer:
-      enabled: false
-      replicaCount: 0
+      enabled: true
+      replicaCount: 1
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg

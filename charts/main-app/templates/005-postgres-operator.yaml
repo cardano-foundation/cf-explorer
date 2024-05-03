@@ -17,6 +17,9 @@ spec:
       values: |
         configKubernetes:
           enable_pod_antiaffinity: true
+        configAwsOrGcp:
+          aws_region: eu-west-1
+          wal_s3_bucket: uat-cf-explorer-preview-pg-backups
         configLogicalBackup:
           logical_backup_cronjob_environment_secret: logical-backup-secrets
 
