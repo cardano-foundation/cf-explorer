@@ -45,7 +45,7 @@ spec:
       memory: 100Mi
     limits:
       cpu: "6"
-      memory: 14Gi
+      memory: 28Gi
   enableLogicalBackup: false
   logicalBackupSchedule: "*/5 * * * *"
   enableShmVolume: true
