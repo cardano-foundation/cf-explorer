@@ -75,7 +75,7 @@ cf-ledger-sync-resync:
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "31fda24-8936114020"
+        tag: "a842354-8831465254"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
@@ -88,6 +88,7 @@ cf-ledger-sync-resync:
           history_cleanup_enabled: "false"
         executor:
           use_virtual_thread_for_batch_processing: "true"
+          enable_parallel_processing: "false"
 #          block_processing_threads: 5
 
 cf-explorer:
