@@ -89,7 +89,7 @@ cf-ledger-sync-resync:
         executor:
           use_virtual_thread_for_batch_processing: "true"
           enable_parallel_processing: "true"
-          block_processing_threads: 5
+          block_processing_threads: 2
 
 cf-explorer:
   enabled: true
