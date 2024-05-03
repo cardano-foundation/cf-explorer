@@ -16,6 +16,7 @@ spec:
     helm:
       values: |
         configKubernetes:
+          enable_finalizers: true
           enable_pod_antiaffinity: true
           pod_environment_secret: logical-backup-secrets
         configAwsOrGcp:
