@@ -30,6 +30,7 @@ cf-ledger-sync:
     localCardanoNode:
       enabled: false
       network: "preview"
+      volumeSize: "15Gi"
 
 cf-ledger-sync-resync:
   enabled: true
