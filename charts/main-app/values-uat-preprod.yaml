@@ -20,15 +20,24 @@ cf-ledger-sync:
   values:
     git:
       targetRevision: "develop"
-    image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "ccfcc9c-8553801455"
-    ingress:
-      enabled: false
-    useLocalCardanoNode: false
+    useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
       network: "preprod"
+    indexer:
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "a842354-8831465254"
+    aggregation:
+      enabled: true
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "a842354-8831465254"
+      store:
+        account:
+          history_cleanup_enabled: "false"
+        executor:
+          enable_parallel_processing: "false"
 
 cf-ledger-sync-resync:
   enabled: true
