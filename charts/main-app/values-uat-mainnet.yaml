@@ -14,6 +14,7 @@ cf-explorer-infra:
       diagnosticMode:
         enabled: false
   postgresql:
+    enable: false
     dbSize: 1500Gi
   kafka:
     dbSize: 20Gi
@@ -23,7 +24,7 @@ postgres:
     enabled: true
 
 cf-ledger-sync:
-  enabled: true
+  enabled: false
   values:
     git:
       targetRevision: "develop"
