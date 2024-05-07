@@ -50,7 +50,7 @@ cf-explorer:
     explorerRewardsApi:
       enabled: false
       image:
-        tag: "1.0.0"
+        tag: "1.2.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
