@@ -33,6 +33,16 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "a842354-8831465254"
+    aggregation:
+      enabled: true
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "a842354-8831465254"
+      store:
+        account:
+          history_cleanup_enabled: "false"
+        executor:
+          enable_parallel_processing: "false"
 
 cf-ledger-sync-resync:
   enabled: true
