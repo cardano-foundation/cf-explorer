@@ -19,7 +19,7 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "parameterize-psql-secret-name-key"
+      targetRevision: "develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "a842354-8831465254"
