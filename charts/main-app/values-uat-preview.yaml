@@ -20,9 +20,6 @@ cf-ledger-sync:
   values:
     git:
       targetRevision: "develop"
-    image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "a842354-8831465254"
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
@@ -33,8 +30,9 @@ cf-ledger-sync:
       mithrilRestore: "false"
       network: "preview"
     indexer:
-      enabled: true
-      replicaCount: 1
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "a842354-8831465254"
 
 cf-ledger-sync-resync:
   enabled: true
@@ -48,21 +46,17 @@ cf-ledger-sync-resync:
         effect: PreferNoSchedule
   values:
     git:
-      targetRevision: "parameterize-psql-secret-name-key"
-    image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "a842354-8831465254"
+      targetRevision: "develop"
     storeCardanoHost: cardano-node.cf-explorer
     storeCardanoPort: 3001
-    ingress:
-      enabled: false
     useLocalCardanoNode: false
     localCardanoNode:
       enabled: false
       network: "preview"
     indexer:
-      enabled: true
-      replicaCount: 1
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "a842354-8831465254"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
