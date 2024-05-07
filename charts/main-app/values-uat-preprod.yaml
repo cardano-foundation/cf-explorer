@@ -51,21 +51,17 @@ cf-ledger-sync-resync:
         effect: PreferNoSchedule
   values:
     git:
-      targetRevision: "parameterize-psql-secret-name-key"
-    image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "a842354-8831465254"
+      targetRevision: "develop"
     storeCardanoHost: cardano-node.cf-explorer
     storeCardanoPort: 3001
-    ingress:
-      enabled: false
     useLocalCardanoNode: false
     localCardanoNode:
       enabled: false
       network: "preprod"
     indexer:
-      enabled: false
-      replicaCount: 0
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "a842354-8831465254"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
@@ -89,9 +85,10 @@ cf-ledger-sync-resync:
       store:
         account:
           history_cleanup_enabled: "false"
-#        executor:
-#          use_virtual_thread_for_batch_processing: "true"
-#          block_processing_threads: 5
+        executor:
+          use_virtual_thread_for_batch_processing: "true"
+          enable_parallel_processing: "false"
+#          block_processing_threads: 2
 
 cf-explorer:
   enabled: true
