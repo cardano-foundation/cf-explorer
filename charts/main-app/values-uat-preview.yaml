@@ -18,15 +18,12 @@ postgres:
 cf-ledger-sync:
   enabled: true
   values:
-    replicaCount: 1
     git:
       targetRevision: "parameterize-psql-secret-name-key"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "ccfcc9c-8553801455"
-    ingress:
-      enabled: false
-    useLocalCardanoNode: false
+      tag: "a842354-8831465254"
+    useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
       image:
@@ -35,6 +32,9 @@ cf-ledger-sync:
       sleep: false
       mithrilRestore: "false"
       network: "preview"
+    indexer:
+      enabled: true
+      replicaCount: 1
 
 cf-ledger-sync-resync:
   enabled: true
