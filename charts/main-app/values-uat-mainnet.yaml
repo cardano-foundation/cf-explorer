@@ -24,7 +24,7 @@ postgres:
     enabled: true
 
 cf-ledger-sync:
-  enabled: false
+  enabled: true
   values:
     git:
       targetRevision: "develop"
