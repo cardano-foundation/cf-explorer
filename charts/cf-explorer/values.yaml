@@ -394,7 +394,7 @@ cardanoNewsApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-news-api"
-    tag: "0.2.2"
+    tag: "0.2.3"
 
   port: 8080
 
