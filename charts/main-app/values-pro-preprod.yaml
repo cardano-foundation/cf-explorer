@@ -12,7 +12,6 @@ cf-explorer-infra:
   postgresql:
     enabled: false
   kafka:
-    enabled: false
     dbSize: 50Gi
 
 cf-explorer:
