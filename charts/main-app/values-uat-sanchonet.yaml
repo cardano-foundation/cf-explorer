@@ -19,7 +19,7 @@ cf-ledger-sync:
       targetRevision: "develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "ccfcc9c-8553801455"
+      tag: "a842354-8831465254"
     ingress:
       enabled: false
     useLocalCardanoNode: true
