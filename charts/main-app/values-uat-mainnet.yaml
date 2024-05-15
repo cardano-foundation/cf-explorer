@@ -95,7 +95,7 @@ cf-explorer:
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "1.0.0-PR100-eea4990-9014432160"
+        tag: "1.0.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
