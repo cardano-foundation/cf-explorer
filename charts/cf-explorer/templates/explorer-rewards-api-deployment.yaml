@@ -67,14 +67,14 @@ spec:
               value: "false"
 
             - name: REWARD_PARALLEL_SAVING_ENABLED
-              value: "false"
+              value: "true"
             - name: REWARD_SUB_LIST_SIZE
               value: "100"
             - name: REWARD_PARALLEL_SAVING_THREAD_NUM
               value: "5"
 
             - name: EPOCH_STAKE_PARALLEL_SAVING_ENABLED
-              value: "false"
+              value: "true"
             - name: EPOCH_STAKE_SUB_LIST_SIZE
               value: "100"
             - name: EPOCH_STAKE_PARALLEL_SAVING_THREAD_NUM
@@ -85,7 +85,7 @@ spec:
             - name: EPOCH_STAKE_LIST_SIZE_EACH_THREAD
               value: "5"
             - name: POOL_INFO_LIST_SIZE_EACH_THREAD
-              value: "10"
+              value: "100"
 
             - name: POOL_INFO_DATA_JOB_ENABLED
               value: "true"
