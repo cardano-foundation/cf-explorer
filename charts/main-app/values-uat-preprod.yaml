@@ -19,7 +19,7 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "develop"
+      targetRevision: "infra-develop"
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
