@@ -63,6 +63,8 @@ spec:
               value: '{"mainnet":"Mainnet","preprod":"Preprod", "preview":"Preview", "sanchonet":"Sanchonet"}'
             - name: REACT_APP_FF_GLOBAL_IS_CONWAY_ERA
               value: {{ .reactAppFfGlobalIsConwayEra | quote }}
+            - name: REACT_APP_FF_GLOBAL_IS_CONWAY_BOOTSTRAP_DATA_AVAILABLE
+              value: {{ .reactAppFfGlobalIsConwayBootstrapDataAvailable | quote }}
 
           ports:
             - name: api
