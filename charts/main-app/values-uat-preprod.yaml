@@ -55,7 +55,7 @@ cf-ledger-sync-resync:
         effect: PreferNoSchedule
   values:
     git:
-      targetRevision: "develop"
+      targetRevision: "infra-develop"
     storeCardanoHost: cardano-node.cf-explorer
     storeCardanoPort: 3001
     useLocalCardanoNode: false

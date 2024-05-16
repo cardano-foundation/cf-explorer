@@ -27,7 +27,7 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "develop"
+      targetRevision: "infra-develop"
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
@@ -58,7 +58,7 @@ cf-ledger-sync-resync:
     size: 1500Gi
   values:
     git:
-      targetRevision: "parameterize-psql-secret-name-key"
+      targetRevision: "infra-develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
       tag: "a842354-8831465254"
