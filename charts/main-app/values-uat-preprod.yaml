@@ -34,6 +34,8 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "a842354-8831465254"
+      postgres:
+        dbKey: LEDGER_SYNC_DB
       store:
         account:
           history_cleanup_enabled: "false"
