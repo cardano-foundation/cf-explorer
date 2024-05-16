@@ -26,6 +26,7 @@ cf-ledger-sync:
     #storeCardanoHost: backbone.mainnet.emurgornd.com
     localCardanoNode:
       enabled: true
+      volumeSize: 200Gi
       network: "mainnet"
       image:
         repository: ghcr.io/blinklabs-io/cardano-node

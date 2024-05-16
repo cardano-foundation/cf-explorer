@@ -31,6 +31,7 @@ cf-ledger-sync:
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
+      volumeSize: 200Gi
       network: "mainnet"
     indexer:
       image:

@@ -24,6 +24,7 @@ cf-ledger-sync:
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
+      volumeSize: 10Gi
       network: "sanchonet"
       image:
         repository: ghcr.io/intersectmbo/cardano-node
