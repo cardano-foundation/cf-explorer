@@ -107,7 +107,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "1.2.0-PR1186-6f11325-9077252720"
+        tag: "1.0.0-PR1183-46fc7f4-9108338507"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
