@@ -33,14 +33,13 @@ cf-ledger-sync:
     indexer:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "a842354-8831465254"
+        tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "a842354-8831465254"
+        tag: "bca5fd6-9109622755"
       postgres:
-        dbKey: LEDGER_SYNC_DB
         dbSchema: preview
       store:
         account:
@@ -70,7 +69,7 @@ cf-ledger-sync-resync:
     indexer:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "a842354-8831465254"
+        tag: "bca5fd6-9109622755"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
@@ -83,7 +82,7 @@ cf-ledger-sync-resync:
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "a842354-8831465254"
+        tag: "bca5fd6-9109622755"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg

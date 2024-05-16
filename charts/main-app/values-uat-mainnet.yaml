@@ -36,14 +36,13 @@ cf-ledger-sync:
     indexer:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "a842354-8831465254"
+        tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "a842354-8831465254"
+        tag: "bca5fd6-9109622755"
       postgres:
-        dbKey: LEDGER_SYNC_DB
         dbSchema: mainnet
       store:
         account:
@@ -61,7 +60,7 @@ cf-ledger-sync-resync:
       targetRevision: "infra-develop"
     image:
       repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "a842354-8831465254"
+      tag: "bca5fd6-9109622755"
     storeCardanoHost: cardano-node.cf-explorer
     storeCardanoPort: 3001
     ingress:
