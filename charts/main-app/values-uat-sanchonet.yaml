@@ -12,14 +12,15 @@ cf-explorer-infra:
     enabled: true
 
 cf-ledger-sync:
-  enabled: false
+  enabled: true
   values:
     replicaCount: 1
     git:
       targetRevision: "infra-develop"
     useLocalCardanoNode: true
     localCardanoNode:
-      enabled: false
+      enabled: true
+      sleep: true
       volumeSize: 10Gi
       network: "sanchonet"
       image:
