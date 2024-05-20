@@ -55,7 +55,7 @@ cf-explorer:
     explorerApi:
       enabled: true
       image:
-        tag: "1.0.0-PR1183-46fc7f4-9108338507"
+        tag: "1.0.0-PR1183-594af7c-9155234057"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       swagger:
         enabled: false
@@ -86,7 +86,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.7.0-PR373-49147df-9108427503"
+        tag: "0.7.0-PR373-f6ec938-9152744730"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
