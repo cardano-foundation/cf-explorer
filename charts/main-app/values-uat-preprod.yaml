@@ -108,6 +108,7 @@ cf-explorer:
       image:
         tag: "1.0.0-PR1183-594af7c-9155234057"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+      reportLimitPer24h: 20
     explorerRewardsApi:
       enabled: true
       image:

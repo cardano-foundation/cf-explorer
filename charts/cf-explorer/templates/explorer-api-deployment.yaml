@@ -120,7 +120,7 @@ spec:
             - name: API_MARKET_CACHE_TIME
               value: "180"
             - name: REPORT_LIMIT_PER_24HOURS
-              value: "2"
+              value: {{ .reportLimitPer24h | default "2" | quote }}
             - name: EPOCH_DAYS
               value: {{ .epochDays | default 5 | quote }}
 
