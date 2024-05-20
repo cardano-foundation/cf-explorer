@@ -102,7 +102,7 @@ cf-explorer:
 
 # Ada Handle Parameters
 adahandle-resolver:
-  enabled: true
+  enabled: false
   values:
     ingress:
       enabled: true
