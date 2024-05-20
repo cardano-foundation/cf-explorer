@@ -12,19 +12,19 @@ cf-explorer-infra:
     enabled: true
 
 cf-ledger-sync:
-  enabled: true
+  enabled: false
   values:
     replicaCount: 1
     git:
       targetRevision: "infra-develop"
     useLocalCardanoNode: true
     localCardanoNode:
-      enabled: true
+      enabled: false
       volumeSize: 10Gi
       network: "sanchonet"
       image:
         repository: ghcr.io/intersectmbo/cardano-node
-        tag: 8.10.0-pre
+        tag: 8.11.0-sancho
     indexer:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
