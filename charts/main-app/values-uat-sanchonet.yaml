@@ -20,7 +20,6 @@ cf-ledger-sync:
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
-      sleep: true
       volumeSize: 10Gi
       network: "sanchonet"
       image:
