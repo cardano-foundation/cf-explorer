@@ -51,7 +51,7 @@ cf-ledger-sync:
 cf-ledger-sync-resync:
   enabled: true
   postgres:
-    createDb: true
+    createDb: false
     size: 450Gi
     tolerations:
       - key: role
@@ -68,6 +68,7 @@ cf-ledger-sync-resync:
       enabled: false
       network: "preview"
     indexer:
+      enabled: false
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
@@ -79,7 +80,7 @@ cf-ledger-sync-resync:
         userKey: username
         passwordKey: password
     aggregation:
-      enabled: true
+      enabled: false
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
