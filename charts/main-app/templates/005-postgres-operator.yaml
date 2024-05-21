@@ -16,8 +16,8 @@ spec:
     helm:
       values: |
         configKubernetes:
-          enable_finalizers: true
           enable_pod_antiaffinity: true
+#          enable_finalizers: true
 #          pod_environment_secret: logical-backup-secrets
 #        configAwsOrGcp:
 #          aws_region: eu-west-1
