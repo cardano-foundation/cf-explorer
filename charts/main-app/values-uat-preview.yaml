@@ -51,7 +51,7 @@ cf-ledger-sync:
 cf-ledger-sync-resync:
   enabled: true
   postgres:
-    createDb: false
+    createDb: true
     size: 450Gi
     tolerations:
       - key: role
