@@ -31,7 +31,7 @@ cf-ledger-sync:
       mithrilRestore: "false"
       network: "preview"
     indexer:
-      enabled: true
+      enabled: false
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
