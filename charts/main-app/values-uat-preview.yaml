@@ -31,12 +31,12 @@ cf-ledger-sync:
       mithrilRestore: "false"
       network: "preview"
     indexer:
-      enabled: false
+      enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
     aggregation:
-      enabled: false
+      enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
@@ -46,7 +46,7 @@ cf-ledger-sync:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
 
 cf-ledger-sync-resync:
   enabled: true
