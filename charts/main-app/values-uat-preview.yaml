@@ -68,7 +68,7 @@ cf-ledger-sync-resync:
       enabled: false
       network: "preview"
     indexer:
-      enabled: false
+      enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
@@ -80,7 +80,7 @@ cf-ledger-sync-resync:
         userKey: username
         passwordKey: password
     aggregation:
-      enabled: false
+      enabled: true
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
