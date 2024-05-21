@@ -49,10 +49,10 @@ cf-ledger-sync:
           enable_parallel_processing: "true"
 
 cf-ledger-sync-resync:
-  enabled: false
+  enabled: true
   postgres:
-    createDb: false
-    size: 200Gi
+    createDb: true
+    size: 450Gi
     tolerations:
       - key: role
         value: resync-pg
@@ -97,7 +97,7 @@ cf-ledger-sync-resync:
           history_cleanup_enabled: "false"
         executor:
           use_virtual_thread_for_batch_processing: "true"
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
 #          block_processing_threads: 2
 
 cf-explorer:
