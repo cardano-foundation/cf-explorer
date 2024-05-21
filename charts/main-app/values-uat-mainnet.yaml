@@ -55,27 +55,25 @@ cf-ledger-sync:
           block_processing_threads: "4"
 
 cf-ledger-sync-resync:
-  enabled: false
+  enabled: true
   postgres:
     createDb: true
     size: 1500Gi
   values:
     git:
       targetRevision: "infra-develop"
-    image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "bca5fd6-9109622755"
     storeCardanoHost: cardano-node.cf-explorer
     storeCardanoPort: 3001
-    ingress:
-      enabled: false
     useLocalCardanoNode: false
     localCardanoNode:
       enabled: false
       network: "mainnet"
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "bca5fd6-9109622755"
       postgres:
         secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
         host: cf-ledger-sync-resync-pg
@@ -83,6 +81,27 @@ cf-ledger-sync-resync:
         db: "explorer_api"
         userKey: username
         passwordKey: password
+    aggregation:
+      enabled: true
+      replicaCount: 0
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "bca5fd6-9109622755"
+      postgres:
+        secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
+        host: cf-ledger-sync-resync-pg
+        port: "5432"
+        db: "explorer_api"
+        dbSchema: mainnet
+        userKey: username
+        passwordKey: password
+      store:
+        account:
+          history_cleanup_enabled: "false"
+        executor:
+          use_virtual_thread_for_batch_processing: "true"
+          enable_parallel_processing: "false"
+#          block_processing_threads: 2
 
 cf-explorer:
   enabled: true
