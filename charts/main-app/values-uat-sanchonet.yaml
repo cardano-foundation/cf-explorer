@@ -71,7 +71,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.3.0-PR3427-b057eaa-9082460624"
+        tag: "1.3.0-PR3427-f3d85b2-9168883423"
       reactAppFfGlobalIsConwayEra: "true"
       reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
