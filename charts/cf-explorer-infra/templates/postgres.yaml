@@ -43,26 +43,6 @@ spec:
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
-          extendedConfiguration: |-
-            effective_cache_size=12GB
-            max_connections=250
-            shared_buffers=4GB
-            work_mem=2GB
-            random_page_cost=1.1
-            maintenance_work_mem=2GB
-            shared_buffers=12GB
-            checkpoint_completion_target=0.9
-            synchronous_commit=off
-            effective_io_concurrency=500
-            wal_buffers=16MB
-            min_wal_size=500MB
-            max_wal_size=1GB
-            max_parallel_workers_per_gather=4
-            max_parallel_maintenance_workers=4
-            track_counts=true
-            autovacuum=on
-            autovacuum_naptime=5min
-            log_autovacuum_min_duration=0
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
