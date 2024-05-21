@@ -46,7 +46,7 @@ cf-ledger-sync:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "true"
+          enable_parallel_processing: "false"
 
 cf-ledger-sync-resync:
   enabled: true
