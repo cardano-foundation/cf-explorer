@@ -49,9 +49,9 @@ cf-ledger-sync:
           enable_parallel_processing: "true"
 
 cf-ledger-sync-resync:
-  enabled: true
+  enabled: false
   postgres:
-    createDb: true
+    createDb: false
     size: 200Gi
     tolerations:
       - key: role
@@ -89,6 +89,7 @@ cf-ledger-sync-resync:
         host: cf-ledger-sync-resync-pg
         port: "5432"
         db: "explorer_api"
+        dbSchema: preview
         userKey: username
         passwordKey: password
       store:
