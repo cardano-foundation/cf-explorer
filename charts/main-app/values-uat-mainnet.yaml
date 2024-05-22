@@ -35,13 +35,13 @@ cf-ledger-sync:
       network: "mainnet"
     indexer:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
@@ -54,7 +54,6 @@ cf-ledger-sync:
           enable_parallel_processing: "true"
           use_virtual_thread_for_event_processing: "true"
           use_virtual_thread_for_batch_processing: "true"
-          block_processing_threads: "4"
 
 cf-ledger-sync-resync:
   enabled: true
@@ -72,7 +71,7 @@ cf-ledger-sync-resync:
       network: "mainnet"
     indexer:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
@@ -85,7 +84,7 @@ cf-ledger-sync-resync:
         passwordKey: password
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
@@ -101,9 +100,7 @@ cf-ledger-sync-resync:
         account:
           history_cleanup_enabled: "false"
         executor:
-          use_virtual_thread_for_batch_processing: "true"
-          enable_parallel_processing: "false"
-#          block_processing_threads: 2
+          enable_parallel_processing: "true"
 
 cf-explorer:
   enabled: true
