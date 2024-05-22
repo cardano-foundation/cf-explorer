@@ -102,12 +102,9 @@ cf-ledger-sync-resync:
         userKey: username
         passwordKey: password
         resources:
-          requests:
-            cpu: 10m
-            memory: 100Mi
           limits:
-            cpu: "6"
-            memory: 24Gi
+            cpu: "12"
+            memory: 64Gi
       store:
         account:
           history_cleanup_enabled: "false"
