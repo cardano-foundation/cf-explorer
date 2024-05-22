@@ -121,6 +121,7 @@ cf-ledger-sync-resync:
           history_cleanup_enabled: "false"
         executor:
           enable_parallel_processing: "true"
+          block_processing_threads: 5
           use_virtual_thread_for_batch_processing: "false"
           use_virtual_thread_for_event_processing: "true"
 
