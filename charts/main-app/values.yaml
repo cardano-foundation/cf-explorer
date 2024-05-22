@@ -25,6 +25,15 @@ cf-ledger-sync-resync:
   # Whether LS Resources should be deployed.
   enabled: false
   createDb: false
+  postgres:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        cpu: "6"
+        memory: 24Gi
+
 
 # Explorer Parameters
 cf-explorer:

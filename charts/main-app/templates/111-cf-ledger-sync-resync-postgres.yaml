@@ -37,12 +37,7 @@ spec:
 #      max_parallel_workers_per_gather: "4"
 #      max_parallel_maintenance_workers: "4"
   resources:
-    requests:
-      cpu: 10m
-      memory: 100Mi
-    limits:
-      cpu: "6"
-      memory: 24Gi
+{{- toYaml index .Values "cf-ledger-sync-resync" "postgres" "resources" | nindent 4 }}
   enableLogicalBackup: false
   logicalBackupSchedule: "*/5 * * * *"
   enableShmVolume: true
