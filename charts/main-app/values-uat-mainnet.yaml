@@ -65,6 +65,10 @@ cf-ledger-sync-resync:
         value: resync-pg
         operator: Equal
         effect: PreferNoSchedule
+    resources:
+      limits:
+        cpu: "12"
+        memory: 64Gi
   values:
     git:
       targetRevision: "infra-develop"
@@ -101,10 +105,6 @@ cf-ledger-sync-resync:
         dbSchema: mainnet
         userKey: username
         passwordKey: password
-        resources:
-          limits:
-            cpu: "12"
-            memory: 64Gi
       store:
         account:
           history_cleanup_enabled: "false"
