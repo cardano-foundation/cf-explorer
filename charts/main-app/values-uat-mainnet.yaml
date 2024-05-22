@@ -55,9 +55,10 @@ cf-ledger-sync:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
+          block_processing_threads: 5
           use_virtual_thread_for_event_processing: "true"
-          use_virtual_thread_for_batch_processing: "true"
+          use_virtual_thread_for_batch_processing: "false"
 #          blocks_batch_size: 30
 #          blocks_partition_size: 10
 
