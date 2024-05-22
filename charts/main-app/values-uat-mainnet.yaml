@@ -121,10 +121,10 @@ cf-ledger-sync-resync:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "true"
-          block_processing_threads: 5
-          event_processing_threads: 10
-          use_virtual_thread_for_batch_processing: "false"
+          enable_parallel_processing: "false"
+          block_processing_threads: 15
+          event_processing_threads: 30
+          use_virtual_thread_for_batch_processing: "true"
           use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
