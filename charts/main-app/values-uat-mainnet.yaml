@@ -80,8 +80,8 @@ cf-ledger-sync-resync:
         value: resync-pg
         operator: Equal
         effect: PreferNoSchedule
-#    storeCardanoHost: cardano-node.cf-explorer
-#    storeCardanoPort: 3001
+    storeCardanoHost: cardano-node.cf-explorer
+    storeCardanoPort: 3001
     useLocalCardanoNode: false
     localCardanoNode:
       enabled: false
@@ -118,7 +118,7 @@ cf-ledger-sync-resync:
           history_cleanup_enabled: "false"
         executor:
           enable_parallel_processing: "true"
-          use_virtual_thread_for_batch_processing: "true"
+          use_virtual_thread_for_batch_processing: "false"
           use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
