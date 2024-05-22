@@ -22,7 +22,6 @@ spec:
   resources:
 {{- toYaml (index .Values "cf-ledger-sync-resync" "postgres" "resources") | nindent 4 }}
   enableLogicalBackup: false
-  logicalBackupSchedule: "*/5 * * * *"
   enableShmVolume: true
   {{- with index .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
   tolerations:
