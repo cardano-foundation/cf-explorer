@@ -33,6 +33,9 @@ cf-ledger-sync:
       enabled: true
       volumeSize: 200Gi
       network: "mainnet"
+      image:
+        repository: ghcr.io/intersectmbo/cardano-node
+        tag: 8.9.2
     indexer:
       enabled: true
       replicaCount: 1
