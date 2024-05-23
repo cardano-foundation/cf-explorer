@@ -124,7 +124,7 @@ cf-ledger-sync-resync:
           enable_parallel_processing: "true"
           block_processing_threads: 5
           event_processing_threads: 10
-          use_virtual_thread_for_batch_processing: "false"
+          use_virtual_thread_for_batch_processing: "true"
           use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
