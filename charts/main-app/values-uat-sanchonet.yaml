@@ -63,6 +63,9 @@ cf-explorer:
       enabled: false
       image:
         tag: "1.2.0"
+      koios:
+        baseUrlEnabled: true
+        baseUrl: https://0.tcp.eu.ngrok.io:13538/rpc/
     explorerAuthentication:
       enabled: true
       replicas: 1
