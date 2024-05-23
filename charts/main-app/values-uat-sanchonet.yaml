@@ -65,7 +65,7 @@ cf-explorer:
         tag: "1.0.0-PR100-f6560d2-9109715644"
       koios:
         baseUrlEnabled: true
-        baseUrl: https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/rpc/
+        baseUrl: https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v0
     explorerAuthentication:
       enabled: true
       replicas: 1
