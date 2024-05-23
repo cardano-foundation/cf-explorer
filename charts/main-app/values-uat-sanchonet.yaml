@@ -60,7 +60,7 @@ cf-explorer:
       swagger:
         enabled: false
     explorerRewardsApi:
-      enabled: false
+      enabled: true
       image:
         tag: "1.2.0"
       koios:
