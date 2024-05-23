@@ -110,7 +110,7 @@ cf-ledger-sync-resync:
         host: cf-ledger-sync-resync-pg
         port: "5432"
         db: "explorer_api"
-        dbSchema: mainnet
+#        dbSchema: mainnet
         userKey: username
         passwordKey: password
       store:
