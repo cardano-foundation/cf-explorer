@@ -141,6 +141,7 @@ cf-explorer:
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
+      replicas: 0
       image:
         tag: "1.0.0-PR100-f6560d2-9109715644"
     explorerAuthentication:
@@ -163,6 +164,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
+      replicas: 0
       image:
         tag: "0.7.0-PR406-225c928-9189532971"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
