@@ -38,13 +38,13 @@ cf-ledger-sync:
         tag: 8.9.2
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
