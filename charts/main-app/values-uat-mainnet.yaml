@@ -136,6 +136,7 @@ cf-explorer:
         domain: uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
       enabled: true
+      replicas: 0
       image:
         tag: "1.2.0-PR1186-c55a934-9171167180"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
