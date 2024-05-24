@@ -49,13 +49,13 @@ cf-ledger-sync:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
       postgres:
-#        dbSchema: mainnet
+        dbSchema: mainnet
         host: postgresql-0.postgresql-hl
       store:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
           use_virtual_thread_for_batch_processing: "true"
           use_virtual_thread_for_event_processing: "true"
 
