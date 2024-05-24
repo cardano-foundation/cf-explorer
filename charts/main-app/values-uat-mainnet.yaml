@@ -48,6 +48,8 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
+      db:
+        maximum_pool_size: 60
       postgres:
         dbSchema: mainnet
         host: postgresql-0.postgresql-hl
@@ -114,6 +116,8 @@ cf-ledger-sync-resync:
 #        dbSchema: mainnet
         userKey: username
         passwordKey: password
+      db:
+        maximum_pool_size: 60
       store:
         account:
           history_cleanup_enabled: "false"
