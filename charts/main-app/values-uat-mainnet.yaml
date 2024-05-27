@@ -142,13 +142,13 @@ cf-explorer:
       enabled: true
       replicas: 0
       image:
-        tag: "1.2.0-PR1186-c55a934-9171167180"
+        tag: "1.3.0"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       replicas: 0
       image:
-        tag: "1.0.0-PR100-f6560d2-9109715644"
+        tag: "1.3.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
@@ -171,7 +171,7 @@ cf-explorer:
       enabled: true
       replicas: 0
       image:
-        tag: "0.7.0-PR406-225c928-9189532971"
+        tag: "1.3.1"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
