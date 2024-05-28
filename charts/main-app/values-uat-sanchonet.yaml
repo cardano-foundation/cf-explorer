@@ -28,19 +28,21 @@ cf-ledger-sync:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-436f65c-9276258685"
     aggregation:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-436f65c-9276258685"
       postgres:
         dbSchema: sanchonet
       store:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
+          use_virtual_thread_for_batch_processing: "true"
+          use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
   enabled: true
