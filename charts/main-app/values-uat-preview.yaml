@@ -42,13 +42,15 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
+      db:
+        maximum_pool_size: 60
       postgres:
         dbSchema: preview
       store:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
           use_virtual_thread_for_batch_processing: "true"
           use_virtual_thread_for_event_processing: "true"
 
