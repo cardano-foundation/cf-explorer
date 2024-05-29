@@ -42,6 +42,8 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
+    blocks:
+      batchSize: "10"
     aggregation:
       enabled: true
       replicaCount: 1
