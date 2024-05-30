@@ -32,13 +32,13 @@ cf-ledger-sync:
       network: "preview"
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
@@ -120,13 +120,13 @@ cf-explorer:
         domain: uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.3.0"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.3.0"
     explorerAuthentication:
@@ -149,7 +149,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.3.1"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
