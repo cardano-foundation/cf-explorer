@@ -159,6 +159,8 @@ spec:
               value: "40000"
             - name: NATIVE_SCRIPT_INFO_FIXED_DELAY
               value: "40000"
+            - name: AGG_ANALYTIC_FIXED_DELAY
+              value: "21600000"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
