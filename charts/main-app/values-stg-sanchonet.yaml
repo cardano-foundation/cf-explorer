@@ -118,7 +118,7 @@ adahandle-resolver:
 
 kube-prometheus-stack:
   enabled: true
-  version: 55.4.0
+  version: 58.0.0
 
 argo-cd:
   server:
