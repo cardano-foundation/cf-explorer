@@ -15,12 +15,34 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: sanchonet
-    image:
-      repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync
-      tag: "716e612"
-    ingress:
-     enabled: false
+      targetRevision: "infra-develop"
+    useLocalCardanoNode: true
+    localCardanoNode:
+      enabled: true
+      volumeSize: 10Gi
+      network: "sanchonet"
+      image:
+        repository: ghcr.io/intersectmbo/cardano-node
+        tag: 8.11.0-sancho
+    indexer:
+      enabled: true
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "0.0.42-SNAPSHOT-436f65c-9276258685"
+    aggregation:
+      enabled: true
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "0.0.42-SNAPSHOT-436f65c-9276258685"
+      postgres:
+        dbSchema: sanchonet
+      store:
+        account:
+          history_cleanup_enabled: "false"
+        executor:
+          enable_parallel_processing: "true"
+          use_virtual_thread_for_batch_processing: "true"
+          use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
   enabled: true
@@ -38,30 +60,41 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.5.0-sanchonet-PR919"
+        tag: "1.3.0"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+      swagger:
+        enabled: false
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7"
+        tag: "1.3.0"
+      koios:
+        baseUrlEnabled: true
+        baseUrl: https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
+        tag: "0.9.0-PR128"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.3-PR2693"
+        tag: "1.3.0-PR3512-6dc4cf2-9279412658"
+      reactAppFfGlobalIsConwayEra: "true"
+      reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+    crawler:
+      enabled: false
+    consumer:
+      enabled: false
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.5.0-sanchonet-PR278"
+        tag: "1.3.1"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
@@ -77,11 +110,11 @@ cf-explorer:
 
 # Ada Handle Parameters
 adahandle-resolver:
-  enabled: true
+  enabled: false
   values:
     springProfiles: sanchonet,postgres
     image:
-      tag: "0.1.2"
+      tag: "0.1.3"
 
 kube-prometheus-stack:
   enabled: true

@@ -11,6 +11,33 @@ cf-explorer-infra:
   kafka:
     dbSize: 20Gi
 
+cf-ledger-sync:
+  enabled: true
+  values:
+    git:
+      targetRevision: "infra-develop"
+    useLocalCardanoNode: true
+    localCardanoNode:
+      enabled: true
+      volumeSize: 20Gi
+      network: "preprod"
+    indexer:
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "bca5fd6-9109622755"
+    aggregation:
+      enabled: true
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "bca5fd6-9109622755"
+      postgres:
+        dbSchema: preprod
+      store:
+        account:
+          history_cleanup_enabled: "false"
+        executor:
+          enable_parallel_processing: "false"
+
 cf-explorer:
   enabled: true
   values:
@@ -21,44 +48,40 @@ cf-explorer:
         domain: stg.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
         domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
-    crawler:
-      enabled: true
-      image:
-        tag: "0.2.14"
-    consumer:
-      enabled: true
-      image:
-        tag: "0.3.20-SNAPSHOT-PR316"
     explorerApi:
       enabled: true
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "0.5.0-sanchonet-PR919"
+        tag: "1.3.0"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       image:
-        tag: "0.1.7"
+        tag: "1.3.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.5.0-SNAPSHOT-sanchonet-PR118"
+        tag: "0.9.0-PR128"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "0.5.3-PR2693"
+        tag: "1.3.0-PR3512-6dc4cf2-9279412658"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
       reactAppMainnetAppUrl: "https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org"
       reactAppAuthUrl: "https://auth-api.stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+    crawler:
+      enabled: false
+    consumer:
+      enabled: false
     consumerSchedules:
       enabled: true
       image:
-        tag: "0.5.0-sanchonet-PR278"
+        tag: "1.3.1"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
@@ -78,7 +101,11 @@ adahandle-resolver:
   values:
     springProfiles: preprod,postgres
     image:
-      tag: "0.1.2"
+      tag: "0.1.3"
+
+kube-prometheus-stack:
+  enabled: true
+  version: 55.4.0
 
 argo-cd:
   server:
