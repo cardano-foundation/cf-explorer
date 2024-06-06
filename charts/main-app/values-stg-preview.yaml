@@ -34,7 +34,7 @@ cf-ledger-sync:
         tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
