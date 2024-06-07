@@ -397,6 +397,7 @@ cardanoNewsApi:
     tag: "0.2.5"
 
   port: 8080
+  strapiApiUrl: "https://production.cms.webdev.cf-systems.org/graphql"
 
 keycloak:
   enabled: true

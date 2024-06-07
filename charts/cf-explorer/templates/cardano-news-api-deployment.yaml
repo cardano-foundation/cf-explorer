@@ -21,6 +21,15 @@ spec:
           env:
             - name: CARDANO_NEWS_API_PORT
               value: {{ .port | quote }}
+            - name: STRAPI_API_URL
+              value: {{ .strapiApiUrl | quote }}
+            - name: STRAPI_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .strapiSecretName | default "infra-secrets" | quote }}
+                  key: {{ .straPiSecretKey | default "STRAPI_API_TOKEN" | quote }}
+            - name: CF_BLOG_BASE_URL
+              value: {{ .cfBlogBaseUrl | default "https://cardanofoundation.org/blog/" | quote }}
           ports:
             - name: api
               containerPort: {{ .port }}
