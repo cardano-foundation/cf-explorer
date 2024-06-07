@@ -273,7 +273,7 @@ explorerAuthentication:
   swaggerClientUrl: https://{{ .Values.domain }}/en
   swaggerServerUrl: http://localhost:8021
   emailFrom: admin@metadata.dev.cf-deployments.org
-  emailFromName: Cardano Foundation
+  emailFromName: "Cardano Foundation"
 
 explorerFrontEnd:
   enabled: true
