@@ -125,6 +125,10 @@ adahandle-resolver:
   values:
     ingress:
       enabled: true
+      additionalDomains:
+        - adahandle-resolver.pro.cf-explorer-preview.us-east-1.beta.explorer.cardano.org
+        - adahandle-resolver.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org
+        - adahandle-resolver.preview.global.beta.explorer.cardano.org
     springProfiles: preview,postgres
     image:
       tag: "0.1.3"

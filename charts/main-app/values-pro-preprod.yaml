@@ -114,6 +114,10 @@ adahandle-resolver:
   values:
     ingress:
       enabled: true
+      additionalDomains:
+        - adahandle-resolver.pro.cf-explorer-preprod.us-east-1.beta.explorer.cardano.org
+        - adahandle-resolver.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org
+        - adahandle-resolver.preprod.global.beta.explorer.cardano.org
     springProfiles: preprod,postgres
     image:
       tag: "0.1.3"

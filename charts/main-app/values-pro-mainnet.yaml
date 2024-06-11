@@ -142,6 +142,10 @@ adahandle-resolver:
   values:
     ingress:
       enabled: true
+      additionalDomains:
+        - adahandle-resolver.pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org
+        - adahandle-resolver.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org
+        - adahandle-resolver.mainnet.global.beta.explorer.cardano.org
     springProfiles: mainnet,postgres
     image:
       tag: "0.1.3"
