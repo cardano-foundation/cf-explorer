@@ -120,6 +120,9 @@ adahandle-resolver:
   values:
     ingress:
       enabled: true
+      additionalDomains:
+        - adahandle-resolver.sanchonet.beta.explorer.cardano.org
+        - adahandle-resolver.sanchonet.global.beta.explorer.cardano.org
     springProfiles: sanchonet,postgres
     image:
       tag: "0.1.3"
