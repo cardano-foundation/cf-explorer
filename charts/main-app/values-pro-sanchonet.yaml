@@ -121,7 +121,8 @@ adahandle-resolver:
     ingress:
       enabled: true
       additionalDomains:
-        - adahandle-resolver.sanchonet.beta.explorer.cardano.org
+        - adahandle-resolver.pro.cf-explorer-sanchonet.us-east-1.beta.explorer.cardano.org
+        - adahandle-resolver.pro.cf-explorer-sanchonet.eu-west-1.beta.explorer.cardano.org
         - adahandle-resolver.sanchonet.global.beta.explorer.cardano.org
     springProfiles: sanchonet,postgres
     image:
