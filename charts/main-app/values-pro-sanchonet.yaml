@@ -118,6 +118,8 @@ cf-explorer:
 adahandle-resolver:
   enabled: false
   values:
+    ingress:
+      enabled: true
     springProfiles: sanchonet,postgres
     image:
       tag: "0.1.3"
