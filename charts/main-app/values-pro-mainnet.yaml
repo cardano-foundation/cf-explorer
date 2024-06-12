@@ -25,7 +25,9 @@ cf-ledger-sync:
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "bca5fd6-9109622755"
+        tag: "79c7166-9483361920"
+      hikari:
+        maxLifetime: 30000
     blocks:
       batchSize: "10"
     aggregation:
@@ -33,7 +35,9 @@ cf-ledger-sync:
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "bca5fd6-9109622755"
+        tag: "79c7166-9483361920"
+      hikari:
+        maxLifetime: 30000
       db:
         maximum_pool_size: 60
       postgres:
