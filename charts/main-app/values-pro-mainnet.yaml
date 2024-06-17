@@ -118,7 +118,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR425-ed5b8e0-9544032158"
+        tag: "1.3.1-PR431-a6cd9a6-9545705082"
       ledgerSyncFlywayEnable: "false"
       explorerFlywayEnable: "true"
       redis:
