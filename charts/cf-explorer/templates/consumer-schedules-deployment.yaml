@@ -161,6 +161,8 @@ spec:
               value: "40000"
             - name: AGG_ANALYTIC_FIXED_DELAY
               value: "21600000"
+            - name: AGG_ANALYTIC_JOB_ENABLED
+              value: {{ .aggAnalyticJobEnabled | default "true" | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME

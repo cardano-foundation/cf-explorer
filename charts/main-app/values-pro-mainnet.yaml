@@ -121,6 +121,7 @@ cf-explorer:
         tag: "1.3.1-PR431-a6cd9a6-9545705082"
       ledgerSyncFlywayEnable: "false"
       explorerFlywayEnable: "true"
+      aggAnalyticJobEnabled: "false"
       redis:
         mode: managed-standalone
         standalone:
