@@ -122,6 +122,7 @@ cf-explorer:
       ledgerSyncFlywayEnable: "false"
       explorerFlywayEnable: "true"
       aggAnalyticJobEnabled: "false"
+      tokenInfoBatchSize: 1000
       redis:
         mode: managed-standalone
         standalone:
