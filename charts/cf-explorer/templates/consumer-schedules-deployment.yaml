@@ -147,7 +147,7 @@ spec:
               value: {{ .tokenInfoJobEnabled | default "true" | quote }}
             - name: TOKEN_INFO_FIXED_DELAY
               value: {{ .tokenInfoFixedDelay | default "60000" | quote }}
-            - name TOKEN_INFO_BATCH_SIZE
+            - name: TOKEN_INFO_BATCH_SIZE
               value: {{ .tokenInfoBatchSize | default "1000" | quote }}
             - name: TOKEN_PAGE_CACHE_FIXED_DELAY
               value: "100000"
