@@ -16,8 +16,6 @@ cf-explorer-infra:
   postgresql:
     enabled: true
     dbSize: 4500Gi
-  kafka:
-    dbSize: 20Gi
 
 postgres:
   operator:

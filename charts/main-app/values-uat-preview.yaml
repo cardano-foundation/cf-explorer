@@ -8,8 +8,6 @@ cf-explorer-infra:
   enabled: true
   postgresql:
     dbSize: 450Gi
-  kafka:
-    dbSize: 150Gi
 
 postgres:
   operator:
@@ -122,7 +120,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0-PR1235-0de45d2-9360578046"
+        tag: "1.3.0-PR1280-9170848-9692568808"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -133,7 +131,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.9.0-PR128"
+        tag: "0.9.0-PR132-4c9eab3-9693265454"
     explorerFrontEnd:
       enabled: true
       image:
@@ -151,7 +149,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR415-f02b6a8-9316928143"
+        tag: "1.3.0-PR453-3705ba6-9691413072"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true

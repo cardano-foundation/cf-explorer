@@ -120,18 +120,6 @@ spec:
             - name: NETWORK_NAME
               value: {{ .network }}
 
-            - name: KAFKA_BOOSTRAP_SERVER_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .kafka.bootstrapServersSecret.name }}
-                  key: {{ .kafka.bootstrapServersSecret.key }}
-            - name: KAFKA_USE_SSL
-              value: {{ .kafka.useSsl | default "false" | quote }}
-            - name: KAFKA_GROUP_ID
-              value: {{ .network }}
-            - name: KAFKA_REPORTS_TOPIC
-              value: {{ .kafka.reportsTopic }}
-
             - name: API_CHECK_REWARD_URL
               value: {{ .checkRewardUrl }}
             - name: API_CHECK_POOL_HISTORY_URL

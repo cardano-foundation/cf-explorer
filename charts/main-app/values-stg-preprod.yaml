@@ -8,8 +8,6 @@ cf-explorer-infra:
   enabled: true
   postgresql:
     enabled: false
-  kafka:
-    dbSize: 20Gi
 
 cf-ledger-sync:
   enabled: true

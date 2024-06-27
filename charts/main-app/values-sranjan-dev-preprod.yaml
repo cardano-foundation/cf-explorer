@@ -8,8 +8,6 @@ cf-explorer-infra:
   enabled: true
   postgresql:
     dbSize: 150Gi
-  kafka:
-    dbSize: 20Gi
 
 elastic-stack:
   enabled: false
