@@ -165,6 +165,20 @@ spec:
               value: "21600000"
             - name: AGG_ANALYTIC_JOB_ENABLED
               value: {{ .aggAnalyticJobEnabled | default "true" | quote }}
+            - name: AGG_ANALYTIC_NUMBER_OF_CONCURRENT_TASKS
+              {{ if eq .network "mainnet" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "1" | quote }}
+              {{- else if eq .network "preview" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "2" | quote }}
+              {{- else if eq .network "preprod" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "3" | quote }}
+              {{- else if eq .network "sanchonet" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "5" | quote }}
+              {{- end }}
+            - name: ADDRESS_TX_COUNT_FIXED_DELAY
+              value: "600000"
+            - name: LATEST_TOKEN_BALANCE_FIXED_DELAY
+              value: "600000"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME

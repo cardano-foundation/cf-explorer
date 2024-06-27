@@ -118,10 +118,11 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR431-783d24c-9577977640"
+        tag: "1.3.1-PR431-7b6189f-9691616456"
       ledgerSyncFlywayEnable: "false"
       explorerFlywayEnable: "true"
-      aggAnalyticJobEnabled: "true"
+      aggAnalyticJobEnabled: "false"
+      tokenInfoJobEnabled: "false"
       tokenInfoBatchSize: 1000
       redis:
         mode: managed-standalone
