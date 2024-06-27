@@ -1,6 +1,3 @@
-git:
-  targetRevision: main
-
 stage: pro
 
 network: mainnet
@@ -14,45 +11,44 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "develop"
-    image:
-      repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-      tag: "0d6d20f-8246831004"
-    ingress:
-      enabled: false
-    blocks:
-      batchSize: "10"
+      targetRevision: "infra-develop"
     useLocalCardanoNode: true
-    #storeCardanoHost: backbone.mainnet.emurgornd.com
     localCardanoNode:
       enabled: true
       volumeSize: 200Gi
       network: "mainnet"
       image:
-        repository: ghcr.io/blinklabs-io/cardano-node
-        tag: 8.9.0-1-amd64
-      tolerations:
-        - key: "role"
-          operator: "Equal"
-          value: "cardano-node"
-          effect: "PreferNoSchedule"
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node.kubernetes.io/role
-                operator: In
-                values:
-                - cardano-node
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            preference:
-              matchExpressions:
-                - key: node.kubernetes.io/role
-                  operator: In
-                  values:
-                  - cardano-node
+        repository: ghcr.io/intersectmbo/cardano-node
+        tag: 8.9.2
+    indexer:
+      enabled: true
+      replicaCount: 1
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "79c7166-9483361920"
+      hikari:
+        maxLifetime: 10000
+    blocks:
+      batchSize: "10"
+    aggregation:
+      enabled: true
+      replicaCount: 1
+      image:
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "79c7166-9483361920"
+      hikari:
+        maxLifetime: 1000
+      db:
+        maximum_pool_size: 60
+      postgres:
+        dbSchema: mainnet
+      store:
+        account:
+          history_cleanup_enabled: "false"
+        executor:
+          enable_parallel_processing: "true"
+          use_virtual_thread_for_batch_processing: "true"
+          use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
   enabled: true
@@ -66,17 +62,14 @@ cf-explorer:
         domain: pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org
       - name: us-east-1-lb
         domain: pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org
-    crawler:
-      enabled: false
-    consumer:
-      enabled: false
     explorerApi:
       enabled: true
-      image:
-        tag: "0.8.0-PR1038-f74b963-8135114438"
+      replicas: 1
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
+      image:
+        tag: "1.3.0-PR1235-0de45d2-9360578046"
       redis:
         mode: managed-standalone
         standalone:
@@ -90,13 +83,14 @@ cf-explorer:
         enabled: false
     explorerRewardsApi:
       enabled: true
+      replicas: 1
       image:
-        tag: "0.1.8-SNAPSHOT-PR93-1299c79-7912678888"
+        tag: "1.3.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.5.0-SNAPSHOT-sanchonet-PR123"
+        tag: "0.9.0-PR128"
       redis:
         mode: managed-standalone
         standalone:
@@ -106,19 +100,30 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.0.0-PR3105-cee63ea-8321247451"
+        tag: "1.3.0-PR-08ef6b9-9419159766"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
       reactAppAuthUrl: "https://auth-api.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org/api/v1"
       # temporary
+      reactAppAdaHandleApi: "https://adahandle-resolver.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org/api/v1"
       reactAppApiUrl: "https://api.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org/api/v1"
       reactAppWsUrl: "wss://api.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org/ws"
+    crawler:
+      enabled: false
+    consumer:
+      enabled: false
     consumerSchedules:
       enabled: true
+      replicas: 1
       image:
-        tag: "0.9.0-PR318-4932450-8235150499"
+        tag: "1.3.1-PR431-11ae5e2-9692704117"
+      ledgerSyncFlywayEnable: "false"
+      explorerFlywayEnable: "true"
+      aggAnalyticJobEnabled: "false"
+      tokenInfoJobEnabled: "false"
+      tokenInfoBatchSize: 1000
       redis:
         mode: managed-standalone
         standalone:
@@ -144,6 +149,12 @@ cf-explorer:
 adahandle-resolver:
   enabled: true
   values:
+    ingress:
+      enabled: true
+      additionalDomains:
+        - adahandle-resolver.pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org
+        - adahandle-resolver.pro.cf-explorer-mainnet.eu-west-1.beta.explorer.cardano.org
+        - adahandle-resolver.mainnet.global.beta.explorer.cardano.org
     springProfiles: mainnet,postgres
     image:
       tag: "0.1.3"

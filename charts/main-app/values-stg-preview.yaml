@@ -34,7 +34,7 @@ cf-ledger-sync:
         tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "bca5fd6-9109622755"
@@ -82,7 +82,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.3.0-PR3512-6dc4cf2-9279412658"
+        tag: "1.3.0-PR-08ef6b9-9419159766"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"

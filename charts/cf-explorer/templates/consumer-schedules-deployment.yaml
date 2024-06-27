@@ -147,6 +147,8 @@ spec:
               value: {{ .tokenInfoJobEnabled | default "true" | quote }}
             - name: TOKEN_INFO_FIXED_DELAY
               value: {{ .tokenInfoFixedDelay | default "60000" | quote }}
+            - name: TOKEN_INFO_BATCH_SIZE
+              value: {{ .tokenInfoBatchSize | default "1000" | quote }}
             - name: TOKEN_PAGE_CACHE_FIXED_DELAY
               value: "100000"
             - name: TOKEN_PAGE_CACHE_TTL
@@ -161,6 +163,22 @@ spec:
               value: "40000"
             - name: AGG_ANALYTIC_FIXED_DELAY
               value: "21600000"
+            - name: AGG_ANALYTIC_JOB_ENABLED
+              value: {{ .aggAnalyticJobEnabled | default "true" | quote }}
+            - name: AGG_ANALYTIC_NUMBER_OF_CONCURRENT_TASKS
+              {{ if eq .network "mainnet" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "1" | quote }}
+              {{- else if eq .network "preview" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "2" | quote }}
+              {{- else if eq .network "preprod" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "3" | quote }}
+              {{- else if eq .network "sanchonet" }}
+              value: {{ .aggAnalyticNumberOfConcurrentTasks | default "5" | quote }}
+              {{- end }}
+            - name: ADDRESS_TX_COUNT_FIXED_DELAY
+              value: "600000"
+            - name: LATEST_TOKEN_BALANCE_FIXED_DELAY
+              value: "600000"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
