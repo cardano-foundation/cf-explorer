@@ -23,27 +23,27 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
 
-            - name: EXPLORER_DB_HOST
+            - name: EXPLORER_HOST
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.hostKey }}
-            - name: EXPLORER_DB_PORT
+            - name: EXPLORER_PORT
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.portKey }}
-            - name: EXPLORER_DB_USER
+            - name: EXPLORER_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.userKey }}
-            - name: EXPLORER_DB_PASSWORD
+            - name: EXPLORER_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
                   key: {{ .postgres.secret.passwordKey }}
-            - name: EXPLORER_DB_NAME
+            - name: EXPLORER_DB
               valueFrom:
                 secretKeyRef:
                   name: {{ .postgres.secret.name }}
