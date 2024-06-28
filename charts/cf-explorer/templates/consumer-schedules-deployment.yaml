@@ -114,6 +114,12 @@ spec:
               value: {{ .ledgerSyncFlywayEnable | default "true" | quote }}
             - name: LEDGER_SYNC_FLYWAY_VALIDATE
               value: {{ .ledgerSyncFlywayValidate | default "false" | quote }}
+
+            - name: LEDGER_SYNC_AGG_FLYWAY_ENABLE
+              value: {{ .ledgerSyncAggFlywayEnable | default "true" | quote }}
+            - name: LEDGER_SYNC_AGG_FLYWAY_VALIDATE
+              value: {{ .ledgerSyncAggFlywayValidate | default "false" | quote }}
+
             - name: EXPLORER_FLYWAY_ENABLE
               value: {{ .explorerFlywayEnable | default "true" | quote }}
             - name: EXPLORER_FLYWAY_VALIDATE
