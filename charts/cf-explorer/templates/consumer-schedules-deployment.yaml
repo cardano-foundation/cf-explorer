@@ -77,7 +77,11 @@ spec:
                   name: {{ .postgres.explorer.secret.name }}
                   key: {{ .postgres.explorer.secret.dbKey }}
 
-            - name: POSTGRES_SCHEMA
+            - name: EXPLORER_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_AGG_SCHEMA
               value: {{ .postgres.schema }}
 
             - name: LEDGER_SYNC_FLYWAY_ENABLE
