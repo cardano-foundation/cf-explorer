@@ -101,6 +101,12 @@ spec:
                   name: {{ .postgres.explorer.secret.name }}
                   key: {{ .postgres.explorer.secret.dbKey }}
 
+            - name: EXPLORER_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_AGG_SCHEMA
+              value: {{ .postgres.schema }}
 
             - name: AUTH_FILE_PATH
               value: {{ .authFilePath | default "/app/permission/policy.json" | quote }}
