@@ -20,6 +20,9 @@ spec:
           image: "{{ .image.repository }}:{{ .image.tag }}"
 #          command: ["bash", "-c", "sleep 999999"]
           env:
+            - name: NETWORK
+              value: {{ .network }}
+
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
 
