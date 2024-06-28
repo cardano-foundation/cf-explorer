@@ -51,6 +51,32 @@ spec:
                   name: {{ .postgres.ledgerSync.secret.name }}
                   key: {{ .postgres.ledgerSync.secret.dbKey }}
 
+            - name: LEDGER_SYNC_AGG_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.hostKey }}
+            - name: LEDGER_SYNC_AGG_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.portKey }}
+            - name: LEDGER_SYNC_AGG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.userKey }}
+            - name: LEDGER_SYNC_AGG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.passwordKey }}
+            - name: LEDGER_SYNC_AGG_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.dbKey }}
+
             - name: EXPLORER_HOST
               valueFrom:
                 secretKeyRef:
