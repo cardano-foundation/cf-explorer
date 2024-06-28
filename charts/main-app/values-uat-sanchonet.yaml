@@ -26,12 +26,12 @@ cf-ledger-sync:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-027afc2"
     aggregation:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-027afc2"
       postgres:
         dbSchema: sanchonet
       store:
