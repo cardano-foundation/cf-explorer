@@ -94,7 +94,12 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "1.3.1"
+        tag: "1.3.1-PR431-783d24c-9577977640"
+      ledgerSyncFlywayEnable: "true"
+      explorerFlywayEnable: "true"
+      aggAnalyticJobEnabled: "false"
+      tokenInfoJobEnabled: "false"
+      tokenInfoBatchSize: 1000
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
