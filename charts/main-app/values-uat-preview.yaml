@@ -132,7 +132,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.9.0-PR132-4c9eab3-9693265454"
+        tag: "0.9.0-PR132-394f1ba-9743398271"
     explorerFrontEnd:
       enabled: true
       image:
