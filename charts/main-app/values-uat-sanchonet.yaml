@@ -63,7 +63,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0"
+        tag: "1.3.0-PR103-0cd6aab-9754219477"
       koios:
         baseUrlEnabled: true
         baseUrl: https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/
