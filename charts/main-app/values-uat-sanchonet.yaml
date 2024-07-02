@@ -19,6 +19,7 @@ cf-ledger-sync:
       enabled: true
       volumeSize: 10Gi
       network: "sanchonet"
+      mithrilRestore: "false"
       image:
         repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-node
         tag: 8.12.2-blinklabs0
