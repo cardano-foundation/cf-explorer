@@ -20,8 +20,8 @@ cf-ledger-sync:
       volumeSize: 10Gi
       network: "sanchonet"
       image:
-        repository: ghcr.io/intersectmbo/cardano-node
-        tag: 8.12.1
+        repository: ghcr.io/blinklabs-io/cardano-node
+        tag: main-amd64@sha256:2a87afe0b42dd6a686510b6efff686ee3349abb9b672d46665c6370953911c8a # 8.12.2
     indexer:
       enabled: true
       image:
