@@ -35,6 +35,7 @@ cf-ledger-sync:
         tag: "0.0.42-SNAPSHOT-027afc2"
       postgres:
         dbSchema: sanchonet
+        dbKey: LEDGER_SYNC_AGG_DB
       store:
         account:
           history_cleanup_enabled: "false"
