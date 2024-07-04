@@ -21,8 +21,8 @@ cf-ledger-sync:
       network: "sanchonet"
       mithrilRestore: "false"
       image:
-        repository: pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-node
-        tag: 8.12.2-blinklabs0
+        repository: ghcr.io/intersectmbo/cardano-node
+        tag: 8.12.0-pre
     indexer:
       enabled: true
       image:
