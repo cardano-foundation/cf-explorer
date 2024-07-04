@@ -16,7 +16,7 @@ cf-ledger-sync:
       targetRevision: "infra-develop"
     useLocalCardanoNode: false
     localCardanoNode:
-      enabled: true
+      enabled: false
       volumeSize: 10Gi
       network: "sanchonet"
       mithrilRestore: "false"
