@@ -64,7 +64,7 @@ cf-ledger-sync:
           use_virtual_thread_for_event_processing: "true"
 
 cf-ledger-sync-resync:
-  enabled: true
+  enabled: false
   postgres:
     createDb: true
     size: 1500Gi
