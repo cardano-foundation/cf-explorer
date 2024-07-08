@@ -69,7 +69,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "1.3.0-PR1235-0de45d2-9360578046"
+        tag: "1.3.0-PR1295-5e13746-9840452663"
       redis:
         mode: managed-standalone
         standalone:
@@ -100,7 +100,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.3.0-PR3663-9136b9c-9711975199"
+        tag: "1.3.0-PR3663-64a3a6c-9840787302"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
