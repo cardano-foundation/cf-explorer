@@ -118,7 +118,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR491-25b7943-9856257344"
+        tag: "1.3.1-PR491-5b01a3a-9856685820"
       ledgerSyncFlywayEnable: "true"
       explorerFlywayEnable: "true"
       aggAnalyticJobEnabled: "true"
