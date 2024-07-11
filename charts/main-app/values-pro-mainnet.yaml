@@ -115,10 +115,10 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: false
+      enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR491-3b55aab-9875414370"
+        tag: "1.3.1-PR491-b9e417f-9890802057"
       ledgerSyncFlywayEnable: "true"
       explorerFlywayEnable: "true"
       aggAnalyticJobEnabled: "true"
