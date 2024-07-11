@@ -50,10 +50,7 @@ spec:
                   key: {{ .postgres.ledgerSync.secret.dbKey }}
 
             - name: EXPLORER_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .postgres.explorer.secret.name }}
-                  key: {{ .postgres.explorer.secret.hostKey }}
+              value: pro-cf-explorer-mainnet-2.cwx7lb7dlb4g.eu-west-1.rds.amazonaws.com
             - name: EXPLORER_PORT
               valueFrom:
                 secretKeyRef:
