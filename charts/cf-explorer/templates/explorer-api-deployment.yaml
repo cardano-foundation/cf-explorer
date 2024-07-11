@@ -24,10 +24,7 @@ spec:
               value: {{ .springProfiles }}
 
             - name: LEDGER_SYNC_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .postgres.ledgerSync.secret.name }}
-                  key: {{ .postgres.ledgerSync.secret.hostKey }}
+              value: pro-cf-explorer-mainnet-2.cwx7lb7dlb4g.eu-west-1.rds.amazonaws.com
             - name: LEDGER_SYNC_PORT
               valueFrom:
                 secretKeyRef:
