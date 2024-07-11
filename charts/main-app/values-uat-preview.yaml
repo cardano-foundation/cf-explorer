@@ -121,7 +121,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0-PR1280-9170848-9692568808"
+        tag: "1.3.0-PR1280-2f605d5-9771116709"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       reportLimitPer24h: 20
     explorerRewardsApi:
@@ -151,7 +151,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0-PR453-e0e4d63-9711622064"
+        tag: "1.3.0-PR453-9030f85-9888824577"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
