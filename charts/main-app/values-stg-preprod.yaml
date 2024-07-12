@@ -12,7 +12,7 @@ cf-explorer-infra:
     dbSize: 20Gi
 
 cf-ledger-sync:
-  enabled: true
+  enabled: false
   values:
     git:
       targetRevision: "infra-develop"
@@ -49,7 +49,7 @@ cf-explorer:
       - name: eu-west-1-lb
         domain: stg.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
-      enabled: true
+      enabled: false
       postgres:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
@@ -57,7 +57,7 @@ cf-explorer:
         tag: "1.3.0"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
-      enabled: true
+      enabled: false
       image:
         tag: "1.3.0"
     explorerAuthentication:
@@ -66,7 +66,7 @@ cf-explorer:
       image:
         tag: "0.9.0-PR128"
     explorerFrontEnd:
-      enabled: true
+      enabled: false
       image:
         tag: "1.3.0-PR3512-6dc4cf2-9279412658"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
@@ -79,7 +79,7 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: true
+      enabled: false
       image:
         tag: "1.3.1"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
