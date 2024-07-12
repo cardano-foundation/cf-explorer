@@ -18,7 +18,7 @@ cf-ledger-sync:
       targetRevision: "infra-develop"
     useLocalCardanoNode: false
     localCardanoNode:
-      enabled: true
+      enabled: false
       volumeSize: 20Gi
       network: "preprod"
     indexer:
