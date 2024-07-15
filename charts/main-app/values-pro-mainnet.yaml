@@ -25,7 +25,7 @@ cf-ledger-sync:
       replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "79c7166-9483361920"
+        tag: "bca5fd6-9109622755"
       hikari:
         maxLifetime: 10000
     blocks:
@@ -35,7 +35,7 @@ cf-ledger-sync:
       replicaCount: 0
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "79c7166-9483361920"
+        tag: "bca5fd6-9109622755"
       hikari:
         maxLifetime: 1000
       db:
