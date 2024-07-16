@@ -105,7 +105,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR491-dbc7398-9956748353"
+        tag: "1.3.1-PR491-389825a-9958371970"
       redis:
         mode: managed-standalone
         standalone:
