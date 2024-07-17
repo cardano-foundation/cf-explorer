@@ -383,6 +383,7 @@ consumerSchedules:
   drepInfoFixedDelay: null
   governanceInfoJobEnabled: null
   governanceInfoFixedDelay: null
+  tokenTxCountJobEnabled: null
 
   network: mainnet
 
