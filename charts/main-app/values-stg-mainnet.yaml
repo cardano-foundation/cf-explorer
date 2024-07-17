@@ -105,7 +105,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR491-389825a-9958371970"
+        tag: "1.3.1-PR491-66cccf6-9975594707"
       redis:
         mode: managed-standalone
         standalone:
@@ -115,6 +115,7 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+      tokenTxCountJobEnabled: false
     keycloak:
       enabled: true
       image:
