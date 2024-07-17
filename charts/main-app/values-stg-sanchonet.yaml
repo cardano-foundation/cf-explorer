@@ -28,12 +28,12 @@ cf-ledger-sync:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "0.0.42-SNAPSHOT-436f65c-9276258685"
+        tag: "bca5fd6-9109622755"
     aggregation:
       enabled: true
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "0.0.42-SNAPSHOT-436f65c-9276258685"
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "bca5fd6-9109622755"
       postgres:
         dbSchema: sanchonet
       store:
@@ -60,7 +60,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "1.3.0"
+        tag: "1.3.0-PR1295-78273da-9962749390"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       swagger:
         enabled: false
@@ -79,7 +79,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.3.0-PR3512-6dc4cf2-9279412658"
+        tag: "1.3.0-PR3663-42ef61e-9970750131"
       reactAppFfGlobalIsConwayEra: "true"
       reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
@@ -94,7 +94,7 @@ cf-explorer:
     consumerSchedules:
       enabled: true
       image:
-        tag: "1.3.1"
+        tag: "1.3.1-PR491-389825a-9958371970"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
