@@ -115,7 +115,7 @@ cf-explorer:
         bootstrapServersSecret:
           name: infra-secrets
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
-      tokenTxCountJobEnabled: false
+      tokenTxCountJobEnabled: "false"
     keycloak:
       enabled: true
       image:
