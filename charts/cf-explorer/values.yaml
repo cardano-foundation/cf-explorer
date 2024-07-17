@@ -383,7 +383,8 @@ consumerSchedules:
   drepInfoFixedDelay: null
   governanceInfoJobEnabled: null
   governanceInfoFixedDelay: null
-
+  tokenTxCountJobEnabled: null
+  
   network: mainnet
 
   tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/

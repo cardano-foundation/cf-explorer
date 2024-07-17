@@ -159,6 +159,8 @@ spec:
               value: "40000"
             - name: NATIVE_SCRIPT_INFO_FIXED_DELAY
               value: "40000"
+            - name: TOKEN_TX_COUNT_JOB_ENABLED
+              value: {{ .tokenTxCountJobEnabled | default "true" | quote }}
             - name: AGG_ANALYTIC_FIXED_DELAY
               value: "21600000"
 
