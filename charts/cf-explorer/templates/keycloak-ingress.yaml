@@ -19,20 +19,20 @@ spec:
                 number: 8080
           path: /
           pathType: Prefix
-        - path: /realms/master
-          pathType: Prefix
-          backend:
-            service:
-              name: nginx-not-found
-              port:
-                number: 80
-        - path: /admin
-          pathType: Prefix
-          backend:
-            service:
-              name: nginx-not-found
-              port:
-                number: 80
+#        - path: /realms/master
+#          pathType: Prefix
+#          backend:
+#            service:
+#              name: nginx-not-found
+#              port:
+#                number: 80
+#        - path: /admin
+#          pathType: Prefix
+#          backend:
+#            service:
+#              name: nginx-not-found
+#              port:
+#                number: 80
   tls:
     - hosts:
         - "keycloak.{{ $v.domain }}"
