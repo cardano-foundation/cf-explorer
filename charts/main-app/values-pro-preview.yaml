@@ -98,9 +98,9 @@ cf-explorer:
       reactAppMainnetAppUrl: "https://beta.explorer.cardano.org"
       reactAppAuthUrl: "https://auth-api.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/api/v1"
       # temporary
-      reactAppAdaHandleApi: "https://adahandle-resolver.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/api/v1"
-      reactAppApiUrl: "https://api.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/api/v1"
-      reactAppWsUrl: "wss://api.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/ws"
+      #reactAppAdaHandleApi: "https://adahandle-resolver.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/api/v1"
+      #reactAppApiUrl: "https://api.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/api/v1"
+      #reactAppWsUrl: "wss://api.pro.cf-explorer-preview.eu-west-1.beta.explorer.cardano.org/ws"
     crawler:
       enabled: false
     consumer:
