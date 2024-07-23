@@ -51,7 +51,7 @@ spec:
             - name: EXPLORER_DB_SCHEMA
               value: {{ .postgres.schema }}
 
-            - name: FLYWAY_ENABLED
+            - name: EXPLORER_FLYWAY_ENABLE
               value: {{ .flywayEnabled | quote }}
             - name: SWAGGER_CLIENT_URL
               value: {{ tpl .swaggerClientUrl $ }}
