@@ -39,7 +39,7 @@ cf-ledger-sync:
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-027afc2"
     blocks:
       batchSize: "10"
     aggregation:
@@ -47,7 +47,7 @@ cf-ledger-sync:
       replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-027afc2"
       db:
         maximum_pool_size: 60
       postgres:
@@ -139,10 +139,10 @@ cf-explorer:
       - name: eu-west-1-lb
         domain: uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
-      enabled: true
+      enabled: false
       replicas: 1
       image:
-        tag: "1.3.0-PR1295-c59276d-9956610332"
+        tag: "1.3.0-PR1296-a4a8011-9954627767"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -155,9 +155,9 @@ cf-explorer:
       image:
         tag: "0.9.0-PR132-394f1ba-9743398271"
     explorerFrontEnd:
-      enabled: true
+      enabled: false
       image:
-        tag: "1.3.0-PR3663-64a3a6c-9840787302"
+        tag: "1.6.0-PR3711-1a1eabf-10033630779"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
@@ -168,10 +168,10 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: true
+      enabled: false
       replicas: 1
       image:
-        tag: "1.3.1-PR491-389825a-9958371970"
+        tag: "1.3.0-PR504-28a879b-9935940916"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
