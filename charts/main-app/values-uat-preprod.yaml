@@ -8,8 +8,6 @@ cf-explorer-infra:
   enabled: true
   postgresql:
     dbSize: 450Gi
-  kafka:
-    dbSize: 20Gi
 
 postgres:
   operator:
@@ -26,16 +24,19 @@ cf-ledger-sync:
       volumeSize: 20Gi
       network: "preprod"
     indexer:
+      enabled: true
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-027afc2"
     aggregation:
       enabled: true
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "bca5fd6-9109622755"
+        tag: "0.0.42-SNAPSHOT-027afc2"
       postgres:
         dbSchema: preprod
+        dbKey: LEDGER_SYNC_AGG_DB
       store:
         account:
           history_cleanup_enabled: "false"
@@ -107,19 +108,21 @@ cf-explorer:
         domain: uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
       enabled: true
+      replicas: 1
       image:
         tag: "1.3.0-PR1296-a4a8011-9954627767"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       reportLimitPer24h: 20
     explorerRewardsApi:
       enabled: true
+      replicas: 1
       image:
         tag: "1.3.0"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.9.0-PR128"
+        tag: "0.9.0-PR132-394f1ba-9743398271"
     explorerFrontEnd:
       enabled: true
       image:
@@ -135,6 +138,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
+      replicas: 1
       image:
         tag: "1.3.0-PR504-28a879b-9935940916"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
