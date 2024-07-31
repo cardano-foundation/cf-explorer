@@ -1,0 +1,30 @@
+{{ if and (index .Values "cf-ledger-sync-resync" "enabled") (index .Values "cf-ledger-sync-resync" "postgres" "createDb" ) }}
+---
+## Full definition https://github.com/zalando/postgres-operator/blob/master/manifests/complete-postgres-manifest.yaml
+---
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  # name must start w/ teamId
+  name: cf-ledger-sync-resync-pg
+  namespace: cf-ledger-resync
+spec:
+  teamId: "cf"
+  volume:
+    size: {{ index .Values "cf-ledger-sync-resync" "postgres" "size" | default "1Gi" }}
+  numberOfInstances: 1
+  users:
+    cardano: []
+  databases:
+    explorer_api: cardano
+  postgresql:
+    version: "15"
+  resources:
+{{- toYaml (index .Values "cf-ledger-sync-resync" "postgres" "resources") | nindent 4 }}
+  enableLogicalBackup: false
+  enableShmVolume: true
+  {{- with index .Values "cf-ledger-sync-resync" "postgres" "tolerations" }}
+  tolerations:
+{{ toYaml . | indent 4 }}
+  {{- end }}
+{{ end }}

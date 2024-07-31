@@ -24,6 +24,15 @@ spec:
     - host: "api.{{ $v.domain }}"
       http:
         paths:
+        {{ if not $root.swagger.enabled }}
+          - path: /apidocs
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-not-found
+                port:
+                  number: 80
+        {{ end }} 
           - path: /
             pathType: Prefix
             backend:

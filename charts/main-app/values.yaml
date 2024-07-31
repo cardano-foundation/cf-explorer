@@ -15,10 +15,34 @@ cf-explorer-infra:
   # Whether Infra resources should be deployed.
   enabled: true
 
+# ledger-sync Parameters
+cf-ledger-sync:
+  # Whether LS Resources should be deployed.
+  enabled: false
+
+# ledger-sync Parameters
+cf-ledger-sync-resync:
+  # Whether LS Resources should be deployed.
+  enabled: false
+  createDb: false
+  postgres:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        cpu: "6"
+        memory: 24Gi
+
+
 # Explorer Parameters
 cf-explorer:
   # Whether the Explorer Resources should be deployed.
   enabled: true
+  values:
+    explorerFrontEnd:
+      reactAppFfGlobalIsConwayEra: "false"
+      reactAppFfGlobalIsConwayBootstrapDataAvailable: "false"
 
 # Ada Handle Parameters
 adahandle-resolver:
@@ -32,14 +56,18 @@ elastic-stack:
   # Whether the Ada Handle app should be deployed.
   enabled: false
 
+postgres:
+  operator:
+    enabled: false
+
 kube-prometheus-stack:
   enabled: true
   version: 45.7.1
 
-grafana-dashboards:
+grafana-customizations:
   enabled: true
 
-not-found:
+nginx-edge-cases:
   enabled: true
 
 spec:

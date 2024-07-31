@@ -1,38 +1,36 @@
-{{ if index .Values "cf-explorer-infra" "enabled" }}
+{{ if index .Values "cf-explorer" "enabled" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cf-explorer-infra
+  name: cf-explorer
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
   source:
     repoURL: {{ .Values.git.repoURL | default "https://github.com/cardano-foundation/cf-explorer.git" }}
     targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
-    path: charts/cf-explorer-infra
+    path: charts/cf-explorer
     helm:
-      {{- with index .Values "cf-explorer-infra" }}
+      parameters:
+        - name: "domain"
+          value: {{ .Values.domain }}
+        - name: "network"
+          value: {{ .Values.network }}
+      valueFiles:
+      - values-{{ .Values.network }}.yaml
+      {{- with index .Values "cf-explorer" "values" }}
       values: |
 {{ toYaml . | indent 8 }}
       {{- end }}
-
-  ignoreDifferences:
-    - group: "*"
-      kind: "Secret"
-      jqPathExpressions:
-        - '.data'
 
   syncPolicy:
     automated:
       prune: true
     syncOptions:
       - CreateNamespace=true
-      - RespectIgnoreDifferences=true
 
   destination:
     namespace: cf-explorer

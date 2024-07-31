@@ -118,11 +118,16 @@ spec:
             - name: API_MARKET_URL
               value: "https://api.coingecko.com/api/v3/coins/markets?ids=cardano&vs_currency=%s"
             - name: API_MARKET_CACHE_TIME
-              value: "120"
+              value: "180"
             - name: REPORT_LIMIT_PER_24HOURS
-              value: "2"
+              value: {{ .reportLimitPer24h | default "2" | quote }}
             - name: EPOCH_DAYS
               value: {{ .epochDays | default 5 | quote }}
+
+            - name: API_BOLNISI_OFFCHAIN_URL
+              value: {{ .apiBolnisiOffchainUrl | default "https://offchain.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}" | quote }}
+            - name: API_BOLNISI_PUBLIC_KEY_URL
+              value: {{ .apiBolnisiPublicKeyUrl | default "https://api.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/pubkeys/{wineryId}/v/0" | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
@@ -225,9 +230,11 @@ spec:
               value: {{ .webSocketMarketPublishDelayTime | default "20000" | quote }}
 
             - name: BYRON_GENESIS_FILE
-              value: "/app/genesis/{{ .network }}/byron-genesis.json"
+              value: {{ .byronGenesisFile | default "/app/genesis/{{ .network }}/byron-genesis.json" | quote }}
             - name: SHELLEY_GENESIS_FILE
-              value: "/app/genesis/{{ .network }}/shelley-genesis.json"
+              value: {{ .shelleyGenesisFile | default "/app/genesis/{{ .network }}/shelley-genesis.json" | quote }}
+            - name: CONWAY_GENESIS_FILE
+              value: {{ .conwayGenesisFile | default "https://book.play.dev.cardano.org/environments/sanchonet/conway-genesis.json" | quote }}
 
           ports:
             - name: api

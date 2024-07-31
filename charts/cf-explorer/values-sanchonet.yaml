@@ -1,0 +1,47 @@
+crawler:
+ enabled: false
+consumer:
+ enabled: false
+
+explorerApi:
+  enabled: true
+  epochDays: 1
+  postgres:
+    schema: sanchonet
+  monitoringEnabled: true
+  network: sanchonet
+  springProfiles: dev,standalone,s3
+  byronGenesisFile: "https://book.world.dev.cardano.org/environments/sanchonet/byron-genesis.json"
+  shelleyGenesisFile: "https://book.world.dev.cardano.org/environments/sanchonet/shelley-genesis.json"
+
+explorerRewardsApi:
+  enabled: true
+  postgres:
+    schema: sanchonet
+  monitoringEnabled: true
+  network: sanchonet
+  koios:
+    baseUrl: "https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/rpc/"
+
+explorerAuthentication:
+  enabled: true
+  postgres:
+    schema: sanchonet-auth
+  monitoringEnabled: true
+
+explorerFrontEnd:
+  enabled: true
+
+consumerSchedules:
+  enabled: true
+  postgres:
+    schema: sanchonet
+  monitoringEnabled: true
+  network: sanchonet
+  springProfiles: prod,standalone,s3
+
+  drepInfoJobEnabled: true
+  governanceInfoJobEnabled: true
+
+  tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
+  tokenMetadataFolder: "/registry"

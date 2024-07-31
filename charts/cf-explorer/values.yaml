@@ -128,6 +128,9 @@ explorerApi:
   service:
     type: ClusterIP
   #    nodePort: "30092"
+  #
+  swagger:
+    enabled: true
 
   redis:
     ## Redis Standalone Values Example
@@ -183,6 +186,8 @@ explorerApi:
       endpointKey: REPORT_S3_STORAGE_ENDPOINT
 
   tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+  byronGenesisFile: /app/genesis/{{ .Values.network }}/byron-genesis.json
+  shelleyGenesisFile: /app/genesis/{{ .Values.network }}/shelley-genesis.json
 
 explorerRewardsApi:
   enabled: true
@@ -268,7 +273,7 @@ explorerAuthentication:
   swaggerClientUrl: https://{{ .Values.domain }}/en
   swaggerServerUrl: http://localhost:8021
   emailFrom: admin@metadata.dev.cf-deployments.org
-  emailFromName: Cardano Foundation
+  emailFromName: "Cardano Foundation"
 
 explorerFrontEnd:
   enabled: true
@@ -287,7 +292,8 @@ explorerFrontEnd:
   reactAppNetwork: "{{ .Values.network }}"
   reactAppCardanoNewsUrl: "https://cardanofoundation.org/en/news/"
   reactAppWsUrl: "wss://api.{{ .Values.domain }}/ws"
-  reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1/"  
+  reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1"
+  reactAppApiUrlCoinGecko: "https://api.coingecko.com/api/v3/coins/markets"
 
   port: 80
 
@@ -373,6 +379,12 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
+  drepInfoJobEnabled: null
+  drepInfoFixedDelay: null
+  governanceInfoJobEnabled: null
+  governanceInfoFixedDelay: null
+  tokenTxCountJobEnabled: null
+
   network: mainnet
 
   tokenLogoEndpoint: https://dev-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
@@ -383,9 +395,10 @@ cardanoNewsApi:
 
   image:
     repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cardano-news-api"
-    tag: "0.2.1"
+    tag: "0.2.5"
 
   port: 8080
+  strapiApiUrl: "https://production.cms.webdev.cf-systems.org/graphql"
 
 keycloak:
   enabled: true
