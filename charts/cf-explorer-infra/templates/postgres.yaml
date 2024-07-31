@@ -34,7 +34,7 @@ spec:
       values: |
         auth:
           username: {{ .dbUser | default "cardano" }}
-          existingSecret: postgres-secrets
+          existingSecret: postgres-secrets-local
           secretKeys:
             adminPasswordKey: POSTGRES_ADMIN_PASSWORD
             userPasswordKey: POSTGRES_PASSWORD
