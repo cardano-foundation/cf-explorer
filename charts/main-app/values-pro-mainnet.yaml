@@ -5,7 +5,12 @@ network: mainnet
 domain: beta.explorer.cardano.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
+  redis:
+    enabled: false
+  postgresql:
+    enabled: true
+    dbSize: 4500Gi
 
 cf-ledger-sync:
   enabled: true
