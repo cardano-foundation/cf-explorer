@@ -7,7 +7,7 @@ domain: preprod.beta.explorer.cardano.org
 cf-explorer-infra:
   enabled: true
   postgresql:
-    enabled: false
+    enabled: true
     dbSize: 450Gi
   kafka:
     dbSize: 20Gi
