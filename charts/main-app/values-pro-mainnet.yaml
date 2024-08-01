@@ -32,6 +32,8 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "bca5fd6-9109622755"
+      postgres:
+        secretName: postgres-secrets-local
       hikari:
         maxLifetime: 10000
     blocks:
@@ -47,6 +49,7 @@ cf-ledger-sync:
       db:
         maximum_pool_size: 60
       postgres:
+        secretName: postgres-secrets-local
         dbSchema: mainnet
       store:
         account:

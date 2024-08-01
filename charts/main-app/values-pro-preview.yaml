@@ -32,6 +32,8 @@ cf-ledger-sync:
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
+      postgres:
+        secretName: postgres-secrets-local
     aggregation:
       enabled: true
       replicaCount: 1
@@ -41,6 +43,7 @@ cf-ledger-sync:
       db:
         maximum_pool_size: 60
       postgres:
+        secretName: postgres-secrets-local
         dbSchema: preview
       store:
         account:
