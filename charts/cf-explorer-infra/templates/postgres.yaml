@@ -43,6 +43,11 @@ spec:
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
+          tolerations:
+          - key: role
+            value: postgres
+            operator: Equal
+            effect: PreferNoSchedule
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
