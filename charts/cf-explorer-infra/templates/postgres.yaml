@@ -43,6 +43,7 @@ spec:
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
+          {{- if runOnDedicatedHw }}
           nodeSelector:
             node.kubernetes.io/role: postgres
           tolerations:
@@ -50,6 +51,7 @@ spec:
             value: postgres
             operator: Equal
             effect: PreferNoSchedule
+          {{- end }}
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"

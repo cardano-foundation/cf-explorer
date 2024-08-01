@@ -10,6 +10,7 @@ cf-explorer-infra:
     enabled: false
   postgresql:
     enabled: true
+    runOnDedicatedHw: true
     dbSize: 4500Gi
 
 cf-ledger-sync:
