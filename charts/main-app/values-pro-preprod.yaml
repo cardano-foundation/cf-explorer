@@ -92,7 +92,7 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: true
+      enabled: false
       image:
         tag: "1.3.1-PR491-9e7e959-9975832901"
       ledgerSyncFlywayEnable: "true"
