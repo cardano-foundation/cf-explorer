@@ -43,7 +43,7 @@ spec:
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
-          {{- if runOnDedicatedHw }}
+          {{- if .runOnDedicatedHw }}
           nodeSelector:
             node.kubernetes.io/role: postgres
           tolerations:
