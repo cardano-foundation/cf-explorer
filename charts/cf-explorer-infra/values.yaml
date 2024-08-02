@@ -14,5 +14,34 @@ redis-cluster:
 
 postgresql:
   enabled: true
-  runOnDedicatedHw: false
 
+## Internal Dependencies: Kafka, Zookeper, etc.
+kafka:
+  enabled: true
+  image:
+    repository: "confluentinc/cp-kafka"
+    tag: "7.0.0"
+  port: 9092
+  service:
+    # If type changed to NodePort, specify the port to use externally
+    type: ClusterIP
+    nodePort: ""
+
+zookeeper:
+  enabled: true
+  image:
+    repository: "confluentinc/cp-zookeeper"
+    tag: "5.1.2"
+  port: 2181
+  service:
+    #  If type changed to NodePort, specify the port to use externally
+    type: ClusterIP
+    nodePort: ""
+
+kafdrop:
+  enabled: true
+  replicas: 1
+  image:
+    repository: "obsidiandynamics/kafdrop"
+    tag: "latest"
+  port: 9000
