@@ -29,7 +29,7 @@ cf-ledger-sync:
       network: "preview"
     indexer:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
         tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
@@ -37,7 +37,7 @@ cf-ledger-sync:
         secretName: postgres-secrets-local
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
         tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
@@ -107,7 +107,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.3.1-PR491-9e7e959-9975832901"
       ledgerSyncFlywayEnable: "true"
