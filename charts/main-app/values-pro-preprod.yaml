@@ -10,6 +10,7 @@ cf-explorer-infra:
     enabled: true
     dbSize: 450Gi
   kafka:
+    enabled: true
     dbSize: 20Gi
 
 cf-ledger-sync:
