@@ -62,7 +62,7 @@ cf-explorer:
         secret:
           hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "1.3.0-PR1295-78273da-9962749390"
+        tag: "1.3.0-PR1295-49b1100-10215210288"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       swagger:
         enabled: false
