@@ -30,22 +30,22 @@ spec:
         - name: PGHOST
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: postgres-secrets-local
               key: POSTGRES_HOST
         - name: PGUSER
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: postgres-secrets-local
               key: POSTGRES_USER
         - name: PGPASSWORD
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: postgres-secrets-local
               key: POSTGRES_PASSWORD
         - name: PGDATABASE
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: postgres-secrets-local
               key: POSTGRES_DB
         volumeMounts:
         - name: configmap
