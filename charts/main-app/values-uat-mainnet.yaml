@@ -14,8 +14,15 @@ cf-explorer-infra:
       diagnosticMode:
         enabled: false
   postgresql:
-    enabled: true
+    enabled: false
     dbSize: 4500Gi
+    nodeSelector:
+      node.kubernetes.io/role: resync-pg
+    tolerations:
+      - key: role
+        value: resync-pg
+        operator: Equal
+        effect: PreferNoSchedule
 
 postgres:
   operator:

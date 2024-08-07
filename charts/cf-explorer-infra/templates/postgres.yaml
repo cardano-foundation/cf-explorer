@@ -43,6 +43,14 @@ spec:
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
+          {{- with .nodeSelector }}
+          nodeSelector:
+{{ toYaml . | indent 12 }}
+          {{- end }}
+          {{- with .tolerations }}
+          tolerations:
+{{ toYaml . | indent 12 }}
+          {{- end }}
         shmVolume:
           enabled: true
           sizeLimit: "32Gi"
