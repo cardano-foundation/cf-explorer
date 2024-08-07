@@ -14,7 +14,6 @@ cf-ledger-sync:
   values:
     git:
       targetRevision: "infra-develop-1_7_0"
-    useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
       volumeSize: 5Gi
