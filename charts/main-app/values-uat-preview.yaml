@@ -30,16 +30,16 @@ cf-ledger-sync:
       network: "preview"
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "0.0.42-SNAPSHOT-027afc2"
+        repository: "cardanofoundation/ledger-sync"
+        tag: "0.1.0"
     aggregation:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "0.0.42-SNAPSHOT-027afc2"
+        repository: "cardanofoundation/ledger-sync-aggregation"
+        tag: "0.1.0"
       db:
         maximum_pool_size: 60
       postgres:
@@ -49,7 +49,7 @@ cf-ledger-sync:
         account:
           history_cleanup_enabled: "false"
         executor:
-          enable_parallel_processing: "false"
+          enable_parallel_processing: "true"
           use_virtual_thread_for_batch_processing: "true"
           use_virtual_thread_for_event_processing: "true"
 
