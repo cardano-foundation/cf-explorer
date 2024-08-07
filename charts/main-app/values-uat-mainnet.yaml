@@ -25,34 +25,27 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "infra-develop"
-    useLocalCardanoNode: true
+      targetRevision: "infra-develop-1_7_0"
     localCardanoNode:
       enabled: true
       volumeSize: 200Gi
       network: "mainnet"
-      image:
-        repository: ghcr.io/intersectmbo/cardano-node
-        tag: 8.9.2
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "0.0.42-SNAPSHOT-027afc2"
-    blocks:
-      batchSize: "10"
+        tag: "0.1.0"
+#    blocks:
+#      batchSize: "10"
     aggregation:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "0.0.42-SNAPSHOT-027afc2"
+        tag: "0.1.0"
       db:
         maximum_pool_size: 60
       postgres:
         dbSchema: mainnet
-        dbKey: LEDGER_SYNC_AGG_DB
       store:
         account:
           history_cleanup_enabled: "false"
@@ -142,13 +135,13 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0-PR1296-a4a8011-9954627767"
+        tag: "1.3.0-PR1310-40025e3-10277352293"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0"
+        tag: "1.3.0-PR103-0cd6aab-9754219477"
     explorerAuthentication:
       enabled: true
       replicas: 1
@@ -157,7 +150,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.6.0-PR-c842fd4-10284996160"
+        tag: "1.6.0-PR-f71b692-10285504534"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
@@ -169,9 +162,9 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
-        tag: "1.3.0-PR504-28a879b-9935940916"
+        tag: "1.3.0-PR517-8d4bff0-10264448294"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
