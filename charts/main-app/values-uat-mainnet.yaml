@@ -30,7 +30,6 @@ cf-ledger-sync:
       enabled: true
       volumeSize: 200Gi
       network: "mainnet"
-      sleep: true
     indexer:
       enabled: true
       replicaCount: 0
