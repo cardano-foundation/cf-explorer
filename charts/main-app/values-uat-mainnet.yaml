@@ -38,18 +38,21 @@ cf-ledger-sync:
       enabled: true
       replicaCount: 1
       image:
-        tag: "0.1.0"
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
+        tag: "0.0.42-SNAPSHOT-027afc2"
     blocks:
       batchSize: "10"
     aggregation:
       enabled: true
       replicaCount: 1
       image:
-        tag: "0.1.0"
+        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
+        tag: "0.0.42-SNAPSHOT-027afc2"
       db:
         maximum_pool_size: 60
       postgres:
         dbSchema: mainnet
+        dbKey: LEDGER_SYNC_AGG_DB
       store:
         account:
           history_cleanup_enabled: "false"
@@ -136,7 +139,7 @@ cf-explorer:
       - name: eu-west-1-lb
         domain: uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
-      enabled: false
+      enabled: true
       replicas: 1
       image:
         tag: "1.3.0-PR1296-a4a8011-9954627767"
@@ -152,7 +155,7 @@ cf-explorer:
       image:
         tag: "0.9.0-PR132-394f1ba-9743398271"
     explorerFrontEnd:
-      enabled: false
+      enabled: true
       image:
         tag: "1.6.0-PR3711-1a1eabf-10033630779"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
@@ -165,7 +168,7 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: false
+      enabled: true
       replicas: 1
       image:
         tag: "1.3.0-PR504-28a879b-9935940916"
