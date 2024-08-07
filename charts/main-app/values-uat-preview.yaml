@@ -38,7 +38,6 @@ cf-ledger-sync:
         maximum_pool_size: 60
       postgres:
         dbSchema: preview
-        dbKey: LEDGER_SYNC_AGG_DB
       store:
         account:
           history_cleanup_enabled: "false"

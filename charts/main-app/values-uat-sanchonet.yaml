@@ -21,19 +21,18 @@ cf-ledger-sync:
       network: "sanchonet"
     indexer:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "cardanofoundation/ledger-sync"
         tag: "0.1.0"
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         repository: "cardanofoundation/ledger-sync-aggregation"
         tag: "0.1.0"
       postgres:
         dbSchema: sanchonet
-        dbKey: LEDGER_SYNC_AGG_DB
       store:
         account:
           history_cleanup_enabled: "false"
