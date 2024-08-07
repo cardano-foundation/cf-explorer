@@ -17,16 +17,12 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "infra-develop"
+      targetRevision: "infra-develop-1_7_0"
     useLocalCardanoNode: true
     localCardanoNode:
       enabled: true
       volumeSize: 20Gi
-      image:
-        repository: ghcr.io/intersectmbo/cardano-node
-        tag: 8.9.0
-      sleep: false
-      mithrilRestore: "false"
+      sleep: true
       network: "preview"
     indexer:
       enabled: true
