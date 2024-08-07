@@ -38,16 +38,14 @@ cf-ledger-sync:
       enabled: true
       replicaCount: 1
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "0.0.42-SNAPSHOT-027afc2"
+        tag: "0.1.0"
     blocks:
       batchSize: "10"
     aggregation:
       enabled: true
       replicaCount: 1
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "0.0.42-SNAPSHOT-027afc2"
+        tag: "0.1.0"
       db:
         maximum_pool_size: 60
       postgres:
