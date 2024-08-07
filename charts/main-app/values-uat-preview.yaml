@@ -44,60 +44,6 @@ cf-ledger-sync:
           use_virtual_thread_for_batch_processing: "true"
           use_virtual_thread_for_event_processing: "true"
 
-cf-ledger-sync-resync:
-  enabled: false
-  postgres:
-    createDb: true
-    size: 450Gi
-    tolerations:
-      - key: role
-        value: resync-pg
-        operator: Equal
-        effect: PreferNoSchedule
-  values:
-    git:
-      targetRevision: "infra-develop"
-    storeCardanoHost: cardano-node.cf-explorer
-    storeCardanoPort: 3001
-    useLocalCardanoNode: false
-    localCardanoNode:
-      enabled: false
-      network: "preview"
-    indexer:
-      enabled: true
-      image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "bca5fd6-9109622755"
-      postgres:
-        secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
-        host: cf-ledger-sync-resync-pg
-        port: "5432"
-        db: "explorer_api"
-        userKey: username
-        passwordKey: password
-    aggregation:
-      enabled: true
-      replicaCount: 1
-      image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "bca5fd6-9109622755"
-      postgres:
-        secretName: cardano.cf-ledger-sync-resync-pg.credentials.postgresql.acid.zalan.do
-        host: cf-ledger-sync-resync-pg
-        port: "5432"
-        db: "explorer_api"
-        dbSchema: preview
-        userKey: username
-        passwordKey: password
-      store:
-        account:
-          history_cleanup_enabled: "false"
-        executor:
-          use_virtual_thread_for_batch_processing: "true"
-          enable_parallel_processing: "false"
-          blocks_batch_size: 30
-#          block_processing_threads: 2
-
 cf-explorer:
   enabled: true
   values:
