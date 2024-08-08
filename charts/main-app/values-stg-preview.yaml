@@ -30,6 +30,8 @@ cf-ledger-sync:
       replicaCount: 1
       image:
         tag: "0.1.0"
+      postgres:
+        secretName: postgres-secrets-local
     aggregation:
       enabled: true
       replicaCount: 1
@@ -38,6 +40,7 @@ cf-ledger-sync:
       db:
         maximum_pool_size: 60
       postgres:
+        secretName: postgres-secrets-local
         dbSchema: preview
       store:
         account:
