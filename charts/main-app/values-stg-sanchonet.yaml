@@ -22,12 +22,12 @@ cf-ledger-sync:
       network: "sanchonet"
     indexer:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         tag: "0.1.0"
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         tag: "0.1.0"
       postgres:
@@ -35,10 +35,6 @@ cf-ledger-sync:
       store:
         account:
           history_cleanup_enabled: "false"
-        executor:
-          enable_parallel_processing: "true"
-          use_virtual_thread_for_batch_processing: "true"
-          use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
   enabled: true
