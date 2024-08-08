@@ -19,6 +19,7 @@ cf-ledger-sync:
     localCardanoNode:
       enabled: true
       volumeSize: 5Gi
+      sleep: true
       network: "sanchonet"
     indexer:
       enabled: true
