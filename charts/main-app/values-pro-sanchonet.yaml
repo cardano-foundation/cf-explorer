@@ -20,6 +20,7 @@ cf-ledger-sync:
       enabled: true
       volumeSize: 5Gi
       network: "sanchonet"
+      sleep: true
     indexer:
       enabled: true
       replicaCount: 0
