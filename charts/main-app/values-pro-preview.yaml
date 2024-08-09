@@ -28,6 +28,7 @@ cf-ledger-sync:
       enabled: true
       volumeSize: 20Gi
       network: "preview"
+      sleep: true
     indexer:
       enabled: true
       replicaCount: 0
