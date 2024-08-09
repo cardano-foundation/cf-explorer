@@ -15,34 +15,26 @@ cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "infra-develop"
-    useLocalCardanoNode: false
+      targetRevision: "infra-develop-1_7_0"
     localCardanoNode:
       enabled: true
-      volumeSize: 10Gi
+      volumeSize: 5Gi
       network: "sanchonet"
-      image:
-        repository: ghcr.io/intersectmbo/cardano-node
-        tag: 8.11.0-sancho
     indexer:
       enabled: true
+      replicaCount: 0
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
+        tag: "0.1.0"
     aggregation:
       enabled: true
+      replicaCount: 0
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
+        tag: "0.1.0"
       postgres:
         dbSchema: sanchonet
       store:
         account:
           history_cleanup_enabled: "false"
-        executor:
-          enable_parallel_processing: "true"
-          use_virtual_thread_for_batch_processing: "true"
-          use_virtual_thread_for_event_processing: "true"
 
 cf-explorer:
   enabled: true
@@ -58,18 +50,17 @@ cf-explorer:
         domain: pro.cf-explorer-sanchonet.us-east-1.beta.explorer.cardano.org
     explorerApi:
       enabled: true
-      postgres:
-        secret:
-          hostKey: POSTGRES_READ_ONLY_HOST
+      replicas: 1
       image:
-        tag: "1.3.0-PR1295-78273da-9962749390"
+        tag: "1.3.0-PR1310-de128b6-10295491786"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       swagger:
         enabled: false
     explorerRewardsApi:
       enabled: true
+      replicas: 1
       image:
-        tag: "1.3.0"
+        tag: "1.3.0-PR103-0cd6aab-9754219477"
       koios:
         baseUrlEnabled: true
         baseUrl: https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/
@@ -77,11 +68,11 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "0.9.0-PR128"
+        tag: "0.9.0-PR132-394f1ba-9743398271"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.3.0-PR3663-42ef61e-9970750131"
+        tag: "1.6.0-PR-f71b692-10285504534"
       reactAppFfGlobalIsConwayEra: "true"
       reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
@@ -99,8 +90,9 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
+      replicas: 0
       image:
-        tag: "1.3.1-PR491-9e7e959-9975832901"
+        tag: "1.3.0-PR517-8d4bff0-10264448294"
       ledgerSyncFlywayEnable: "true"
       explorerFlywayEnable: "true"
       aggAnalyticJobEnabled: "true"

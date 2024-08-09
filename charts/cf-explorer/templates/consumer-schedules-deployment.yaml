@@ -51,6 +51,32 @@ spec:
                   name: {{ .postgres.ledgerSync.secret.name }}
                   key: {{ .postgres.ledgerSync.secret.dbKey }}
 
+            - name: LEDGER_SYNC_AGG_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.hostKey }}
+            - name: LEDGER_SYNC_AGG_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.portKey }}
+            - name: LEDGER_SYNC_AGG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.userKey }}
+            - name: LEDGER_SYNC_AGG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.passwordKey }}
+            - name: LEDGER_SYNC_AGG_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.dbKey }}
+
             - name: EXPLORER_HOST
               valueFrom:
                 secretKeyRef:
@@ -77,13 +103,23 @@ spec:
                   name: {{ .postgres.explorer.secret.name }}
                   key: {{ .postgres.explorer.secret.dbKey }}
 
-            - name: POSTGRES_SCHEMA
+            - name: EXPLORER_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_AGG_SCHEMA
               value: {{ .postgres.schema }}
 
             - name: LEDGER_SYNC_FLYWAY_ENABLE
               value: {{ .ledgerSyncFlywayEnable | default "true" | quote }}
             - name: LEDGER_SYNC_FLYWAY_VALIDATE
               value: {{ .ledgerSyncFlywayValidate | default "false" | quote }}
+
+            - name: LEDGER_SYNC_AGG_FLYWAY_ENABLE
+              value: {{ .ledgerSyncAggFlywayEnable | default "true" | quote }}
+            - name: LEDGER_SYNC_AGG_FLYWAY_VALIDATE
+              value: {{ .ledgerSyncAggFlywayValidate | default "false" | quote }}
+
             - name: EXPLORER_FLYWAY_ENABLE
               value: {{ .explorerFlywayEnable | default "true" | quote }}
             - name: EXPLORER_FLYWAY_VALIDATE
@@ -119,18 +155,6 @@ spec:
               value: {{ .tokenMetadataFolder | default "/mappings" | quote }}
             - name: NETWORK_NAME
               value: {{ .network }}
-
-            - name: KAFKA_BOOSTRAP_SERVER_URL
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .kafka.bootstrapServersSecret.name }}
-                  key: {{ .kafka.bootstrapServersSecret.key }}
-            - name: KAFKA_USE_SSL
-              value: {{ .kafka.useSsl | default "false" | quote }}
-            - name: KAFKA_GROUP_ID
-              value: {{ .network }}
-            - name: KAFKA_REPORTS_TOPIC
-              value: {{ .kafka.reportsTopic }}
 
             - name: API_CHECK_REWARD_URL
               value: {{ .checkRewardUrl }}
