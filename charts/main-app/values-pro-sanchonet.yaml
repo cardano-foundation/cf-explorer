@@ -25,12 +25,15 @@ cf-ledger-sync:
       replicaCount: 0
       image:
         tag: "0.1.0"
+      postgres:
+        secretName: postgres-secrets-local
     aggregation:
       enabled: true
       replicaCount: 0
       image:
         tag: "0.1.0"
       postgres:
+        secretName: postgres-secrets-local
         dbSchema: sanchonet
       store:
         account:

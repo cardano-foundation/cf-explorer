@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: "postgres-secrets"
+  name: "postgres-secrets-local"
   namespace: {{ $.Release.Namespace }}
 type: Opaque
 data:
@@ -34,7 +34,7 @@ spec:
       values: |
         auth:
           username: {{ .dbUser | default "cardano" }}
-          existingSecret: postgres-secrets
+          existingSecret: postgres-secrets-local
           secretKeys:
             adminPasswordKey: POSTGRES_ADMIN_PASSWORD
             userPasswordKey: POSTGRES_PASSWORD

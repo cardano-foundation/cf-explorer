@@ -45,7 +45,7 @@ explorerApi:
     schema: mainnet
     ledgerSync:
       secret:
-        name: postgres-secrets
+        name: postgres-secrets-local
         userKey: POSTGRES_USER
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
@@ -53,7 +53,7 @@ explorerApi:
         passwordKey: POSTGRES_PASSWORD
     ledgerSyncAgg:
       secret:
-        name: postgres-secrets
+        name: postgres-secrets-local
         userKey: POSTGRES_USER
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
@@ -61,7 +61,7 @@ explorerApi:
         passwordKey: POSTGRES_PASSWORD
     explorer:
       secret:
-        name: postgres-secrets
+        name: postgres-secrets-local
         userKey: POSTGRES_USER
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
@@ -102,7 +102,7 @@ explorerRewardsApi:
   postgres:
     schema: mainnet
     secret:
-      name: postgres-secrets
+      name: postgres-secrets-local
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -149,7 +149,7 @@ explorerAuthentication:
   postgres:
     schema: mainnet-auth
     secret:
-      name: postgres-secrets
+      name: postgres-secrets-local
       userKey: POSTGRES_USER
       hostKey: POSTGRES_HOST
       portKey: POSTGRES_PORT
@@ -216,7 +216,7 @@ consumerSchedules:
     schema: mainnet
     ledgerSync:
       secret:
-        name: postgres-secrets
+        name: postgres-secrets-local
         userKey: POSTGRES_USER
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
@@ -224,7 +224,7 @@ consumerSchedules:
         passwordKey: POSTGRES_PASSWORD
     ledgerSyncAgg:
       secret:
-        name: postgres-secrets
+        name: postgres-secrets-local
         userKey: POSTGRES_USER
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
@@ -232,7 +232,7 @@ consumerSchedules:
         passwordKey: POSTGRES_PASSWORD
     explorer:
       secret:
-        name: postgres-secrets
+        name: postgres-secrets-local
         userKey: POSTGRES_USER
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
