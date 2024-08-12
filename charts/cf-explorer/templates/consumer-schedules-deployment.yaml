@@ -142,6 +142,12 @@ spec:
               value: {{ .governanceInfoJobEnabled | default "false" | quote }}
             - name: GOVERNANCE_INFO_FIXED_DELAY
               value: {{ .governanceInfoFixedDelay | default "100000" | quote }}
+            - name: GOV_ACTION_METADATA_JOB_ENABLED
+              value: {{ .governanceActionMetadataJobEnabled | default "false" | quote }}
+            - name: GOV_ACTION_METADATA_FIXED_DELAY
+              value: {{ .governanceActionMetadataFixedDelay | default "100000" | quote }}
+            - name: GOV_ACTION_METADATA_RETRY_COUNT
+              value: {{ .governanceActionMetadataRetryCount | default "3" | quote }}
 
             - name: POOL_OFFLINE_DATA_JOB_ENABLED
               value: "true"

@@ -272,11 +272,14 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
-  drepInfoJobEnabled: null
-  drepInfoFixedDelay: null
-  governanceInfoJobEnabled: null
-  governanceInfoFixedDelay: null
+  drepInfoJobEnabled: false
+  drepInfoFixedDelay: 200000
+  governanceInfoJobEnabled: false
+  governanceInfoFixedDelay: 200000
   tokenTxCountJobEnabled: null
+  governanceActionMetadataJobEnabled: false
+  governanceActionMetadataFixedDelay: 300000
+  governanceActionMetadataRetryCount: 3
 
   network: mainnet
 
