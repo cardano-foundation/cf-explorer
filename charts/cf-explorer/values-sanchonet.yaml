@@ -42,6 +42,7 @@ consumerSchedules:
 
   drepInfoJobEnabled: true
   governanceInfoJobEnabled: true
+  governanceActionMetadataJobEnabled: true
 
   tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
   tokenMetadataFolder: "/registry"
