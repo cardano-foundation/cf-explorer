@@ -1,27 +1,3 @@
-crawler:
-
-  monitoringEnabled: true
-
-  crawler:
-    name: preview-crawler
-
-  cardano:
-    node:
-      networkMagic: "2"
-      address: preview-node.world.dev.cardano.org
-      port: 30002
-
-consumer:
-
-  monitoringEnabled: true
-  
-  network: preview
-
-  postgres:
-    schema: preview
-
-  networkMagic: "2"
-
 explorerApi:
   enabled: true
   epochDays: 1
