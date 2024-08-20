@@ -280,6 +280,7 @@ consumerSchedules:
   governanceActionMetadataJobEnabled: false
   governanceActionMetadataFixedDelay: 300000
   governanceActionMetadataRetryCount: 3
+  blockStatisticsJobEnabled: false
 
   network: mainnet
 

@@ -211,6 +211,8 @@ spec:
               value: "600000"
             - name: LATEST_TOKEN_BALANCE_FIXED_DELAY
               value: "600000"
+            - name: BLOCK_STATISTICS_JOB_ENABLED
+              value: {{ .blockStatisticsJobEnabled | default "true" | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
