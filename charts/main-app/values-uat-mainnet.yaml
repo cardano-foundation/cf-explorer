@@ -49,8 +49,8 @@ cf-ledger-sync:
       replicaCount: 1
       image:
         tag: "0.1.0"
-      db:
-        maximum_pool_size: 60
+#      db:
+#        maximum_pool_size: 60
       postgres:
         dbSchema: mainnet
       store:
