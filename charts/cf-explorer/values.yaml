@@ -281,6 +281,9 @@ consumerSchedules:
   governanceActionMetadataFixedDelay: 300000
   governanceActionMetadataRetryCount: 3
   blockStatisticsJobEnabled: false
+  latestTokenBalanceJobEnabled: true
+  nativeScriptInfoJobEnabled: true
+  smartContractInfoJobEnabled: true
 
   network: mainnet
 

@@ -106,6 +106,12 @@ cf-explorer:
       image:
         tag: "1.7.0-PR536-1ec9d5c-10558323575"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+
+      # switch off
+      tokenInfoJobEnabled: false
+      latestTokenBalanceJobEnabled: false
+      nativeScriptInfoJobEnabled: false
+      smartContractInfoJobEnabled: false
     keycloak:
       enabled: true
       image:

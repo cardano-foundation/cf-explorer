@@ -213,6 +213,12 @@ spec:
               value: "600000"
             - name: BLOCK_STATISTICS_JOB_ENABLED
               value: {{ .blockStatisticsJobEnabled | default "true" | quote }}
+            - name: LATEST_TOKEN_BALANCE_JOB_ENABLED
+              value: {{ .latestTokenBalanceJobEnabled | quote }}
+            - name: NATIVE_SCRIPT_INFO_JOB_ENABLED
+              value: {{ .nativeScriptInfoJobEnabled | quote }}
+            - name: SMART_CONTRACT_INFO_JOB_ENABLED
+              value: {{ .smartContractInfoJobEnabled | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
