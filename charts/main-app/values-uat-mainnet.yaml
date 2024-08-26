@@ -39,14 +39,14 @@ cf-ledger-sync:
       network: "mainnet"
     indexer:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         tag: "0.1.0"
 #    blocks:
 #      batchSize: "10"
     aggregation:
       enabled: true
-      replicaCount: 0
+      replicaCount: 1
       image:
         tag: "0.1.0"
 #      db:
@@ -102,9 +102,9 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
-        tag: "1.7.0-PR536-d8a590b-10489355779"
+        tag: "1.7.0-PR536-1ec9d5c-10558323575"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
