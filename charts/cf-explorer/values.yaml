@@ -272,6 +272,7 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
+  stakeTxBalanceJobEnabled: true
   drepInfoJobEnabled: false
   drepInfoFixedDelay: 200000
   governanceInfoJobEnabled: false
