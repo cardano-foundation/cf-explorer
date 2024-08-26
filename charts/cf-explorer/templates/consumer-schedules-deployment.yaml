@@ -192,11 +192,11 @@ spec:
             - name: NATIVE_SCRIPT_INFO_FIXED_DELAY
               value: "40000"
             - name: TOKEN_TX_COUNT_JOB_ENABLED
-              value: {{ .tokenTxCountJobEnabled | default "true" | quote }}
+              value: {{ .tokenTxCountJobEnabled | quote }}
             - name: AGG_ANALYTIC_FIXED_DELAY
               value: "21600000"
             - name: AGG_ANALYTIC_JOB_ENABLED
-              value: {{ .aggAnalyticJobEnabled | default "true" | quote }}
+              value: {{ .aggAnalyticJobEnabled | quote }}
             - name: AGG_ANALYTIC_NUMBER_OF_CONCURRENT_TASKS
               {{ if eq .network "mainnet" }}
               value: {{ .aggAnalyticNumberOfConcurrentTasks | default "1" | quote }}

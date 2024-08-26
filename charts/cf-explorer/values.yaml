@@ -276,7 +276,8 @@ consumerSchedules:
   drepInfoFixedDelay: 200000
   governanceInfoJobEnabled: false
   governanceInfoFixedDelay: 200000
-  tokenTxCountJobEnabled: null
+  aggAnalyticJobEnabled: true
+  tokenTxCountJobEnabled: true
   governanceActionMetadataJobEnabled: false
   governanceActionMetadataFixedDelay: 300000
   governanceActionMetadataRetryCount: 3
