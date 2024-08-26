@@ -108,6 +108,7 @@ cf-explorer:
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
       # switch off
+      tokenTxCountJobEnabled: false
       tokenInfoJobEnabled: false
       latestTokenBalanceJobEnabled: false
       nativeScriptInfoJobEnabled: false
