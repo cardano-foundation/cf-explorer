@@ -43,6 +43,9 @@ spec:
         primary:
           persistence:
             size: {{ .dbSize | default "8Gi" }}
+          extendedConfiguration: |-
+            max_connections=250
+            shared_buffers=2GB
           {{- if .runOnDedicatedHw }}
           nodeSelector:
             node.kubernetes.io/role: postgres
