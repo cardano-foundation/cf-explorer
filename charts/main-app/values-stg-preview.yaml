@@ -64,7 +64,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-c3b17a9-10368486745"
+        tag: "1.7.0-PR1349-6a9dcdb-10594521919"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -95,7 +95,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-689236f-10368492865"
+        tag: "1.7.0-PR536-9d300ea-10594013899"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true

@@ -40,8 +40,8 @@ cf-ledger-sync:
       replicaCount: 0
       image:
         tag: "0.1.0"
-      db:
-        maximum_pool_size: 60
+#      db:
+#        maximum_pool_size: 60
       postgres:
         secretName: postgres-secrets-local
         dbSchema: mainnet
@@ -67,7 +67,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-c3b17a9-10368486745"
+        tag: "1.7.0-PR1349-6a9dcdb-10594521919"
       redis:
         mode: managed-standalone
         standalone:
@@ -101,12 +101,20 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-689236f-10368492865"
+        tag: "1.7.0-PR536-9d300ea-10594013899"
       redis:
         mode: managed-standalone
         standalone:
           useSsl: "true"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
+
+      # switch off
+      tokenTxCountJobEnabled: false
+      tokenInfoJobEnabled: false
+      aggAnalyticJobEnabled: true
+      latestTokenBalanceJobEnabled: false
+      nativeScriptInfoJobEnabled: false
+      smartContractInfoJobEnabled: false
     keycloak:
       enabled: true
       image:

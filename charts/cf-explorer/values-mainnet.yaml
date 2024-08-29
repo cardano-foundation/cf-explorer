@@ -35,3 +35,5 @@ consumerSchedules:
     schema: mainnet
   monitoringEnabled: true
   network: mainnet
+
+  blockStatisticsJobEnabled: true
