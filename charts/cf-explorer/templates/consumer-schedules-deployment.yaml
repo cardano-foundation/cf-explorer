@@ -142,6 +142,12 @@ spec:
               value: {{ .governanceInfoJobEnabled | default "false" | quote }}
             - name: GOVERNANCE_INFO_FIXED_DELAY
               value: {{ .governanceInfoFixedDelay | default "100000" | quote }}
+            - name: GOV_ACTION_METADATA_JOB_ENABLED
+              value: {{ .governanceActionMetadataJobEnabled | default "false" | quote }}
+            - name: GOV_ACTION_METADATA_FIXED_DELAY
+              value: {{ .governanceActionMetadataFixedDelay | default "100000" | quote }}
+            - name: GOV_ACTION_METADATA_RETRY_COUNT
+              value: {{ .governanceActionMetadataRetryCount | default "3" | quote }}
 
             - name: POOL_OFFLINE_DATA_JOB_ENABLED
               value: "true"
@@ -162,13 +168,13 @@ spec:
               value: {{ .checkPoolHistoryUrl }}
 
             - name: STAKE_TX_BALANCE_JOB_ENABLED
-              value: {{ .stakeTxBalanceJobEnabled | default "true" | quote }}
+              value: {{ .stakeTxBalanceJobEnabled | quote }}
             - name: STAKE_TX_BALANCE_FIXED_DELAY
               value: {{ .stakeTxBalanceFixedDelay | default "300000" | quote }}
             - name: AGGREGATE_POOL_INFO_FIXED_DELAY
               value: {{ .aggregatePoolInfoFixedDelay | default "20000" | quote }}
             - name: TOKEN_INFO_JOB_ENABLED
-              value: {{ .tokenInfoJobEnabled | default "true" | quote }}
+              value: {{ .tokenInfoJobEnabled | quote }}
             - name: TOKEN_INFO_FIXED_DELAY
               value: {{ .tokenInfoFixedDelay | default "60000" | quote }}
             - name: TOKEN_INFO_BATCH_SIZE
@@ -186,11 +192,11 @@ spec:
             - name: NATIVE_SCRIPT_INFO_FIXED_DELAY
               value: "40000"
             - name: TOKEN_TX_COUNT_JOB_ENABLED
-              value: {{ .tokenTxCountJobEnabled | default "true" | quote }}
+              value: {{ .tokenTxCountJobEnabled | quote }}
             - name: AGG_ANALYTIC_FIXED_DELAY
               value: "21600000"
             - name: AGG_ANALYTIC_JOB_ENABLED
-              value: {{ .aggAnalyticJobEnabled | default "true" | quote }}
+              value: {{ .aggAnalyticJobEnabled | quote }}
             - name: AGG_ANALYTIC_NUMBER_OF_CONCURRENT_TASKS
               {{ if eq .network "mainnet" }}
               value: {{ .aggAnalyticNumberOfConcurrentTasks | default "1" | quote }}
@@ -205,6 +211,14 @@ spec:
               value: "600000"
             - name: LATEST_TOKEN_BALANCE_FIXED_DELAY
               value: "600000"
+            - name: BLOCK_STATISTICS_JOB_ENABLED
+              value: {{ .blockStatisticsJobEnabled | quote }}
+            - name: LATEST_TOKEN_BALANCE_JOB_ENABLED
+              value: {{ .latestTokenBalanceJobEnabled | quote }}
+            - name: NATIVE_SCRIPT_INFO_JOB_ENABLED
+              value: {{ .nativeScriptInfoJobEnabled | quote }}
+            - name: SMART_CONTRACT_INFO_JOB_ENABLED
+              value: {{ .smartContractInfoJobEnabled | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME

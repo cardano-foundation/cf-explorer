@@ -1,27 +1,3 @@
-crawler:
-
-  monitoringEnabled: true
-
-  crawler:
-    name: preview-crawler
-
-  cardano:
-    node:
-      networkMagic: "2"
-      address: preview-node.world.dev.cardano.org
-      port: 30002
-
-consumer:
-
-  monitoringEnabled: true
-  
-  network: preview
-
-  postgres:
-    schema: preview
-
-  networkMagic: "2"
-
 explorerApi:
   enabled: true
   epochDays: 1
@@ -57,6 +33,10 @@ consumerSchedules:
     schema: preview
   monitoringEnabled: true
   network: preview
+
+  drepInfoJobEnabled: true
+  governanceInfoJobEnabled: true
+  governanceActionMetadataJobEnabled: true
 
   tokenMetadataUrl: "https://github.com/input-output-hk/metadata-registry-testnet.git"
   tokenMetadataFolder: "/registry"
