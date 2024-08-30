@@ -99,7 +99,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.7.0-PR536-9d300ea-10594013899"
       redis:
