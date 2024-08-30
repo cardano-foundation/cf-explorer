@@ -110,10 +110,10 @@ cf-explorer:
       # switch off
       tokenTxCountJobEnabled: true
       tokenInfoJobEnabled: true
-      aggAnalyticJobEnabled: false
-      latestTokenBalanceJobEnabled: false
-      nativeScriptInfoJobEnabled: false
-      smartContractInfoJobEnabled: false
+      aggAnalyticJobEnabled: true
+      latestTokenBalanceJobEnabled: true
+      nativeScriptInfoJobEnabled: true
+      smartContractInfoJobEnabled: true
     keycloak:
       enabled: true
       image:
