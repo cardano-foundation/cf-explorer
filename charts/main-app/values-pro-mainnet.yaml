@@ -104,9 +104,9 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
-        tag: "1.7.0-PR536-9d300ea-10594013899"
+        tag: "1.7.0-PR536-7f029a9-10645800258"
       redis:
         mode: managed-standalone
         standalone:
