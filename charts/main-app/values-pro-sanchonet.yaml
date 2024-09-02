@@ -76,8 +76,6 @@ cf-explorer:
       enabled: true
       image:
         tag: "1.7.0-main-7a4d7e5-10371257901"
-      reactAppFfGlobalIsConwayEra: "true"
-      reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
