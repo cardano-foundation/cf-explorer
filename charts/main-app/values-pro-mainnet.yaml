@@ -117,7 +117,7 @@ cf-explorer:
       tokenTxCountJobEnabled: false
       tokenInfoJobEnabled: false
       aggAnalyticJobEnabled: true
-      latestTokenBalanceJobEnabled: false
+      latestTokenBalanceJobEnabled: true
       nativeScriptInfoJobEnabled: false
       smartContractInfoJobEnabled: false
     keycloak:
