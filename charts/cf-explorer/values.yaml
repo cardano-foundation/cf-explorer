@@ -273,13 +273,13 @@ consumerSchedules:
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
   stakeTxBalanceJobEnabled: true
-  drepInfoJobEnabled: false
+  drepInfoJobEnabled: true
   drepInfoFixedDelay: 200000
-  governanceInfoJobEnabled: false
+  governanceInfoJobEnabled: true
   governanceInfoFixedDelay: 200000
   aggAnalyticJobEnabled: true
   tokenTxCountJobEnabled: true
-  governanceActionMetadataJobEnabled: false
+  governanceActionMetadataJobEnabled: true
   governanceActionMetadataFixedDelay: 300000
   governanceActionMetadataRetryCount: 3
   blockStatisticsJobEnabled: false
