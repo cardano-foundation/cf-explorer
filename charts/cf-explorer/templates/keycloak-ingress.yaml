@@ -1,12 +1,23 @@
 {{ with .Values.keycloak }}
 {{ if .enabled }}
 {{- $root := . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: keycloak-custom-headers
+  namespace: kube-system
+spec:
+  headers:
+    customResponseHeaders:
+      Cross-Origin-Opener-Policy: "same-origin"
   {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: "keycloak-{{ $v.name }}"
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-keycloak-custom-headers@kubernetescrd
 spec:
   rules:
     - host: "keycloak.{{ $v.domain }}"

@@ -1,12 +1,23 @@
 {{ with .Values.explorerAuthentication }}
 {{ if .enabled }}
 {{- $root := . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: auth-api-custom-headers
+  namespace: kube-system
+spec:
+  headers:
+    customResponseHeaders:
+      Cross-Origin-Opener-Policy: "same-origin"
   {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: "cf-explorer-authentication-{{ $v.name }}"
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-auth-api-custom-headers@kubernetescrd
 spec:
   rules:
     - host: "auth-api.{{ $v.domain }}"
