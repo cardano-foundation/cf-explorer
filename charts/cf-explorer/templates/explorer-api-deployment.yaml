@@ -159,6 +159,9 @@ spec:
             - name: API_BOLNISI_PUBLIC_KEY_CONFORMITY_CERT_URL
               value: https://cardano.mepa.gov.ge/api/v1/publickeys/nwa/v/0
 
+            - name: API_BOLNISI_OFFCHAIN_URL
+              value: {{ .apiBolnisiOffchainUrl | default "https://offchain.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}" | quote }}
+
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
               value: {{ .redis.master.name }}
