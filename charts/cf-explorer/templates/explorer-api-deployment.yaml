@@ -146,10 +146,21 @@ spec:
             - name: EPOCH_DAYS
               value: {{ .epochDays | default 5 | quote }}
 
+            - name: API_MICAR_KEY
+              value: ""
+            - name: API_MICAR_OVERVIEW
+              value: https://v2.api.carbon-ratings.com/mica/overview/ada?responseType=recent&key={publicKey}
+            - name: API_MICAR_HISTORICAL
+              value: https://v2.api.carbon-ratings.com/currencies/ada/emissions/network?key={publicKey}
+            - name: API_BOLNISI_PUBLIC_KEY_PRIMARY_URL
+              value: https://cardano.mepa.gov.ge/api/v1/publickeys/winery/{wineryId}/v/0
+            - name: API_BOLNISI_PUBLIC_KEY_FALLBACK_URL
+              value: https://api.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/pubkeys/{wineryId}/v/0
+            - name: API_BOLNISI_PUBLIC_KEY_CONFORMITY_CERT_URL
+              value: https://cardano.mepa.gov.ge/api/v1/publickeys/nwa/v/0
+
             - name: API_BOLNISI_OFFCHAIN_URL
               value: {{ .apiBolnisiOffchainUrl | default "https://offchain.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}" | quote }}
-            - name: API_BOLNISI_PUBLIC_KEY_URL
-              value: {{ .apiBolnisiPublicKeyUrl | default "https://api.pro.cf-bolnisi-mainnet.eu-west-1.bnwa.metadata.dev.cf-deployments.org/api/v1/pubkeys/{wineryId}/v/0" | quote }}
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME

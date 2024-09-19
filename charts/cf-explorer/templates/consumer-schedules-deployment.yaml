@@ -220,6 +220,9 @@ spec:
             - name: SMART_CONTRACT_INFO_JOB_ENABLED
               value: {{ .smartContractInfoJobEnabled | quote }}
 
+            - name: IPFS_GATEWAY_BASE_URL
+              value: https://gateway.pinata.cloud/ipfs/
+
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
               value: {{ .redis.master.name }}
