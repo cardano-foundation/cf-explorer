@@ -85,7 +85,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-PR544-8461a20-10938292954"
+        tag: "1.8.0-PR544-669cd89-10994024496"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
