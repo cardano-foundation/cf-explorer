@@ -147,7 +147,10 @@ spec:
               value: {{ .epochDays | default 5 | quote }}
 
             - name: API_MICAR_KEY
-              value: ""
+              valueFrom:
+                secretKeyRef:
+                  name: infra-secrets
+                  key: API_MICAR_KEY
             - name: API_MICAR_OVERVIEW
               value: https://v2.api.carbon-ratings.com/mica/overview/ada?responseType=recent&key={publicKey}
             - name: API_MICAR_HISTORICAL
