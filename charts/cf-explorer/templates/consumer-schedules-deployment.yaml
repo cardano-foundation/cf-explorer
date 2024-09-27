@@ -139,11 +139,11 @@ spec:
             - name: DREP_INFO_FIXED_DELAY
               value: {{ .drepInfoFixedDelay | default "100000" | quote }}
             - name: GOVERNANCE_INFO_JOB_ENABLED
-              value: {{ .governanceInfoJobEnabled | default "false" | quote }}
+              value: {{ .governanceInfoJobEnabled | default "true" | quote }}
             - name: GOVERNANCE_INFO_FIXED_DELAY
               value: {{ .governanceInfoFixedDelay | default "100000" | quote }}
             - name: GOV_ACTION_METADATA_JOB_ENABLED
-              value: {{ .governanceActionMetadataJobEnabled | default "false" | quote }}
+              value: {{ .governanceActionMetadataJobEnabled | default "true" | quote }}
             - name: GOV_ACTION_METADATA_FIXED_DELAY
               value: {{ .governanceActionMetadataFixedDelay | default "100000" | quote }}
             - name: GOV_ACTION_METADATA_RETRY_COUNT
