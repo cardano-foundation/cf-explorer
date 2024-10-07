@@ -101,7 +101,7 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: true
+      enabled: false
       replicas: 1
       image:
         tag: "1.8.0-PR544-669cd89-10994024496"
