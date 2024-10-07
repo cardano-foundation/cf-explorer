@@ -67,7 +67,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.0-PR1364-653c7c0-10808260461"
+        tag: "1.8.0-PR1354-9ebb71a-11159780546"
       redis:
         mode: managed-standalone
         standalone:
@@ -87,7 +87,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.7.0-main-7a4d7e5-10371257901"
+        tag: "1.9.0-PR3914-3fe35bd-11213989558"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
@@ -101,7 +101,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-PR536-7f029a9-10645800258"
+        tag: "1.8.0-PR544-669cd89-10994024496"
       redis:
         mode: managed-standalone
         standalone:
@@ -109,10 +109,10 @@ cf-explorer:
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
       # switch off
-      tokenTxCountJobEnabled: true
-      tokenInfoJobEnabled: true
+      tokenTxCountJobEnabled: false
+      tokenInfoJobEnabled: false
       aggAnalyticJobEnabled: true
-      latestTokenBalanceJobEnabled: true
+      latestTokenBalanceJobEnabled: false
       nativeScriptInfoJobEnabled: true
       smartContractInfoJobEnabled: true
     keycloak:
