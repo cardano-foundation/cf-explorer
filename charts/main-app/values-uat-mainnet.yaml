@@ -108,10 +108,10 @@ cf-explorer:
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
       # switch off
-      tokenTxCountJobEnabled: true
-      tokenInfoJobEnabled: true
+      tokenTxCountJobEnabled: false
+      tokenInfoJobEnabled: false
       aggAnalyticJobEnabled: true
-      latestTokenBalanceJobEnabled: true
+      latestTokenBalanceJobEnabled: false
       nativeScriptInfoJobEnabled: true
       smartContractInfoJobEnabled: true
     keycloak:
