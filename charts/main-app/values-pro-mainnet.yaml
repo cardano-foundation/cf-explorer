@@ -30,14 +30,14 @@ cf-ledger-sync:
       network: "mainnet"
     indexer:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         tag: "0.1.0"
       postgres:
         secretName: postgres-secrets-local
     aggregation:
       enabled: true
-      replicaCount: 1
+      replicaCount: 0
       image:
         tag: "0.1.0"
 #      db:
@@ -63,7 +63,7 @@ cf-explorer:
         domain: pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org
     explorerApi:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.9.0-38f7379-11238131237"
       redis:
@@ -103,7 +103,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 1
+      replicas: 0
       image:
         tag: "1.9.0-f48bc9e-11238144133"
       redis:
