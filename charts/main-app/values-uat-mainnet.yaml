@@ -75,7 +75,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.8.0-PR1354-9ebb71a-11159780546"
+        tag: "1.9.0-38f7379-11238131237"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
@@ -90,7 +90,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.9.0-PR3914-27a5deb-11255643644"
+        tag: "1.9.0-main-4595721-11255856877"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
@@ -104,7 +104,7 @@ cf-explorer:
       enabled: false
       replicas: 1
       image:
-        tag: "1.8.0-PR544-669cd89-10994024496"
+        tag: "1.9.0-f48bc9e-11238144133"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
 
       # switch off
