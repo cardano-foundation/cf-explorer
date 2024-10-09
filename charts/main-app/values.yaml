@@ -41,8 +41,8 @@ cf-explorer:
   enabled: true
   values:
     explorerFrontEnd:
-      reactAppFfGlobalIsConwayEra: "false"
-      reactAppFfGlobalIsConwayBootstrapDataAvailable: "false"
+      reactAppFfGlobalIsConwayEra: "true"
+      reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
 
 # Ada Handle Parameters
 adahandle-resolver:

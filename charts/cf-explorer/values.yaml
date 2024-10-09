@@ -1,114 +1,5 @@
 extraDbs: null
 
-crawler:
-  enabled: true
-  replicas: 1
-
-  image:
-    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-crawler"
-    tag: "0.2.6"
-
-  springProfiles: n2n,standalone,kafka
-
-  port: 8080
-
-  monitoringEnabled: false
-
-  kafka:
-    useSsl: "false"
-    bootstrapServersSecret:
-      name: kafka-secrets
-      key: KAFKA_BOOTSTRAP_SERVERS_TLS
-
-  redis:
-    ## Redis Standalone Values Example
-    mode: standalone
-    secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
-    standalone:
-      host: redis-headless
-      port: 6379
-
-    ## Redis Cluster Values Example
-    # mode: cluster
-    # secretName: cf-explorer-infra-redis-cluster
-    # cluster:
-    #   hosts: cf-explorer-infra-redis-cluster-headless:6379
-
-    master:
-      name: mymaster
-    sentinel:
-      host: cf-explorer-redis-headless
-
-  crawler:
-    name: dev-crawler
-    blocks:
-      topic: local.crawler.blocks
-      rollbackTopic: local.crawler.rollback-blocks
-
-
-
-  cardano:
-    node:
-      networkMagic: "764824073"
-      address: relays-new.cardano-mainnet.iohk.io
-      port: 3001
-
-consumer:
-  enabled: true
-  replicas: 1
-
-  image:
-    repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-consumer"
-    tag: "0.2.13"
-
-  springProfiles: aws, redis-standalone, caching
-
-  port: 8080
-
-  monitoringEnabled: false
-
-  redis:
-    ## Redis Standalone Values Example
-    mode: standalone
-    secret:
-      name: redis-secrets
-      key: REDIS_MASTER_PASSWORD
-    standalone:
-      host: redis-headless
-      port: 6379
-
-  postgres:
-    schema: mainnet
-    secret:
-      name: postgres-secrets-local
-      userKey: POSTGRES_USER
-      hostKey: POSTGRES_HOST
-      portKey: POSTGRES_PORT
-      dbKey: POSTGRES_DB
-      passwordKey: POSTGRES_PASSWORD
-
-  jpa:
-    showSql: false
-
-  kafka:
-    useSsl: "false"
-    bootstrapServersSecret:
-      name: kafka-secrets
-      key: KAFKA_BOOTSTRAP_SERVERS_TLS
-
-  crawler:
-    blocks:
-      topic: local.crawler.blocks
-
-  maximumPoolSize: 64
-  jdbcBatchSize: 500
-  blocksBatchSize: 1000
-  logLevel: debug
-  network: mainnet
-  networkMagic: "764824073"
-
 explorerApi:
   enabled: true
   replicas: 1
@@ -142,13 +33,6 @@ explorerApi:
       host: redis-headless
       port: 6379
 
-  kafka:
-    useSsl: "false"
-    bootstrapServersSecret:
-      name: kafka-secrets
-      key: KAFKA_BOOTSTRAP_SERVERS_TLS
-    reportsTopic: dev.explorer.api.reports
-
     ## Redis Cluster Values Example
     # mode: cluster
     # secretName: cf-explorer-infra-redis-cluster
@@ -166,6 +50,14 @@ explorerApi:
         hostKey: POSTGRES_HOST
         portKey: POSTGRES_PORT
         dbKey: LEDGER_SYNC_DB
+        passwordKey: POSTGRES_PASSWORD
+    ledgerSyncAgg:
+      secret:
+        name: postgres-secrets-local
+        userKey: POSTGRES_USER
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: LEDGER_SYNC_AGG_DB
         passwordKey: POSTGRES_PASSWORD
     explorer:
       secret:
@@ -330,6 +222,14 @@ consumerSchedules:
         portKey: POSTGRES_PORT
         dbKey: LEDGER_SYNC_DB
         passwordKey: POSTGRES_PASSWORD
+    ledgerSyncAgg:
+      secret:
+        name: postgres-secrets-local
+        userKey: POSTGRES_USER
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: LEDGER_SYNC_AGG_DB
+        passwordKey: POSTGRES_PASSWORD
     explorer:
       secret:
         name: postgres-secrets-local
@@ -342,13 +242,6 @@ consumerSchedules:
   ledgerSyncFlywayValidate: null
   explorerFlywayEnable: null
   explorerFlywayValidate: null
-
-  kafka:
-    useSsl: "false"
-    bootstrapServersSecret:
-      name: kafka-secrets
-      key: KAFKA_BOOTSTRAP_SERVERS_TLS
-    reportsTopic: dev.explorer.api.reports
 
   redis:
     ## Redis Standalone Values Example
@@ -379,11 +272,20 @@ consumerSchedules:
   checkRewardUrl: http://cf-explorer-rewards-api/api/v1/rewards/fetch
   checkPoolHistoryUrl: http://cf-explorer-rewards-api/api/v1/pool-history/fetch
 
-  drepInfoJobEnabled: null
-  drepInfoFixedDelay: null
-  governanceInfoJobEnabled: null
-  governanceInfoFixedDelay: null
-  tokenTxCountJobEnabled: null
+  stakeTxBalanceJobEnabled: true
+  drepInfoJobEnabled: true
+  drepInfoFixedDelay: 200000
+  governanceInfoJobEnabled: true
+  governanceInfoFixedDelay: 200000
+  aggAnalyticJobEnabled: true
+  tokenTxCountJobEnabled: true
+  governanceActionMetadataJobEnabled: true
+  governanceActionMetadataFixedDelay: 300000
+  governanceActionMetadataRetryCount: 3
+  blockStatisticsJobEnabled: false
+  latestTokenBalanceJobEnabled: true
+  nativeScriptInfoJobEnabled: true
+  smartContractInfoJobEnabled: true
 
   network: mainnet
 

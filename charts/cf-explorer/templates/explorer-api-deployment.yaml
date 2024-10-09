@@ -20,6 +20,9 @@ spec:
           image: "{{ .image.repository }}:{{ .image.tag }}"
 #          command: ["bash", "-c", "sleep 999999"]
           env:
+            - name: NETWORK
+              value: {{ .network }}
+
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .springProfiles }}
 
@@ -49,6 +52,32 @@ spec:
                   name: {{ .postgres.ledgerSync.secret.name }}
                   key: {{ .postgres.ledgerSync.secret.dbKey }}
 
+            - name: LEDGER_SYNC_AGG_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.hostKey }}
+            - name: LEDGER_SYNC_AGG_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.portKey }}
+            - name: LEDGER_SYNC_AGG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.userKey }}
+            - name: LEDGER_SYNC_AGG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.passwordKey }}
+            - name: LEDGER_SYNC_AGG_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .postgres.ledgerSyncAgg.secret.name }}
+                  key: {{ .postgres.ledgerSyncAgg.secret.dbKey }}
+
             - name: EXPLORER_HOST
               valueFrom:
                 secretKeyRef:
@@ -75,19 +104,12 @@ spec:
                   name: {{ .postgres.explorer.secret.name }}
                   key: {{ .postgres.explorer.secret.dbKey }}
 
-
-            - name: DB_SCHEMA
+            - name: EXPLORER_SCHEMA
               value: {{ .postgres.schema }}
-
-            - name: KAFKA_BOOTSTRAP_SERVER
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .kafka.bootstrapServersSecret.name }}
-                  key: {{ .kafka.bootstrapServersSecret.key }}
-            - name: KAFKA_USE_SSL
-              value: {{ .kafka.useSsl | default "false" | quote }}
-            - name: KAFKA_REPORTS_TOPIC
-              value: {{ .kafka.reportsTopic }}
+            - name: LEDGER_SYNC_SCHEMA
+              value: {{ .postgres.schema }}
+            - name: LEDGER_SYNC_AGG_SCHEMA
+              value: {{ .postgres.schema }}
 
             - name: AUTH_FILE_PATH
               value: {{ .authFilePath | default "/app/permission/policy.json" | quote }}

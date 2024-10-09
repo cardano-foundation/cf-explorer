@@ -26,7 +26,7 @@ spec:
         command: ["/bin/bash", "/configmap/create-extra-dbs.sh"]
         env:
         - name: EXTRA_DBS
-          value: {{ join " " .extraDbs | default "explorer_api explorer_db keycloak" | quote }}
+          value: {{ join " " .extraDbs | default "explorer_api explorer_api_agg explorer_db keycloak" | quote }}
         - name: PGHOST
           valueFrom:
             secretKeyRef:

@@ -7,36 +7,36 @@ domain: preprod.beta.explorer.cardano.org
 cf-explorer-infra:
   enabled: true
   postgresql:
-    enabled: true
     dbSize: 450Gi
-  kafka:
-    enabled: true
-    dbSize: 20Gi
+    nodeSelector:
+      node.kubernetes.io/role: postgres
+    tolerations:
+      - key: role
+        value: postgres
+        operator: Equal
+        effect: PreferNoSchedule
 
 cf-ledger-sync:
   enabled: true
   values:
     git:
-      targetRevision: "infra-develop"
-    useLocalCardanoNode: false
+      targetRevision: "infra-develop-1_7_0"
     localCardanoNode:
-      enabled: false
+      enabled: true
       volumeSize: 20Gi
       network: "preprod"
     indexer:
       enabled: true
       replicaCount: 1
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync"
-        tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
+        tag: "0.1.0"
       postgres:
         secretName: postgres-secrets-local
     aggregation:
       enabled: true
       replicaCount: 1
       image:
-        repository: "pro.registry.gitlab.metadata.dev.cf-deployments.org/base-infrastructure/docker-registry/cf-ledger-sync-aggregation"
-        tag: "0.0.42-SNAPSHOT-e2a0a39-9790569873"
+        tag: "0.1.0"
       postgres:
         secretName: postgres-secrets-local
         dbSchema: preprod
@@ -45,6 +45,7 @@ cf-ledger-sync:
           history_cleanup_enabled: "false"
         executor:
           enable_parallel_processing: "true"
+
 
 cf-explorer:
   enabled: true
@@ -60,29 +61,27 @@ cf-explorer:
         domain: pro.cf-explorer-preprod.us-east-1.beta.explorer.cardano.org
     explorerApi:
       enabled: true
-      postgres:
-        secret:
-          hostKey: POSTGRES_READ_ONLY_HOST
       image:
-        tag: "1.3.0-PR1295-78273da-9962749390"
+        tag: "1.7.0-PR1349-6a9dcdb-10594521919"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       swagger:
         enabled: false
     explorerRewardsApi:
       enabled: true
+      replicas: 1
       image:
-        tag: "1.3.0"
+        tag: "1.5.0-593f9b1-10371126638"
     explorerAuthentication:
       enabled: true
       replicas: 1
       image:
-        tag: "0.9.0-PR128"
+        tag: "1.4.0-1e3e78d-10371096098"
       emailFrom: "admin@beta.explorer.cardano.org"
       keycloakServerUrl: "https://keycloak.pro.cf-explorer-preprod.eu-west-1.beta.explorer.cardano.org"
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.3.0-PR3663-7877b1d-10212906290"
+        tag: "1.7.0-main-7a4d7e5-10371257901"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
@@ -99,12 +98,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.3.1-PR491-9e7e959-9975832901"
-      ledgerSyncFlywayEnable: "true"
-      explorerFlywayEnable: "true"
-      aggAnalyticJobEnabled: "true"
-      tokenInfoJobEnabled: "true"
-      tokenInfoBatchSize: 1000
+        tag: "1.7.0-PR536-9d300ea-10594013899"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true

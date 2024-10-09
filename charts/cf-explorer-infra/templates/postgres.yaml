@@ -46,14 +46,13 @@ spec:
           extendedConfiguration: |-
             max_connections=250
             shared_buffers=2GB
-          {{- if .runOnDedicatedHw }}
+          {{- with .nodeSelector }}
           nodeSelector:
-            node.kubernetes.io/role: postgres
+{{ toYaml . | indent 12 }}
+          {{- end }}
+          {{- with .tolerations }}
           tolerations:
-          - key: role
-            value: postgres
-            operator: Equal
-            effect: PreferNoSchedule
+{{ toYaml . | indent 12 }}
           {{- end }}
         shmVolume:
           enabled: true
