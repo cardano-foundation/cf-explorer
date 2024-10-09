@@ -26,7 +26,6 @@ cf-ledger-sync:
       targetRevision: "infra-develop-1_7_0"
     localCardanoNode:
       enabled: true
-      sleep: true
       volumeSize: 200Gi
       network: "mainnet"
     indexer:
