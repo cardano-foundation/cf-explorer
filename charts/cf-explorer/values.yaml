@@ -187,6 +187,9 @@ explorerFrontEnd:
   reactAppAdaHandleApi: "https://adahandle-resolver.{{ .Values.domain }}/api/v1"
   reactAppApiUrlCoinGecko: "https://api.coingecko.com/api/v3/coins/markets"
 
+  reactAppFfGlobalIsConwayEra: "true"
+  reactAppFfGlobalIsConwayBootstrapDataAvailable: "true"
+
   port: 80
 
   service:
@@ -282,7 +285,7 @@ consumerSchedules:
   governanceActionMetadataJobEnabled: true
   governanceActionMetadataFixedDelay: 300000
   governanceActionMetadataRetryCount: 3
-  blockStatisticsJobEnabled: false
+  blockStatisticsJobEnabled: true
   latestTokenBalanceJobEnabled: true
   nativeScriptInfoJobEnabled: true
   smartContractInfoJobEnabled: true

@@ -65,7 +65,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-PR1349-6a9dcdb-10594521919"
+        tag: "1.9.0-38f7379-11238131237"
       redis:
         mode: managed-standalone
         standalone:
@@ -88,7 +88,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.7.0-main-7a4d7e5-10371257901"
+        tag: "1.9.0-main-4595721-11255856877"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
@@ -105,7 +105,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-PR536-7f029a9-10645800258"
+        tag: "1.9.0-f48bc9e-11238144133"
       redis:
         mode: managed-standalone
         standalone:
