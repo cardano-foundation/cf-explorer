@@ -53,7 +53,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-PR1349-6a9dcdb-10594521919"
+        tag: "1.9.0-38f7379-11238131237"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       swagger:
         enabled: false
@@ -73,7 +73,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.7.0-main-7a4d7e5-10371257901"
+        tag: "1.9.0-main-4595721-11255856877"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
@@ -87,7 +87,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.7.0-PR536-7f029a9-10645800258"
+        tag: "1.9.0-f48bc9e-11238144133"
       tokenLogoEndpoint: https://stg-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true

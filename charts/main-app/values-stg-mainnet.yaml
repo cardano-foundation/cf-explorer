@@ -67,7 +67,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.8.0-PR1354-9ebb71a-11159780546"
+        tag: "1.9.0-38f7379-11238131237"
       redis:
         mode: managed-standalone
         standalone:
@@ -87,7 +87,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.9.0-PR3914-3fe35bd-11213989558"
+        tag: "1.9.0-main-4595721-11255856877"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
@@ -101,7 +101,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.8.0-PR544-669cd89-10994024496"
+        tag: "1.9.0-f48bc9e-11238144133"
       redis:
         mode: managed-standalone
         standalone:
