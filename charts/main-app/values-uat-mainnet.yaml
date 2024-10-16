@@ -129,7 +129,6 @@ cf-explorer:
 ## Custom Aggregators
 cf-network-monitoring-aggregator:
   enabled: true
-  values:
 
 # Ada Handle Parameters
 adahandle-resolver:
