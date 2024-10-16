@@ -105,3 +105,13 @@ db:
     dbKey: ""
     userKey: POSTGRES_USER
     passwordKey: POSTGRES_PASSWORD
+
+aggregation:
+  transactionAdoption:
+    wallets:
+      secretName: ""
+      secretKey: ""
+  transactionAdoption6h:
+    wallets:
+      secretName: ""
+      secretKey: ""

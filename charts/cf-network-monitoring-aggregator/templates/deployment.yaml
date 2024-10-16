@@ -101,7 +101,20 @@ spec:
                   name: {{ .secretName }}
                   key: {{ .passwordKey }}
             {{- end }}
-
+            {{- if .Values.aggregation.transactionAdoption.wallets.secretName }}
+            - name: TRANSACTION_ADOPTION_WALLET_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.aggregation.transactionAdoption.wallets.secretName }}
+                  key: {{ .Values.aggregation.transactionAdoption.wallets.secretValue }}
+            {{- end }}
+            {{- if .Values.aggregation.transactionAdoption6h.wallets.secretName }}
+            - name: TRANSACTION_ADOPTION_6h_WALLET_ADDRESSES
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.aggregation.transactionAdoption6h.wallets.secretName }}
+                  key: {{ .Values.aggregation.transactionAdoption6h.wallets.secretValue }}
+            {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
