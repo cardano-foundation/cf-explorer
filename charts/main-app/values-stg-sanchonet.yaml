@@ -73,7 +73,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.9.1-main-b93922e-11293553551"
+        tag: "1.9.1-main-c2dcc98-11365952854"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
