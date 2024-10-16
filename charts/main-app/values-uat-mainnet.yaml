@@ -131,7 +131,7 @@ cf-network-monitoring-aggregator:
   enabled: true
   values:
     image:
-      tag: 0.0.1-SNAPSHOT-56d8847-11365020438
+      tag: 0.0.1-7ce9fd7-11367862681
 
 # Ada Handle Parameters
 adahandle-resolver:
