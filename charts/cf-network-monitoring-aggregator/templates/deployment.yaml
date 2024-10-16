@@ -32,11 +32,11 @@ spec:
 
           env:
 
-            {{- if eq .Values.cardano.node.host }}
+            {{- if .Values.cardano.node.host }}
             - name: STORE_CARDANO_HOST
               value: {{ .Values.cardano.node.host }}
             {{- end }}
-            {{- if eq .Values.cardano.node.port }}
+            {{- if .Values.cardano.node.port }}
             - name: STORE_CARDANO_PORT
               value: {{ .Values.cardano.node.port | quote }}
             {{- end }}
