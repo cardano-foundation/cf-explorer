@@ -86,7 +86,6 @@ tolerations: []
 affinity: {}
 
 ## App Config
-
 cardano:
   # (mainnet|preprod|preview|sanchonet)
   network: mainnet
@@ -95,7 +94,6 @@ cardano:
     port: 0
 
 db:
-  dialect: org.hibernate.dialect.PostgreSQLDialect
   postgres:
     host: ""
     port: 0
