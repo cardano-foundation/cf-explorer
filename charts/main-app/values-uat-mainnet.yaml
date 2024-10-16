@@ -129,6 +129,9 @@ cf-explorer:
 ## Custom Aggregators
 cf-network-monitoring-aggregator:
   enabled: true
+  values:
+    image:
+      tag: 0.0.1-SNAPSHOT-5d0dbfb-11362838375
 
 # Ada Handle Parameters
 adahandle-resolver:
