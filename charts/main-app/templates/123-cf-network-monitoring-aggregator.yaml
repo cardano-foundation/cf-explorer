@@ -29,6 +29,6 @@ spec:
       - CreateNamespace=true
 
   destination:
-    namespace: cf-ledger-resync
+    namespace: cf-explorer
     server: {{ .Values.spec.destination.server }}
 {{ end }}
