@@ -17,8 +17,6 @@ spec:
       parameters:
         - name: "network"
           value: {{ .Values.network }}
-      valueFiles:
-      - values-{{ .Values.network }}.yaml
       {{- with index .Values "cf-network-monitoring-aggregator" "values" }}
       values: |
 {{ toYaml . | indent 8 }}
