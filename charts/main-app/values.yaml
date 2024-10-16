@@ -73,6 +73,11 @@ nginx-edge-cases:
 cf-network-monitoring-aggregator:
   enabled: false
   values:
+    cardano:
+      network: mainnet
+      node:
+        host: "cardano-node"
+        port: 3001
     db:
       postgres:
         host: ""
