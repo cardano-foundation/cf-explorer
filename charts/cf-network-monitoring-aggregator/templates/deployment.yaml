@@ -104,14 +104,14 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.aggregation.transactionAdoption.wallets.secretName }}
-                  key: {{ .Values.aggregation.transactionAdoption.wallets.secretValue }}
+                  key: {{ .Values.aggregation.transactionAdoption.wallets.secretKey }}
             {{- end }}
             {{- if .Values.aggregation.transactionAdoption6h.wallets.secretName }}
             - name: TRANSACTION_ADOPTION_6h_WALLET_ADDRESSES
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.aggregation.transactionAdoption6h.wallets.secretName }}
-                  key: {{ .Values.aggregation.transactionAdoption6h.wallets.secretValue }}
+                  key: {{ .Values.aggregation.transactionAdoption6h.wallets.secretKey }}
             {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
