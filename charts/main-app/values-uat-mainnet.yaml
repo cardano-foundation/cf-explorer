@@ -126,6 +126,11 @@ cf-explorer:
       redirectUri: https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/*
       forwardEventUrl: https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
 
+## Custom Aggregators
+cf-network-monitoring-aggregator:
+  enabled: true
+  values:
+
 # Ada Handle Parameters
 adahandle-resolver:
   enabled: true

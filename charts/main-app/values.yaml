@@ -70,6 +70,22 @@ grafana-customizations:
 nginx-edge-cases:
   enabled: true
 
+cf-network-monitoring-aggregator:
+  enabled: false
+  values:
+    db:
+      postgres:
+        host: ""
+        port: 0
+        db: ""
+        dbSchema: network_monitoring_aggregator
+        secretName: postgres-secrets
+        hostKey: POSTGRES_HOST
+        portKey: POSTGRES_PORT
+        dbKey: EXPLORER_DB
+        userKey: POSTGRES_USER
+        passwordKey: POSTGRES_PASSWORD
+
 spec:
   destination:
     server: https://kubernetes.default.svc
