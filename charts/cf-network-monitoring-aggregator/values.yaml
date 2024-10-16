@@ -42,7 +42,7 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
+  port: 8080
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -59,11 +59,11 @@ resources: {}
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
-    path: /
+    path: /__internal__/healthcheck
     port: http
 readinessProbe:
   httpGet:
-    path: /
+    path: /__internal__/healthcheck
     port: http
 
 # Additional volumes on the output Deployment definition.
