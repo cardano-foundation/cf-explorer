@@ -109,9 +109,9 @@ db:
 aggregation:
   transactionAdoption:
     wallets:
-      secretName: ""
-      secretKey: ""
+      secretName: infra-secrets
+      secretKey: TRANSACTION_ADOPTION_WALLET_ADDRESSES
   transactionAdoption6h:
     wallets:
-      secretName: ""
-      secretKey: ""
+      secretName: infra-secrets
+      secretKey: TRANSACTION_ADOPTION_6H_WALLET_ADDRESSES

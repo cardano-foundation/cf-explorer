@@ -128,7 +128,7 @@ cf-explorer:
 
 ## Custom Aggregators
 cf-network-monitoring-aggregator:
-  enabled: true
+  enabled: false
   values:
     image:
       tag: 0.0.1-7ce9fd7-11367862681
