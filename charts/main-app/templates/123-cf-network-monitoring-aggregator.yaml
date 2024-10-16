@@ -10,9 +10,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/cardano-foundation/cf-ledger-sync.git
-    targetRevision: {{ index .Values "cf-network-monitoring-aggregator" "values" "git" "targetRevision" | default "HEAD" }}
-    path: deploy/cf-ledger-sync
+    repoURL: {{ .Values.git.repoURL | default "https://github.com/cardano-foundation/cf-explorer.git" }}
+    targetRevision: {{ .Values.git.targetRevision | default "HEAD" }}
+    path: charts/cf-network-monitoring-aggregator
     helm:
       parameters:
         - name: "network"
