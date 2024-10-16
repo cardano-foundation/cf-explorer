@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "cf-network-monitoring-aggregator.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include "cf-network-monitoring-aggregator.selectorLabels" . | nindent 6 }}
