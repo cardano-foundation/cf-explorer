@@ -5,7 +5,7 @@ network: sanchonet
 domain: sanchonet.beta.explorer.cardano.org
 
 cf-explorer-infra:
-  enabled: false
+  enabled: true
   postgresql:
     dbSize: 100Gi
 
