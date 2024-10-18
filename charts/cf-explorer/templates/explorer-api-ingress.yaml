@@ -10,8 +10,6 @@ spec:
   headers:
     customResponseHeaders:
       Cross-Origin-Opener-Policy: "same-origin"
-      Cache-Control: "max-age=20, must-revalidate"
-      expires:
   {{- range $v := $.Values.ingressDomains }}
 ---
 apiVersion: networking.k8s.io/v1
