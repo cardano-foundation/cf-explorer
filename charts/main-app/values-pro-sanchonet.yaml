@@ -5,11 +5,9 @@ network: sanchonet
 domain: sanchonet.beta.explorer.cardano.org
 
 cf-explorer-infra:
-  enabled: true
+  enabled: false
   postgresql:
     dbSize: 100Gi
-  kafka:
-    enabled: true
 
 cf-ledger-sync:
   enabled: true
