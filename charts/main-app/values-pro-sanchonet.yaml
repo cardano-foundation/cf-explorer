@@ -51,7 +51,7 @@ cf-explorer:
         domain: pro.cf-explorer-sanchonet.us-east-1.beta.explorer.cardano.org
     explorerApi:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
         tag: "1.9.0-38f7379-11238131237"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
@@ -59,7 +59,7 @@ cf-explorer:
         enabled: false
     explorerRewardsApi:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
         tag: "1.5.0-593f9b1-10371126638"
       koios:
@@ -67,7 +67,7 @@ cf-explorer:
         baseUrl: https://koios-api.pro.dandelion-sanchonet.eu-west-1.metadata.dev.cf-deployments.org/api/v1/
     explorerAuthentication:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
         tag: "1.4.0-1e3e78d-10371096098"
     explorerFrontEnd:
@@ -89,7 +89,7 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
         tag: "1.9.0-f48bc9e-11238144133"
       tokenLogoEndpoint: https://pro-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
