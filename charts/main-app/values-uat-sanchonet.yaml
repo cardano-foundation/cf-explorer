@@ -50,14 +50,14 @@ cf-explorer:
         domain: uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org
     explorerApi:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
-        tag: "1.9.0-38f7379-11238131237"
+        tag: "1.10.0-1ae1038-11403537061"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       reportLimitPer24h: 20
     explorerRewardsApi:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
         tag: "1.5.0-593f9b1-10371126638"
       koios:
@@ -71,7 +71,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.9.1-main-b93922e-11293553551"
+        tag: "1.10.0-PR3990-958e355-11404258569"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
@@ -85,7 +85,7 @@ cf-explorer:
       enabled: true
       replicas: 0
       image:
-        tag: "1.9.0-f48bc9e-11238144133"
+        tag: "1.10.0-10addfd-11403545852"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     keycloak:
       enabled: true
