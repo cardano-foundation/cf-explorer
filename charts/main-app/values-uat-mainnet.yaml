@@ -75,7 +75,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.10.0-1ae1038-11403537061"
+        tag: "1.10.0-PR1412-bd28ac1-11496611231"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
     explorerRewardsApi:
       enabled: true
