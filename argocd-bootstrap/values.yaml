@@ -1,11 +1,21 @@
 # Git Specific configuration
 git:
   # The target branch to point to. This can be set to a branch during chart development phase. Defaults to main
-  targetRevision: null
+  targetRevision: develop
 
 # ArgoCD parameters
 argo-cd:
   enabled: true
+  crds:
+    install: false
+  configs:
+    cm:
+      resource.customizations: |
+        networking.k8s.io/Ingress:
+          health.lua: |
+            hs = {}
+            hs.status = "Healthy"
+            return hs
   server:
     extraArgs:
       - --insecure
