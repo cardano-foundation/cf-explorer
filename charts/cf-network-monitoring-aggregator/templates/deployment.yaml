@@ -100,14 +100,14 @@ spec:
                   key: {{ .passwordKey }}
             {{- end }}
             {{- if .Values.aggregation.transactionAdoption.wallets.secretName }}
-            - name: TRANSACTION_ADOPTION_WALLET_ADDRESSES
+            - name: AGGREGATION_TRANSACTION_ADOPTION_WALLETS
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.aggregation.transactionAdoption.wallets.secretName }}
                   key: {{ .Values.aggregation.transactionAdoption.wallets.secretKey }}
             {{- end }}
             {{- if .Values.aggregation.transactionAdoption6h.wallets.secretName }}
-            - name: TRANSACTION_ADOPTION_6h_WALLET_ADDRESSES
+            - name: AGGREGATION_TRANSACTION_ADOPTION_WALLETS_6G
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.aggregation.transactionAdoption6h.wallets.secretName }}
