@@ -1,0 +1,135 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cf-product-tracing-aggregator.fullname" . }}
+  labels:
+    {{- include "cf-product-tracing-aggregator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "cf-product-tracing-aggregator.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "cf-product-tracing-aggregator.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+
+          env:
+
+            {{- if .Values.cardano.node.host }}
+            - name: STORE_CARDANO_HOST
+              value: {{ .Values.cardano.node.host }}
+            {{- end }}
+            {{- if .Values.cardano.node.port }}
+            - name: STORE_CARDANO_PORT
+              value: {{ .Values.cardano.node.port | quote }}
+            {{- end }}
+
+            {{- if eq .Values.cardano.network "mainnet" }}
+            - name: STORE_CARDANO_PROTOCOL_MAGIC
+              value: "764824073"
+            {{- else if eq .Values.cardano.network "preprod" }}
+            - name: STORE_CARDANO_PROTOCOL_MAGIC
+              value: "1"
+            {{- else if eq .Values.cardano.network "preview" }}
+            - name: STORE_CARDANO_PROTOCOL_MAGIC
+              value: "2"
+            {{- else if eq .Values.cardano.network "sanchonet" }}
+            - name: STORE_CARDANO_PROTOCOL_MAGIC
+              value: "4"
+            {{- end }}
+
+            ## Postgres
+            {{- with .Values.db.postgres }}
+            - name: DB_HOST
+              {{- if .host }}
+              value: {{ .host }}
+              {{- else }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName }}
+                  key: {{ .hostKey }}
+              {{- end }}
+            - name: DB_PORT
+              {{- if .port }}
+              value: {{ .port | quote }}
+              {{- else }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName }}
+                  key: {{ .portKey }}
+              {{- end }}
+            - name: DB_NAME
+              {{- if .db }}
+              value: {{ .db }}
+              {{- else }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName }}
+                  key: {{ .dbKey }}
+              {{- end }}
+            - name: DB_SCHEMA
+              value: {{ .dbSchema }}
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://$(DB_HOST):$(DB_PORT)/$(DB_NAME)?currentSchema=$(DB_SCHEMA)
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName }}
+                  key: {{ .userKey }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName }}
+                  key: {{ .passwordKey }}
+            {{- end }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- with .Values.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
