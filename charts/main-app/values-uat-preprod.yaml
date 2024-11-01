@@ -2,7 +2,7 @@ stage: uat
 
 network: preprod
 
-domain: uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+domain: uat.cf-explorer-preprod.cf-deployments.org
 
 cf-explorer-infra:
   enabled: true
@@ -57,12 +57,12 @@ cf-explorer:
       - name: global-lb
         domain: uat.cf-explorer-preprod.global.metadata.dev.cf-deployments.org
       - name: eu-west-1-lb
-        domain: uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
+        domain: uat.cf-explorer-preprod.cf-deployments.org
     explorerApi:
       enabled: true
       replicas: 1
       image:
-        tag: "1.10.0-1ae1038-11403537061"
+        tag: "1.11.0-379a82f-11627854124"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       reportLimitPer24h: 20
     explorerRewardsApi:
@@ -78,12 +78,12 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.10.0-PR3990-958e355-11404258569"
-      reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
-      reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org"
-      reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.eu-west-1.metadata.dev.cf-deployments.org"
-      reactAppMainnetAppUrl: "https://uat.cf-explorer-mainnet.eu-west-1.metadata.dev.cf-deployments.org"
-      reactAppAuthUrl: "https://auth-api.uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1"
+        tag: "1.11.0-main-98c7a14-11628061723"
+      reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.cf-deployments.org"
+      reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.cf-deployments.org"
+      reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.cf-deployments.org"
+      reactAppMainnetAppUrl: "https://uat.cf-explorer-mainnet.cf-deployments.org"
+      reactAppAuthUrl: "https://auth-api.uat.cf-explorer-preprod.cf-deployments.org/api/v1"
     crawler:
       enabled: false
     consumer:
@@ -100,11 +100,11 @@ cf-explorer:
         tag: 0.1.15-SNAPSHOT
       setupImage:
         tag: 0.1.15-SNAPSHOT
-      hostname: keycloak.uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
-      frontendDomainPublicUrl: https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
-      webOrigin: https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org
-      redirectUri: https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/*
-      forwardEventUrl: https://uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
+      hostname: keycloak.uat.cf-explorer-preprod.cf-deployments.org
+      frontendDomainPublicUrl: https://uat.cf-explorer-preprod.cf-deployments.org
+      webOrigin: https://uat.cf-explorer-preprod.cf-deployments.org
+      redirectUri: https://uat.cf-explorer-preprod.cf-deployments.org/*
+      forwardEventUrl: https://uat.cf-explorer-preprod.cf-deployments.org/api/v1/user/role-mapping
 
 # Ada Handle Parameters
 adahandle-resolver:
@@ -127,4 +127,4 @@ argo-cd:
   server:
     ingress:
       hosts:
-        - argocd.uat.cf-explorer-preprod.eu-west-1.metadata.dev.cf-deployments.org 
+        - argocd.uat.cf-explorer-preprod.cf-deployments.org 
