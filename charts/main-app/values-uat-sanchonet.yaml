@@ -52,7 +52,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.10.1-PR1411-7ed2e3f-11610588880"
+        tag: "1.11.0-379a82f-11627854124"
       tokenLogoEndpoint: https://uat-cf-explorer-token-logos.s3.eu-west-1.amazonaws.com/
       reportLimitPer24h: 20
     explorerRewardsApi:
@@ -71,7 +71,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.11.0-PR4083-990566b-11607336821"
+        tag: "1.11.0-main-98c7a14-11628061723"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.cf-deployments.org"
