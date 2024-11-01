@@ -63,9 +63,9 @@ cf-explorer:
         domain: pro.cf-explorer-mainnet.us-east-1.beta.explorer.cardano.org
     explorerApi:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
-        tag: "1.9.0-38f7379-11238131237"
+        tag: "1.11.0-379a82f-11627854124"
       redis:
         mode: managed-standalone
         standalone:
@@ -88,7 +88,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.9.1-main-b93922e-11293553551"
+        tag: "1.11.0-main-98c7a14-11628061723"
       reactAppSanchonetAppUrl: "https://sanchonet.beta.explorer.cardano.org"
       reactAppPreProdAppUrl: "https://preprod.beta.explorer.cardano.org"
       reactAppPreviewAppUrl:  "https://preview.beta.explorer.cardano.org"
@@ -103,9 +103,9 @@ cf-explorer:
       enabled: false
     consumerSchedules:
       enabled: true
-      replicas: 0
+      replicas: 1
       image:
-        tag: "1.9.0-f48bc9e-11238144133"
+        tag: "1.10.0-10addfd-11403545852"
       redis:
         mode: managed-standalone
         standalone:
@@ -130,6 +130,13 @@ cf-explorer:
       webOrigin: https://beta.explorer.cardano.org
       redirectUri: https://beta.explorer.cardano.org/*
       forwardEventUrl: https://beta.explorer.cardano.org/api/v1/user/role-mapping
+
+## Custom Aggregators
+cf-network-monitoring-aggregator:
+  enabled: true
+  values:
+    image:
+      tag: 0.0.1-22cc28b-11610196775
 
 # Ada Handle Parameters
 adahandle-resolver:
