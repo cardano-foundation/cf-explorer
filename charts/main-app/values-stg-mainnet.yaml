@@ -67,7 +67,7 @@ cf-explorer:
       enabled: true
       replicas: 1
       image:
-        tag: "1.9.0-38f7379-11238131237"
+        tag: "1.11.0-379a82f-11627854124"
       redis:
         mode: managed-standalone
         standalone:
@@ -87,7 +87,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.9.1-main-c2dcc98-11365952854"
+        tag: "1.11.0-main-98c7a14-11628061723"
       reactAppSanchonetAppUrl: "https://stg.cf-explorer-sanchonet.eu-west-1.metadata.dev.cf-deployments.org"
       reactAppPreProdAppUrl: "https://stg.cf-explorer-preprod.metadata.dev.cf-deployments.org"
       reactAppPreviewAppUrl: "https://stg.cf-explorer-preview.metadata.dev.cf-deployments.org"
@@ -98,10 +98,10 @@ cf-explorer:
     consumer:
       enabled: false
     consumerSchedules:
-      enabled: false
+      enabled: true
       replicas: 1
       image:
-        tag: "1.9.0-f48bc9e-11238144133"
+        tag: "1.10.0-10addfd-11403545852"
       redis:
         mode: managed-standalone
         standalone:
@@ -126,6 +126,13 @@ cf-explorer:
       webOrigin: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org
       redirectUri: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org/*
       forwardEventUrl: https://stg.cf-explorer-mainnet.metadata.dev.cf-deployments.org/api/v1/user/role-mapping
+
+## Custom Aggregators
+cf-network-monitoring-aggregator:
+  enabled: true
+  values:
+    image:
+      tag: 0.0.1-22cc28b-11610196775
 
 # Ada Handle Parameters
 adahandle-resolver:
