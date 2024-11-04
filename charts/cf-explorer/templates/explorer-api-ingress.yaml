@@ -40,7 +40,21 @@ spec:
                 name: cf-explorer-api
                 port:
                   number: 80
-          - path: /api/v1/network-monitoring/transaction-adoption
+          - path: /api/v1/explorer-aggregator
+            pathType: Prefix
+            backend:
+              service:
+                name: cf-explorer-aggregator
+                port:
+                  number: 80
+          - path: /api/v1/product-tracing-aggregator
+            pathType: Prefix
+            backend:
+              service:
+                name: cf-product-tracing-aggregator
+                port:
+                  number: 80
+          - path: /api/v1/network-monitoring
             pathType: Prefix
             backend:
               service:

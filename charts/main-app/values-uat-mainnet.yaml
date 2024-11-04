@@ -127,6 +127,18 @@ cf-explorer:
       forwardEventUrl: https://uat.cf-explorer-mainnet.cf-deployments.org/api/v1/user/role-mapping
 
 ## Custom Aggregators
+cf-explorer-aggregator:
+  enabled: true
+  values:
+    image:
+      tag: 0.0.1-SNAPSHOT-772ed8e
+
+cf-product-tracing-aggregator:
+  enabled: true
+  values:
+    image:
+      tag: 0.0.1-SNAPSHOT-df004b5
+
 cf-network-monitoring-aggregator:
   enabled: true
   values:
