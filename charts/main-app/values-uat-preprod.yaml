@@ -78,7 +78,7 @@ cf-explorer:
     explorerFrontEnd:
       enabled: true
       image:
-        tag: "1.11.0-main-98c7a14-11628061723"
+        tag: "1.11.1-main-60f383a-11661378459"
       reactAppSanchonetAppUrl: "https://uat.cf-explorer-sanchonet.cf-deployments.org"
       reactAppPreProdAppUrl: "https://uat.cf-explorer-preprod.cf-deployments.org"
       reactAppPreviewAppUrl: "https://uat.cf-explorer-preview.cf-deployments.org"
