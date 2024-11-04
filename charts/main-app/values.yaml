@@ -73,6 +73,12 @@ nginx-edge-cases:
 cf-explorer-aggregator:
   enabled: false
   values:
+    livenessProbe:
+      httpGet:
+        path: /api/v1/explorer-aggregator/__internal__/healthcheck
+    readinessProbe:
+      httpGet:
+        path: /api/v1/explorer-aggregator/__internal__/healthcheck
     cardano:
       network: mainnet
       node:
@@ -94,6 +100,12 @@ cf-explorer-aggregator:
 cf-product-tracing-aggregator:
   enabled: false
   values:
+    livenessProbe:
+      httpGet:
+        path: /api/v1/product-tracing-aggregator/__internal__/healthcheck
+    readinessProbe:
+      httpGet:
+        path: /api/v1/product-tracing-aggregator/__internal__/healthcheck
     cardano:
       network: mainnet
       node:
