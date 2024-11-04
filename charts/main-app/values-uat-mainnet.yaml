@@ -131,13 +131,13 @@ cf-explorer-aggregator:
   enabled: true
   values:
     image:
-      tag: 0.0.1-SNAPSHOT-772ed8e
+      tag: 0.0.1-SNAPSHOT-89c7f77-11666779522
 
 cf-product-tracing-aggregator:
   enabled: true
   values:
     image:
-      tag: 0.0.1-SNAPSHOT-df004b5
+      tag: 0.0.1-SNAPSHOT-f6b6d20-11666785144
 
 cf-network-monitoring-aggregator:
   enabled: true
