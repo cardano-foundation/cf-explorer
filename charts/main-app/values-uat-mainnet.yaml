@@ -131,7 +131,7 @@ cf-explorer-aggregator:
   enabled: true
   values:
     image:
-      tag: 0.0.1-SNAPSHOT-d3df612-11683630440
+      tag: 0.0.1-SNAPSHOT-34edd18-11685557683
 
 cf-product-tracing-aggregator:
   enabled: true
