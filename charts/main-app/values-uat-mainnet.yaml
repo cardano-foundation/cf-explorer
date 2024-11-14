@@ -11,6 +11,9 @@ cf-explorer-infra:
       master:
         persistence:
           size: 20Gi
+        startupProbe:
+          enabled: true
+          initialDelaySeconds: 90
       diagnosticMode:
         enabled: false
   postgresql:
