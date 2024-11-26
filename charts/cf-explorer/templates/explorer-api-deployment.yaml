@@ -163,7 +163,7 @@ spec:
               value: https://stg.api.cf-bolnisi-wine-preprod.metadata.dev.cf-deployments.org/api/v1/pubkeys/1/v/0
 
             - name: API_BOLNISI_OFFCHAIN_URL
-              value: "https://dev.offchain.cf-bolnisi-wine-preprod.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}"
+              value: "https://stg.offchain.cf-bolnisi-wine-preprod.metadata.dev.cf-deployments.org/api/v1/storage/objectUrl/georgian-wine/{cid}"
 
             {{- if eq .redis.mode "sentinel" }}
             - name: REDIS_MASTER_NAME
